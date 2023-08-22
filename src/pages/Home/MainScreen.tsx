@@ -10,6 +10,7 @@ function MainScreen() {
           <s.MainNameText>입대일 : 2020. 05. 18</s.MainNameText>
         </s.MainTextWrapper>
       </s.WrapperLayout>
+      <s.CabinetImg></s.CabinetImg>
       <button>버튼</button>
     </s.ProfileWrapper>
   );

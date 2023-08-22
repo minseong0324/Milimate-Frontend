@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import cabinet from "../../assets/Cabinet/cabinet.svg";
 // import button1 from '../../assets/button/button1.png';
 // import button4 from '../../assets/button/button4.png';
 // import buttonMidium1 from '../../assets/button/button-midium-1.png';
@@ -39,6 +40,17 @@ const MainNameText = styled.p`
   color: #836c68;
   font-weight: bold;
   margin: 0; // 상하 간격을 제거합니다.
+`;
+
+const CabinetImg = styled.img.attrs({
+  src: cabinet,
+})`
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  align-items: center;
+  width: 1300px;
+  height: 1300px;
 `;
 
 //background: url(${button4}) no-repeat center center; // 이미지를 배경으로 사용
@@ -180,4 +192,5 @@ export const s = {
   CenteredDiv,
   MainTextWrapper,
   ProfileWrapper,
+  CabinetImg,
 };
