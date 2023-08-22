@@ -6,33 +6,36 @@ import ErrorModal from "src/components/ErrorModal/ErrorModal";
 
 function MoreInfo() {
     const [userName, setUserName] = useState('');
-    const [password, setPassword] = useState('');
+    const [enlistmentYear, setEnlistmentYear] = useState('');
+    const [enlistmentMonth, setEnlistmentMonth] = useState('');
+    const [enlistmentDay, setEnlistmentDay] = useState('');
+    const [completionYear, setcompletionYear] = useState('');
+    const [completionMonth, setcompletionMonth] = useState('');
+    const [completionDay, setcompletionDay] = useState('');
     const navigate = useNavigate(); // useNavigate hook 사용
     const [isErrorModalOpen, setErrorModalOpen] = useState(false);
     const [modalErrorContent, setModalErrorContent] = useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
   
     // 회원가입 처리 함수
-    const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleMoreInfo = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-  
-      // 여기에 회원가입 로직 추가
-      // API 요청 등
-      // 이부분은 백엔드 API가 준비되면 주석 해제하고 사용
-      console.log(`Signing up as: ${userName}, ${email}, ${password}`);
 
       // 회원가입 API 요청
       try {
-        const response = await axios.post(`http://localhost:8080/api/auth/signup/self`, {
+        const response = await axios.post(`http://localhost:8080/user/{userId}/moreInfo`, {
           userName,
-          email,
-          password,
+          enlistmentYear,
+          enlistmentMonth,
+          enlistmentDay,
+          completionYear,
+          completionMonth,
+          completionDay,
         });
-        console.log(userName, email, password);
   
-        // 회원가입 성공, status 200일 때
+        // 추가 정보 입력한 후 회원가입 성공, status 200일 때
         if (response.status === 200) {
           alert("회원가입에 성공하였습니다!")
-          navigate("/login"); 
+          navigate("/home"); 
         } 
       } catch (error: unknown) { //에러 일 경우
         if (error instanceof AxiosError) {
@@ -40,7 +43,7 @@ function MoreInfo() {
           console.error('Failed to fetch user info:', error);
           setModalErrorContent(
             <s.ErrorCenterModalWrapper>
-                <s.ErrorModalTextsWrapper1>이메일이 존재해요!</s.ErrorModalTextsWrapper1>
+                <s.ErrorModalTextsWrapper1>정보 저장에 실패했습니다!</s.ErrorModalTextsWrapper1>
                 <s.ModalButton onClick={handleErrorModalClose}>닫기</s.ModalButton>
             </s.ErrorCenterModalWrapper>
           );
@@ -67,7 +70,7 @@ function MoreInfo() {
         <s.Wrapper>
         
         <s.Title>추가정보</s.Title>
-        <s.MoreInfoForm onSubmit={handleSignUp}>
+        <s.MoreInfoForm onSubmit={handleMoreInfo}>
         <s.InputContainer>
           <s.TextsStyle>이름</s.TextsStyle>
             <s.MoreInfoInput
@@ -80,20 +83,20 @@ function MoreInfo() {
           <s.TextsStyle>입대일</s.TextsStyle>
               <s.MoreInfoInputYear
                   type="text"
-                  value={email}
-                  onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setEmail(e.target.value)}
+                  value={enlistmentYear}
+                  onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setEnlistmentYear(e.target.value)}
               /> 
               <s.TextsStyle2>년</s.TextsStyle2>
               <s.MoreInfoInputYMonthDay
                   type="text"
-                  value={email}
-                  onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setEmail(e.target.value)}
+                  value={enlistmentMonth}
+                  onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setEnlistmentMonth(e.target.value)}
               />
               <s.TextsStyle2>월</s.TextsStyle2>
               <s.MoreInfoInputYMonthDay
                   type="text"
-                  value={email}
-                  onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setEmail(e.target.value)}
+                  value={enlistmentDay}
+                  onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setEnlistmentDay(e.target.value)}
               />
               <s.TextsStyle2>일</s.TextsStyle2>
           </s.InputContainer>
@@ -102,20 +105,20 @@ function MoreInfo() {
             <s.TextsStyle>수료일</s.TextsStyle>
               <s.MoreInfoInputYear
                   type="text"
-                  value={email}
-                  onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setEmail(e.target.value)}
+                  value={completionYear}
+                  onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setcompletionYear(e.target.value)}
               /> 
               <s.TextsStyle2>년</s.TextsStyle2>
               <s.MoreInfoInputYMonthDay
                   type="text"
-                  value={email}
-                  onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setEmail(e.target.value)}
+                  value={completionMonth}
+                  onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setcompletionMonth(e.target.value)}
               />
               <s.TextsStyle2>월</s.TextsStyle2>
               <s.MoreInfoInputYMonthDay
                   type="text"
-                  value={email}
-                  onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setEmail(e.target.value)}
+                  value={completionDay}
+                  onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setcompletionDay(e.target.value)}
               />
               <s.TextsStyle2>일</s.TextsStyle2>
             </s.InputContainer>
