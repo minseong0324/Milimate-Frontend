@@ -18,6 +18,7 @@ import GoogleLoginButton from "./pages/login/googleLogin/GoogleLoginButton";
 import GoogleCallback from "./pages/login/googleLogin/GoogleCallback";
 //import MyPage from './pages/MyPage/MyPage';
 import { QueryClient, QueryClientProvider } from "react-query";
+import MainScreen from "./pages/Home/MainScreen";
 //import TokenProvider from './contexts/TokenProvider/TokenProvider';
 
 const queryClient = new QueryClient();
@@ -30,11 +31,11 @@ function App() {
           <Routes>
             {/* <Route path="/" element={<HomeBeforeLogin />} /> */}
             {/* <Route path="/home/:userId" element={<Home />} />
-          <Route path="/ownerhome" element={<OwnerHome />} /> 이건 출시 이전에 뺄 것입니다. 개발을 위해 라우트 해두었습니다. */}
+            <Route path="/ownerhome" element={<OwnerHome />} /> 이건 출시 이전에 뺄 것입니다. 개발을 위해 라우트 해두었습니다. */}
             <Route path="/login" element={<Login />} />
             {/* <Route path="/signup" element={<SignUp />} />
-          <Route path="/select-character-tree/:userId" element={<SelectTreeCharacter />} /> */}
-
+            <Route path="/select-character-tree/:userId" element={<SelectTreeCharacter />} /> */}
+            <Route path="/mainscreen" element={<MainScreen />}></Route>
             <Route path="/kakao/callback" element={<KakaoCallback />} />
 
             <Route path="/naver/callback" element={<NaverCallback />} />
