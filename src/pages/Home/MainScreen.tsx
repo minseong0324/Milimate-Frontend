@@ -11,7 +11,7 @@ function MainScreen() {
         </s.MainTextWrapper>
       </s.WrapperLayout>
       <s.CabinetImg></s.CabinetImg>
-      <button>버튼</button>
+      <button>버튼1</button>
     </s.ProfileWrapper>
   );
 }
