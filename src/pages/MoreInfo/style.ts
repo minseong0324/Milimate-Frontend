@@ -1,18 +1,17 @@
 import styled from "styled-components";
 import bodyBackground from '../../assets/background/background.svg'
-import loginTitleimg from '../../assets/title/title.svg'
 
 // import button1 from '../../assets/button/button1.png';
 // import button4 from '../../assets/button/button4.png';
 // import buttonMidium1 from '../../assets/button/button-midium-1.png';
 // import buttonMidium2 from '../../assets/button/button-midium-2.png';
 
-const LoginButton = styled.button`
+const Button = styled.button`
 
   width: 250px; // 버튼 너비를 조정
   height: 40px; // 버튼 높이를 조정
   padding: 10px; // 내부 패딩을 조정
-
+  background-color: rgb(58 56 56);
   background-size: cover; // 이미지가 버튼에 맞게 조절
   color: black;
   border-radius: 30px;
@@ -22,9 +21,10 @@ const LoginButton = styled.button`
   z-index: 2;
   &:active {
     // 버튼이 눌렸을 때의 스타일
-
+    background-color: rgb(58 56 56);
     background-size: cover; // 이미지가 버튼에 맞게 조절
   }
+  color: white;
 `;
 
 const BackgroundContainer = styled.div`
@@ -39,7 +39,7 @@ const BackgroundContainer = styled.div`
 
 //background: url(${button4}) no-repeat center center; // 이미지를 배경으로 사용
 //background: url(${button1}) no-repeat center center; // 눌렸을 때의 배경 이미지
-const LoginWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,7 +47,7 @@ const LoginWrapper = styled.div`
   height: 100vh;
 `;
 
-const LoginForm = styled.form`
+const MoreInfoForm = styled.form`
 
   display: flex;
   flex-direction: column;
@@ -56,14 +56,14 @@ const LoginForm = styled.form`
   margin-top: 67px;
 `;
 
-const LoginInput = styled.input`
+const MoreInfoInput = styled.input`
 
   padding: 10px;
   font-size: 16px;
-  width: 250px;
+  width: 215px;
   border: none; // 모든 테두리를 제거합니다.
-  border-bottom: 1px solid #777; // 아래쪽 테두리만 추가합니다.
-  background-color: transparent;
+  border-radius: 30px;
+  background-color: rgb(84 130 53);
   color: #111;
   z-index: 5;
 
@@ -76,12 +76,70 @@ const LoginInput = styled.input`
   }
 `;
 
+const MoreInfoInputYear = styled.input`
+  padding: 10px;
+  font-size: 16px;
+  width: 40px;
+  border: none; // 모든 테두리를 제거합니다.
+  border-radius: 30px;
+  background-color: rgb(84 130 53);
+  color: #111;
+  z-index: 5;
+
+  &::placeholder {
+    color: #777;
+  }
+
+  &:focus {
+    outline: none;
+  }
+`;
+const MoreInfoInputYMonthDay = styled.input`
+  padding: 10px;
+  font-size: 16px;
+  width: 30px;
+  border: none; // 모든 테두리를 제거합니다.
+  border-radius: 30px;
+  background-color: rgb(84 130 53);
+  color: #111;
+  z-index: 5;
+
+  &::placeholder {
+    color: #777;
+  }
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+const InputContainer = styled.div`
+    display: flex;      
+    align-items: center; // 만약 input들이 세로축에서 중앙에 위치하길 원한다면 추가
+
+    & > *:not(:last-child) {
+        margin-right: 10px;  // 마지막 input을 제외한 모든 input에 오른쪽 마진 15px 부여
+    }
+`;
+
+
+
 const TextsStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   line-height: 0.2; // 글자 간격
   z-index: 0;
+  font-size: 15px;
+`;
+
+const TextsStyle2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0.2; // 글자 간격
+  z-index: 0;
+  font-size: 12px;
 `;
 
 const Title = styled.text`
@@ -175,20 +233,24 @@ const ModalButton = styled.button`
 //background: url(${buttonMidium1}) no-repeat center center; // 이미지를 배경으로 사용
 //background: url(${buttonMidium2}) no-repeat center center; // 눌렸을 때의 배경 이미지
 export const s = {
-  LoginWrapper,
-  LoginForm,
-  LoginInput,
-  LoginButton,
-  TextsStyle,
-  H3,
-  H1,
-  P,
-  ModalTextsWrapper,
-  ModalWrapper,
-  ErrorCenterModalWrapper,
-  ErrorModalTextsWrapper1,
-  ErrorModalTextsWrapper2,
-  ModalButton,
-  BackgroundContainer,
-  Title
+    Wrapper,
+    MoreInfoForm,
+    MoreInfoInput,
+    Button,
+    TextsStyle,
+    H3,
+    H1,
+    P,
+    ModalTextsWrapper,
+    ModalWrapper,
+    ErrorCenterModalWrapper,
+    ErrorModalTextsWrapper1,
+    ErrorModalTextsWrapper2,
+    ModalButton,
+    BackgroundContainer,
+    Title,
+    InputContainer,
+    MoreInfoInputYear,
+    MoreInfoInputYMonthDay,
+    TextsStyle2
 };

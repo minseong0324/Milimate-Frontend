@@ -8,14 +8,14 @@ function HomeBeforeLogin() {
   const navigate = useNavigate(); // useNavigate hook 사용
 
 return (
-  <s.BackgroundContainer>
-   <s.CenteredWrapper>
-    <s.TextsStyle>
-      <s.TitleImage />
-      <s.Break/>
-      <s.P>5주간 힘든 훈련병을 위해 대답해주세요!</s.P>
-    </s.TextsStyle>
-   
+    <s.BackgroundContainer>
+    <s.CenteredWrapper>
+        <s.Title>My</s.Title>
+        <s.Title>Cabinet</s.Title>
+
+    <s.P>5주간 힘든 훈련병을 위해 대답해주세요!</s.P>
+
+
 
     <s.ButtonWrapper>
       <s.Break/>

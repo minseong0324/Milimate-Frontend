@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import bodyBackground from '../../assets/background/background.svg'
-import loginTitleimg from '../../assets/title/title.svg'
 
 // import button1 from '../../assets/button/button1.png';
 // import button4 from '../../assets/button/button4.png';
 // import buttonMidium1 from '../../assets/button/button-midium-1.png';
 // import buttonMidium2 from '../../assets/button/button-midium-2.png';
 
-const LoginButton = styled.button`
+const SignUpButton = styled.button`
 
   width: 250px; // 버튼 너비를 조정
   height: 40px; // 버튼 높이를 조정
@@ -39,7 +38,7 @@ const BackgroundContainer = styled.div`
 
 //background: url(${button4}) no-repeat center center; // 이미지를 배경으로 사용
 //background: url(${button1}) no-repeat center center; // 눌렸을 때의 배경 이미지
-const LoginWrapper = styled.div`
+const SignUpWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,7 +46,7 @@ const LoginWrapper = styled.div`
   height: 100vh;
 `;
 
-const LoginForm = styled.form`
+const SignUpForm = styled.form`
 
   display: flex;
   flex-direction: column;
@@ -56,7 +55,7 @@ const LoginForm = styled.form`
   margin-top: 67px;
 `;
 
-const LoginInput = styled.input`
+const SignUpInput = styled.input`
 
   padding: 10px;
   font-size: 16px;
@@ -175,20 +174,20 @@ const ModalButton = styled.button`
 //background: url(${buttonMidium1}) no-repeat center center; // 이미지를 배경으로 사용
 //background: url(${buttonMidium2}) no-repeat center center; // 눌렸을 때의 배경 이미지
 export const s = {
-  LoginWrapper,
-  LoginForm,
-  LoginInput,
-  LoginButton,
-  TextsStyle,
-  H3,
-  H1,
-  P,
-  ModalTextsWrapper,
-  ModalWrapper,
-  ErrorCenterModalWrapper,
-  ErrorModalTextsWrapper1,
-  ErrorModalTextsWrapper2,
-  ModalButton,
-  BackgroundContainer,
-  Title
+    SignUpWrapper,
+    SignUpForm,
+    SignUpInput,
+    SignUpButton,
+    TextsStyle,
+    H3,
+    H1,
+    P,
+    ModalTextsWrapper,
+    ModalWrapper,
+    ErrorCenterModalWrapper,
+    ErrorModalTextsWrapper1,
+    ErrorModalTextsWrapper2,
+    ModalButton,
+    BackgroundContainer,
+    Title
 };

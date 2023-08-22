@@ -49,23 +49,13 @@ const BackgroundContainer = styled.div`
 `;
 
 
-
-const TextsStyle = styled.div`
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  line-height: 0.2;  // 글자 간격
-  padding-top: 30px;
+const Title = styled.text`
+    font-size: 45px;
+    line-height: 1;  // 글자 간격
+    color: rgb(56 87 35);
 `;
 
-const TitleImage = styled.img.attrs({
-    src: titleimg
-  })`
-      z-index: 2;
-      width : 300px;
-  `;
-  
+
 
 const H2 = styled.h2`
 `;
@@ -97,8 +87,6 @@ const TreeImg = styled.img`
 export const s = {
     Button,
     CenteredWrapper,
-    TextsStyle,
-    TitleImage,
     H2,
     H1,
     P,
@@ -106,5 +94,6 @@ export const s = {
     TreeImg,
     Break,
     ButtonWrapper,
-    BackgroundContainer
+    BackgroundContainer,
+    Title
 }
