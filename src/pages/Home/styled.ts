@@ -1,10 +1,11 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import cabinet from "../../assets/Cabinet/cabinet.svg";
 import tmpChar from "../../assets/ProfileHomeChar/tmpchar.svg";
 // import button1 from '../../assets/button/button1.png';
 // import button4 from '../../assets/button/button4.png';
 // import buttonMidium1 from '../../assets/button/button-midium-1.png';
 // import buttonMidium2 from '../../assets/button/button-midium-2.png';
+
 const WrapperLayout = styled.div`
   background-color: #ede8d7;
 
@@ -13,10 +14,11 @@ const WrapperLayout = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+
   marine: 0;
   align-items: center;
   justify-content: center;
-  background-color: #ede8d7;
+  background: #ede8d7 no-repeat center center;
 `;
 const ProfileWrapper = styled.div`
   display: flex;
@@ -66,7 +68,9 @@ const MainEnlistmentText = styled.p`
   font-weight: bold;
   margin-bottom: 16px;
 `;
-const test = styled.div``;
+const test = styled.div`
+  background-color: #ede8d7;
+`;
 const ImageContainer = styled.div`
   position: relative;
 

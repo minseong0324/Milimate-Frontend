@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { s } from "./style";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 type ReplyScreenProps = {
   day: string;
@@ -31,6 +31,7 @@ function ReplyScreen({ day, question }: ReplyScreenProps) {
       //fetchData();
     };
   }, [day]);
+  const questionText = "입대전 저는 어떤 사람이었나요?";
   const text =
     "여기에 원하는 텍스트를 입력하세요. " +
     "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요. " +
@@ -40,8 +41,20 @@ function ReplyScreen({ day, question }: ReplyScreenProps) {
     "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요. " +
     " 텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요." +
     "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요." +
+    "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다." +
+    "여기에 원하는 텍스트를 입력하세요. " +
+    "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요. " +
+    "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요. " +
+    "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요 " +
+    " 텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요. " +
+    "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요. " +
+    " 텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요." +
+    "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요." +
     "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.";
-
+  const navigate = useNavigate();
+  const goBackBtn = () => {
+    navigate(-1);
+  };
   return (
     //   <s.Wrapper>
     //   <s.IconLayout>
@@ -68,11 +81,14 @@ function ReplyScreen({ day, question }: ReplyScreenProps) {
 
     <s.Wrapper>
       <s.IconLayout>
-        <FaRegArrowAltCircleLeft size={36} color="white" />
+        <s.ButtonDesign onClick={goBackBtn}>
+          <FaRegArrowAltCircleLeft size={36} color="white" />
+        </s.ButtonDesign>
       </s.IconLayout>
+
       <s.BubbleContainer>
+        <s.BubbleText>{questionText}</s.BubbleText>
         <s.BubbleImage />
-        <s.BubbleText>{text}</s.BubbleText>
       </s.BubbleContainer>
       <s.BubbleReplyContainer>
         <s.BubbleReplyImage />

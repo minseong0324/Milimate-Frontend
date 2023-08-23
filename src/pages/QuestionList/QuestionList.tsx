@@ -45,7 +45,7 @@ function QuestionListScreen() {
           <s.LiLayout>
             <s.BootImg></s.BootImg>
             <s.CustomLi onClick={() => questionClick("asdf", "asdf")}>
-              질문 질문 질문
+              질문 질문 질문asdfasdfasdf
             </s.CustomLi>
             <s.CommaText>"</s.CommaText>
           </s.LiLayout>
