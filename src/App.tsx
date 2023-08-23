@@ -26,7 +26,7 @@ import Guest from "./pages/Guest/Guest";
 //import TokenProvider from './contexts/TokenProvider/TokenProvider';
 
 const queryClient = new QueryClient();
-//커밋 테스트
+
 function App() {
   return (
     <>
@@ -63,7 +63,7 @@ function App() {
               path="/questionlistscreen"
               element={<QuestionListScreen />}
             />
-            <Route path="/send" element={<AddReply />} />
+            <Route path="/send/:userId" element={<AddReply />} />
             {/* <Route path="/mypage/:userId" element={<MyPage />} /> */}
           </Routes>
         </Router>
