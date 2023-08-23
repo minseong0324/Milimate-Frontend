@@ -21,9 +21,8 @@ import QuestionListScreen from "./pages/QuestionList/QuestionList";
 import ReplyScreen from "./pages/Replies/ReplyScreen";
 
 import ShowCaracter from "./pages/ShowCharacter/ShowCaracter";
-
 import AddReply from "./pages/AddReply/AddReply";
-
+import Guest from "./pages/Guest/Guest";
 //import TokenProvider from './contexts/TokenProvider/TokenProvider';
 
 const queryClient = new QueryClient();
@@ -40,7 +39,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/moreinfo" element={<MoreInfo />} />
-
+            <Route path="/guest/:userId" element={<Guest />} />
             <Route path="/home" element={<MainScreen />} />
 
             <Route

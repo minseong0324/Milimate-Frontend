@@ -3,12 +3,13 @@ import { s } from "./style";
 import { useNavigate } from "react-router-dom";
 import CharacterImage from '../../assets/charater/character.svg'
 import { useLocation } from 'react-router-dom';
+import axios, {AxiosError} from 'axios';
 
 type UserNameProps = {
     userName?: string;
   };
 
-function ShowCaracter() {
+function Guest() {
     const location = useLocation();
     const { userName = "김민성" } = (location.state as UserNameProps) || {};
     const navigate = useNavigate(); // useNavigate hook 사용
@@ -17,13 +18,19 @@ function ShowCaracter() {
     useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
 
   // 서비스 설명 함수
-  const handleGoHome = () => {
-    navigate('/home');
+  const handleGoSend = () => {
+    navigate('/send');
   };
   
   return (
     <s.BackgroundContainer>
         <s.Wrapper>
+        <s.QuotationStyle>
+          "
+        </s.QuotationStyle>
+        <s.TextsStyle>
+          해당 이미지는 답변 페이지 공유 시
+        </s.TextsStyle>
         <s.CharImgContainer>
             <s.CharImg 
             src={CharacterImage} 
@@ -31,17 +38,9 @@ function ShowCaracter() {
             />
             <s.CharImgName>{userName}</s.CharImgName>
         </s.CharImgContainer>
-        <s.TextsStyle>
-          해당 이미지는 답변 페이지 공유 시
-        </s.TextsStyle>
-        <s.TextsStyle>
-            친구들에게 보여지는 이미지입니다.
-        </s.TextsStyle>
-        <s.TextsStyle2>
-            * 마이페이지에서 수정 가능
-        </s.TextsStyle2>
-        <s.Button onClick={handleGoHome}>
-            내 홈으로 가기
+        
+        <s.Button onClick={handleGoSend}>
+            답변 쓰러가기
         </s.Button>
       {/* <ErrorModal isOpen={isErrorModalOpen} onClose={() => setErrorModalOpen(false)} >
           {modalErrorContent}
@@ -51,7 +50,7 @@ function ShowCaracter() {
   );
 }
 
-export default ShowCaracter;
+export default Guest;
 
 /*
 function setIdToken(credential: string) {
