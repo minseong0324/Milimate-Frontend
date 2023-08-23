@@ -21,6 +21,8 @@ import QuestionListScreen from "./pages/QuestionList/QuestionList";
 import ReplyScreen from "./pages/Replies/ReplyScreen";
 //import TokenProvider from './contexts/TokenProvider/TokenProvider';
 
+//충돌 테스트
+//충돌 테스트
 const queryClient = new QueryClient();
 
 function App() {
