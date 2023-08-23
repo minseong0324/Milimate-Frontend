@@ -57,7 +57,7 @@ const BubbleText = styled.div`
   position: relative;
   z-index: 2;
   padding: 8px;
-  overflow-y: auto; // 스크롤을 가능하게 하는 속성
+  //overflow-y: auto; // 스크롤을 가능하게 하는 속성
   max-height: 120px; // 원하는 최대 높이값을 지정하세요
   @media (max-width: 768px) {
     max-height: 20px; // 원하는 최대 높이값을 지정하세요

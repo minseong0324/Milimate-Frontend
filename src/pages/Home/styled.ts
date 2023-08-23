@@ -88,16 +88,23 @@ const CabinetImg = styled.img.attrs({
   position: relative; // 이 부분 추가
 `;
 
-const TodayQuestionBtn = styled.button`
+const TodayQuestionBtn = styled.h2`
   position: absolute;
-  top: 75px; // 이미지의 상단에서 10px 아래에 위치
-  left: 110px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
+  top: 55px; // 이미지의 상단에서 10px 아래에 위치
+  left: 45px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
   z-index: 1; // 이 부분 추가
 `;
 const CheckReplyBtn = styled.button`
   position: absolute;
   top: 240px; // 이미지의 상단에서 10px 아래에 위치
   left: 70px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
+  z-index: 2; // 이 부분 추가
+`;
+const NoneReplText = styled.p`
+  position: absolute;
+  font-weight: bold;
+  top: 300px; // 이미지의 상단에서 10px 아래에 위치
+  left: 50px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
   z-index: 2; // 이 부분 추가
 `;
 const TotalQuestionList = styled.button`
@@ -112,13 +119,18 @@ const ShareQuestion = styled.button`
   left: 280px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
   z-index: 3; // 이 부분 추가
 `;
-const MyCompletion = styled.button`
+const MyCompletion = styled.p`
   position: absolute;
-  top: 570px; // 이미지의 상단에서 10px 아래에 위치
+  top: 530px; // 이미지의 상단에서 10px 아래에 위치
   left: 260px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
   z-index: 5; // 이 부분 추가
 `;
-
+const NeedAddCompletion = styled.button`
+  position: absolute;
+  top: 570px; // 이미지의 상단에서 10px 아래에 위치
+  left: 230px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
+  z-index: 5; // 이 부분 추가
+`;
 const tmpCharImg = styled.img.attrs({
   src: tmpChar,
 })`
@@ -278,4 +290,6 @@ export const s = {
   MyCompletion,
   ShareQuestion,
   test,
+  NeedAddCompletion,
+  NoneReplText,
 };
