@@ -5,28 +5,36 @@ const MainWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+
   text-align: center;
   background-color: #ede8d7;
 `;
 
 const CustomUl = styled.ul`
   list-style-type: none; // 목록 항목 앞의 기호(점) 제거
-  padding: 0; // 패딩 제거
+  padding: 32px;
   margin: 20px 0; // 상하 여백 설정
+  border: 1px solid black;
 `;
 const CustomLi = styled.li`
   padding: 10px;
   border-bottom: 1px solid grey;
-  width: 300px; // 너비를 200px로 고정
-  text-align: center; // 텍스트를 중앙 정렬 (선택 사항)
-  overflow: hidden; // 너비를 초과하는 텍스트를 숨김
-  text-overflow: ellipsis; // 너비를 초과하는 텍스트를 ...로 표시
-  white-space: nowrap; // 텍스트를 한 줄로 표시
+  width: 300px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   text-align: start;
   color: grey;
+  margin: 10px 5px;
+
+  @media (max-width: 320px) {
+    // 320px 이하의 화면 크기에 대한 스타일
+    width: 100%; // 너비를 100%로 설정
+  }
 `;
 
+const CommaText = styled.h1``;
 const LiLayout = styled.div`
   display: flex;
   flex-direction: row;
@@ -48,4 +56,5 @@ export const s = {
   CustomUl,
   BootImg,
   LiLayout,
+  CommaText,
 };

@@ -47,12 +47,12 @@ function QuestionListScreen() {
             <s.CustomLi onClick={() => questionClick("asdf", "asdf")}>
               질문 질문 질문
             </s.CustomLi>
-            <h1>"</h1>
+            <s.CommaText>"</s.CommaText>
           </s.LiLayout>
           <s.LiLayout>
             <s.BootImg></s.BootImg>
             <s.CustomLi>질문 질문 질문</s.CustomLi>
-            <h1>"</h1>
+            <s.CommaText>"</s.CommaText>
           </s.LiLayout>
         </s.CustomUl>
       </s.MainWrapper>
