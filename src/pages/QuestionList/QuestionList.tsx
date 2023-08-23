@@ -30,7 +30,7 @@ function QuestionListScreen() {
   //   };
   const questionClick = (day: string, question: string) => {
     console.log("이벤트");
-    navigate("/replyscreen");
+    navigate("/replyscreen", { state: { day, question } });
   };
   return (
     <>

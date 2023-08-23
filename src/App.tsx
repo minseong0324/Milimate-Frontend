@@ -36,7 +36,7 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/moreinfo" element={<MoreInfo />} />
 
-            <Route path="/mainscreen" element={<MainScreen />} />
+            <Route path="/home" element={<MainScreen />} />
             <Route path="/replyscreen" element={<ReplyScreen />} />
 
             {/* <Route path="/select-character-tree/:userId" element={<SelectTreeCharacter />} /> */}
