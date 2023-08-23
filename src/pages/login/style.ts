@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import bodyBackground from '../../assets/background/background.svg'
-import loginTitleimg from '../../assets/title/title.svg'
+import bodyBackground from "../../assets/background/background.svg";
+import loginTitleimg from "../../assets/title/title.svg";
 
 // import button1 from '../../assets/button/button1.png';
 // import button4 from '../../assets/button/button4.png';
@@ -8,7 +8,6 @@ import loginTitleimg from '../../assets/title/title.svg'
 // import buttonMidium2 from '../../assets/button/button-midium-2.png';
 
 const LoginButton = styled.button`
-
   width: 250px; // 버튼 너비를 조정
   height: 40px; // 버튼 높이를 조정
   padding: 10px; // 내부 패딩을 조정
@@ -28,8 +27,8 @@ const LoginButton = styled.button`
 `;
 
 const BackgroundContainer = styled.div`
-    font-family: 'EF_jejudoldam';
-  position: relative; 
+  font-family: "EF_jejudoldam";
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,7 +47,6 @@ const LoginWrapper = styled.div`
 `;
 
 const LoginForm = styled.form`
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -57,7 +55,6 @@ const LoginForm = styled.form`
 `;
 
 const LoginInput = styled.input`
-
   padding: 10px;
   font-size: 16px;
   width: 250px;
@@ -85,9 +82,9 @@ const TextsStyle = styled.div`
 `;
 
 const Title = styled.text`
-    font-size: 45px;
-    line-height: 1;  // 글자 간격
-    color: rgb(56 87 35);
+  font-size: 45px;
+  line-height: 1; // 글자 간격
+  color: rgb(56 87 35);
 `;
 
 const H3 = styled.h3`
@@ -190,5 +187,5 @@ export const s = {
   ErrorModalTextsWrapper2,
   ModalButton,
   BackgroundContainer,
-  Title
+  Title,
 };
