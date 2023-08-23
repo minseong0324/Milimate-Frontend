@@ -43,20 +43,29 @@ function ReplyScreen({ day, question }: ReplyScreenProps) {
     "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.";
 
   return (
-    // <s.Wrapper>
-    //     <s.IconLayout>
-    //       <FaRegArrowAltCircleLeft size={36} color="white" />
-    //     </s.IconLayout>
-    //     <h1>{questionData?.todayQuestion}</h1>
-    //     <s.BubbleContainer>
-    //       {questionData?.replies.map((reply, index) => (
-    //         <div key={index}>
-    //           <h2>{reply.senderName}</h2>
-    //           <p>{reply.replyContent}</p>
-    //         </div>
-    //       ))}
-    //     </s.BubbleContainer>
-    //   </s.Wrapper>
+    //   <s.Wrapper>
+    //   <s.IconLayout>
+    //     <FaRegArrowAltCircleLeft size={36} color="white" />
+    //   </s.IconLayout>
+
+    //   {/* Today's Question */}
+    //   <s.BubbleContainer>
+    //     <s.BubbleImage />
+    //     <s.BubbleText>{questionData?.todayQuestion}</s.BubbleText>
+    //   </s.BubbleContainer>
+
+    //   {/* Replies */}
+    //   {questionData?.replies.map((reply, index) => (
+    //     <s.BubbleReplyContainer key={index}>
+    //       <s.BubbleReplyImage />
+    //       <s.BubbleReplyText>
+    //         <h2>{reply.senderName}</h2>
+    //         <p>{reply.replyContent}</p>
+    //       </s.BubbleReplyText>
+    //     </s.BubbleReplyContainer>
+    //   ))}
+    // </s.Wrapper>
+
     <s.Wrapper>
       <s.IconLayout>
         <FaRegArrowAltCircleLeft size={36} color="white" />

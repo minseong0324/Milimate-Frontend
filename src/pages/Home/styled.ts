@@ -5,38 +5,35 @@ import tmpChar from "../../assets/ProfileHomeChar/tmpchar.svg";
 // import button4 from '../../assets/button/button4.png';
 // import buttonMidium1 from '../../assets/button/button-midium-1.png';
 // import buttonMidium2 from '../../assets/button/button-midium-2.png';
+const WrapperLayout = styled.div`
+  background-color: #ede8d7;
+
+  font-family: "EF_jejudoldam";
+  //position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  marine: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: #ede8d7;
+`;
 const ProfileWrapper = styled.div`
   display: flex;
   flex-direction: row; // Flexbox의 방향을 세로로 설정
   position: relative;
   background-color: #ede8d7;
-  height: 100%;
-  width: 400px;
+  height: 100px;
+  width: 395px;
   font-size: 48px;
   background-size: cover;
-  color: black;
   border-radius: 10px;
   align-items: flex-start; // 이 부분을 수정
-  border: 0px transparent;
+
   margin: 0 auto;
   justify-content: start;
 `;
-const WrapperLayout = styled.div`
-  // position: relative;
-  // display: flex;
-  //width: 100%;
-  //height: 100%;
-  // flex-direction: column;
-  // background-color: #ede8d7;
-  // background-size: cover;
-  background-color: #ede8d7;
-  font-family: "EF_jejudoldam";
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
+
 const CenteredDiv = styled.div`
   border: 1px solid grey;
 
@@ -69,11 +66,20 @@ const MainEnlistmentText = styled.p`
   font-weight: bold;
   margin-bottom: 16px;
 `;
+const test = styled.div``;
+const ImageContainer = styled.div`
+  position: relative;
 
+  display: flex;
+  margin-bottom: 16px;
+  align-items: center;
+  justify-content: center;
+  background-color: #ede8d7;
+`;
 const CabinetImg = styled.img.attrs({
   src: cabinet,
 })`
-  width: 670px;
+  width: 100%;
   height: 670px;
   position: relative; // 이 부분 추가
 `;
@@ -81,19 +87,19 @@ const CabinetImg = styled.img.attrs({
 const TodayQuestionBtn = styled.button`
   position: absolute;
   top: 75px; // 이미지의 상단에서 10px 아래에 위치
-  left: 240px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
+  left: 110px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
   z-index: 1; // 이 부분 추가
 `;
 const CheckReplyBtn = styled.button`
   position: absolute;
-  top: 275px; // 이미지의 상단에서 10px 아래에 위치
-  left: 200px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
+  top: 240px; // 이미지의 상단에서 10px 아래에 위치
+  left: 70px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
   z-index: 2; // 이 부분 추가
 `;
 const TotalQuestionList = styled.button`
   position: absolute;
   top: 200px; // 이미지의 상단에서 10px 아래에 위치
-  left: 390px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
+  left: 260px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
   z-index: 3; // 이 부분 추가
 `;
 const ShareQuestion = styled.button`
@@ -107,14 +113,6 @@ const MyCompletion = styled.button`
   top: 570px; // 이미지의 상단에서 10px 아래에 위치
   left: 400px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
   z-index: 5; // 이 부분 추가
-`;
-
-const ImageContainer = styled.div`
-  position: relative;
-  width: 670px;
-  height: 670px;
-  margin: 16px auto 0 auto;
-  margin-bottom: 16px;
 `;
 
 const tmpCharImg = styled.img.attrs({
@@ -275,4 +273,5 @@ export const s = {
   TotalQuestionList,
   MyCompletion,
   ShareQuestion,
+  test,
 };
