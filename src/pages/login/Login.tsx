@@ -9,7 +9,7 @@ import axios, { AxiosError } from "axios";
 import { QueryClientProvider, useMutation, useQueryClient } from "react-query";
 import NaverLoginImage from "../../assets/socialLoginButton/NaverLogin.svg";
 import KakaoLoginImage from "../../assets/socialLoginButton/KakaoLogin.svg";
-import GoogleLoginImage from '../../assets/socialLoginButton/GoogleLogin.svg'
+import GoogleLoginImage from "../../assets/socialLoginButton/GoogleLogin.svg";
 import ErrorModal from "src/components/ErrorModal/ErrorModal";
 
 // 로그인에 필요한 사용자의 정보를 나타내는 타입을 정의합니다.
@@ -33,14 +33,13 @@ function Login() {
           <s.Title>로그인</s.Title>
         </s.TextsStyle>
 
-
         <s.LoginForm>
-          <KakaoLogin imageUrl={KakaoLoginImage}/>
-          <NaverLogin imageUrl={NaverLoginImage}/>
-          <GoogleLogin buttonImage={GoogleLoginImage}/>
+          <KakaoLogin imageUrl={KakaoLoginImage} />
+          <NaverLogin imageUrl={NaverLoginImage} />
+          <GoogleLogin buttonImage={GoogleLoginImage} />
         </s.LoginForm>
-          
-      {/* <ErrorModal isOpen={isErrorModalOpen} onClose={() => setErrorModalOpen(false)} >
+
+        {/* <ErrorModal isOpen={isErrorModalOpen} onClose={() => setErrorModalOpen(false)} >
           {modalErrorContent}
       </ErrorModal> */}
       </s.LoginWrapper>

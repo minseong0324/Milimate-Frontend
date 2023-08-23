@@ -1,56 +1,130 @@
 import styled from "styled-components";
 import cabinet from "../../assets/Cabinet/cabinet.svg";
+import tmpChar from "../../assets/ProfileHomeChar/tmpchar.svg";
 // import button1 from '../../assets/button/button1.png';
 // import button4 from '../../assets/button/button4.png';
 // import buttonMidium1 from '../../assets/button/button-midium-1.png';
 // import buttonMidium2 from '../../assets/button/button-midium-2.png';
-const WrapperLayout = styled.div`
+const ProfileWrapper = styled.div`
   display: flex;
   flex-direction: row; // Flexbox의 방향을 세로로 설정
-
-  align-items: center;
-
+  position: relative;
   background-color: #ede8d7;
-  width: 45%;
+  height: 100%;
+  width: 400px;
   font-size: 48px;
   background-size: cover;
   color: black;
   border-radius: 10px;
-
+  align-items: flex-start; // 이 부분을 수정
   border: 0px transparent;
   margin: 0 auto;
+  justify-content: start;
 `;
-const ProfileWrapper = styled.div`
+const WrapperLayout = styled.div`
+  // position: relative;
+  // display: flex;
+  //width: 100%;
+  //height: 100%;
+  // flex-direction: column;
+  // background-color: #ede8d7;
+  // background-size: cover;
+  background-color: #ede8d7;
+  font-family: "EF_jejudoldam";
+  position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 const CenteredDiv = styled.div`
   border: 1px solid grey;
-  padding: 48px;
-  margin: 16px;
+
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+  font-size: 12px;
 `;
 const MainTextWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  //  align-items: flex-end;
   height: 100%; // 이 부분을 추가하여 전체 높이를 차지하도록 합니다.
+  justify-content: flex-end;
+  margin-left: 16px;
+  margin-top: auto;
+  //margin-bottom: 20px;
 `;
 
 const MainNameText = styled.p`
   color: #836c68;
+  font-size: 28px;
   font-weight: bold;
   margin: 0; // 상하 간격을 제거합니다.
+`;
+
+const MainEnlistmentText = styled.p`
+  color: #836c68;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 16px;
 `;
 
 const CabinetImg = styled.img.attrs({
   src: cabinet,
 })`
+  width: 670px;
+  height: 670px;
+  position: relative; // 이 부분 추가
+`;
+
+const TodayQuestionBtn = styled.button`
+  position: absolute;
+  top: 75px; // 이미지의 상단에서 10px 아래에 위치
+  left: 240px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
+  z-index: 1; // 이 부분 추가
+`;
+const CheckReplyBtn = styled.button`
+  position: absolute;
+  top: 275px; // 이미지의 상단에서 10px 아래에 위치
+  left: 200px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
+  z-index: 2; // 이 부분 추가
+`;
+const TotalQuestionList = styled.button`
+  position: absolute;
+  top: 200px; // 이미지의 상단에서 10px 아래에 위치
+  left: 390px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
+  z-index: 3; // 이 부분 추가
+`;
+const ShareQuestion = styled.button`
+  position: absolute;
+  top: 370px; // 이미지의 상단에서 10px 아래에 위치
+  left: 410px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
+  z-index: 3; // 이 부분 추가
+`;
+const MyCompletion = styled.button`
+  position: absolute;
+  top: 570px; // 이미지의 상단에서 10px 아래에 위치
+  left: 400px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
+  z-index: 5; // 이 부분 추가
+`;
+
+const ImageContainer = styled.div`
+  position: relative;
+  width: 670px;
+  height: 670px;
+  margin: 16px auto 0 auto;
+  margin-bottom: 16px;
+`;
+
+const tmpCharImg = styled.img.attrs({
+  src: tmpChar,
+})`
   display: flex;
-  justify-content: center;
-  margin: 0 auto;
+
   align-items: center;
-  width: 1300px;
-  height: 1300px;
+  width: 100px;
+  height: 100px;
 `;
 
 //background: url(${button4}) no-repeat center center; // 이미지를 배경으로 사용
@@ -193,4 +267,12 @@ export const s = {
   MainTextWrapper,
   ProfileWrapper,
   CabinetImg,
+  MainEnlistmentText,
+  tmpCharImg,
+  ImageContainer,
+  TodayQuestionBtn,
+  CheckReplyBtn,
+  TotalQuestionList,
+  MyCompletion,
+  ShareQuestion,
 };
