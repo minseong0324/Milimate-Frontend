@@ -27,12 +27,14 @@ function MainScreen() {
           <s.TotalQuestionList onClick={navigateQuestionListScreen}>
             "질문 리스트 확인"
           </s.TotalQuestionList>
+          <s.ShareQuestion>"공유하기"</s.ShareQuestion>
+          <s.MyCompletion>"수료일 D-30"</s.MyCompletion>
+          <s.CabinetImg></s.CabinetImg>
           {/* 
         
         
-        <s.ShareQuestion>"공유하기"</s.ShareQuestion>
-        <s.MyCompletion>"수료일 D-30"</s.MyCompletion> */}
-          <s.CabinetImg></s.CabinetImg>
+        
+         */}
         </s.ImageContainer>
       </s.test>
     </s.WrapperLayout>

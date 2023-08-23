@@ -105,13 +105,13 @@ const TotalQuestionList = styled.button`
 const ShareQuestion = styled.button`
   position: absolute;
   top: 370px; // 이미지의 상단에서 10px 아래에 위치
-  left: 410px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
+  left: 280px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
   z-index: 3; // 이 부분 추가
 `;
 const MyCompletion = styled.button`
   position: absolute;
   top: 570px; // 이미지의 상단에서 10px 아래에 위치
-  left: 400px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
+  left: 260px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
   z-index: 5; // 이 부분 추가
 `;
 
