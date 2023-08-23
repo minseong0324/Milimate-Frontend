@@ -21,10 +21,8 @@ import QuestionListScreen from "./pages/QuestionList/QuestionList";
 import ReplyScreen from "./pages/Replies/ReplyScreen";
 //import TokenProvider from './contexts/TokenProvider/TokenProvider';
 
-//충돌 테스트
-//충돌 테스트
 const queryClient = new QueryClient();
-
+//커밋 테스트
 function App() {
   return (
     <>
@@ -37,8 +35,10 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/moreinfo" element={<MoreInfo />} />
+
             <Route path="/mainscreen" element={<MainScreen />} />
             <Route path="/replyscreen" element={<ReplyScreen />} />
+
             {/* <Route path="/select-character-tree/:userId" element={<SelectTreeCharacter />} /> */}
 
             <Route path="/kakao/callback" element={<KakaoCallback />} />
