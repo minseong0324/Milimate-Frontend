@@ -19,6 +19,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import MainScreen from "./pages/Home/MainScreen";
 import QuestionListScreen from "./pages/QuestionList/QuestionList";
 import ReplyScreen from "./pages/Replies/ReplyScreen";
+import ShowCaracter from "./pages/ShowCharacter/ShowCaracter";
 //import TokenProvider from './contexts/TokenProvider/TokenProvider';
 
 const queryClient = new QueryClient();
@@ -37,8 +38,8 @@ function App() {
             <Route path="/moreinfo" element={<MoreInfo />} />
 
             <Route path="/home" element={<MainScreen />} />
-            <Route path="/replyscreen" element={<ReplyScreen />} />
-
+            <Route path="/replyscreen" element={<ReplyScreen day={""} question={""} />} />
+            <Route path="/showcharacter" element={<ShowCaracter />} />
             {/* <Route path="/select-character-tree/:userId" element={<SelectTreeCharacter />} /> */}
 
             <Route path="/kakao/callback" element={<KakaoCallback />} />
