@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { s } from "./styled";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 function MainScreen() {
   interface ResponseData {
@@ -14,6 +14,15 @@ function MainScreen() {
     isInsertedEndDate: boolean;
   }
   const navigate = useNavigate();
+  const handleCopyClipBoard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      console.log(text.toString());
+      alert(text.toString());
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const navigateQuestionListScreen = async () => {
     navigate("/QuestionListScreen");
   };
@@ -22,6 +31,7 @@ function MainScreen() {
   };
   const [lastCompletionDate, setLastCompletionDate] = useState("0");
   const [data, setData] = useState<ResponseData | null>(null);
+  const location = useLocation();
   useEffect(() => {
     const fetchData = async () => {
       const userId = await localStorage.getItem("userId");
@@ -38,8 +48,6 @@ function MainScreen() {
           endDate: Number(response.data.endDate),
         };
         setData(responseData); // 형변환된 응답 데이터를 상태에 할당
-        if (data?.isInsertedEndDate == true) {
-        }
       } catch (e) {
         console.log(e);
       }
@@ -74,7 +82,13 @@ function MainScreen() {
             <s.TotalQuestionList onClick={navigateQuestionListScreen}>
               "질문 리스트 확인"
             </s.TotalQuestionList>
-            <s.ShareQuestion>"공유하기"</s.ShareQuestion>
+            <s.ShareQuestion
+              onClick={() =>
+                handleCopyClipBoard(`http://localhost:3000${location.pathname}`)
+              }
+            >
+              "공유하기"
+            </s.ShareQuestion>
             {tmpBool == true ? (
               <s.MyCompletion>"수료일 D-30"</s.MyCompletion>
             ) : (
@@ -83,11 +97,6 @@ function MainScreen() {
               </s.NeedAddCompletion>
             )}
             <s.CabinetImg></s.CabinetImg>
-            {/* 
-        
-        
-        
-         */}
           </s.ImageContainer>
         </s.test>
       </s.WrapperLayout>
