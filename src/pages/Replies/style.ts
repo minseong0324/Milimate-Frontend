@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   height: 1000px;
 `;
 const IconLayout = styled.div`
-  width: 500px;
+  width: 550px;
   margin-top: 24px;
   margin-bottom: 24px;
   display: flex;
