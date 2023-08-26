@@ -47,6 +47,7 @@ function KakaoCallback() {
           }
           const userId = localStorage.getItem("userId");
           const returnUrl = localStorage.getItem("returnUrl");
+          console.log(returnUrl);
 
           if (returnUrl) {
             // 저장된 URL로 리다이렉트합니다.
