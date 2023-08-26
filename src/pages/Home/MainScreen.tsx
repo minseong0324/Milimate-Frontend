@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { s } from "./styled";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import ModalBasic from "src/components/ShareModal/ShareModal";
+import ModalBasic from "src/components/SimpleModal/SimpleModal";
 function MainScreen() {
   interface ResponseData {
     userName: string;
@@ -28,6 +28,14 @@ function MainScreen() {
     }
   };
 
+  // const testToken = async () => {
+  //   const userId = await localStorage.getItem("userId");
+  //   console.log(userId);
+  //   if (userId == null) {
+  //     console.log("널 판단");
+  //   }
+  // };
+  // testToken();
   const navigateQuestionListScreen = async () => {
     navigate("/QuestionListScreen");
   };
@@ -69,12 +77,33 @@ function MainScreen() {
 
   const [tmpBool, setTempBool] = useState(false);
   const [tmpReply, setTmpReply] = useState(1);
+  const questionClick = (day: string, question: string) => {
+    console.log("이벤트");
+    navigate("/replyscreen", { state: { day, question } });
+  };
+
+  const tmpName = "김건휘";
+  const tmpYear = "2022";
+  const tmpMonth = "05";
+  const tmpDay = "18";
+  const profileImgClick = (
+    year: string,
+    month: string,
+    day: string,
+    name: string
+  ) => {
+    navigate("/mypage", { state: { year, month, day, name } });
+  };
   return (
     <>
       <s.WrapperLayout>
         <s.test>
           <s.ProfileWrapper>
-            <s.tmpCharImg></s.tmpCharImg>
+            <s.tmpCharImg
+              onClick={() => {
+                profileImgClick("2020", "05", "18", "김건휘");
+              }}
+            ></s.tmpCharImg>
             <s.MainTextWrapper>
               <s.MainNameText>훈련병 김건휘</s.MainNameText>
               <s.MainEnlistmentText>입대일 : 2020. 05. 18</s.MainEnlistmentText>
@@ -111,7 +140,12 @@ function MainScreen() {
           </s.ImageContainer>
         </s.test>
       </s.WrapperLayout>
-      {modalOpen && <ModalBasic setModalOpen={setModalOpen} />} /
+      {modalOpen && (
+        <ModalBasic
+          setModalOpen={setModalOpen}
+          contentText="링크가 복사되었습니다."
+        />
+      )}
     </>
   );
 }

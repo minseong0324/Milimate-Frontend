@@ -1,4 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 // import VisitorHome from './pages/home/VisitorHome/VisitorHome';
 // import Home from './pages/home/Home';
 // import UserProvider from './contexts/UserProvider/UserProvider';
@@ -24,15 +30,51 @@ import ShowCaracter from "./pages/ShowCharacter/ShowCaracter";
 import AddReply from "./pages/AddReply/AddReply";
 import Guest from "./pages/Guest/Guest";
 import MyPage from "./pages/MyPage/MyPage";
+import React from "react";
 //import TokenProvider from './contexts/TokenProvider/TokenProvider';
 
 const queryClient = new QueryClient();
+// function ProtectedRoutes() {
+//   const navigate = useNavigate();
+//   const location = useLocation();
+
+//   React.useEffect(() => {
+//     const allowedPaths = ["/", "/login", "/signup"];
+//     if (!allowedPaths.includes(location.pathname)) {
+//       alert("허용되지 않은 경로입니다!");
+//       navigate("/");
+//     }
+//   }, [location, navigate]);
+
+//   return (
+//     {
+//       <Routes></Routes>
+//       기존의 라우터들
+//     }
+//   );
+// }
 
 function App() {
+  // const navigate = useNavigate();
+  // const location = useLocation();
+
+  // React.useEffect(() => {
+  //   // 허용되는 경로 목록
+  //   const allowedPaths = ["/", "/login", "/signup"];
+
+  //   // 현재 경로가 허용되는 경로 목록에 없다면 리다이렉트
+  //   if (!allowedPaths.includes(location.pathname)) {
+  //     navigate("/"); // 메인 페이지로 리다이렉트. 원하는 경로로 변경 가능
+  //   }
+  // }, [location, navigate]);
+
+  // ... 기존 코드 ...
+
   return (
     <>
       <QueryClientProvider client={queryClient}>
         <Router>
+          {/* <ProtectedRoutes /> */}
           <Routes>
             <Route path="/" element={<LoginEntry />} />
             {/* <Route path="/home/:userId" element={<Home />} />
@@ -42,7 +84,10 @@ function App() {
             <Route path="/moreinfo" element={<MoreInfo />} />
             <Route path="/guest/:userId" element={<Guest />} />
             <Route path="/home" element={<MainScreen />} />
-            <Route path="/mypage" element={<MyPage />} />
+            <Route
+              path="/mypage"
+              element={<MyPage year={""} month={""} day={""} name={""} />}
+            />
             <Route
               path="/replyscreen"
               element={<ReplyScreen day={""} question={""} />}

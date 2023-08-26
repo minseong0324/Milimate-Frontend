@@ -3,9 +3,10 @@ import { s } from "./style";
 
 interface PropsType {
   setModalOpen: (open: boolean) => void;
+  contentText: string;
 }
 
-function ModalBasic({ setModalOpen }: PropsType) {
+function ModalBasic({ setModalOpen, contentText }: PropsType) {
   const modalRef = useRef<HTMLDivElement | null>(null);
 
   // 모달 끄기
@@ -38,7 +39,7 @@ function ModalBasic({ setModalOpen }: PropsType) {
     <s.Wrapper onClick={closeModal}>
       <s.ModalBox ref={modalRef} onClick={stopPropagation}>
         <s.TitleText>알림</s.TitleText>
-        <s.ContentText>링크가 복사되었습니다!</s.ContentText>
+        <s.ContentText>{contentText}</s.ContentText>
         <s.BtnStyle onClick={closeModal}>확인</s.BtnStyle>
       </s.ModalBox>
     </s.Wrapper>

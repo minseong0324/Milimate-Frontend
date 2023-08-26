@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios, { AxiosError } from "axios";
 import { s } from "./style";
 import ErrorModal from "src/components/ErrorModal/ErrorModal";
+import ModalBasic from "src/components/SimpleModal/SimpleModal";
 
 function MoreInfo() {
   const [userName, setUserName] = useState("");
@@ -18,6 +19,7 @@ function MoreInfo() {
     useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
 
   // 회원가입 처리 함수
+  const [modalOpen, setModalOpen] = useState(false);
   const handleMoreInfo = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -66,7 +68,17 @@ function MoreInfo() {
       return null;
     }
   };
-
+  const exceptionInfo = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (
+      userName == "" ||
+      enlistmentYear == "" ||
+      enlistmentMonth == "" ||
+      enlistmentDay == ""
+    ) {
+      setModalOpen(true); // 모달창 띄우기
+    }
+  };
   const handleErrorModalClose = () => {
     setErrorModalOpen(false);
   };
@@ -75,11 +87,11 @@ function MoreInfo() {
     <s.BackgroundContainer>
       <s.Wrapper>
         <s.Title>추가정보</s.Title>
-        <s.MoreInfoForm onSubmit={handleMoreInfo}>
+        <s.MoreInfoForm onSubmit={exceptionInfo}>
           <s.InputContainer>
             <s.TextsStyle>이름</s.TextsStyle>
             <s.MoreInfoInput
-              type="text"
+              //type="text"
               value={userName}
               onChange={(e: {
                 target: { value: React.SetStateAction<string> };
@@ -143,6 +155,9 @@ function MoreInfo() {
           <s.Button type="submit">가입하기</s.Button>{" "}
           {/* onclick 이벤트로 회원가입하기를 누르면 로그인 페이지로 */}
           {/* <GoogleLoginButton buttonImage={GoogleSignUpImage}/> */}
+          <s.RequiredInfoText>
+            이름, 입대일은 필수정보 입니다.
+          </s.RequiredInfoText>
         </s.MoreInfoForm>
 
         <ErrorModal
@@ -152,6 +167,12 @@ function MoreInfo() {
           {modalErrorContent}
         </ErrorModal>
       </s.Wrapper>
+      {modalOpen && (
+        <ModalBasic
+          setModalOpen={setModalOpen}
+          contentText="필수정보를 모두 입력해주세요!"
+        />
+      )}
     </s.BackgroundContainer>
   );
 }

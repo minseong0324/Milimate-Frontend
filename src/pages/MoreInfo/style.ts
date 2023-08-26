@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import bodyBackground from '../../assets/background/background.svg'
+import bodyBackground from "../../assets/background/background.svg";
 
 // import button1 from '../../assets/button/button1.png';
 // import button4 from '../../assets/button/button4.png';
@@ -7,7 +7,6 @@ import bodyBackground from '../../assets/background/background.svg'
 // import buttonMidium2 from '../../assets/button/button-midium-2.png';
 
 const Button = styled.button`
-
   width: 250px; // 버튼 너비를 조정
   height: 40px; // 버튼 높이를 조정
   padding: 10px; // 내부 패딩을 조정
@@ -28,8 +27,8 @@ const Button = styled.button`
 `;
 
 const BackgroundContainer = styled.div`
-    font-family: 'EF_jejudoldam';
-  position: relative; 
+  font-family: "EF_jejudoldam";
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,7 +47,6 @@ const Wrapper = styled.div`
 `;
 
 const MoreInfoForm = styled.form`
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -57,7 +55,6 @@ const MoreInfoForm = styled.form`
 `;
 
 const MoreInfoInput = styled.input`
-
   padding: 10px;
   font-size: 16px;
   width: 215px;
@@ -114,15 +111,13 @@ const MoreInfoInputYMonthDay = styled.input`
 `;
 
 const InputContainer = styled.div`
-    display: flex;      
-    align-items: center; // 만약 input들이 세로축에서 중앙에 위치하길 원한다면 추가
+  display: flex;
+  align-items: center; // 만약 input들이 세로축에서 중앙에 위치하길 원한다면 추가
 
-    & > *:not(:last-child) {
-        margin-right: 10px;  // 마지막 input을 제외한 모든 input에 오른쪽 마진 15px 부여
-    }
+  & > *:not(:last-child) {
+    margin-right: 10px; // 마지막 input을 제외한 모든 input에 오른쪽 마진 15px 부여
+  }
 `;
-
-
 
 const TextsStyle = styled.div`
   display: flex;
@@ -143,9 +138,9 @@ const TextsStyle2 = styled.div`
 `;
 
 const Title = styled.text`
-    font-size: 45px;
-    line-height: 1;  // 글자 간격
-    color: rgb(56 87 35);
+  font-size: 45px;
+  line-height: 1; // 글자 간격
+  color: rgb(56 87 35);
 `;
 
 const H3 = styled.h3`
@@ -230,27 +225,33 @@ const ModalButton = styled.button`
     background-size: cover; // 이미지가 버튼에 맞게 조절
   }
 `;
+
+const RequiredInfoText = styled.p`
+  margin: 0;
+`;
+
 //background: url(${buttonMidium1}) no-repeat center center; // 이미지를 배경으로 사용
 //background: url(${buttonMidium2}) no-repeat center center; // 눌렸을 때의 배경 이미지
 export const s = {
-    Wrapper,
-    MoreInfoForm,
-    MoreInfoInput,
-    Button,
-    TextsStyle,
-    H3,
-    H1,
-    P,
-    ModalTextsWrapper,
-    ModalWrapper,
-    ErrorCenterModalWrapper,
-    ErrorModalTextsWrapper1,
-    ErrorModalTextsWrapper2,
-    ModalButton,
-    BackgroundContainer,
-    Title,
-    InputContainer,
-    MoreInfoInputYear,
-    MoreInfoInputYMonthDay,
-    TextsStyle2
+  Wrapper,
+  MoreInfoForm,
+  MoreInfoInput,
+  Button,
+  TextsStyle,
+  H3,
+  H1,
+  P,
+  ModalTextsWrapper,
+  ModalWrapper,
+  ErrorCenterModalWrapper,
+  ErrorModalTextsWrapper1,
+  ErrorModalTextsWrapper2,
+  ModalButton,
+  BackgroundContainer,
+  Title,
+  InputContainer,
+  MoreInfoInputYear,
+  MoreInfoInputYMonthDay,
+  TextsStyle2,
+  RequiredInfoText,
 };
