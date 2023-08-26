@@ -201,6 +201,22 @@ const ButtonStyle = styled.button`
   color: grey;
   font-weight: bold;
 `;
+const DesignReferDiv = styled.div`
+  flex-direction: column;
+  position: fixed;
+  bottom: 2%;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-size: 12px;
+  font-weigh: light;
+`;
+const DesignReferText = styled.p`
+  margin: 0;
+  color: grey;
+`;
 //background: url(${buttonMidium1}) no-repeat center center; // 이미지를 배경으로 사용
 //background: url(${buttonMidium2}) no-repeat center center; // 눌렸을 때의 배경 이미지
 export const s = {
@@ -222,4 +238,6 @@ export const s = {
   MainEnlistmentText,
   MenuWrapper,
   ButtonStyle,
+  DesignReferDiv,
+  DesignReferText,
 };

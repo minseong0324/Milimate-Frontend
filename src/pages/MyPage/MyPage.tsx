@@ -144,6 +144,11 @@ function MyPage({ year, month, day, name }: UserInfo) {
           • 로그아웃
         </s.ButtonStyle>
       </s.MenuWrapper>
+      <s.DesignReferDiv>
+        <s.DesignReferText>Designed by Freepik</s.DesignReferText>
+        <s.DesignReferText>Designed by pikisuperstar</s.DesignReferText>
+        <s.DesignReferText>Designed by pch.vector on Freepik</s.DesignReferText>
+      </s.DesignReferDiv>
       {deleteAccModalOpen && (
         <DeleteModalBasic
           setModalOpen={setDeleteAccModalOpen}
