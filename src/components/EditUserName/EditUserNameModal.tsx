@@ -51,16 +51,21 @@ function EditUserNameModalBasic({ setModalOpen, userName }: PropsType) {
       alert("모든 필수 정보를 입력해주세요")!;
     } else {
       try {
+        const accessToken = await localStorage.getItem("accessToken");
         const response = await axios.put(
           `http://localhost:8080/api/myPage/${userId}/editUserName`,
+
           {
             userName: newUserName,
+          },
+          {
+            headers: {
+              authorization: `Bearer ${accessToken}`,
+            },
           }
         );
         if (response.status == 200) {
-          localStorage.clear();
-          navigate("/", { replace: true });
-          alert("회원탈퇴 성공");
+          alert("이름변경 완료");
         }
       } catch (error: unknown) {
         //에러 일 경우

@@ -39,10 +39,15 @@ function LogoutModalBasic({ setModalOpen, contentText }: PropsType) {
   }, []);
   const logoutAccount = async () => {
     const userId = await localStorage.getItem("userId");
+    const accessToken = await localStorage.getItem("accessToken");
     try {
       const response = await axios.put(
         `http://localhost:8080/api/myPage/${userId}/logout`,
-        {}
+        {
+          headers: {
+            authorization: `${accessToken}`,
+          },
+        }
       );
       if (response.status == 200) {
         localStorage.clear();

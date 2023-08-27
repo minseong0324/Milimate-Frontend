@@ -40,8 +40,14 @@ function DeleteModalBasic({ setModalOpen, contentText }: PropsType) {
   const deleteAccount = async () => {
     const userId = await localStorage.getItem("userId");
     try {
+      const accessToken = await localStorage.getItem("accessToken");
       const response = await axios.delete(
-        `http://localhost:8080/api/myPage/${userId}/deleteAccount`
+        `http://localhost:8080/api/myPage/${userId}/deleteAccount`,
+        {
+          headers: {
+            authorization: `${accessToken}`,
+          },
+        }
       );
       if (response.status == 200) {
         localStorage.clear();

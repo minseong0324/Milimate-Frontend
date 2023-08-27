@@ -13,10 +13,16 @@ function QuestionListScreen() {
 
   useEffect(() => {
     const fetchData = async () => {
+      const accessToken = await localStorage.getItem("accessToken");
       const userId = await localStorage.getItem("userId");
       try {
         const response = await axios.get<Question[]>(
-          `http://localhost:8080/user/${userId}/questionList`
+          `http://localhost:8080/user/${userId}/questionList`,
+          {
+            headers: {
+              authorization: `${accessToken}`,
+            },
+          }
         );
         setQuestions(response.data); // 데이터를 가져온 후 상태 업데이트
       } catch (error) {

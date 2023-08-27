@@ -39,18 +39,22 @@ function MainScreen() {
   const navigateQuestionListScreen = async () => {
     navigate("/QuestionListScreen");
   };
-  const navigationAddCompletion = async () => {
-    //navigate();
-  };
+
   const [lastCompletionDate, setLastCompletionDate] = useState("0");
   const [data, setData] = useState<ResponseData | null>(null);
   const location = useLocation();
   useEffect(() => {
     const fetchData = async () => {
+      const accessToken = localStorage.getItem("accessToken");
       const userId = await localStorage.getItem("userId");
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/user/${userId}/home`
+          `http://localhost:8080/api/user/${userId}/home`,
+          {
+            headers: {
+              authorization: `${accessToken}`,
+            },
+          }
         );
         const responseData: ResponseData = {
           ...response.data,
@@ -82,11 +86,16 @@ function MainScreen() {
     navigate("/replyscreen", { state: { day, question } });
   };
 
-  const tmpName = "김건휘";
-  const tmpYear = "2022";
-  const tmpMonth = "05";
-  const tmpDay = "18";
   const profileImgClick = (
+    year: string,
+    month: string,
+    day: string,
+    name: string
+  ) => {
+    navigate("/mypage", { state: { year, month, day, name } });
+  };
+
+  const intendAddCompletion = (
     year: string,
     month: string,
     day: string,
@@ -131,7 +140,11 @@ function MainScreen() {
             {tmpBool == true ? (
               <s.MyCompletion>"수료일 D-30"</s.MyCompletion>
             ) : (
-              <s.NeedAddCompletion onClick={navigationAddCompletion}>
+              <s.NeedAddCompletion
+                onClick={() =>
+                  intendAddCompletion("2020", "05", "18", "김건휘")
+                }
+              >
                 "수료일을 입력해주세요"
               </s.NeedAddCompletion>
             )}

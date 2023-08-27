@@ -23,9 +23,15 @@ function ReplyScreen({ day, question }: ReplyScreenProps) {
   console.log(state.day, state.question);
   useEffect(() => {
     const fetchData = async () => {
+      const accessToken = await localStorage.getItem("accessToken");
       const userId = await localStorage.getItem("userId");
       const response = await axios.get(
-        `http://localhost:8080/user/${userId}/questionList/${day}`
+        `http://localhost:8080/user/${userId}/questionList/${day}`,
+        {
+          headers: {
+            authorization: `${accessToken}`,
+          },
+        }
       );
       setQuestionData(response.data);
       //fetchData();

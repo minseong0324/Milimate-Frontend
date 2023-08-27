@@ -50,18 +50,22 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
       alert("모든 필수 정보를 입력해주세요")!;
     } else {
       try {
+        const accessToken = await localStorage.getItem("accessToken");
         const response = await axios.put(
           `http://localhost:8080/api/myPage/${userId}/editCompletion`,
           {
             completionYear: completionYear,
             completionMonth: completionMonth,
             completionDay: completionDay,
+          },
+          {
+            headers: {
+              authorization: `${accessToken}`,
+            },
           }
         );
         if (response.status == 200) {
-          localStorage.clear();
-          navigate("/", { replace: true });
-          alert("회원탈퇴 성공");
+          alert("수료일 수정 성공");
         }
       } catch (error: unknown) {
         //에러 일 경우

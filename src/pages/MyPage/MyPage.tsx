@@ -21,7 +21,6 @@ interface UserInfo {
 function MyPage({ year, month, day, name }: UserInfo) {
   const { state } = useLocation();
 
-  const location = useLocation();
   const [userName, setUserName] = useState<string>("김민성");
   const [todayQuestion, setTodayQuestion] =
     useState<string>("저는 입대 전 어떤 사람이었나요?");
@@ -38,9 +37,16 @@ function MyPage({ year, month, day, name }: UserInfo) {
   const [userLogoutModalOpen, setUserLogoutModalOpen] = useState(false);
   const getUserInfoFromServer = async (userId: string) => {
     try {
+      const accessToken = await localStorage.getItem("accessToken");
+
       // 백엔드 서버에 GET 요청을 보냅니다.
       const response = await axios.get(
-        `http://localhost:8080/guest/${userId}/reply`
+        `http://localhost:8080/guest/${userId}/reply`,
+        {
+          headers: {
+            authorization: `${accessToken}`,
+          },
+        }
       );
 
       // 응답에서 사용자 정보를 추출합니다.
