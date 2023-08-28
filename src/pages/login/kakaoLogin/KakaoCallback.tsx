@@ -72,7 +72,7 @@ function KakaoCallback() {
                 })
               );
             }
-            // navigate(`/home/${userResponse.data.userId}`, { replace: true }); // 인가 코드 제거 및 /OwnerHome/${email}로 리다이렉트
+            navigate(`/home/${userResponse.data.userId}`, { replace: true }); // 인가 코드 제거 및 /OwnerHome/${email}로 리다이렉트
           }
           const userId = localStorage.getItem("userId");
           const returnUrl = localStorage.getItem("returnUrl");
