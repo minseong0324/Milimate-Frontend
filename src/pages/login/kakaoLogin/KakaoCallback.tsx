@@ -2,9 +2,25 @@ import React, { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { s } from "./style";
+import { useDispatch } from "react-redux";
+import { setUserInfo } from "src/components/Redux/Slices/userInfoSlice";
 //import ErrorModal from "src/components/ErrorModal/ErrorModal";
 
+interface UserInfoResponse {
+  requireInfo: string; //소셜 로그인을 해서 회원가입이 되어있는지 확인. 그래서 홈으로 넘길지, 추가정보 입력 페이지로 넘길지 판단 하기 위해 받는 값
+  userId: string;
+
+  userName: string;
+  enlistmentYear: string;
+  enlistmentMonth: string;
+  enlistmentDay: string;
+  completionYear: string;
+  completionMonth: string;
+  completionDay: string;
+}
+
 function KakaoCallback() {
+  const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
@@ -43,6 +59,19 @@ function KakaoCallback() {
             //localStorage.setItem('email', userResponse.data.email);
             localStorage.setItem("userName", userResponse.data.userName);
 
+            if (response.data.requireInfo == "false") {
+              dispatch(
+                setUserInfo({
+                  userName: response.data.userName,
+                  enlistmentYear: response.data.enlistmentYear,
+                  enlistmentMonth: response.data.enlistmentMonth,
+                  enlistmentday: response.data.enlistmentDay,
+                  completionYear: response.data.enlistmentYear,
+                  completionMonth: response.data.completionMonth,
+                  completionday: response.data.completionDay,
+                })
+              );
+            }
             // navigate(`/home/${userResponse.data.userId}`, { replace: true }); // 인가 코드 제거 및 /OwnerHome/${email}로 리다이렉트
           }
           const userId = localStorage.getItem("userId");

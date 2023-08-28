@@ -3,7 +3,8 @@ import { s } from "./style";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { useToken } from "src/contexts/TokenProvider/TokenProvider";
-
+import { useDispatch } from "react-redux";
+import { updateUserName } from "../Redux/Slices/userInfoSlice";
 interface PropsType {
   setModalOpen: (open: boolean) => void;
   userName: string;
@@ -15,6 +16,7 @@ interface ResponseData {
   completionDay: string;
 }
 function EditUserNameModalBasic({ setModalOpen, userName }: PropsType) {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const modalRef = useRef<HTMLDivElement | null>(null);
   const [newUserName, setNewUserName] = useState("");
@@ -66,6 +68,11 @@ function EditUserNameModalBasic({ setModalOpen, userName }: PropsType) {
         );
         if (response.status == 200) {
           alert("이름변경 완료");
+          dispatch(
+            updateUserName({
+              userName: newUserName,
+            })
+          );
         }
       } catch (error: unknown) {
         //에러 일 경우

@@ -4,9 +4,10 @@ import { s } from "./style";
 interface PropsType {
   setModalOpen: (open: boolean) => void;
   contentText: string;
+  modalType: number;
 }
 
-function ModalBasic({ setModalOpen, contentText }: PropsType) {
+function ModalBasic({ setModalOpen, contentText, modalType }: PropsType) {
   const modalRef = useRef<HTMLDivElement | null>(null);
 
   // 모달 끄기
@@ -39,7 +40,16 @@ function ModalBasic({ setModalOpen, contentText }: PropsType) {
     <s.Wrapper onClick={closeModal}>
       <s.ModalBox ref={modalRef} onClick={stopPropagation}>
         <s.TitleText>알림</s.TitleText>
-        <s.ContentText>{contentText}</s.ContentText>
+        {modalType == 0 ? (
+          <s.ContentText>{contentText}</s.ContentText>
+        ) : (
+          <s.ContentText>
+            입대일과 수료일은 숫자로
+            <br />
+            입력해주세요!
+          </s.ContentText>
+        )}
+
         <s.BtnStyle onClick={closeModal}>확인</s.BtnStyle>
       </s.ModalBox>
     </s.Wrapper>

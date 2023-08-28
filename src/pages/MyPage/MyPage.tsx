@@ -9,6 +9,8 @@ import UpdateCompletionModalBasic from "src/components/UpdatecompletionModal/Upd
 import EditUserNameModalBasic from "src/components/EditUserName/EditUserNameModal";
 import LogoutModalBasic from "src/components/LogoutModal/LogoutModal";
 import { useToken } from "src/contexts/TokenProvider/TokenProvider";
+import { useSelector } from "react-redux";
+import { RootState } from "src/components/Redux/store";
 
 type UserNameProps = {
   userName?: string;
@@ -20,9 +22,12 @@ interface UserInfo {
   name: string;
 }
 function MyPage({ year, month, day, name }: UserInfo) {
+  const userInfo = useSelector((state: RootState) => state.userInfo);
   const { state } = useLocation();
 
-  const [userName, setUserName] = useState<string>("김민성");
+  const [userName, setUserName] = useState<string>(
+    userInfo.userName || "김민성"
+  );
   const [todayQuestion, setTodayQuestion] =
     useState<string>("저는 입대 전 어떤 사람이었나요?");
   const navigate = useNavigate(); // useNavigate hook 사용

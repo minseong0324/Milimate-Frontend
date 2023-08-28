@@ -3,7 +3,8 @@ import { s } from "./style";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { useToken } from "src/contexts/TokenProvider/TokenProvider";
-
+import { useDispatch } from "react-redux";
+import { updateCompletionDate } from "../Redux/Slices/userInfoSlice";
 interface PropsType {
   setModalOpen: (open: boolean) => void;
 }
@@ -14,6 +15,7 @@ interface ResponseData {
   completionDay: string;
 }
 function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
+  const dispatch = useDispatch();
   const accessToken = useToken();
   const navigate = useNavigate();
   const modalRef = useRef<HTMLDivElement | null>(null);
@@ -67,6 +69,13 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
         );
         if (response.status == 200) {
           alert("수료일 수정 성공");
+          dispatch(
+            updateCompletionDate({
+              completionYear: completionYear,
+              completionMonth: completionMonth,
+              completionDay: completionDay,
+            })
+          );
         }
       } catch (error: unknown) {
         //에러 일 경우

@@ -3,14 +3,15 @@ import axios, { AxiosError } from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { s } from "./style";
 //import ErrorModal from "src/components/ErrorModal/ErrorModal";
-
+import { useDispatch } from "react-redux";
+import { setUserInfo } from "src/components/Redux/Slices/userInfoSlice";
 function NaverCallback() {
   const location = useLocation();
   const navigate = useNavigate();
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
   const [modalErrorContent, setModalErrorContent] =
     useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
-
+  const dispatch = useDispatch();
   const handleOAuthNaver = async (code: string) => {
     try {
       // 네이버로부터 받아온 code를 서버에 전달하여 네이버로 회원가입 & 로그인한다
@@ -42,7 +43,19 @@ function NaverCallback() {
             localStorage.setItem("userId", userResponse.data.userId);
             //localStorage.setItem('email', userResponse.data.email);
             localStorage.setItem("userName", userResponse.data.userName);
-
+            if (response.data.requireInfo == "false") {
+              dispatch(
+                setUserInfo({
+                  userName: response.data.userName,
+                  enlistmentYear: response.data.enlistmentYear,
+                  enlistmentMonth: response.data.enlistmentMonth,
+                  enlistmentday: response.data.enlistmentDay,
+                  completionYear: response.data.enlistmentYear,
+                  completionMonth: response.data.completionMonth,
+                  completionday: response.data.completionDay,
+                })
+              );
+            }
             // navigate(`/home/${userResponse.data.userId}`, { replace: true }); // 인가 코드 제거 및 /OwnerHome/${email}로 리다이렉트
           }
           const userId = localStorage.getItem("userId");

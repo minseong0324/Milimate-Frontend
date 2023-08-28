@@ -33,6 +33,9 @@ import MyPage from "./pages/MyPage/MyPage";
 import React from "react";
 //import TokenProvider from './contexts/TokenProvider/TokenProvider';
 
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import store, { persistor } from "../src/components/Redux/store";
 const queryClient = new QueryClient();
 // function ProtectedRoutes() {
 //   const navigate = useNavigate();
@@ -73,48 +76,52 @@ function App() {
 
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        <Router>
-          {/* <ProtectedRoutes /> */}
-          <Routes>
-            <Route path="/" element={<LoginEntry />} />
-            {/* <Route path="/home/:userId" element={<Home />} />
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <QueryClientProvider client={queryClient}>
+            <Router>
+              {/* <ProtectedRoutes /> */}
+              <Routes>
+                <Route path="/" element={<LoginEntry />} />
+                {/* <Route path="/home/:userId" element={<Home />} />
           <Route path="/ownerhome" element={<OwnerHome />} /> 이건 출시 이전에 뺄 것입니다. 개발을 위해 라우트 해두었습니다. */}
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/moreinfo" element={<MoreInfo />} />
-            <Route path="/guest/:userId" element={<Guest />} />
-            <Route path="/home" element={<MainScreen />} />
-            <Route
-              path="/mypage"
-              element={<MyPage year={""} month={""} day={""} name={""} />}
-            />
-            <Route
-              path="/replyscreen"
-              element={<ReplyScreen day={""} question={""} />}
-            />
-            <Route path="/showcharacter" element={<ShowCaracter />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/moreinfo" element={<MoreInfo />} />
+                <Route path="/guest/:userId" element={<Guest />} />
+                <Route path="/home" element={<MainScreen />} />
+                <Route
+                  path="/mypage"
+                  element={<MyPage year={""} month={""} day={""} name={""} />}
+                />
+                <Route
+                  path="/replyscreen"
+                  element={<ReplyScreen day={""} question={""} />}
+                />
+                <Route path="/showcharacter" element={<ShowCaracter />} />
 
-            <Route
-              path="/replyscreen"
-              element={<ReplyScreen day={""} question={""} />}
-            />
+                <Route
+                  path="/replyscreen"
+                  element={<ReplyScreen day={""} question={""} />}
+                />
 
-            {/* <Route path="/select-character-tree/:userId" element={<SelectTreeCharacter />} /> */}
+                {/* <Route path="/select-character-tree/:userId" element={<SelectTreeCharacter />} /> */}
 
-            <Route path="/kakao/callback" element={<KakaoCallback />} />
+                <Route path="/kakao/callback" element={<KakaoCallback />} />
 
-            <Route path="/naver/callback" element={<NaverCallback />} />
-            <Route path="/google/callback" element={<GoogleCallback />} />
-            <Route
-              path="/questionlistscreen"
-              element={<QuestionListScreen />}
-            />
-            <Route path="/send/:userId" element={<AddReply />} />
-            {/* <Route path="/mypage/:userId" element={<MyPage />} /> */}
-          </Routes>
-        </Router>
-      </QueryClientProvider>
+                <Route path="/naver/callback" element={<NaverCallback />} />
+                <Route path="/google/callback" element={<GoogleCallback />} />
+                <Route
+                  path="/questionlistscreen"
+                  element={<QuestionListScreen />}
+                />
+                <Route path="/send/:userId" element={<AddReply />} />
+                {/* <Route path="/mypage/:userId" element={<MyPage />} /> */}
+              </Routes>
+            </Router>
+          </QueryClientProvider>
+        </PersistGate>
+      </Provider>
     </>
   );
 }

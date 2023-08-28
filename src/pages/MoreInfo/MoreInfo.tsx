@@ -4,7 +4,8 @@ import axios, { AxiosError } from "axios";
 import { s } from "./style";
 import ErrorModal from "src/components/ErrorModal/ErrorModal";
 import ModalBasic from "src/components/SimpleModal/SimpleModal";
-
+import { useDispatch } from "react-redux";
+import { setUserInfo } from "src/components/Redux/Slices/userInfoSlice";
 function MoreInfo() {
   const [userName, setUserName] = useState("");
   const [enlistmentYear, setEnlistmentYear] = useState("");
@@ -19,14 +20,16 @@ function MoreInfo() {
     useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
 
   // 회원가입 처리 함수
+  const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
+  const [numericmodalOpen, setNumericModalOpen] = useState(false);
   const handleMoreInfo = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    const userId = await localStorage.getItem("userId");
     // 회원가입 API 요청
     try {
       const response = await axios.post(
-        `http://localhost:8080/api/user/{userId}/moreInfo`,
+        `http://localhost:8080/api/user/${userId}/moreInfo`,
         {
           userName,
           enlistmentYear,
@@ -41,6 +44,17 @@ function MoreInfo() {
       // 추가 정보 입력한 후 회원가입 성공, status 200일 때
       if (response.status === 200) {
         alert("회원가입에 성공하였습니다!");
+        dispatch(
+          setUserInfo({
+            userName: userName,
+            enlistmentYear: enlistmentYear,
+            enlistmentMonth: enlistmentMonth,
+            enlistmentday: enlistmentDay,
+            completionYear: enlistmentYear,
+            completionMonth: completionMonth,
+            completionday: completionDay,
+          })
+        );
         navigate("/showcharacter", { state: { userName } });
       }
     } catch (error: unknown) {
@@ -68,6 +82,9 @@ function MoreInfo() {
       return null;
     }
   };
+  const isNumeric = (value: string) => {
+    return /^\d+$/.test(value);
+  };
   const exceptionInfo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (
@@ -76,7 +93,17 @@ function MoreInfo() {
       enlistmentMonth == "" ||
       enlistmentDay == ""
     ) {
-      setModalOpen(true); // 모달창 띄우기
+      return setModalOpen(true); // 모달창 띄우기
+    }
+    if (
+      !isNumeric(enlistmentYear) ||
+      !isNumeric(enlistmentMonth) ||
+      !isNumeric(enlistmentDay) ||
+      !isNumeric(completionYear) ||
+      !isNumeric(completionMonth) ||
+      !isNumeric(completionDay)
+    ) {
+      return setNumericModalOpen(true);
     }
   };
   const handleErrorModalClose = () => {
@@ -91,7 +118,7 @@ function MoreInfo() {
           <s.InputContainer>
             <s.TextsStyle>이름</s.TextsStyle>
             <s.MoreInfoInput
-              //type="text"
+              type="text"
               value={userName}
               onChange={(e: {
                 target: { value: React.SetStateAction<string> };
@@ -171,6 +198,14 @@ function MoreInfo() {
         <ModalBasic
           setModalOpen={setModalOpen}
           contentText="필수정보를 모두 입력해주세요!"
+          modalType={0}
+        />
+      )}
+      {numericmodalOpen && (
+        <ModalBasic
+          setModalOpen={setNumericModalOpen}
+          contentText="입대일과 수료일은 숫자로 입력해주세요!"
+          modalType={1}
         />
       )}
     </s.BackgroundContainer>

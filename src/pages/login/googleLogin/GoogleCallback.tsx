@@ -2,9 +2,25 @@ import React, { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { s } from "./style";
+import { useDispatch } from "react-redux";
+import { setUserInfo } from "src/components/Redux/Slices/userInfoSlice";
 //import ErrorModal from "src/components/ErrorModal/ErrorModal";
+interface UserInfoResponse {
+  requireInfo: string; //소셜 로그인을 해서 회원가입이 되어있는지 확인. 그래서 홈으로 넘길지, 추가정보 입력 페이지로 넘길지 판단 하기 위해 받는 값
+  userId: string;
+
+  userName: string;
+  enlistmentYear: string;
+  enlistmentMonth: string;
+  enlistmentDay: string;
+  completionYear: string;
+  completionMonth: string;
+  completionDay: string;
+}
 
 function GoogleCallback() {
+  const dispatch = useDispatch();
+
   const location = useLocation();
   const navigate = useNavigate();
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
@@ -14,7 +30,7 @@ function GoogleCallback() {
   const handleOAuthGoogle = async (code: string) => {
     try {
       // 구글로부터 받아온 code를 서버에 전달하고 구글로 회원가입 & 로그인한다
-      const response = await axios.get(
+      const response = await axios.get<UserInfoResponse>(
         `http://localhost:8080/api/oauth/login/google?code=${code}`
       );
       if (response.status === 200) {
@@ -22,6 +38,21 @@ function GoogleCallback() {
         const refreshToken = response.headers["reauthorization"];
         localStorage.setItem("accessToken", accessToken);
         localStorage.setItem("refreshToken", refreshToken);
+
+        if (response.data.requireInfo == "false") {
+          dispatch(
+            setUserInfo({
+              userName: response.data.userName,
+              enlistmentYear: response.data.enlistmentYear,
+              enlistmentMonth: response.data.enlistmentMonth,
+              enlistmentday: response.data.enlistmentDay,
+              completionYear: response.data.enlistmentYear,
+              completionMonth: response.data.completionMonth,
+              completionday: response.data.completionDay,
+            })
+          );
+        }
+
         console.log("refreshToken");
         console.log(response.headers.refreshToken);
         console.log("refreshToken----");

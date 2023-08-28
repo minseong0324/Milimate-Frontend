@@ -20,7 +20,7 @@ function MainScreen() {
   const navigate = useNavigate();
   const handleCopyClipBoard = async () => {
     const userId = localStorage.getItem("userId");
-    const linkToShare = `http://localhost:3000/guest/${userId}`;
+    const linkToShare = `http://localhost:3000/api/guest/${userId}`;
 
     try {
       await navigator.clipboard.writeText(linkToShare);
@@ -66,7 +66,7 @@ function MainScreen() {
           nowDate: Number(response.data.nowDate),
           endDate: Number(response.data.endDate),
         };
-        setData(responseData); // 형변환된 응답 데이터를 상태에 할당
+        setData(responseData); // 형변를환된 응답 데이터 상태에 할당
       } catch (e) {
         console.log(e);
       }
@@ -159,6 +159,7 @@ function MainScreen() {
         <ModalBasic
           setModalOpen={setModalOpen}
           contentText="링크가 복사되었습니다."
+          modalType={0}
         />
       )}
     </>

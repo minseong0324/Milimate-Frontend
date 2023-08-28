@@ -55,6 +55,7 @@ const TitleText = styled.p`
   transform: translate(16px, 0px); // 버튼의 중앙을 기준으로 위치 조정
 `;
 const ContentText = styled.p`
+  padding-right: 20px;
   font-size: 20px;
   text-align: start;
   transform: translate(16px, 0px); // 버튼의 중앙을 기준으로 위치 조정
