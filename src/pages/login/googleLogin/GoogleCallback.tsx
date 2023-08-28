@@ -30,7 +30,7 @@ function GoogleCallback() {
   const handleOAuthGoogle = async (code: string) => {
     try {
       // 구글로부터 받아온 code를 서버에 전달하고 구글로 회원가입 & 로그인한다
-      const response = await axios.get<UserInfoResponse>(
+      const response = await axios.get(
         `http://localhost:8080/api/oauth/login/google?code=${code}`
       );
       if (response.status === 200) {
@@ -38,82 +38,28 @@ function GoogleCallback() {
         const refreshToken = response.headers["reauthorization"];
         localStorage.setItem("accessToken", accessToken);
         localStorage.setItem("refreshToken", refreshToken);
-
-        console.log("refreshToken");
-        console.log(response.headers.refreshToken);
-        console.log("refreshToken----");
-        console.log("accessToken");
-        console.log(response.headers.accessToken);
-        console.log("accessToken----");
-        console.log(response.headers);
-        try {
-          const userResponse = await axios.get(
-            `http://localhost:8080/api/users`,
-            {
-              headers: {
-                authorization: `${accessToken}`,
-              },
-            }
+        // console.log("refreshToken");
+        // //console.log(response.headers.refreshToken);
+        // console.log("refreshToken----");
+        // console.log("accessToken");
+        // //console.log(response.headers.accessToken);
+        // console.log("accessToken----");
+        console.log("access : ", accessToken);
+        console.log("refresh : ", refreshToken);
+        console.log("모든 토큰 : ", response.headers);
+        console.log("데이터 : ", response.data);
+        if (response.data.requireInfo == "false") {
+          dispatch(
+            setUserInfo({
+              userName: response.data.userName,
+              enlistmentYear: response.data.enlistmentYear,
+              enlistmentMonth: response.data.enlistmentMonth,
+              enlistmentday: response.data.enlistmentDay,
+              completionYear: response.data.enlistmentYear,
+              completionMonth: response.data.completionMonth,
+              completionday: response.data.completionDay,
+            })
           );
-          if (userResponse.status === 200) {
-            localStorage.setItem("userId", userResponse.data.userId);
-            //localStorage.setItem('email', userResponse.data.email);
-            localStorage.setItem("userName", userResponse.data.userName);
-            if (response.data.requireInfo == "false") {
-              dispatch(
-                setUserInfo({
-                  userName: response.data.userName,
-                  enlistmentYear: response.data.enlistmentYear,
-                  enlistmentMonth: response.data.enlistmentMonth,
-                  enlistmentday: response.data.enlistmentDay,
-                  completionYear: response.data.enlistmentYear,
-                  completionMonth: response.data.completionMonth,
-                  completionday: response.data.completionDay,
-                })
-              );
-            }
-            // navigate(`/home/${userResponse.data.userId}`, { replace: true }); // 인가 코드 제거 및 /OwnerHome/${email}로 리다이렉트
-          }
-          const userId = localStorage.getItem("userId");
-          const returnUrl = localStorage.getItem("returnUrl");
-
-          if (returnUrl) {
-            // 저장된 URL로 리다이렉트합니다.
-            navigate(returnUrl);
-            localStorage.removeItem("returnUrl"); // 사용 후 저장된 URL을 삭제합니다.
-          } else {
-            // 저장된 URL이 없으면 기본 페이지(예: 사용자 홈)로 리다이렉트합니다.
-            navigate(`/home/${userId}`, { replace: true }); // 인가 코드 제거 및 /OwnerHome/${email}로 리다이렉트
-          }
-        } catch (error: unknown) {
-          console.log("유저정보 요청 실패"); //에러 일 경우
-          if (error instanceof AxiosError) {
-            const status = error?.response?.status;
-            console.error("Failed to fetch user info:", error);
-            setModalErrorContent(
-              <s.ErrorCenterModalWrapper>
-                <s.ErrorModalTextsWrapper2>
-                  유저의 정보를
-                </s.ErrorModalTextsWrapper2>
-                <s.ErrorModalTextsWrapper2>
-                  불러오지 못했어요.
-                </s.ErrorModalTextsWrapper2>
-                <s.ModalButton onClick={handleErrorModalClose}>
-                  닫기
-                </s.ModalButton>
-              </s.ErrorCenterModalWrapper>
-            );
-            if (status === 404) {
-              // 리소스를 찾을 수 없음
-            } else if (status === 500) {
-              // 서버 내부 오류
-            } else {
-              // 기타 상태 코드 처리
-            }
-          }
-          setErrorModalOpen(true);
-          navigate("/login");
-          return null;
         }
       }
     } catch (error: unknown) {

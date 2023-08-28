@@ -39,13 +39,17 @@ function KakaoCallback() {
         const refreshToken = response.headers["reauthorization"];
         localStorage.setItem("accessToken", accessToken);
         localStorage.setItem("refreshToken", refreshToken);
-        console.log("refreshToken");
-        console.log(response.headers.refreshToken);
-        console.log("refreshToken----");
-        console.log("accessToken");
-        console.log(response.headers.accessToken);
-        console.log("accessToken----");
-        console.log(response.headers);
+        // console.log("refreshToken");
+        // //console.log(response.headers.refreshToken);
+        // console.log("refreshToken----");
+        // console.log("accessToken");
+        // //console.log(response.headers.accessToken);
+        // console.log("accessToken----");
+        console.log("access : ", accessToken);
+        console.log("refresh : ", refreshToken);
+        console.log("모든 토큰 : ", response.headers);
+        console.log("데이터 : ", response.data);
+        //console.log(response.headers.accessToken);
 
         if (response.data.requireInfo == "false") {
           dispatch(
