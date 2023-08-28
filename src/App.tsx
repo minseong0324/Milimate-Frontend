@@ -107,10 +107,13 @@ function App() {
 
                 {/* <Route path="/select-character-tree/:userId" element={<SelectTreeCharacter />} /> */}
 
-                <Route path="/kakao/callback" element={<KakaoCallback />} />
+                <Route path="/api/kakao/callback" element={<KakaoCallback />} />
 
-                <Route path="/naver/callback" element={<NaverCallback />} />
-                <Route path="/google/callback" element={<GoogleCallback />} />
+                <Route path="/api/naver/callback" element={<NaverCallback />} />
+                <Route
+                  path="/api/google/callback"
+                  element={<GoogleCallback />}
+                />
                 <Route
                   path="/questionlistscreen"
                   element={<QuestionListScreen />}

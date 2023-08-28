@@ -39,20 +39,6 @@ function GoogleCallback() {
         localStorage.setItem("accessToken", accessToken);
         localStorage.setItem("refreshToken", refreshToken);
 
-        if (response.data.requireInfo == "false") {
-          dispatch(
-            setUserInfo({
-              userName: response.data.userName,
-              enlistmentYear: response.data.enlistmentYear,
-              enlistmentMonth: response.data.enlistmentMonth,
-              enlistmentday: response.data.enlistmentDay,
-              completionYear: response.data.enlistmentYear,
-              completionMonth: response.data.completionMonth,
-              completionday: response.data.completionDay,
-            })
-          );
-        }
-
         console.log("refreshToken");
         console.log(response.headers.refreshToken);
         console.log("refreshToken----");
@@ -73,7 +59,19 @@ function GoogleCallback() {
             localStorage.setItem("userId", userResponse.data.userId);
             //localStorage.setItem('email', userResponse.data.email);
             localStorage.setItem("userName", userResponse.data.userName);
-
+            if (response.data.requireInfo == "false") {
+              dispatch(
+                setUserInfo({
+                  userName: response.data.userName,
+                  enlistmentYear: response.data.enlistmentYear,
+                  enlistmentMonth: response.data.enlistmentMonth,
+                  enlistmentday: response.data.enlistmentDay,
+                  completionYear: response.data.enlistmentYear,
+                  completionMonth: response.data.completionMonth,
+                  completionday: response.data.completionDay,
+                })
+              );
+            }
             // navigate(`/home/${userResponse.data.userId}`, { replace: true }); // 인가 코드 제거 및 /OwnerHome/${email}로 리다이렉트
           }
           const userId = localStorage.getItem("userId");
