@@ -3,6 +3,7 @@ import { s } from "./style";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useToken } from "src/contexts/TokenProvider/TokenProvider";
 type ReplyScreenProps = {
   day: string;
   question: string;
@@ -20,13 +21,13 @@ interface QuestionData {
 function ReplyScreen({ day, question }: ReplyScreenProps) {
   const { state } = useLocation();
   const [questionData, setQuestionData] = useState<QuestionData | null>(null);
-  console.log(state.day, state.question);
+  const { accessToken } = useToken(); // useToken hook을 사용하여 accessToken에 접근
+
   useEffect(() => {
     const fetchData = async () => {
-      const accessToken = await localStorage.getItem("accessToken");
       const userId = await localStorage.getItem("userId");
       const response = await axios.get(
-        `http://localhost:8080/user/${userId}/questionList/${day}`,
+        `http://localhost:8080/api/user/${userId}/questionList/${day}`,
         {
           headers: {
             authorization: `${accessToken}`,
@@ -34,9 +35,9 @@ function ReplyScreen({ day, question }: ReplyScreenProps) {
         }
       );
       setQuestionData(response.data);
-      //fetchData();
     };
-  }, [day]);
+  }, [day, accessToken]); // accessToken의 변경을 감지하기 위해 useEffect의 dependency 배열에 추가
+
   const questionText = "입대전 저는 어떤 사람이었나요?";
   const text =
     "여기에 원하는 텍스트를 입력하세요. " +

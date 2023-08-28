@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { s } from "./style";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
+import { useToken } from "src/contexts/TokenProvider/TokenProvider";
 
 interface PropsType {
   setModalOpen: (open: boolean) => void;
@@ -13,6 +14,7 @@ interface ResponseData {
   completionDay: string;
 }
 function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
+  const accessToken = useToken();
   const navigate = useNavigate();
   const modalRef = useRef<HTMLDivElement | null>(null);
   const [completionYear, setcompletionYear] = useState("");
@@ -50,7 +52,6 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
       alert("모든 필수 정보를 입력해주세요")!;
     } else {
       try {
-        const accessToken = await localStorage.getItem("accessToken");
         const response = await axios.put(
           `http://localhost:8080/api/myPage/${userId}/editCompletion`,
           {

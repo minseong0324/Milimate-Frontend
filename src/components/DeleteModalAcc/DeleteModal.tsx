@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { s } from "./style";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
+import { useToken } from "src/contexts/TokenProvider/TokenProvider";
 
 interface PropsType {
   setModalOpen: (open: boolean) => void;
@@ -37,10 +38,10 @@ function DeleteModalBasic({ setModalOpen, contentText }: PropsType) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+  const accessToken = useToken();
   const deleteAccount = async () => {
     const userId = await localStorage.getItem("userId");
     try {
-      const accessToken = await localStorage.getItem("accessToken");
       const response = await axios.delete(
         `http://localhost:8080/api/myPage/${userId}/deleteAccount`,
         {

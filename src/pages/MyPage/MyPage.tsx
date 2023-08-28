@@ -8,6 +8,7 @@ import DeleteModalBasic from "src/components/DeleteModalAcc/DeleteModal";
 import UpdateCompletionModalBasic from "src/components/UpdatecompletionModal/UpdateCompletionModal";
 import EditUserNameModalBasic from "src/components/EditUserName/EditUserNameModal";
 import LogoutModalBasic from "src/components/LogoutModal/LogoutModal";
+import { useToken } from "src/contexts/TokenProvider/TokenProvider";
 
 type UserNameProps = {
   userName?: string;
@@ -35,13 +36,12 @@ function MyPage({ year, month, day, name }: UserInfo) {
     useState(false);
   const [editUserNameModalOpen, setEditUserNameModalOpen] = useState(false);
   const [userLogoutModalOpen, setUserLogoutModalOpen] = useState(false);
+  const accessToken = useToken();
   const getUserInfoFromServer = async (userId: string) => {
     try {
-      const accessToken = await localStorage.getItem("accessToken");
-
       // 백엔드 서버에 GET 요청을 보냅니다.
       const response = await axios.get(
-        `http://localhost:8080/guest/${userId}/reply`,
+        `http://localhost:8080/api/guest/${userId}/reply`,
         {
           headers: {
             authorization: `${accessToken}`,

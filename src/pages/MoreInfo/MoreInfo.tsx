@@ -26,7 +26,7 @@ function MoreInfo() {
     // 회원가입 API 요청
     try {
       const response = await axios.post(
-        `http://localhost:8080/user/{userId}/moreInfo`,
+        `http://localhost:8080/api/user/{userId}/moreInfo`,
         {
           userName,
           enlistmentYear,

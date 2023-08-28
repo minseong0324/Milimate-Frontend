@@ -31,7 +31,7 @@ const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({
           ? credentialResponse.credential
           : credentialResponse; //credential, 즉 id토큰을 뽑아냄. 이를 디코딩 하면 유저의 정보가 모두 나옴.
       const response = await axios.post(
-        `http://localhost:8080/oauth/login/google`,
+        `http://localhost:8080/api/oauth/login/google`,
         credential
       );
       if (response.status === 200) {

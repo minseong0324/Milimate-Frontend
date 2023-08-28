@@ -3,6 +3,7 @@ import { s } from "./styled";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import ModalBasic from "src/components/SimpleModal/SimpleModal";
+import { useToken } from "src/contexts/TokenProvider/TokenProvider";
 function MainScreen() {
   interface ResponseData {
     userName: string;
@@ -14,6 +15,8 @@ function MainScreen() {
     todayQuestion: string;
     isInsertedEndDate: boolean;
   }
+  const accessToken = useToken();
+
   const navigate = useNavigate();
   const handleCopyClipBoard = async () => {
     const userId = localStorage.getItem("userId");
@@ -45,7 +48,6 @@ function MainScreen() {
   const location = useLocation();
   useEffect(() => {
     const fetchData = async () => {
-      const accessToken = localStorage.getItem("accessToken");
       const userId = await localStorage.getItem("userId");
       try {
         const response = await axios.get(
@@ -70,7 +72,7 @@ function MainScreen() {
       }
     };
     //fetchData();
-  }, []);
+  }, [accessToken]);
 
   const [modalOpen, setModalOpen] = useState(false);
 

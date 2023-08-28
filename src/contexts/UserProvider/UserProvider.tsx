@@ -1,13 +1,13 @@
 // components/UserProvider.tsx
-import React, { useState } from 'react';
-import UserContext from '../UserContext';
+import React, { useState } from "react";
+import UserContext from "../UserContext";
 
 // User 타입 정의
 type User = {
-    id: string;
-    name: string;
-    // 필요한 필드를 추가하세요.
-  };
+  id: string;
+  name: string;
+  // 필요한 필드를 추가하세요.
+};
 
 type UserProviderProps = {
   children: React.ReactNode;

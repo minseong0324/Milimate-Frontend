@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { s } from "./style";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
+import { useToken } from "src/contexts/TokenProvider/TokenProvider";
 
 interface PropsType {
   setModalOpen: (open: boolean) => void;
@@ -24,7 +25,7 @@ function EditUserNameModalBasic({ setModalOpen, userName }: PropsType) {
   const closeModal = () => {
     setModalOpen(false);
   };
-
+  const accessToken = useToken();
   // 모달 내부 클릭 시 이벤트 버블링 중지
   const stopPropagation = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -51,7 +52,6 @@ function EditUserNameModalBasic({ setModalOpen, userName }: PropsType) {
       alert("모든 필수 정보를 입력해주세요")!;
     } else {
       try {
-        const accessToken = await localStorage.getItem("accessToken");
         const response = await axios.put(
           `http://localhost:8080/api/myPage/${userId}/editUserName`,
 

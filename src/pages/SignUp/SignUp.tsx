@@ -9,7 +9,7 @@ import axios, { AxiosError } from "axios";
 import { QueryClientProvider, useMutation, useQueryClient } from "react-query";
 import NaverSignUpImage from "../../assets/socialLoginButton/NaverSignUp.svg";
 import KakaoSignUpImage from "../../assets/socialLoginButton/KakaoSignUp.svg";
-import GoogleSignUpImage from '../../assets/socialLoginButton/GoogleSignUp.svg'
+import GoogleSignUpImage from "../../assets/socialLoginButton/GoogleSignUp.svg";
 import ErrorModal from "src/components/ErrorModal/ErrorModal";
 
 // 로그인에 필요한 사용자의 정보를 나타내는 타입을 정의합니다.
@@ -30,7 +30,7 @@ function SignUp() {
   const handleServiceDescription = () => {
     setErrorModalOpen(true);
   };
-  
+
   return (
     <s.BackgroundContainer>
       <s.SignUpWrapper>
@@ -38,14 +38,13 @@ function SignUp() {
           <s.Title>회원가입</s.Title>
         </s.TextsStyle>
 
-
         <s.SignUpForm>
-          <KakaoLogin imageUrl={KakaoSignUpImage}/>
-          <NaverLogin imageUrl={NaverSignUpImage}/>
-          <GoogleLogin buttonImage={GoogleSignUpImage}/>
+          <KakaoLogin imageUrl={KakaoSignUpImage} />
+          <NaverLogin imageUrl={NaverSignUpImage} />
+          <GoogleLogin buttonImage={GoogleSignUpImage} />
         </s.SignUpForm>
-          
-      {/* <ErrorModal isOpen={isErrorModalOpen} onClose={() => setErrorModalOpen(false)} >
+
+        {/* <ErrorModal isOpen={isErrorModalOpen} onClose={() => setErrorModalOpen(false)} >
           {modalErrorContent}
       </ErrorModal> */}
       </s.SignUpWrapper>
