@@ -140,6 +140,7 @@ function MyPage({ year, month, day, name }: UserInfo) {
       </s.UserInfoContainer>
       <s.MenuWrapper>
         <s.ButtonStyle onClick={deleteAccBtn}>• 회원탈퇴</s.ButtonStyle>
+
         <s.ButtonStyle onClick={updateCompletionBtn}>
           • 수료일 수정하기
         </s.ButtonStyle>
