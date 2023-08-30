@@ -11,13 +11,13 @@ type UserInfoState = {
 };
 
 const initialState: UserInfoState = {
-  userName: "",
-  enlistmentYear: "",
-  enlistmentMonth: "",
-  enlistmentday: "",
-  completionYear: "",
-  completionMonth: "",
-  completionday: "",
+  userName: "default Name",
+  enlistmentYear: "0000",
+  enlistmentMonth: "00",
+  enlistmentday: "00",
+  completionYear: "0000",
+  completionMonth: "00",
+  completionday: "00",
 };
 
 const userInfoSlice = createSlice({

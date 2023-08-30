@@ -63,8 +63,10 @@ function KakaoCallback() {
               completionday: response.data.completionDay,
             })
           );
+          navigate(`/home/${response.data.userId}`, { replace: true }); // 인가 코드 제거 및 /OwnerHome/${email}로 리다이렉트
+        } else if (response.data.requireInfo == "false") {
+          navigate(`/moreinfo/${response.data.userId}`, { replace: true }); // 인가 코드 제거 및 /OwnerHome/${email}로 리다이렉트
         }
-        navigate(`/home/${response.data.userId}`, { replace: true }); // 인가 코드 제거 및 /OwnerHome/${email}로 리다이렉트
       }
     } catch (error: unknown) {
       //에러 일 경우

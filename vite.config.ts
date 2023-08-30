@@ -13,7 +13,6 @@ export default defineConfig({
   server: {
     open: true,
     port: 3000,
-    hmr: false,
   },
   define: { global: "window" },
 });

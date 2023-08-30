@@ -73,7 +73,7 @@ function App() {
   // }, [location, navigate]);
 
   // ... 기존 코드 ...
-
+  localStorage.clear();
   return (
     <>
       <Provider store={store}>
@@ -89,11 +89,8 @@ function App() {
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/moreinfo" element={<MoreInfo />} />
                 <Route path="/guest/:userId" element={<Guest />} />
-                <Route path="/home" element={<MainScreen />} />
-                <Route
-                  path="/mypage"
-                  element={<MyPage year={""} month={""} day={""} name={""} />}
-                />
+                <Route path="/home:userId" element={<MainScreen />} />
+                <Route path="/mypage" element={<MyPage />} />
                 <Route
                   path="/replyscreen"
                   element={<ReplyScreen day={""} question={""} />}

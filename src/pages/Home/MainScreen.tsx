@@ -94,7 +94,7 @@ function MainScreen() {
     day: string,
     name: string
   ) => {
-    navigate("/mypage", { state: { year, month, day, name } });
+    navigate("/mypage");
   };
 
   const intendAddCompletion = (
@@ -103,7 +103,7 @@ function MainScreen() {
     day: string,
     name: string
   ) => {
-    navigate("/mypage", { state: { year, month, day, name } });
+    navigate("/mypage");
   };
   return (
     <>

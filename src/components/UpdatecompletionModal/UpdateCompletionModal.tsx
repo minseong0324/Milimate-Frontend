@@ -3,8 +3,9 @@ import { s } from "./style";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { useToken } from "src/contexts/TokenProvider/TokenProvider";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateCompletionDate } from "../Redux/Slices/userInfoSlice";
+import { RootState } from "../Redux/store";
 interface PropsType {
   setModalOpen: (open: boolean) => void;
 }
@@ -107,11 +108,15 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
       }
     };
   }, []);
+  const userInfo = useSelector((state: RootState) => state.userInfo);
   return (
     <s.Wrapper onClick={closeModal}>
       <s.ModalBox ref={modalRef} onClick={stopPropagation}>
         <s.TitleText>수료일</s.TitleText>
-        <s.TitleText>2022년 05년 19일</s.TitleText>
+        <s.TitleText>
+          {userInfo.completionYear}년 {userInfo.completionMonth}월{" "}
+          {userInfo.completionday}일
+        </s.TitleText>
         <s.InputContainer>
           <s.MoreInfoInputYear
             type="text"

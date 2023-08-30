@@ -3,12 +3,15 @@ import { s } from "./style";
 import { useNavigate } from "react-router-dom";
 import CharacterImage from "../../assets/charater/character.svg";
 import { useLocation } from "react-router-dom";
+import { RootState } from "src/components/Redux/store";
+import { useSelector } from "react-redux";
 
 type UserNameProps = {
   userName?: string;
 };
 
 function ShowCaracter() {
+  const userInfo = useSelector((state: RootState) => state.userInfo);
   const location = useLocation();
   const { userName = "김민성" } = (location.state as UserNameProps) || {};
   const navigate = useNavigate(); // useNavigate hook 사용
@@ -26,7 +29,7 @@ function ShowCaracter() {
       <s.Wrapper>
         <s.CharImgContainer>
           <s.CharImg src={CharacterImage} alt="Character Description" />
-          <s.CharImgName>{userName}</s.CharImgName>
+          <s.CharImgName>{userInfo.userName}</s.CharImgName>
         </s.CharImgContainer>
         <s.TextsStyle>해당 이미지는 답변 페이지 공유 시</s.TextsStyle>
         <s.TextsStyle>친구들에게 보여지는 이미지입니다.</s.TextsStyle>

@@ -3,11 +3,11 @@ import { s } from "./style";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { useToken } from "src/contexts/TokenProvider/TokenProvider";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateUserName } from "../Redux/Slices/userInfoSlice";
+import { RootState } from "../Redux/store";
 interface PropsType {
   setModalOpen: (open: boolean) => void;
-  userName: string;
 }
 
 interface ResponseData {
@@ -15,8 +15,9 @@ interface ResponseData {
   completionMonth: string;
   completionDay: string;
 }
-function EditUserNameModalBasic({ setModalOpen, userName }: PropsType) {
+function EditUserNameModalBasic({ setModalOpen }: PropsType) {
   const dispatch = useDispatch();
+  const userInfo = useSelector((state: RootState) => state.userInfo);
   const navigate = useNavigate();
   const modalRef = useRef<HTMLDivElement | null>(null);
   const [newUserName, setNewUserName] = useState("");
@@ -97,7 +98,7 @@ function EditUserNameModalBasic({ setModalOpen, userName }: PropsType) {
     const fetchData = async () => {
       const userId = localStorage.getItem("userId");
       const response = await axios.get(
-        `http://localhost:8080/myPage/${userId}/editCompletion`
+        `http://localhost:8080/api/myPage/${userId}/editCompletion`
       );
       if (response.status == 200) {
         setResponseData(response.data);
@@ -107,7 +108,7 @@ function EditUserNameModalBasic({ setModalOpen, userName }: PropsType) {
   return (
     <s.Wrapper onClick={closeModal}>
       <s.ModalBox ref={modalRef} onClick={stopPropagation}>
-        <s.TitleText>현재 이름 : {userName}</s.TitleText>
+        <s.TitleText>현재 이름 : {userInfo.userName}</s.TitleText>
         <s.ContentText>새 이름을 입력해 주세요!</s.ContentText>
         <s.InputContainer>
           <s.MoreInfoInputName
