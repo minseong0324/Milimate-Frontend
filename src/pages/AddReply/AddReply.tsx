@@ -14,6 +14,7 @@ function AddReply() {
   };
   const onSubmit = async () => {
     const userId = localStorage.getItem("userId");
+    const accessToken = localStorage.getItem("accessToken");
     console.log(formData.sender);
     console.log(formData.reply);
 
@@ -23,6 +24,11 @@ function AddReply() {
         {
           senderName: formData.sender,
           replyContent: formData.reply,
+        },
+        {
+          headers: {
+            authorization: accessToken,
+          },
         }
       );
       console.log(response.data);

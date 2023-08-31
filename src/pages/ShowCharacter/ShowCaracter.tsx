@@ -20,8 +20,9 @@ function ShowCaracter() {
     useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
 
   // 서비스 설명 함수
-  const handleGoHome = () => {
-    navigate("/home");
+  const handleGoHome = async () => {
+    const userId = await localStorage.getItem("userId");
+    navigate(`/home/${userId}`, { replace: true });
   };
 
   return (

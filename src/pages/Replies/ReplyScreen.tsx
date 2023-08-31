@@ -36,56 +36,16 @@ function ReplyScreen({ day, question }: ReplyScreenProps) {
       );
       setQuestionData(response.data);
     };
+    fetchData();
   }, [day, accessToken]); // accessToken의 변경을 감지하기 위해 useEffect의 dependency 배열에 추가
 
   const questionText = "입대전 저는 어떤 사람이었나요?";
-  const text =
-    "여기에 원하는 텍스트를 입력하세요. " +
-    "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요. " +
-    "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요. " +
-    "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요 " +
-    " 텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요. " +
-    "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요. " +
-    " 텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요." +
-    "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요." +
-    "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다." +
-    "여기에 원하는 텍스트를 입력하세요. " +
-    "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요. " +
-    "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요. " +
-    "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요 " +
-    " 텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요. " +
-    "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요. " +
-    " 텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요." +
-    "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.여기에 원하는 텍스트를 입력하세요." +
-    "텍스트의 길이에 따라 말풍선의 크기가 조절됩니다.";
+
   const navigate = useNavigate();
   const goBackBtn = () => {
     navigate(-1);
   };
   return (
-    //   <s.Wrapper>
-    //   <s.IconLayout>
-    //     <FaRegArrowAltCircleLeft size={36} color="white" />
-    //   </s.IconLayout>
-
-    //   {/* Today's Question */}
-    //   <s.BubbleContainer>
-    //     <s.BubbleImage />
-    //     <s.BubbleText>{questionData?.todayQuestion}</s.BubbleText>
-    //   </s.BubbleContainer>
-
-    //   {/* Replies */}
-    //   {questionData?.replies.map((reply, index) => (
-    //     <s.BubbleReplyContainer key={index}>
-    //       <s.BubbleReplyImage />
-    //       <s.BubbleReplyText>
-    //         <h2>{reply.senderName}</h2>
-    //         <p>{reply.replyContent}</p>
-    //       </s.BubbleReplyText>
-    //     </s.BubbleReplyContainer>
-    //   ))}
-    // </s.Wrapper>
-
     <s.Wrapper>
       <s.IconLayout>
         <s.ButtonDesign onClick={goBackBtn}>
@@ -93,14 +53,22 @@ function ReplyScreen({ day, question }: ReplyScreenProps) {
         </s.ButtonDesign>
       </s.IconLayout>
 
+      {/* Today's Question */}
       <s.BubbleContainer>
-        <s.BubbleText>{questionText}</s.BubbleText>
+        <s.BubbleText>{questionData?.todayQuestion}</s.BubbleText>
         <s.BubbleImage />
       </s.BubbleContainer>
-      <s.BubbleReplyContainer>
-        <s.BubbleReplyImage />
-        <s.BubbleReplyText>{text}</s.BubbleReplyText>
-      </s.BubbleReplyContainer>
+
+      {/* Replies */}
+      {questionData?.replies.map((reply, index) => (
+        <s.BubbleReplyContainer key={index}>
+          <s.BubbleReplyImage />
+          <s.BubbleReplyText>
+            <h2>{reply.senderName}</h2>
+            <p>{reply.replyContent}</p>
+          </s.BubbleReplyText>
+        </s.BubbleReplyContainer>
+      ))}
     </s.Wrapper>
   );
 }

@@ -6,20 +6,6 @@ import { useDispatch } from "react-redux";
 import { setUserInfo } from "src/components/Redux/Slices/userInfoSlice";
 //import ErrorModal from "src/components/ErrorModal/ErrorModal";
 
-interface UserInfoResponse {
-  requireInfo: string; //소셜 로그인을 해서 회원가입이 되어있는지 확인. 그래서 홈으로 넘길지, 추가정보 입력 페이지로 넘길지 판단 하기 위해 받는 값
-
-  userId: string;
-
-  userName: string;
-  enlistmentYear: string;
-  enlistmentMonth: string;
-  enlistmentDay: string;
-  completionYear: string;
-  completionMonth: string;
-  completionDay: string;
-}
-
 function KakaoCallback() {
   const dispatch = useDispatch();
   const location = useLocation();
@@ -32,7 +18,7 @@ function KakaoCallback() {
     try {
       // 카카오로부터 받아온 code를 서버에 전달하여 카카오로 회원가입 & 로그인한다
       const response = await axios.get(
-        `http://localhost:8080/api/oauth/login/kakao?code=${code}`
+        `http://15.164.185.178.:8080/api/oauth/login/kakao?code=${code}`
       );
       if (response.status === 200) {
         const accessToken = response.headers["authorization"];
@@ -50,8 +36,8 @@ function KakaoCallback() {
         console.log("모든 토큰 : ", response.headers);
         console.log("데이터 : ", response.data);
         //console.log(response.headers.accessToken);
-
-        if (response.data.requireInfo == "false") {
+        console.log(response.data.requireInfo);
+        if (response.data.requireInfo == false) {
           dispatch(
             setUserInfo({
               userName: response.data.userName,
@@ -63,10 +49,11 @@ function KakaoCallback() {
               completionday: response.data.completionDay,
             })
           );
+          localStorage.setItem("userId", response.data.userId);
           navigate(`/home/${response.data.userId}`, { replace: true }); // 인가 코드 제거 및 /OwnerHome/${email}로 리다이렉트
-        } else if (response.data.requireInfo == "true") {
-          console.log(response.data.userId);
-          navigate(`/moreinfo/${response.data.userId}`); // 인가 코드 제거 및 /OwnerHome/${email}로 리다이렉트
+        } else if (response.data.requireInfo == true) {
+          localStorage.setItem("userId", response.data.userId);
+          navigate("/moreinfo"); // 인가 코드 제거 및 /OwnerHome/${email}로 리다이렉트
         }
       }
     } catch (error: unknown) {

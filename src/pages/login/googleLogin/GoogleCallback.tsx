@@ -5,18 +5,6 @@ import { s } from "./style";
 import { useDispatch } from "react-redux";
 import { setUserInfo } from "src/components/Redux/Slices/userInfoSlice";
 //import ErrorModal from "src/components/ErrorModal/ErrorModal";
-interface UserInfoResponse {
-  requireInfo: string; //소셜 로그인을 해서 회원가입이 되어있는지 확인. 그래서 홈으로 넘길지, 추가정보 입력 페이지로 넘길지 판단 하기 위해 받는 값
-  userId: string;
-
-  userName: string;
-  enlistmentYear: string;
-  enlistmentMonth: string;
-  enlistmentDay: string;
-  completionYear: string;
-  completionMonth: string;
-  completionDay: string;
-}
 
 function GoogleCallback() {
   const dispatch = useDispatch();
@@ -48,7 +36,7 @@ function GoogleCallback() {
         console.log("refresh : ", refreshToken);
         console.log("모든 토큰 : ", response.headers);
         console.log("데이터 : ", response.data);
-        if (response.data.requireInfo == "false") {
+        if (response.data.requireInfo == false) {
           dispatch(
             setUserInfo({
               userName: response.data.userName,
@@ -60,6 +48,11 @@ function GoogleCallback() {
               completionday: response.data.completionDay,
             })
           );
+          localStorage.setItem("userId", response.data.userId);
+          navigate(`/home/${response.data.userId}`, { replace: true });
+        } else if (response.data.requireInfo == true) {
+          localStorage.setItem("userId", response.data.userId);
+          navigate("/moreinfo"); // 인가 코드 제거 및 /OwnerHome/${email}로 리다이렉트
         }
       }
     } catch (error: unknown) {

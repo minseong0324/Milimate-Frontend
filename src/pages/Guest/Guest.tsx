@@ -82,7 +82,7 @@ function Guest() {
         }
       }
     };
-    // fetchUserInfo();
+    fetchUserInfo();
   }, [userId]);
 
   // 서비스 설명 함수

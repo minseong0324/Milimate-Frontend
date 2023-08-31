@@ -4,23 +4,24 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import ModalBasic from "src/components/SimpleModal/SimpleModal";
 import { useToken } from "src/contexts/TokenProvider/TokenProvider";
+import { useSelector } from "react-redux";
+import { RootState } from "src/components/Redux/store";
 function MainScreen() {
   interface ResponseData {
     userName: string;
     year: number;
     month: number;
     day: number;
-    nowData: number;
+    nowDate: number;
     endDate: number;
     todayQuestion: string;
     isInsertedEndDate: boolean;
   }
-  const accessToken = useToken();
-
+  const userInfo = useSelector((state: RootState) => state.userInfo);
   const navigate = useNavigate();
   const handleCopyClipBoard = async () => {
-    const userId = localStorage.getItem("userId");
-    const linkToShare = `http://localhost:3000/api/guest/${userId}`;
+    const userId = await localStorage.getItem("userId");
+    const linkToShare = `http://15.164.185.178:8080/api/guest/${userId}`;
 
     try {
       await navigator.clipboard.writeText(linkToShare);
@@ -48,16 +49,20 @@ function MainScreen() {
   const location = useLocation();
   useEffect(() => {
     const fetchData = async () => {
+      const accessToken = await localStorage.getItem("accessToken");
+
       const userId = await localStorage.getItem("userId");
+      console.log("유저아이디!@!!!u", userId);
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/user/${userId}/home`,
+          `http://15.164.185.178:8080/api/user/${userId}/home`,
           {
             headers: {
               authorization: `${accessToken}`,
             },
           }
         );
+        console.log(response);
         const responseData: ResponseData = {
           ...response.data,
           year: Number(response.data.year),
@@ -65,14 +70,20 @@ function MainScreen() {
           day: Number(response.data.day),
           nowDate: Number(response.data.nowDate),
           endDate: Number(response.data.endDate),
+          isInsertedEndDate: response.data.insertedEndDate,
         };
+
         setData(responseData); // 형변를환된 응답 데이터 상태에 할당
+        console.log("출력", response.data.todayQuestion);
+        console.log("true false", response.data.insertedEndDate);
+        console.log("endDate", response.data.endDate);
+        console.log(data?.userName);
       } catch (e) {
         console.log(e);
       }
     };
-    //fetchData();
-  }, [accessToken]);
+    fetchData();
+  }, []);
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -81,8 +92,6 @@ function MainScreen() {
     setModalOpen(true);
   };
 
-  const [tmpBool, setTempBool] = useState(false);
-  const [tmpReply, setTmpReply] = useState(1);
   const questionClick = (day: string, question: string) => {
     console.log("이벤트");
     navigate("/replyscreen", { state: { day, question } });
@@ -116,17 +125,18 @@ function MainScreen() {
               }}
             ></s.tmpCharImg>
             <s.MainTextWrapper>
-              <s.MainNameText>훈련병 김건휘</s.MainNameText>
-              <s.MainEnlistmentText>입대일 : 2020. 05. 18</s.MainEnlistmentText>
+              <s.MainNameText>훈련병 {userInfo.userName}</s.MainNameText>
+              <s.MainEnlistmentText>
+                입대일 : {userInfo.enlistmentYear}. {userInfo.enlistmentMonth}.{" "}
+                {userInfo.enlistmentday}
+              </s.MainEnlistmentText>
             </s.MainTextWrapper>
           </s.ProfileWrapper>
 
           <s.ImageContainer>
-            <s.TodayQuestionBtn>
-              "입대전 저는 어떤 사람이었나요?"
-            </s.TodayQuestionBtn>
+            <s.TodayQuestionBtn>{data?.todayQuestion}</s.TodayQuestionBtn>
 
-            {tmpReply > 1 ? (
+            {data && data.nowDate > 1 ? (
               <s.CheckReplyBtn>"어제의 답변 확인"</s.CheckReplyBtn>
             ) : (
               <s.NoneReplText>아직은 답변이 없습니다.</s.NoneReplText>
@@ -139,8 +149,8 @@ function MainScreen() {
               "공유하기"
             </s.ShareQuestion>
 
-            {tmpBool == true ? (
-              <s.MyCompletion>"수료일 D-30"</s.MyCompletion>
+            {data && data.isInsertedEndDate ? (
+              <s.MyCompletion>수료일 D-{data.endDate}</s.MyCompletion>
             ) : (
               <s.NeedAddCompletion
                 onClick={() =>

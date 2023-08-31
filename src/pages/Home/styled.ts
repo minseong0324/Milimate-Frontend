@@ -90,8 +90,9 @@ const CabinetImg = styled.img.attrs({
 
 const TodayQuestionBtn = styled.h2`
   position: absolute;
-  top: 55px; // 이미지의 상단에서 10px 아래에 위치
-  left: 45px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
+  padding: 0px 20px 0px 28px;
+  top: 24px; // 이미지의 상단에서 10px 아래에 위치
+
   z-index: 1; // 이 부분 추가
 `;
 const CheckReplyBtn = styled.button`
@@ -121,9 +122,10 @@ const ShareQuestion = styled.button`
 `;
 const MyCompletion = styled.p`
   position: absolute;
-  top: 530px; // 이미지의 상단에서 10px 아래에 위치
-  left: 260px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
+  top: 540px; // 이미지의 상단에서 10px 아래에 위치
+  left: 250px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
   z-index: 5; // 이 부분 추가
+  font-size: 24px;
 `;
 const NeedAddCompletion = styled.button`
   position: absolute;

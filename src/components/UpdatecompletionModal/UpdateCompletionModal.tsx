@@ -17,7 +17,7 @@ interface ResponseData {
 }
 function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
   const dispatch = useDispatch();
-  const accessToken = useToken();
+
   const navigate = useNavigate();
   const modalRef = useRef<HTMLDivElement | null>(null);
   const [completionYear, setcompletionYear] = useState("");
@@ -50,6 +50,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
     };
   }, []);
   const UpdateCompletionBtn = async () => {
+    const accessToken = await localStorage.getItem("accessToken");
     const userId = await localStorage.getItem("userId");
     if (completionYear == "" || completionMonth == "" || completionDay == "") {
       alert("모든 필수 정보를 입력해주세요")!;
@@ -77,6 +78,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
               completionDay: completionDay,
             })
           );
+          closeModal();
         }
       } catch (error: unknown) {
         //에러 일 경우

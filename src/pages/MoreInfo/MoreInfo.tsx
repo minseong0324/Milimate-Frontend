@@ -6,6 +6,7 @@ import ErrorModal from "src/components/ErrorModal/ErrorModal";
 import ModalBasic from "src/components/SimpleModal/SimpleModal";
 import { useDispatch } from "react-redux";
 import { setUserInfo } from "src/components/Redux/Slices/userInfoSlice";
+import { useToken } from "src/contexts/TokenProvider/TokenProvider";
 function MoreInfo() {
   const [userName, setUserName] = useState("");
   const [enlistmentYear, setEnlistmentYear] = useState("");
@@ -23,39 +24,162 @@ function MoreInfo() {
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
   const [numericmodalOpen, setNumericModalOpen] = useState(false);
-  const handleMoreInfo = async (e: React.FormEvent<HTMLFormElement>) => {
+
+  const [modalMessage, setModalMessage] = useState("");
+  const isLeapYear = (year: number) => {
+    return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+  };
+  let finalCompletionYear = completionYear;
+  let finalCompletionMonth = completionMonth;
+  let finalCompletionDay = completionDay;
+  // 각 달의 최대 일 수를 반환하는 함수
+  const getMaxDayOfMonth = (month: number, year: number) => {
+    switch (month) {
+      case 2:
+        return isLeapYear(year) ? 29 : 28;
+      case 4:
+      case 6:
+      case 9:
+      case 11:
+        return 30;
+      default:
+        return 31;
+    }
+  };
+  const handleMoreInfo = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    // Case 3: 입대일과 이름은 필수값이다.
+    if (!userName || !enlistmentYear || !enlistmentMonth || !enlistmentDay) {
+      setModalMessage("필수 정보를 입력해주세요!");
+      return setModalOpen(true);
+    }
+
+    // Case 2: 입대일과 수료일을 입력하는 모든 값들은 정수여야 한다.
+    if (
+      !isNumeric(enlistmentYear) ||
+      !isNumeric(enlistmentMonth) ||
+      !isNumeric(enlistmentDay) ||
+      (completionYear && !isNumeric(completionYear)) ||
+      (completionMonth && !isNumeric(completionMonth)) ||
+      (completionDay && !isNumeric(completionDay))
+    ) {
+      setModalMessage("날짜를 숫자로 입력해주세요!");
+      return setModalOpen(true);
+    }
+
+    // Case 4: 입대일의 달과 수료일의 달은 1 ~ 12의 값들을 가지고 있어야 한다.
+    if (
+      parseInt(enlistmentMonth) < 1 ||
+      parseInt(enlistmentMonth) > 12 ||
+      (completionMonth &&
+        (parseInt(completionMonth) < 1 || parseInt(completionMonth) > 12))
+    ) {
+      setModalMessage("월은 1 ~ 12 사이의 값이어야 합니다!");
+      return setModalOpen(true);
+    }
+
+    // Case 1: 입대일은 수료일보다 미래일 수 없다.
+    const enlistDate = new Date(
+      parseInt(enlistmentYear),
+      parseInt(enlistmentMonth) - 1,
+      parseInt(enlistmentDay)
+    );
+    const completeDate = new Date(
+      parseInt(completionYear),
+      parseInt(completionMonth) - 1,
+      parseInt(completionDay)
+    );
+
+    if (completeDate < enlistDate) {
+      setModalMessage("입대일은 수료일보다 미래일 수 없습니다!");
+      return setModalOpen(true);
+    }
+
+    // Case 5: 수료일은 필수값이 아니기 때문에 입력하는 칸 3개 중에서 하나라도 잘못하면 서버한테 completionYear, completionMonth, completionDay를 전부 "0"으로 전송한다.
+    if (
+      !completionYear ||
+      !completionMonth ||
+      !completionDay ||
+      !isNumeric(completionYear) ||
+      !isNumeric(completionMonth) ||
+      (completionDay && !isNumeric(completionDay)) || // completionDay가 있을 때만 숫자인지 확인
+      parseInt(completionMonth) < 1 ||
+      parseInt(completionMonth) > 12 ||
+      (completionDay &&
+        parseInt(completionDay) >
+          getMaxDayOfMonth(parseInt(completionMonth), parseInt(completionYear))) // completionDay가 있을 때만 해당 월의 최대 일 수를 초과하는지 확인
+    ) {
+      setcompletionYear("0");
+      setcompletionMonth("0");
+      setcompletionDay("0");
+      finalCompletionYear = "0";
+      finalCompletionMonth = "0";
+      finalCompletionDay = "0";
+    }
+
+    const today = new Date();
+    console.log("수료일", completeDate);
+    console.log("오늘 날짜", today);
+    if (completeDate <= today) {
+      setModalMessage("수료일은 현재 날짜보다 미래여야 합니다!");
+      return setModalOpen(true);
+    }
+
+    const enlistmentDayInt = parseInt(enlistmentDay);
+    const completionDayInt = parseInt(completionDay);
+
+    if (
+      enlistmentDayInt >
+        getMaxDayOfMonth(parseInt(enlistmentMonth), parseInt(enlistmentYear)) ||
+      completionDayInt >
+        getMaxDayOfMonth(parseInt(completionMonth), parseInt(completionYear))
+    ) {
+      setModalMessage("입력한 날짜가 해당 달의 최대 일 수를 초과하였습니다!");
+      return setModalOpen(true);
+    }
     const userId = await localStorage.getItem("userId");
+    const accessToken = await localStorage.getItem("accessToken");
     // 회원가입 API 요청
     try {
+      console.log("유저 아이디", userId);
+      console.log("토큰!! ", accessToken);
+      console.log(completionYear);
+      console.log(completionMonth);
+      console.log(completionDay);
       const response = await axios.post(
-        `http://localhost:8080/api/user/${userId}/moreInfo`,
+        `http://15.164.185.178:8080/api/user/${userId}/moreInfo`,
         {
           userName,
           enlistmentYear,
           enlistmentMonth,
           enlistmentDay,
-          completionYear,
-          completionMonth,
-          completionDay,
+          completionYear: finalCompletionYear,
+          completionMonth: finalCompletionMonth,
+          completionDay: finalCompletionDay,
+        },
+        {
+          headers: {
+            authorization: `${accessToken}`,
+          },
         }
       );
 
       // 추가 정보 입력한 후 회원가입 성공, status 200일 때
       if (response.status === 200) {
         alert("회원가입에 성공하였습니다!");
+        console.log("회원가입 응답 데이터", response);
         dispatch(
           setUserInfo({
             userName: userName,
             enlistmentYear: enlistmentYear,
             enlistmentMonth: enlistmentMonth,
             enlistmentday: enlistmentDay,
-            completionYear: enlistmentYear,
+            completionYear: completionYear,
             completionMonth: completionMonth,
             completionday: completionDay,
           })
         );
-        navigate("/showcharacter", { state: { userName } });
+        navigate("/showcharacter");
       }
     } catch (error: unknown) {
       //에러 일 경우
@@ -85,27 +209,7 @@ function MoreInfo() {
   const isNumeric = (value: string) => {
     return /^\d+$/.test(value);
   };
-  const exceptionInfo = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (
-      userName == "" ||
-      enlistmentYear == "" ||
-      enlistmentMonth == "" ||
-      enlistmentDay == ""
-    ) {
-      return setModalOpen(true); // 모달창 띄우기
-    }
-    if (
-      !isNumeric(enlistmentYear) ||
-      !isNumeric(enlistmentMonth) ||
-      !isNumeric(enlistmentDay) ||
-      !isNumeric(completionYear) ||
-      !isNumeric(completionMonth) ||
-      !isNumeric(completionDay)
-    ) {
-      return setNumericModalOpen(true);
-    }
-  };
+  const exceptionInfo = (e: React.FormEvent<HTMLFormElement>) => {};
   const handleErrorModalClose = () => {
     setErrorModalOpen(false);
   };
@@ -114,7 +218,7 @@ function MoreInfo() {
     <s.BackgroundContainer>
       <s.Wrapper>
         <s.Title>추가정보</s.Title>
-        <s.MoreInfoForm onSubmit={exceptionInfo}>
+        <s.MoreInfoForm>
           <s.InputContainer>
             <s.TextsStyle>이름</s.TextsStyle>
             <s.MoreInfoInput
@@ -179,7 +283,9 @@ function MoreInfo() {
             />
             <s.TextsStyle2>일</s.TextsStyle2>
           </s.InputContainer>
-          <s.Button type="submit">가입하기</s.Button>{" "}
+          <s.Button onClick={handleMoreInfo} type="submit">
+            가입하기
+          </s.Button>{" "}
           {/* onclick 이벤트로 회원가입하기를 누르면 로그인 페이지로 */}
           {/* <GoogleLoginButton buttonImage={GoogleSignUpImage}/> */}
           <s.RequiredInfoText>
@@ -197,10 +303,11 @@ function MoreInfo() {
       {modalOpen && (
         <ModalBasic
           setModalOpen={setModalOpen}
-          contentText="필수정보를 모두 입력해주세요!"
+          contentText={modalMessage}
           modalType={0}
         />
       )}
+
       {numericmodalOpen && (
         <ModalBasic
           setModalOpen={setNumericModalOpen}

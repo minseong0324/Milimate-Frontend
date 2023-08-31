@@ -16,7 +16,7 @@ function NaverCallback() {
     try {
       // 네이버로부터 받아온 code를 서버에 전달하여 네이버로 회원가입 & 로그인한다
       const response = await axios.get(
-        `http://localhost:8080/api/oauth/login/naver?code=${code}`
+        `http://15.164.185.178:8080/api/oauth/login/naver?code=${code}`
       );
       if (response.status === 200) {
         const accessToken = response.headers["authorization"];
@@ -33,7 +33,7 @@ function NaverCallback() {
         console.log("refresh : ", refreshToken);
         console.log("모든 토큰 : ", response.headers);
         console.log("데이터 : ", response.data);
-        if (response.data.requireInfo == "false") {
+        if (response.data.requireInfo == false) {
           dispatch(
             setUserInfo({
               userName: response.data.userName,
@@ -45,6 +45,11 @@ function NaverCallback() {
               completionday: response.data.completionDay,
             })
           );
+          localStorage.setItem("userId", response.data.userId);
+          navigate(`/home/${response.data.userId}`, { replace: true });
+        } else if (response.data.requireInfo == true) {
+          localStorage.setItem("userId", response.data.userId);
+          navigate("/moreinfo"); // 인가 코드 제거 및 /OwnerHome/${email}로 리다이렉트
         }
       }
     } catch (error: unknown) {
