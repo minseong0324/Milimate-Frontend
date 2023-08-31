@@ -111,6 +111,7 @@ function MyPage() {
       {updateEnlistModalOpen && (
         <UpdateEnlistmentModalBasic setModalOpen={setUpdateEnlistModalOpen} />
       )}
+
       {editUserNameModalOpen && (
         <EditUserNameModalBasic setModalOpen={setEditUserNameModalOpen} />
       )}
