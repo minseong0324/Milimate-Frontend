@@ -10,6 +10,7 @@ import EditUserNameModalBasic from "src/components/EditUserName/EditUserNameModa
 import LogoutModalBasic from "src/components/LogoutModal/LogoutModal";
 import { useSelector } from "react-redux";
 import { RootState } from "src/components/Redux/store";
+import UpdateEnlistmentModalBasic from "src/components/UpdateEnlistModal/UpdateEnlistmentModal";
 
 type UserNameProps = {
   userName?: string;
@@ -30,6 +31,8 @@ function MyPage() {
   const [editUserNameModalOpen, setEditUserNameModalOpen] = useState(false);
   const [userLogoutModalOpen, setUserLogoutModalOpen] = useState(false);
 
+  const [updateEnlistModalOpen, setUpdateEnlistModalOpen] = useState(false);
+
   const handleUnLoggedInModalClose = () => {
     setErrorModalOpen(false);
     navigate(`/guest/${userId}`);
@@ -47,6 +50,9 @@ function MyPage() {
   };
   const updateCompletionBtn = () => {
     setUpdateCompletionModalOpen(true);
+  };
+  const updateEnlistmentBtn = () => {
+    setUpdateEnlistModalOpen(true);
   };
   const editUserNameModalBtn = () => {
     setEditUserNameModalOpen(true);
@@ -75,9 +81,13 @@ function MyPage() {
         <s.ButtonStyle onClick={updateCompletionBtn}>
           • 수료일 수정하기
         </s.ButtonStyle>
+        <s.ButtonStyle onClick={updateEnlistmentBtn}>
+          • 입대일 수정하기
+        </s.ButtonStyle>
         <s.ButtonStyle onClick={editUserNameModalBtn}>
           • 이름 변경하기
         </s.ButtonStyle>
+
         <s.ButtonStyle onClick={userLogouModalOpenBtn}>
           • 로그아웃
         </s.ButtonStyle>
@@ -97,6 +107,9 @@ function MyPage() {
         <UpdateCompletionModalBasic
           setModalOpen={setUpdateCompletionModalOpen}
         />
+      )}
+      {updateEnlistModalOpen && (
+        <UpdateEnlistmentModalBasic setModalOpen={setUpdateEnlistModalOpen} />
       )}
       {editUserNameModalOpen && (
         <EditUserNameModalBasic setModalOpen={setEditUserNameModalOpen} />

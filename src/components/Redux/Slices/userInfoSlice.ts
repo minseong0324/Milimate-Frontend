@@ -39,6 +39,20 @@ const userInfoSlice = createSlice({
       state.completionMonth = action.payload.completionMonth;
       state.completionday = action.payload.completionDay;
     },
+
+    updateEnlistmentDate: (
+      state,
+      action: PayloadAction<{
+        enlistmentYear: string;
+        enlistmentMonth: string;
+        enlistmentDay: string;
+      }>
+    ) => {
+      state.enlistmentYear = action.payload.enlistmentYear;
+      state.enlistmentMonth = action.payload.enlistmentMonth;
+      state.enlistmentday = action.payload.enlistmentDay;
+    },
+
     updateUserName: (
       state,
       action: PayloadAction<{
@@ -49,6 +63,10 @@ const userInfoSlice = createSlice({
     },
   },
 });
-export const { setUserInfo, updateCompletionDate, updateUserName } =
-  userInfoSlice.actions;
+export const {
+  setUserInfo,
+  updateCompletionDate,
+  updateEnlistmentDate,
+  updateUserName,
+} = userInfoSlice.actions;
 export default userInfoSlice.reducer;
