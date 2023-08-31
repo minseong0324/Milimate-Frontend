@@ -8,7 +8,6 @@ import DeleteModalBasic from "src/components/DeleteModalAcc/DeleteModal";
 import UpdateCompletionModalBasic from "src/components/UpdatecompletionModal/UpdateCompletionModal";
 import EditUserNameModalBasic from "src/components/EditUserName/EditUserNameModal";
 import LogoutModalBasic from "src/components/LogoutModal/LogoutModal";
-import { useToken } from "src/contexts/TokenProvider/TokenProvider";
 import { useSelector } from "react-redux";
 import { RootState } from "src/components/Redux/store";
 
@@ -30,7 +29,6 @@ function MyPage() {
     useState(false);
   const [editUserNameModalOpen, setEditUserNameModalOpen] = useState(false);
   const [userLogoutModalOpen, setUserLogoutModalOpen] = useState(false);
-  const accessToken = useToken();
 
   const handleUnLoggedInModalClose = () => {
     setErrorModalOpen(false);

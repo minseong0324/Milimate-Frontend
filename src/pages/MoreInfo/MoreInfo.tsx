@@ -6,8 +6,9 @@ import ErrorModal from "src/components/ErrorModal/ErrorModal";
 import ModalBasic from "src/components/SimpleModal/SimpleModal";
 import { useDispatch } from "react-redux";
 import { setUserInfo } from "src/components/Redux/Slices/userInfoSlice";
-import { useToken } from "src/contexts/TokenProvider/TokenProvider";
+import {useToken}  from '../../contexts/TokenProvider/TokenProvider'
 function MoreInfo() {
+  const { accessToken, refreshToken } = useToken();
   const [userName, setUserName] = useState("");
   const [enlistmentYear, setEnlistmentYear] = useState("");
   const [enlistmentMonth, setEnlistmentMonth] = useState("");
@@ -47,6 +48,7 @@ function MoreInfo() {
     }
   };
   const handleMoreInfo = async (e: React.MouseEvent<HTMLButtonElement>) => {
+
     e.preventDefault();
     // Case 3: 입대일과 이름은 필수값이다.
     if (!userName || !enlistmentYear || !enlistmentMonth || !enlistmentDay) {
@@ -137,8 +139,7 @@ function MoreInfo() {
       setModalMessage("입력한 날짜가 해당 달의 최대 일 수를 초과하였습니다!");
       return setModalOpen(true);
     }
-    const userId = await localStorage.getItem("userId");
-    const accessToken = await localStorage.getItem("accessToken");
+    const userId = localStorage.getItem("userId");
     // 회원가입 API 요청
     try {
       console.log("유저 아이디", userId);

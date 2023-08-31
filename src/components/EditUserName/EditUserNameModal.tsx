@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { s } from "./style";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
-import { useToken } from "src/contexts/TokenProvider/TokenProvider";
+import {useToken}  from '../../contexts/TokenProvider/TokenProvider'
 import { useDispatch, useSelector } from "react-redux";
 import { updateUserName } from "../Redux/Slices/userInfoSlice";
 import { RootState } from "../Redux/store";
@@ -16,6 +16,7 @@ interface ResponseData {
   completionDay: string;
 }
 function EditUserNameModalBasic({ setModalOpen }: PropsType) {
+  const { accessToken, refreshToken } = useToken();
   const dispatch = useDispatch();
   const userInfo = useSelector((state: RootState) => state.userInfo);
   const navigate = useNavigate();
@@ -28,7 +29,6 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
   const closeModal = () => {
     setModalOpen(false);
   };
-  const accessToken = useToken();
   // 모달 내부 클릭 시 이벤트 버블링 중지
   const stopPropagation = (e: React.MouseEvent) => {
     e.stopPropagation();

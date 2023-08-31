@@ -36,6 +36,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import store, { persistor } from "../src/components/Redux/store";
+import TokenProvider from './contexts/TokenProvider/TokenProvider';
 const queryClient = new QueryClient();
 // function ProtectedRoutes() {
 //   const navigate = useNavigate();
@@ -80,6 +81,8 @@ function App() {
         <PersistGate loading={null} persistor={persistor}>
           <QueryClientProvider client={queryClient}>
             <Router>
+            <TokenProvider>
+
               {/* <ProtectedRoutes /> */}
               <Routes>
                 <Route path="/" element={<LoginEntry />} />
@@ -118,6 +121,8 @@ function App() {
                 <Route path="/send/:userId" element={<AddReply />} />
                 {/* <Route path="/mypage/:userId" element={<MyPage />} /> */}
               </Routes>
+              </TokenProvider>
+
             </Router>
           </QueryClientProvider>
         </PersistGate>

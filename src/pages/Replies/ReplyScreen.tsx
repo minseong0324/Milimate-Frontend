@@ -3,7 +3,7 @@ import { s } from "./style";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useToken } from "src/contexts/TokenProvider/TokenProvider";
+import {useToken}  from '../../contexts/TokenProvider/TokenProvider'
 type ReplyScreenProps = {
   day: string;
   question: string;
@@ -21,7 +21,7 @@ interface QuestionData {
 function ReplyScreen({ day, question }: ReplyScreenProps) {
   const { state } = useLocation();
   const [questionData, setQuestionData] = useState<QuestionData | null>(null);
-  const { accessToken } = useToken(); // useToken hook을 사용하여 accessToken에 접근
+  const { accessToken, refreshToken } = useToken();
 
   useEffect(() => {
     const fetchData = async () => {

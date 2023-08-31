@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { s } from "./style";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
-import { useToken } from "src/contexts/TokenProvider/TokenProvider";
+import {useToken}  from '../../contexts/TokenProvider/TokenProvider'
 
 interface PropsType {
   setModalOpen: (open: boolean) => void;
@@ -10,6 +10,7 @@ interface PropsType {
 }
 
 function DeleteModalBasic({ setModalOpen, contentText }: PropsType) {
+  const { accessToken, refreshToken } = useToken();
   const navigate = useNavigate();
   const modalRef = useRef<HTMLDivElement | null>(null);
 
@@ -38,7 +39,6 @@ function DeleteModalBasic({ setModalOpen, contentText }: PropsType) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  const accessToken = useToken();
   const deleteAccount = async () => {
     const userId = await localStorage.getItem("userId");
     try {

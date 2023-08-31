@@ -2,10 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { s } from "./style";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
-import { useToken } from "src/contexts/TokenProvider/TokenProvider";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCompletionDate } from "../Redux/Slices/userInfoSlice";
 import { RootState } from "../Redux/store";
+import {useToken}  from '../../contexts/TokenProvider/TokenProvider'
+
 interface PropsType {
   setModalOpen: (open: boolean) => void;
 }
@@ -16,6 +17,7 @@ interface ResponseData {
   completionDay: string;
 }
 function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
+  const { accessToken, refreshToken } = useToken();
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -50,7 +52,6 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
     };
   }, []);
   const UpdateCompletionBtn = async () => {
-    const accessToken = await localStorage.getItem("accessToken");
     const userId = await localStorage.getItem("userId");
     if (completionYear == "" || completionMonth == "" || completionDay == "") {
       alert("모든 필수 정보를 입력해주세요")!;
