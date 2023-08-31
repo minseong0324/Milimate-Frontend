@@ -89,7 +89,7 @@ function App() {
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/moreinfo" element={<MoreInfo />} />
                 <Route path="/guest/:userId" element={<Guest />} />
-                <Route path="/home:userId" element={<MainScreen />} />
+                <Route path="/home/:userId" element={<MainScreen />} />
                 <Route path="/mypage" element={<MyPage />} />
                 <Route
                   path="/replyscreen"
@@ -104,11 +104,11 @@ function App() {
 
                 {/* <Route path="/select-character-tree/:userId" element={<SelectTreeCharacter />} /> */}
 
-                <Route path="/api/kakao/callback" element={<KakaoCallback />} />
+                <Route path="/kakao/callback" element={<KakaoCallback />} />
 
-                <Route path="/api/naver/callback" element={<NaverCallback />} />
+                <Route path="/naver/callback" element={<NaverCallback />} />
                 <Route
-                  path="/api/google/callback"
+                  path="/google/callback"
                   element={<GoogleCallback />}
                 />
                 <Route
