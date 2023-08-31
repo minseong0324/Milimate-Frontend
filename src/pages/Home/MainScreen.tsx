@@ -19,7 +19,7 @@ function MainScreen() {
   const navigate = useNavigate();
   const handleCopyClipBoard = async () => {
     const userId = localStorage.getItem("userId");
-    const linkToShare = `http://localhost:3000/api/guest/${userId}`;
+    const linkToShare = `http://localhost:3000/guest/${userId}`;
 
     try {
       await navigator.clipboard.writeText(linkToShare);
