@@ -1,10 +1,10 @@
 // styles.ts
 import { createGlobalStyle } from "styled-components";
-
+import EF_jejudoldam from "./static/font/EF_jejudoldam.ttf"
 export const GlobalStyle = createGlobalStyle`
    @font-face {
     font-family: 'EF_jejudoldam';
-    src: url('./static/font/EF_jejudoldam.ttf') format('ttf');
+    src: url(${EF_jejudoldam}) format('truetype');
     font-weight: normal;
     font-style: normal;
     }
