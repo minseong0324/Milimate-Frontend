@@ -82,6 +82,7 @@ function MainScreen() {
 
   const [tmpBool, setTempBool] = useState(false);
   const [tmpReply, setTmpReply] = useState(1);
+  
   const questionClick = (day: string, question: string) => {
     console.log("이벤트");
     navigate("/replyscreen", { state: { day, question } });

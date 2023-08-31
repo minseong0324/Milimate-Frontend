@@ -11,7 +11,11 @@ export declare const setUserInfo: import("@reduxjs/toolkit").ActionCreatorWithPa
     completionYear: string;
     completionMonth: string;
     completionDay: string;
-}, "userInfo/updateCompletionDate">, updateUserName: import("@reduxjs/toolkit").ActionCreatorWithPayload<{
+}, "userInfo/updateCompletionDate">, updateEnlistmentDate: import("@reduxjs/toolkit").ActionCreatorWithPayload<{
+    enlistmentYear: string;
+    enlistmentMonth: string;
+    enlistmentDay: string;
+}, "userInfo/updateEnlistmentDate">, updateUserName: import("@reduxjs/toolkit").ActionCreatorWithPayload<{
     userName: string;
 }, "userInfo/updateUserName">;
 declare const _default: import("redux").Reducer<UserInfoState>;
