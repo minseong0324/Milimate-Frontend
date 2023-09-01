@@ -31,7 +31,7 @@ const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({
           ? credentialResponse.credential
           : credentialResponse; //credential, 즉 id토큰을 뽑아냄. 이를 디코딩 하면 유저의 정보가 모두 나옴.
       const response = await axios.post(
-        `http://localhost:8080/api/oauth/login/google`,
+        `https://api.gomuring.com:8080/api/oauth/login/google`,
         credential
       );
       if (response.status === 200) {
@@ -48,7 +48,7 @@ const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({
         console.log(response.headers);
         try {
           const userResponse = await axios.get(
-            `http://localhost:8080/api/users`,
+            `https://api.gomuring.com:8080/api/users`,
             {
               headers: {
                 authorization: `${accessToken}`,
@@ -153,7 +153,7 @@ const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({
           </s.HiddenDiv>
         </s.CustomButton>
       </s.ButtonWrapper>
-      {/* 
+      {/*
       <ErrorModal
         isOpen={isErrorModalOpen}
         onClose={() => setErrorModalOpen(false)}

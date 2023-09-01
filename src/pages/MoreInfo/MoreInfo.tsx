@@ -147,7 +147,7 @@ function MoreInfo() {
       console.log(completionMonth);
       console.log(completionDay);
       const response = await axios.post(
-        `http://gomuring.com:8080/api/user/${userId}/moreInfo`,
+        `https://api.gomuring.com:8080/api/user/${userId}/moreInfo`,
         {
           userName,
           enlistmentYear,

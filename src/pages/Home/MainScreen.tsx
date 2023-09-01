@@ -19,7 +19,7 @@ function MainScreen() {
   const navigate = useNavigate();
   const handleCopyClipBoard = async () => {
     const userId = localStorage.getItem("userId");
-    const linkToShare = `http://localhost:3000/guest/${userId}`;
+    const linkToShare = `https://api.gomuring.com:8080/guest/${userId}`;
 
     try {
       await navigator.clipboard.writeText(linkToShare);
@@ -50,7 +50,7 @@ function MainScreen() {
       const userId = await localStorage.getItem("userId");
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/user/${userId}/home`,
+          `https://api.gomuring.com:8080/api/user/${userId}/home`,
           {
             headers: {
               authorization: `${accessToken}`,
@@ -82,7 +82,7 @@ function MainScreen() {
 
   const [tmpBool, setTempBool] = useState(false);
   const [tmpReply, setTmpReply] = useState(1);
-  
+
   const questionClick = (day: string, question: string) => {
     console.log("이벤트");
     navigate("/replyscreen", { state: { day, question } });

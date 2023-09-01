@@ -43,7 +43,7 @@ function DeleteModalBasic({ setModalOpen, contentText }: PropsType) {
     const userId = await localStorage.getItem("userId");
     try {
       const response = await axios.delete(
-        `http://gomuring.com:8080/api/myPage/${userId}/deleteAccount`,
+        `https://api.gomuring.com:8080/api/myPage/${userId}/deleteAccount`,
         {
           headers: {
             authorization: `${accessToken}`,

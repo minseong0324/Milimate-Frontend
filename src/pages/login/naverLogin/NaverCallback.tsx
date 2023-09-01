@@ -16,7 +16,7 @@ function NaverCallback() {
     try {
       // 네이버로부터 받아온 code를 서버에 전달하여 네이버로 회원가입 & 로그인한다
       const response = await axios.get(
-        `http://gomuring.com:8080/api/oauth/login/naver?code=${code}`
+        `https://api.gomuring.com:8080/api/oauth/login/naver?code=${code}`
       );
       if (response.status === 200) {
         const accessToken = response.headers["authorization"];

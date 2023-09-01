@@ -24,7 +24,7 @@ function Guest() {
     try {
       // 백엔드 서버에 GET 요청을 보냅니다.
       const response = await axios.get(
-        `http://gomuring.com:8080/guest/${userId}/reply`
+        `https://api.gomuring.com:8080/guest/${userId}/reply`
       );
 
       // 응답에서 사용자 정보를 추출합니다.

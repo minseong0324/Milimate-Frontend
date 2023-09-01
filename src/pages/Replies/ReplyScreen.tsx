@@ -27,7 +27,7 @@ function ReplyScreen({ day, question }: ReplyScreenProps) {
     const fetchData = async () => {
       const userId = await localStorage.getItem("userId");
       const response = await axios.get(
-        `http://gomuring.com:8080/api/user/${userId}/questionList/${day}`,
+        `https://api.gomuring.com:8080/api/user/${userId}/questionList/${day}`,
         {
           headers: {
             authorization: `${accessToken}`,

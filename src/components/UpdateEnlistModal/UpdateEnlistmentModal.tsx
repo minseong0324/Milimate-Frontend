@@ -137,7 +137,7 @@ function UpdateEnlistmentModalBasic({ setModalOpen }: PropsType) {
     const userId = localStorage.getItem("userId");
     try {
       const response = await axios.put(
-        `http://gomuring.com:8080/api/myPage/${userId}/editCompletion`,
+        `https://api.gomuring.com:8080/api/myPage/${userId}/editCompletion`,
         {
           enlistmentYear: enlistmentYear,
           enlistmentMonth: enlistmentMonth,

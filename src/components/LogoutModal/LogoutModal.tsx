@@ -44,7 +44,7 @@ function LogoutModalBasic({ setModalOpen, contentText }: PropsType) {
 
     try {
       const response = await axios.put(
-        `http://gomuring.com:8080/api/myPage/${userId}/logout`,
+        `https://api.gomuring.com:8080/api/myPage/${userId}/logout`,
         {
           headers: {
             authorization: `${accessToken}`,
