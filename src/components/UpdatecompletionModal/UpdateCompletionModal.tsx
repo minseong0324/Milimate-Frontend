@@ -22,7 +22,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
   const { accessToken, refreshToken } = useToken();
   const dispatch = useDispatch();
   const [modalMessage, setModalMessage] = useState("");
-  const navigate = useNavigate();
+
   const modalRef = useRef<HTMLDivElement | null>(null);
   const [completionYear, setcompletionYear] = useState("");
   const [completionMonth, setcompletionMonth] = useState("");

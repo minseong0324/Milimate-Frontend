@@ -17,7 +17,7 @@ const KakaoLogin: React.FC<KakaoProps> = ({ imageUrl }) => {
 
   // 이미지 클릭 시 네이버 로그인 페이지로 이동
   const handleButtonClick = () => {
-    window.location.href = "http://15.164.185.178:8080/api/oauth/kakao";
+    window.location.href = "http://gomuring.com:8080/api/oauth/kakao";
   };
 
   return (
