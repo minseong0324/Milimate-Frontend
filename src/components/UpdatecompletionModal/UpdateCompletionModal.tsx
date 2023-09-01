@@ -176,7 +176,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
 
     try {
       const response = await axios.put(
-        `http://localhost:8080/api/myPage/${userId}/editCompletion`,
+        `http://gomuring.com:8080/api/myPage/${userId}/editCompletion`,
         {
           completionYear: completionYear,
           completionMonth: completionMonth,
@@ -217,17 +217,17 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
       return null;
     }
   };
-  useEffect(() => {
-    const fetchData = async () => {
-      const userId = localStorage.getItem("userId");
-      const response = await axios.get(
-        `http://localhost:8080/myPage/${userId}/editCompletion`
-      );
-      if (response.status == 200) {
-        setResponseData(response.data);
-      }
-    };
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const userId = localStorage.getItem("userId");
+  //     const response = await axios.get(
+  //       `http://localhost:8080/myPage/${userId}/editCompletion`
+  //     );
+  //     if (response.status == 200) {
+  //       setResponseData(response.data);
+  //     }
+  //   };
+  // }, []);
   const userInfo = useSelector((state: RootState) => state.userInfo);
   return (
     <s.Wrapper onClick={closeModal}>

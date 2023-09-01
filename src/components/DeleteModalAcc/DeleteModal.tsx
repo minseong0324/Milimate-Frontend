@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { s } from "./style";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
-import {useToken}  from '../../contexts/TokenProvider/TokenProvider'
+import { useToken } from "../../contexts/TokenProvider/TokenProvider";
 
 interface PropsType {
   setModalOpen: (open: boolean) => void;
@@ -43,7 +43,7 @@ function DeleteModalBasic({ setModalOpen, contentText }: PropsType) {
     const userId = await localStorage.getItem("userId");
     try {
       const response = await axios.delete(
-        `http://localhost:8080/api/myPage/${userId}/deleteAccount`,
+        `http://gomuring.com:8080/api/myPage/${userId}/deleteAccount`,
         {
           headers: {
             authorization: `${accessToken}`,

@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { s } from "./style";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
-import {useToken}  from '../../contexts/TokenProvider/TokenProvider'
+import { useToken } from "../../contexts/TokenProvider/TokenProvider";
 
 interface PropsType {
   setModalOpen: (open: boolean) => void;
@@ -44,7 +44,7 @@ function LogoutModalBasic({ setModalOpen, contentText }: PropsType) {
 
     try {
       const response = await axios.put(
-        `http://localhost:8080/api/myPage/${userId}/logout`,
+        `http://gomuring.com:8080/api/myPage/${userId}/logout`,
         {
           headers: {
             authorization: `${accessToken}`,

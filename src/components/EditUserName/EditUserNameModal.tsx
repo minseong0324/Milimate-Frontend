@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { s } from "./style";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
-import {useToken}  from '../../contexts/TokenProvider/TokenProvider'
+import { useToken } from "../../contexts/TokenProvider/TokenProvider";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUserName } from "../Redux/Slices/userInfoSlice";
 import { RootState } from "../Redux/store";
@@ -56,7 +56,7 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
     } else {
       try {
         const response = await axios.put(
-          `http://localhost:8080/api/myPage/${userId}/editUserName`,
+          `http://gomuring.com:8080/api/myPage/${userId}/editUserName`,
 
           {
             userName: newUserName,
@@ -94,17 +94,17 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
       }
     }
   };
-  useEffect(() => {
-    const fetchData = async () => {
-      const userId = localStorage.getItem("userId");
-      const response = await axios.get(
-        `http://localhost:8080/api/myPage/${userId}/editCompletion`
-      );
-      if (response.status == 200) {
-        setResponseData(response.data);
-      }
-    };
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const userId = localStorage.getItem("userId");
+  //     const response = await axios.get(
+  //       `http://localhost:8080/api/myPage/${userId}/editCompletion`
+  //     );
+  //     if (response.status == 200) {
+  //       setResponseData(response.data);
+  //     }
+  //   };
+  // }, []);
   return (
     <s.Wrapper onClick={closeModal}>
       <s.ModalBox ref={modalRef} onClick={stopPropagation}>

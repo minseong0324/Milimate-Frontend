@@ -3,7 +3,7 @@ import { s } from "./style";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import {useToken}  from '../../contexts/TokenProvider/TokenProvider'
+import { useToken } from "../../contexts/TokenProvider/TokenProvider";
 type ReplyScreenProps = {
   day: string;
   question: string;
@@ -27,7 +27,7 @@ function ReplyScreen({ day, question }: ReplyScreenProps) {
     const fetchData = async () => {
       const userId = await localStorage.getItem("userId");
       const response = await axios.get(
-        `http://localhost:8080/api/user/${userId}/questionList/${day}`,
+        `http://gomuring.com:8080/api/user/${userId}/questionList/${day}`,
         {
           headers: {
             authorization: `${accessToken}`,

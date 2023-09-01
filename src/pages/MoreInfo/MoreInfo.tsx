@@ -6,7 +6,7 @@ import ErrorModal from "src/components/ErrorModal/ErrorModal";
 import ModalBasic from "src/components/SimpleModal/SimpleModal";
 import { useDispatch } from "react-redux";
 import { setUserInfo } from "src/components/Redux/Slices/userInfoSlice";
-import {useToken}  from '../../contexts/TokenProvider/TokenProvider'
+import { useToken } from "../../contexts/TokenProvider/TokenProvider";
 function MoreInfo() {
   const { accessToken, refreshToken } = useToken();
   const [userName, setUserName] = useState("");
@@ -48,7 +48,6 @@ function MoreInfo() {
     }
   };
   const handleMoreInfo = async (e: React.MouseEvent<HTMLButtonElement>) => {
-
     e.preventDefault();
     // Case 3: 입대일과 이름은 필수값이다.
     if (!userName || !enlistmentYear || !enlistmentMonth || !enlistmentDay) {
@@ -148,7 +147,7 @@ function MoreInfo() {
       console.log(completionMonth);
       console.log(completionDay);
       const response = await axios.post(
-        `http://15.164.185.178:8080/api/user/${userId}/moreInfo`,
+        `http://gomuring.com:8080/api/user/${userId}/moreInfo`,
         {
           userName,
           enlistmentYear,

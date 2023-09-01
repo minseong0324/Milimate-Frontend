@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { s } from "./style";
 import { useNavigate } from "react-router-dom";
-import {useToken}  from '../../contexts/TokenProvider/TokenProvider'
+import { useToken } from "../../contexts/TokenProvider/TokenProvider";
 function QuestionListScreen() {
   interface Question {
     day: string;
@@ -17,7 +17,7 @@ function QuestionListScreen() {
       const userId = await localStorage.getItem("userId");
       try {
         const response = await axios.get<Question[]>(
-          `http://localhost:8080/api/user/${userId}/questionList`,
+          `http://gomuring.com:8080/api/user/${userId}/questionList`,
           {
             headers: {
               authorization: `${accessToken}`,
