@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import SmallBubble from "../../assets/SpeachBubble/QuestionImg.svg";
+import SmallBubble from "../../assets/SpeachBubble/questionImg.svg";
 import RegularBubble from "../../assets/SpeachBubble/ReqularImg.svg";
 
 const Wrapper = styled.div`

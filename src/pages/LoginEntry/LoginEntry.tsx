@@ -7,9 +7,10 @@ function HomeBeforeLogin() {
   return (
     <s.BackgroundContainer>
       <s.CenteredWrapper>
-        <s.Title>My</s.Title>
-        <s.Title>Cabinet</s.Title>
-
+        {/*<s.Title>My</s.Title>
+        <s.Title>Cabinet</s.Title>*/}
+        <s.Title>고무링</s.Title>
+        <s.Title> </s.Title>
         <s.P>5주간 힘든 훈련병을 위해 대답해주세요!</s.P>
 
         <s.ButtonWrapper>
