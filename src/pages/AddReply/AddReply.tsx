@@ -20,7 +20,7 @@ function AddReply() {
 
     try {
       const response = await axios.post(
-        `https://api.gomuring.com:8080/api/guest/${userId}/reply`,
+        `https://api.mili-mate.com/api/guest/${userId}/reply`,
         {
           senderName: formData.sender,
           replyContent: formData.reply,

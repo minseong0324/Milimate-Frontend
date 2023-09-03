@@ -137,7 +137,7 @@ function UpdateEnlistmentModalBasic({ setModalOpen }: PropsType) {
     const userId = localStorage.getItem("userId");
     try {
       const response = await axios.put(
-        `https://api.gomuring.com:8080/api/myPage/${userId}/editCompletion`,
+        `https://api.mili-mate.com/api/myPage/${userId}/editCompletion`,
         {
           enlistmentYear: enlistmentYear,
           enlistmentMonth: enlistmentMonth,
@@ -182,7 +182,7 @@ function UpdateEnlistmentModalBasic({ setModalOpen }: PropsType) {
   //   const fetchData = async () => {
   //     const userId = localStorage.getItem("userId");
   //     const response = await axios.get(
-  //       `http://gomuring.com:8080/myPage/${userId}/editCompletion`
+  //       `http://mili-mate.com:8080/myPage/${userId}/editCompletion`
   //     );
   //     if (response.status == 200) {
   //       setResponseData(response.data);

@@ -17,7 +17,7 @@ function QuestionListScreen() {
       const userId = await localStorage.getItem("userId");
       try {
         const response = await axios.get<Question[]>(
-          `https://api.gomuring.com:8080/api/user/${userId}/questionList`,
+          `https://api.mili-mate.com/api/user/${userId}/questionList`,
           {
             headers: {
               authorization: `${accessToken}`,

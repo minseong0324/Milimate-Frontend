@@ -176,7 +176,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
 
     try {
       const response = await axios.put(
-        `https://api.gomuring.com:8080/api/myPage/${userId}/editCompletion`,
+        `https://api.mili-mate.com/api/myPage/${userId}/editCompletion`,
         {
           completionYear: completionYear,
           completionMonth: completionMonth,

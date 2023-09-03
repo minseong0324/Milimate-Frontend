@@ -32,7 +32,7 @@ function TokenProvider({ children }: TokenProviderProps) {
             const refreshToken = localStorage.getItem('refreshToken');
 
             if (refreshToken) {
-                const response = await axios.post(`https://gomuring.com:8080/api/auth/refresh`,{}, {
+                const response = await axios.post(`https://api.mili-mate.com/api/auth/refresh`,{}, {
                     headers: {
                         'reauthorization': `${refreshToken}`
                     }

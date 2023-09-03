@@ -19,7 +19,7 @@ function GoogleCallback() {
     try {
       // 구글로부터 받아온 code를 서버에 전달하고 구글로 회원가입 & 로그인한다
       const response = await axios.get(
-        `https://api.gomuring.com:8080/api/oauth/login/google?code=${code}`
+        `https://api.mili-mate.com/api/oauth/login/google?code=${code}`
       );
       if (response.status === 200) {
         const accessToken = response.headers["authorization"];

@@ -56,7 +56,7 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
     } else {
       try {
         const response = await axios.put(
-          `https://api.gomuring.com:8080/api/myPage/${userId}/editUserName`,
+          `https://api.mili-mate.com/api/myPage/${userId}/editUserName`,
 
           {
             userName: newUserName,

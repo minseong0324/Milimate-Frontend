@@ -18,7 +18,7 @@ function KakaoCallback() {
     try {
       // 카카오로부터 받아온 code를 서버에 전달하여 카카오로 회원가입 & 로그인한다
       const response = await axios.get(
-        `https://api.gomuring.com:8080/api/oauth/login/kakao?code=${code}`
+        `https://api.mili-mate.com/api/oauth/login/kakao?code=${code}`
       );
       if (response.status === 200) {
         const accessToken = response.headers["authorization"];

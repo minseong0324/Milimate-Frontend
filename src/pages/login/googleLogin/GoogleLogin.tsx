@@ -17,7 +17,7 @@ const KakaoLogin: React.FC<GoogleLoginButtonProps> = ({ buttonImage }) => {
 
   // 이미지 클릭 시 네이버 로그인 페이지로 이동
   const handleButtonClick = () => {
-    window.location.href = "https://api.gomuring.com:8080/api/oauth/google";
+    window.location.href = "https://api.mili-mate.com:/api/oauth/google";
   };
 
   return (

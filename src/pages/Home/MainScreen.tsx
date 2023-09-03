@@ -19,7 +19,7 @@ function MainScreen() {
   const navigate = useNavigate();
   const handleCopyClipBoard = async () => {
     const userId = localStorage.getItem("userId");
-    const linkToShare = `https://api.gomuring.com:8080/guest/${userId}`;
+    const linkToShare = `https://api.mili-mate.com/guest/${userId}`;
 
     try {
       await navigator.clipboard.writeText(linkToShare);
@@ -50,7 +50,7 @@ function MainScreen() {
       const userId = await localStorage.getItem("userId");
       try {
         const response = await axios.get(
-          `https://api.gomuring.com:8080/api/user/${userId}/home`,
+          `https://api.mili-mate.com/api/user/${userId}/home`,
           {
             headers: {
               authorization: `${accessToken}`,
