@@ -6,7 +6,7 @@ import {
   useLocation,
 } from "react-router-dom";
 // import VisitorHome from './pages/home/VisitorHome/VisitorHome';
-// import Home from './pages/home/Home';
+//// import Home from './pages/home/Home';
 // import UserProvider from './contexts/UserProvider/UserProvider';
 import Login from "./pages/login/Login";
 import SignUp from "./pages/SignUp/SignUp";
