@@ -17,7 +17,7 @@ const NaverLogin: React.FC<NaverProps> = ({ imageUrl }) => {
 
   // 이미지 클릭 시 네이버 로그인 페이지로 이동
   const handleButtonClick = () => {
-    window.location.href = "https://mili-mate.com/naver/callback";
+    window.location.href = "https://mili-mate.com/api/oauth/naver";
   };
 
   return (
