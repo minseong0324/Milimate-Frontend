@@ -7,7 +7,7 @@
     "skipLibCheck": true,
     "types": ["vite/client", "node"],
     /* Bundler mode */
-    "moduleResolution": "node", // 변경된 옵션
+    "moduleResolution": "node", 
     "isolatedModules": true,
     "noEmit": false, // JavaScript 파일 출력을 허용
     "declaration": true, // d.ts 파일 생성을 허용
