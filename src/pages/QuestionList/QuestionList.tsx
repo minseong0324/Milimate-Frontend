@@ -43,12 +43,9 @@ function QuestionListScreen() {
       <s.MainWrapper>
         <h1>질문 리스트</h1>
         <s.CustomUl>
-          {/* {questions.map((question, index) => (
+           {questions.map((question, index) => (
           <li key={index}>
-            Day: {question.day}, Question: {question.todayQuestion}
-          </li>
-        ))} */}
-          <s.LiLayout>
+            <s.LiLayout>
             <s.BootImg></s.BootImg>
             <s.CustomLi onClick={() => questionClick("asdf", "asdf")}>
               질문 질문 질문asdfasdfasdf
@@ -60,6 +57,9 @@ function QuestionListScreen() {
             <s.CustomLi>질문 질문 질문</s.CustomLi>
             <s.CommaText>"</s.CommaText>
           </s.LiLayout>
+          </li>
+        ))} 
+          
         </s.CustomUl>
       </s.MainWrapper>
     </>

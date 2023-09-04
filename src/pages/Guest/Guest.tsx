@@ -24,7 +24,7 @@ function Guest() {
     try {
       // 백엔드 서버에 GET 요청을 보냅니다.
       const response = await axios.get(
-        `https://api.mili-mate.com/guest/${userId}/reply`
+        `https://api.mili-mate.com/api/guest/${userId}/reply`
       );
 
       // 응답에서 사용자 정보를 추출합니다.
@@ -38,7 +38,7 @@ function Guest() {
       //에러 일 경우
       if (error instanceof AxiosError) {
         const status = error?.response?.status;
-
+        alert("유저의 정보를 불러오지 못했어요.")
         setModalErrorContent(
           <s.ErrorCenterModalWrapper>
             <s.ErrorModalTextsWrapper2>유저의 정보를</s.ErrorModalTextsWrapper2>

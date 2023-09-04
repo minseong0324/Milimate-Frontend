@@ -20,7 +20,6 @@ function AddReply() {
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
   const onSubmit = async () => {
-    const accessToken = localStorage.getItem("accessToken");
     console.log(formData.sender);
     console.log(formData.reply);
 

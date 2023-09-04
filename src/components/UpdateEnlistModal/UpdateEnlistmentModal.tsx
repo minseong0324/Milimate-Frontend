@@ -133,9 +133,10 @@ function UpdateEnlistmentModalBasic({ setModalOpen }: PropsType) {
       return setExModalOpen(true);
     }
 
-    const accessToken = localStorage.getItem("accessToken");
-    const userId = localStorage.getItem("userId");
+    
     try {
+      const accessToken = localStorage.getItem("accessToken");
+    const userId = localStorage.getItem("userId");
       const response = await axios.put(
         `https://api.mili-mate.com/api/myPage/${userId}/editCompletion`,
         {

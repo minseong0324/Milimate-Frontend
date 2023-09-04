@@ -76,7 +76,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
     const isNumeric = (value: string) => {
       return /^\d+$/.test(value);
     };
-    const userId = await localStorage.getItem("userId");
+    
 
     if (
       !userInfo.enlistmentYear ||
@@ -175,6 +175,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
     }
 
     try {
+      const userId = await localStorage.getItem("userId");
       const response = await axios.put(
         `https://api.mili-mate.com/api/myPage/${userId}/editCompletion`,
         {

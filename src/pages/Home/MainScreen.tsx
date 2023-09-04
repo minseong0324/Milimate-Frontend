@@ -7,6 +7,7 @@ import { useToken } from "src/contexts/TokenProvider/TokenProvider";
 import {useSelector} from "react-redux";
 import {RootState} from "../../components/Redux/store";
 function MainScreen() {
+    const userId = localStorage.getItem("userId");
     const userInfo = useSelector((state: RootState) => state.userInfo);
     interface ResponseData {
         userName: string;
