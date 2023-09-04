@@ -167,7 +167,7 @@ function UpdateEnlistmentModalBasic({ setModalOpen }: PropsType) {
       if (error instanceof AxiosError) {
         const status = error?.response?.status;
         console.error("Failed to fetch user info:", error);
-
+        alert('입대일을 변경하는 데에 실패했어요.')
         if (status === 404) {
           // 리소스를 찾을 수 없음
         } else if (status === 500) {

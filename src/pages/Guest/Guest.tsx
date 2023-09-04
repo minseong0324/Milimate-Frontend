@@ -11,15 +11,15 @@ type UserNameProps = {
 
 function Guest() {
   const location = useLocation();
-  const [userName, setUserName] = useState<string>("김민성");
+  const [userName, setUserName] = useState<string>("훈련병");
   const [todayQuestion, setTodayQuestion] =
-    useState<string>("저는 입대 전 어떤 사람이었나요?");
+    useState<string>("질문을 불러오지 못했어요.");
   const navigate = useNavigate(); // useNavigate hook 사용
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
   const [modalErrorContent, setModalErrorContent] =
     useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
   const { userId } = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
-
+  alert(userId);
   const getUserInfoFromServer = async (userId: string) => {
     try {
       // 백엔드 서버에 GET 요청을 보냅니다.
@@ -75,9 +75,9 @@ function Guest() {
         const userInfo = await getUserInfoFromServer(userId);
         if (userInfo) {
           // userInfo가 유효한 경우에만 상태 업데이트
-          setUserName(userInfo.userName || "김민성"); // 사용자 이름을 상태 변수에 저장
+          setUserName(userInfo.userName || "훈련병"); // 사용자 이름을 상태 변수에 저장
           setTodayQuestion(
-            userInfo.todayQuestion || "저는 입대 전 어떤 사람이었나요?"
+            userInfo.todayQuestion || "질문을 불러오지 못했어요."
           ); // 오늘의 질문을 상태 변수에 저장
         }
       }
