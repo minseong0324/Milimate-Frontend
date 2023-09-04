@@ -16,9 +16,9 @@ interface PropsType {
 }
 
 interface ResponseData {
-  completionYear: string;
-  completionMonth: string;
-  completionDay: string;
+  enlistmentYear: string;
+  enlistmentMonth: string;
+  enlistmentDay: string;
 }
 function UpdateEnlistmentModalBasic({ setModalOpen }: PropsType) {
   const userId = localStorage.getItem("userId");
@@ -139,7 +139,7 @@ function UpdateEnlistmentModalBasic({ setModalOpen }: PropsType) {
     
     try {
       const response = await axios.put(
-        `https://api.mili-mate.com/api/myPage/${userId}/editCompletion`,
+        `https://api.mili-mate.com/api/myPage/${userId}/editEnlistment`,
         {
           enlistmentYear: enlistmentYear,
           enlistmentMonth: enlistmentMonth,

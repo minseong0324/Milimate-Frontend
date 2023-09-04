@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { s } from "./style";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 import { useToken } from "../../contexts/TokenProvider/TokenProvider";
 type ReplyScreenProps = {
@@ -20,9 +20,9 @@ interface QuestionData {
 
 function ReplyScreen({ day, question }: ReplyScreenProps) {
   const { accessToken, refreshToken } = useToken();
-  const userId = localStorage.getItem("userId");
   const { state } = useLocation();
   const [questionData, setQuestionData] = useState<QuestionData | null>(null);
+  const { userId } = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
 
   useEffect(() => {
     const fetchData = async () => {
