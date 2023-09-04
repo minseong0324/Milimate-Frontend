@@ -6,21 +6,28 @@ import ModalBasic from "src/components/SimpleModal/SimpleModal";
 import { useToken } from "src/contexts/TokenProvider/TokenProvider";
 import {useSelector} from "react-redux";
 import {RootState} from "../../components/Redux/store";
+
+interface ResponseData {
+    userName: string;
+    year: number;
+    month: number;
+    day: number;
+    nowData: number;
+    endDate: number;
+    todayQuestion: string;
+    isInsertedEndDate: boolean;
+}
+
 function MainScreen() {
     const userId = localStorage.getItem("userId");
     const userInfo = useSelector((state: RootState) => state.userInfo);
-    interface ResponseData {
-        userName: string;
-        year: number;
-        month: number;
-        day: number;
-        nowData: number;
-        endDate: number;
-        todayQuestion: string;
-        isInsertedEndDate: boolean;
-    }
+    const [lastCompletionDate, setLastCompletionDate] = useState("0");
+    const [data, setData] = useState<ResponseData | null>(null);
+    const location = useLocation();
     const { accessToken, refreshToken } = useToken();
     const navigate = useNavigate();
+    
+    
     const handleCopyClipBoard = async () => {
         const linkToShare = `https://mili-mate.com/guest/${userId}`;
 
@@ -45,9 +52,7 @@ function MainScreen() {
         navigate("/QuestionListScreen");
     };
 
-    const [lastCompletionDate, setLastCompletionDate] = useState("0");
-    const [data, setData] = useState<ResponseData | null>(null);
-    const location = useLocation();
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -66,7 +71,8 @@ function MainScreen() {
                     day: Number(response.data.day),
                     nowDate: Number(response.data.nowDate),
                     endDate: Number(response.data.endDate),
-                    isInsertedEndDate: response.data.insertedEndDate
+                    isInsertedEndDate: response.data.insertedEndDate,
+                    todayQuestion: response.data.todayQuestion,
                 };
                 setData(responseData); // 형변를환된 응답 데이터 상태에 할당
             } catch (e) {
