@@ -31,11 +31,6 @@ function AddReply() {
           senderName: formData.sender,
           replyContent: formData.reply,
         },
-        {
-          headers: {
-            authorization: accessToken,
-          },
-        }
       );
       if (response.status === 200) {
         alert("답변을 다는 것에 성공했어요!");
@@ -45,6 +40,7 @@ function AddReply() {
     } catch (error: unknown) { 
       if (error instanceof AxiosError) {
         const status = error?.response?.status;
+        alert("답변 달기 실패");
         setModalErrorContent(
           <s.ErrorCenterModalWrapper>
               <s.ErrorModalTextsWrapper2>답변을 다는 것에</s.ErrorModalTextsWrapper2>
