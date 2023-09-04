@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { s } from "./style";
 import axios, {AxiosError} from "axios";
-import {useLocation, useNavigate} from 'react-router-dom';
+import {useParams, useNavigate} from 'react-router-dom';
 import ErrorModal from '../../components/ErrorModal/ErrorModal'
 function AddReply() {
-  const userId = localStorage.getItem("userId");
+  const { userId } = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
   //const [sender, setSender] = useState("");
   //const [reply, setReply] = useState("");
   const [formData, setFormData] = useState({
