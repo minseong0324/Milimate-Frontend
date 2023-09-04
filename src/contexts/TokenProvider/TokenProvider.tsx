@@ -15,7 +15,6 @@ const TokenContext = React.createContext<TokenContextType>({
     refreshToken: null,
 });
 
-
 interface TokenProviderProps {
     children: ReactNode;
 }
@@ -60,7 +59,7 @@ function TokenProvider({ children }: TokenProviderProps) {
 
         return () => clearInterval(interval);
         }
-        
+
   }, [navigate]);
 
   const handleNavigateHome = () => {
@@ -68,7 +67,7 @@ function TokenProvider({ children }: TokenProviderProps) {
   };
 
   return (
-    <TokenContext.Provider value={{ 
+    <TokenContext.Provider value={{
         accessToken: localStorage.getItem('accessToken'),
         refreshToken: localStorage.getItem('refreshToken')
     }}>

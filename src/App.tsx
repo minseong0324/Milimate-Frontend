@@ -1,9 +1,9 @@
 import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useNavigate,
-  useLocation,
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    useNavigate,
+    useLocation,
 } from "react-router-dom";
 // import VisitorHome from './pages/home/VisitorHome/VisitorHome';
 //// import Home from './pages/home/Home';
@@ -21,7 +21,7 @@ import KakaoCallback from "./pages/login/kakaoLogin/KakaoCallback";
 import NaverCallback from "./pages/login/naverLogin/NaverCallback";
 import GoogleCallback from "./pages/login/googleLogin/GoogleCallback";
 //import MyPage from './pages/MyPage/MyPage';
-import { QueryClient, QueryClientProvider } from "react-query";
+import {QueryClient, QueryClientProvider} from "react-query";
 import MainScreen from "./pages/Home/MainScreen";
 import QuestionListScreen from "./pages/QuestionList/QuestionList";
 import ReplyScreen from "./pages/Replies/ReplyScreen";
@@ -33,10 +33,11 @@ import MyPage from "./pages/MyPage/MyPage";
 import React from "react";
 //import TokenProvider from './contexts/TokenProvider/TokenProvider';
 
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import store, { persistor } from "../src/components/Redux/store";
+import {Provider} from "react-redux";
+import {PersistGate} from "redux-persist/integration/react";
+import store, {persistor} from "../src/components/Redux/store";
 import TokenProvider from './contexts/TokenProvider/TokenProvider';
+
 const queryClient = new QueryClient();
 // function ProtectedRoutes() {
 //   const navigate = useNavigate();
@@ -60,75 +61,75 @@ const queryClient = new QueryClient();
 //new environment
 
 function App() {
-  // const navigate = useNavigate();
-  // const location = useLocation();
+    // const navigate = useNavigate();
+    // const location = useLocation();
 
-  // React.useEffect(() => {
-  //   // 허용되는 경로 목록
-  //   const allowedPaths = ["/", "/login", "/signup"];
+    // React.useEffect(() => {
+    //   // 허용되는 경로 목록
+    //   const allowedPaths = ["/", "/login", "/signup"];
 
-  //   // 현재 경로가 허용되는 경로 목록에 없다면 리다이렉트
-  //   if (!allowedPaths.includes(location.pathname)) {
-  //     navigate("/"); // 메인 페이지로 리다이렉트. 원하는 경로로 변경 가능
-  //   }
-  // }, [location, navigate]);
+    //   // 현재 경로가 허용되는 경로 목록에 없다면 리다이렉트
+    //   if (!allowedPaths.includes(location.pathname)) {
+    //     navigate("/"); // 메인 페이지로 리다이렉트. 원하는 경로로 변경 가능
+    //   }
+    // }, [location, navigate]);
 
-  // ... 기존 코드 ...
-  localStorage.clear();
-  return (
-    <>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <QueryClientProvider client={queryClient}>
-            <Router>
-            <TokenProvider>
+    // ... 기존 코드 ...
+    localStorage.clear();
+    return (
+        <>
+            <Provider store={store}>
+                <PersistGate loading={null} persistor={persistor}>
+                    <QueryClientProvider client={queryClient}>
+                        <Router>
+                            <TokenProvider>
 
-              {/* <ProtectedRoutes /> */}
-              <Routes>
-                <Route path="/" element={<LoginEntry />} />
-                {/* <Route path="/home/:userId" element={<Home />} />
+                                {/* <ProtectedRoutes /> */}
+                                <Routes>
+                                    <Route path="/" element={<LoginEntry/>}/>
+                                    {/* <Route path="/home/:userId" element={<Home />} />
           <Route path="/ownerhome" element={<OwnerHome />} /> 이건 출시 이전에 뺄 것입니다. 개발을 위해 라우트 해두었습니다. */}
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<SignUp />} />
-                <Route path="/moreinfo" element={<MoreInfo />} />
-                <Route path="/guest/:userId" element={<Guest />} />
-                <Route path="/home/:userId" element={<MainScreen />} />
-                <Route path="/mypage" element={<MyPage />} />
-                <Route
-                  path="/replyscreen"
-                  element={<ReplyScreen day={""} question={""} />}
-                />
-                <Route path="/showcharacter" element={<ShowCaracter />} />
+                                    <Route path="/login" element={<Login/>}/>
+                                    <Route path="/signup" element={<SignUp/>}/>
+                                    <Route path="/moreinfo" element={<MoreInfo/>}/>
+                                    <Route path="/guest/:userId" element={<Guest/>}/>
+                                    <Route path="/home/:userId" element={<MainScreen/>}/>
+                                    <Route path="/mypage" element={<MyPage/>}/>
+                                    <Route
+                                        path="/replyscreen"
+                                        element={<ReplyScreen day={""} question={""}/>}
+                                    />
+                                    <Route path="/showcharacter" element={<ShowCaracter/>}/>
 
-                <Route
-                  path="/replyscreen"
-                  element={<ReplyScreen day={""} question={""} />}
-                />
+                                    <Route
+                                        path="/replyscreen"
+                                        element={<ReplyScreen day={""} question={""}/>}
+                                    />
 
-                {/* <Route path="/select-character-tree/:userId" element={<SelectTreeCharacter />} /> */}
+                                    {/* <Route path="/select-character-tree/:userId" element={<SelectTreeCharacter />} /> */}
 
-                <Route path="/kakao/callback" element={<KakaoCallback />} />
+                                    <Route path="/kakao/callback" element={<KakaoCallback/>}/>
 
-                <Route path="/naver/callback" element={<NaverCallback />} />
-                <Route
-                  path="/google/callback"
-                  element={<GoogleCallback />}
-                />
-                <Route
-                  path="/questionlistscreen"
-                  element={<QuestionListScreen />}
-                />
-                <Route path="/send/:userId" element={<AddReply />} />
-                {/* <Route path="/mypage/:userId" element={<MyPage />} /> */}
-              </Routes>
-              </TokenProvider>
+                                    <Route path="/naver/callback" element={<NaverCallback/>}/>
+                                    <Route
+                                        path="/google/callback"
+                                        element={<GoogleCallback/>}
+                                    />
+                                    <Route
+                                        path="/questionlistscreen"
+                                        element={<QuestionListScreen/>}
+                                    />
+                                    <Route path="/send/:userId" element={<AddReply/>}/>
+                                    {/* <Route path="/mypage/:userId" element={<MyPage />} /> */}
+                                </Routes>
+                            </TokenProvider>
 
-            </Router>
-          </QueryClientProvider>
-        </PersistGate>
-      </Provider>
-    </>
-  );
+                        </Router>
+                    </QueryClientProvider>
+                </PersistGate>
+            </Provider>
+        </>
+    );
 }
 
 export default App;
