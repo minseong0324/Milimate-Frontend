@@ -44,7 +44,7 @@ function LogoutModalBasic({ setModalOpen, contentText }: PropsType) {
 
     try {
       const response = await axios.put(
-        `https://api.mili-mate.com/api/myPage/${userId}/logout`, {},
+        `https://api.mili-mate.com/api/mypage/${userId}/logout`, {},
         {
           headers: {
             authorization: `${accessToken}`,
@@ -56,6 +56,7 @@ function LogoutModalBasic({ setModalOpen, contentText }: PropsType) {
         navigate("/", { replace: true });
         alert("로그아웃 되었습니다.");
       }
+      
     } catch (error: unknown) {
       //에러 일 경우
       if (error instanceof AxiosError) {
