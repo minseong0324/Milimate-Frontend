@@ -74,12 +74,13 @@ function MainScreen() {
                     isInsertedEndDate: response.data.insertedEndDate,
                     todayQuestion: response.data.todayQuestion,
                 };
+                alert(response.data.todayQuestion);
                 setData(responseData); // 형변를환된 응답 데이터 상태에 할당
             } catch (e) {
                 console.log(e);
             }
         };
-        //fetchData();
+        fetchData();
     }, [accessToken]);
 
     const [modalOpen, setModalOpen] = useState(false);
@@ -123,7 +124,10 @@ function MainScreen() {
                     </s.ProfileWrapper>
 
                     <s.ImageContainer>
-                        <s.TodayQuestionBtn>{data?.todayQuestion}</s.TodayQuestionBtn>
+                        <s.TodayQuestionBtn>
+                            {data && data.todayQuestion ? data.todayQuestion : "오늘은 질문이 없습니다"}
+                        </s.TodayQuestionBtn>
+
 
                         {data && data.nowData > 1 ? (
                             <s.CheckReplyBtn>"어제의 답변 확인"</s.CheckReplyBtn>
