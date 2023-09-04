@@ -14,10 +14,12 @@ function QuestionListScreen() {
   const { accessToken, refreshToken } = useToken();
   const [questions, setQuestions] = useState<Question[]>([]); // 상태 변수와 상태 설정 함수 생성
   const navigate = useNavigate();
-
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
+
         const response = await axios.get<Question[]>(
           `https://api.mili-mate.com/api/user/${userId}/questionList`,
           {
@@ -28,10 +30,12 @@ function QuestionListScreen() {
         );
         setQuestions(response.data); // 데이터를 가져온 후 상태 업데이트
       } catch (error) {
-        console.error("Error fetching questions:", error);
+        //console.error("Error fetching questions:", error);
+        alert(error);
       }
+      setIsLoading(false);
     };
-    //fetchData();
+    fetchData();
   }, []);
   //   const questionClick = (question: Question) => {
   //     console.log("이벤트");
@@ -41,30 +45,26 @@ function QuestionListScreen() {
     navigate("/replyscreen", { state: { day, question } });
   };
   return (
-    <>
-      <s.MainWrapper>
-        <h1>질문 리스트</h1>
-        <s.CustomUl>
-           {questions.map((question, index) => (
-          <li key={index}>
-            <s.LiLayout>
-            <s.BootImg></s.BootImg>
-            <s.CustomLi onClick={() => questionClick("asdf", "asdf")}>
-              질문 질문 질문asdfasdfasdf
-            </s.CustomLi>
-            <s.CommaText>"</s.CommaText>
-          </s.LiLayout>
-          <s.LiLayout>
-            <s.BootImg></s.BootImg>
-            <s.CustomLi>질문 질문 질문</s.CustomLi>
-            <s.CommaText>"</s.CommaText>
-          </s.LiLayout>
-          </li>
-        ))} 
-          
-        </s.CustomUl>
-      </s.MainWrapper>
-    </>
+      <>
+        <s.MainWrapper>
+          <h1>질문 리스트</h1>
+          <s.CustomUl>
+            {isLoading ? (<div>Loading...</div>) : (
+                questions.map((question, index) => (
+                    <li key={index}>
+                      <s.LiLayout>
+                        <s.BootImg></s.BootImg>
+                        <s.CustomLi onClick={() => questionClick(question.day, question.todayQuestion)}>
+                          {question.todayQuestion}
+                        </s.CustomLi>
+                        <s.CommaText>"</s.CommaText>
+                      </s.LiLayout>
+                    </li>
+                ))
+            )}
+          </s.CustomUl>
+        </s.MainWrapper>
+      </>
   );
 }
 
