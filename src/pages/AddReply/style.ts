@@ -6,10 +6,8 @@ const Wrapper = styled.div`
   display: flex;
   background-color: #ede8d7;
   align-items: center;
-
   justify-content: center;
   flex-direction: column;
-
   padding-top: 88px;
 `;
 
@@ -118,6 +116,33 @@ const BubbleReplyImage = styled.img.attrs({
   z-index: 1;
 `;
 
+const ErrorCenterModalWrapper = styled.div` //에러 모달창 wrapper
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 60px;
+`;
+
+const ErrorModalTextsWrapper1 = styled.div` // 1줄짜리 에러창일 때 사용
+position: relative;
+display: flex;
+font-size: 18px;
+align-items: center;
+  justify-content: center;
+line-height: 2;  // 글자 간격
+margin-bottom: 10px;
+`;
+
+const ErrorModalTextsWrapper2 = styled.div` //2줄짜리 에러창일 때 사용
+position: relative;
+display: flex;
+font-size: 18px;
+align-items: center;
+  justify-content: center;
+line-height: 2;  // 글자 간격
+margin-bottom: -10px;
+`;
+
 export const s = {
   Wrapper,
   BubbleContainer,
@@ -127,4 +152,7 @@ export const s = {
   BubbleReplyImage,
   BubbleReplyText,
   ButtonStyle,
+  ErrorCenterModalWrapper,
+  ErrorModalTextsWrapper1,
+  ErrorModalTextsWrapper2
 };

@@ -1,19 +1,25 @@
 import React, { useState } from "react";
-import { s } from "./styled";
-import axios from "axios";
+import { s } from "./style";
+import axios, {AxiosError} from "axios";
+import {useLocation, useNavigate} from 'react-router-dom';
+import ErrorModal from '../../components/ErrorModal/ErrorModal'
 function AddReply() {
-  const [sender, setSender] = useState("");
-  const [reply, setReply] = useState("");
+  const userId = localStorage.getItem("userId");
+  //const [sender, setSender] = useState("");
+  //const [reply, setReply] = useState("");
   const [formData, setFormData] = useState({
     sender: "",
     reply: "",
   });
-  const handleInputChange = (e: { target: { name: any; value: any } }) => {
+  const navigate = useNavigate();
+  const [errorModalContent, setModalErrorContent] =  useState<React.ReactNode>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleInputChange = (e: { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
   const onSubmit = async () => {
-    const userId = localStorage.getItem("userId");
     const accessToken = localStorage.getItem("accessToken");
     console.log(formData.sender);
     console.log(formData.reply);
@@ -31,11 +37,40 @@ function AddReply() {
           },
         }
       );
+      if (response.data.status === 200) {
+        alert("답변을 다는 것에 성공했어요!");
+        navigate(`/guest/${userId}`);
+      } 
       console.log(response.data);
-    } catch (error) {
-      console.error("Error submitting the data:", error);
+    } catch (error: unknown) { 
+      if (error instanceof AxiosError) {
+        const status = error?.response?.status;
+        setModalErrorContent(
+          <s.ErrorCenterModalWrapper>
+              <s.ErrorModalTextsWrapper2>답변을 다는 것에</s.ErrorModalTextsWrapper2>
+              <s.ErrorModalTextsWrapper2>실패했어요.</s.ErrorModalTextsWrapper2>
+              <s.ButtonStyle onClick={handleErrorModalClose}>닫기</s.ButtonStyle>
+          </s.ErrorCenterModalWrapper>
+        );
+        if (status === 404) {
+          // 리소스를 찾을 수 없음
+        } else if (status === 500) {
+            // 서버 내부 오류
+        } else {
+            // 기타 상태 코드 처리
+        }
+      } 
+      setModalOpen(true);
+      
+      return null;
     }
   };
+
+  const handleErrorModalClose = () => {
+    setModalOpen(false);
+    navigate(`/guest/${userId}`);
+    }
+
   return (
     <>
       <s.Wrapper>
