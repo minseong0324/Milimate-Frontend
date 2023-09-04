@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { s } from "./style";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
-import { useToken } from "src/contexts/TokenProvider/TokenProvider";
 import { useDispatch, useSelector } from "react-redux";
 import {
   updateCompletionDate,
@@ -10,6 +9,8 @@ import {
 } from "../Redux/Slices/userInfoSlice";
 import { RootState } from "../Redux/store";
 import ModalBasic from "../SimpleModal/SimpleModal";
+import { useToken } from "../../contexts/TokenProvider/TokenProvider";
+
 interface PropsType {
   setModalOpen: (open: boolean) => void;
 }
@@ -20,6 +21,8 @@ interface ResponseData {
   completionDay: string;
 }
 function UpdateEnlistmentModalBasic({ setModalOpen }: PropsType) {
+  const userId = localStorage.getItem("userId");
+  const { accessToken, refreshToken } = useToken();
   const dispatch = useDispatch();
   const modalRef = useRef<HTMLDivElement | null>(null);
   const [enlistmentYear, setEnlistmentYear] = useState("");
@@ -135,8 +138,6 @@ function UpdateEnlistmentModalBasic({ setModalOpen }: PropsType) {
 
     
     try {
-      const accessToken = localStorage.getItem("accessToken");
-    const userId = localStorage.getItem("userId");
       const response = await axios.put(
         `https://api.mili-mate.com/api/myPage/${userId}/editCompletion`,
         {

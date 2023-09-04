@@ -18,6 +18,7 @@ interface ResponseData {
   completionDay: string;
 }
 function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
+  const userId = localStorage.getItem("userId");
   const [exModalOpen, setExModalOpen] = useState(false);
   const { accessToken, refreshToken } = useToken();
   const dispatch = useDispatch();
@@ -175,7 +176,6 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
     }
 
     try {
-      const userId = await localStorage.getItem("userId");
       const response = await axios.put(
         `https://api.mili-mate.com/api/myPage/${userId}/editCompletion`,
         {

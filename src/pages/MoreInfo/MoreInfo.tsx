@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { setUserInfo } from "src/components/Redux/Slices/userInfoSlice";
 import { useToken } from "../../contexts/TokenProvider/TokenProvider";
 function MoreInfo() {
+  const userId = localStorage.getItem("userId");
   const { accessToken, refreshToken } = useToken();
   const [userName, setUserName] = useState("");
   const [enlistmentYear, setEnlistmentYear] = useState("");
@@ -138,7 +139,6 @@ function MoreInfo() {
       setModalMessage("입력한 날짜가 해당 달의 최대 일 수를 초과하였습니다!");
       return setModalOpen(true);
     }
-    const userId = localStorage.getItem("userId");
     // 회원가입 API 요청
     try {
       console.log("유저 아이디", userId);

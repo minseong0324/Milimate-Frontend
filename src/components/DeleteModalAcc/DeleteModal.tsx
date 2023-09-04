@@ -10,6 +10,7 @@ interface PropsType {
 }
 
 function DeleteModalBasic({ setModalOpen, contentText }: PropsType) {
+  const userId = localStorage.getItem("userId");
   const { accessToken, refreshToken } = useToken();
   const navigate = useNavigate();
   const modalRef = useRef<HTMLDivElement | null>(null);
@@ -40,7 +41,6 @@ function DeleteModalBasic({ setModalOpen, contentText }: PropsType) {
     };
   }, []);
   const deleteAccount = async () => {
-    const userId = await localStorage.getItem("userId");
     try {
       const response = await axios.delete(
         `https://api.mili-mate.com/api/myPage/${userId}/deleteAccount`,

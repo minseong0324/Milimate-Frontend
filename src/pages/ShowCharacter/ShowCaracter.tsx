@@ -11,6 +11,7 @@ type UserNameProps = {
 };
 
 function ShowCaracter() {
+  const userId = localStorage.getItem("userId");
   const userInfo = useSelector((state: RootState) => state.userInfo);
   const location = useLocation();
   const { userName = "김민성" } = (location.state as UserNameProps) || {};
@@ -21,7 +22,6 @@ function ShowCaracter() {
 
   // 서비스 설명 함수
   const handleGoHome = async () => {
-    const userId = await localStorage.getItem("userId");
     navigate(`/home/${userId}`, { replace: true });
   };
 

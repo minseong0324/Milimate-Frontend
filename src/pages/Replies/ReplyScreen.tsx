@@ -19,13 +19,13 @@ interface QuestionData {
 }
 
 function ReplyScreen({ day, question }: ReplyScreenProps) {
+  const { accessToken, refreshToken } = useToken();
+  const userId = localStorage.getItem("userId");
   const { state } = useLocation();
   const [questionData, setQuestionData] = useState<QuestionData | null>(null);
- const accessToken = localStorage.getItem("accessToken"); 
 
   useEffect(() => {
     const fetchData = async () => {
-      const userId = await localStorage.getItem("userId");
       const response = await axios.get(
         `https://api.mili-mate.com/api/user/${userId}/questionList/${day}`,
         {

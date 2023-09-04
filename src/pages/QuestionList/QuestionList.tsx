@@ -3,18 +3,20 @@ import React, { useEffect, useState } from "react";
 import { s } from "./style";
 import { useNavigate } from "react-router-dom";
 import { useToken } from "../../contexts/TokenProvider/TokenProvider";
+
+interface Question {
+  day: string;
+  todayQuestion: string;
+}
+
 function QuestionListScreen() {
-  interface Question {
-    day: string;
-    todayQuestion: string;
-  }
+  const userId = localStorage.getItem("userId");
   const { accessToken, refreshToken } = useToken();
   const [questions, setQuestions] = useState<Question[]>([]); // 상태 변수와 상태 설정 함수 생성
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
-      const userId = await localStorage.getItem("userId");
       try {
         const response = await axios.get<Question[]>(
           `https://api.mili-mate.com/api/user/${userId}/questionList`,

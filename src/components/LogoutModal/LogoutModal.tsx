@@ -10,6 +10,7 @@ interface PropsType {
 }
 
 function LogoutModalBasic({ setModalOpen, contentText }: PropsType) {
+  const userId = localStorage.getItem("userId");
   const { accessToken, refreshToken } = useToken();
   const navigate = useNavigate();
   const modalRef = useRef<HTMLDivElement | null>(null);
@@ -40,7 +41,6 @@ function LogoutModalBasic({ setModalOpen, contentText }: PropsType) {
     };
   }, []);
   const logoutAccount = async () => {
-    const userId = await localStorage.getItem("userId");
 
     try {
       const response = await axios.put(

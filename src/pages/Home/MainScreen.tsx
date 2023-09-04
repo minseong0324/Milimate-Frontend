@@ -22,7 +22,6 @@ function MainScreen() {
     const { accessToken, refreshToken } = useToken();
     const navigate = useNavigate();
     const handleCopyClipBoard = async () => {
-        const userId = localStorage.getItem("userId");
         const linkToShare = `https://mili-mate.com/guest/${userId}`;
 
         try {
@@ -51,7 +50,6 @@ function MainScreen() {
     const location = useLocation();
     useEffect(() => {
         const fetchData = async () => {
-            const userId = await localStorage.getItem("userId");
             try {
                 const response = await axios.get(
                     `https://api.mili-mate.com/api/user/${userId}/home`,
