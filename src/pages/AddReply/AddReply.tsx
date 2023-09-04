@@ -90,6 +90,10 @@ function AddReply() {
         </s.BubbleReplyContainer>
         <s.ButtonStyle onClick={onSubmit}>등록</s.ButtonStyle>
       </s.Wrapper>
+
+      <ErrorModal isOpen={modalOpen} onClose={() => setModalOpen(false)} >
+          {errorModalContent}
+      </ErrorModal>
     </>
   );
 }
