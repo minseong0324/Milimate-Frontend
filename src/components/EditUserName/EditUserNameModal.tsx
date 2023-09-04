@@ -16,6 +16,7 @@ interface ResponseData {
   completionDay: string;
 }
 function EditUserNameModalBasic({ setModalOpen }: PropsType) {
+  const userId = localStorage.getItem("userId");
   const { accessToken, refreshToken } = useToken();
   const dispatch = useDispatch();
   const userInfo = useSelector((state: RootState) => state.userInfo);
@@ -50,7 +51,6 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
     };
   }, []);
   const UpdateUserNameBtn = async () => {
-    const userId = await localStorage.getItem("userId");
     if (newUserName.trim() == "") {
       alert("모든 필수 정보를 입력해주세요")!;
     } else {
@@ -63,7 +63,7 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
           },
           {
             headers: {
-              authorization: `Bearer ${accessToken}`,
+              authorization: `${accessToken}`,
             },
           }
         );
