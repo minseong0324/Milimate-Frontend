@@ -41,7 +41,6 @@ function LogoutModalBasic({ setModalOpen, contentText }: PropsType) {
     };
   }, []);
   const logoutAccount = async () => {
-    alert(accessToken);
     try {
       const response = await axios.put(
         `https://api.mili-mate.com/api/myPage/${userId}/logout`, 

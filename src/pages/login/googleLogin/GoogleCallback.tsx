@@ -89,7 +89,6 @@ function GoogleCallback() {
     const searchParams = new URLSearchParams(location.search);
     const code = searchParams.get("code");
     if (code) {
-      alert("CODE = " + code);
       handleOAuthGoogle(code);
     }
 

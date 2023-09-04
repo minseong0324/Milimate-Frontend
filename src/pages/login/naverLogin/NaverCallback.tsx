@@ -86,7 +86,6 @@ function NaverCallback() {
     const searchParams = new URLSearchParams(location.search);
     const code = searchParams.get("code"); // 네이버는 Redirect 시키면서 code를 쿼리 스트링으로 준다.
     if (code) {
-      alert("CODE = " + code);
       handleOAuthNaver(code);
     }
 

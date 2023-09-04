@@ -19,7 +19,6 @@ function Guest() {
   const [modalErrorContent, setModalErrorContent] =
     useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
   const { userId } = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
-  alert(userId);
   const getUserInfoFromServer = async (userId: string) => {
     try {
       // 백엔드 서버에 GET 요청을 보냅니다.
