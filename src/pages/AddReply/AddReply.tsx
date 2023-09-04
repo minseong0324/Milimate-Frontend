@@ -37,7 +37,7 @@ function AddReply() {
           },
         }
       );
-      if (response.data.status === 200) {
+      if (response.status === 200) {
         alert("답변을 다는 것에 성공했어요!");
         navigate(`/guest/${userId}`);
       } 
