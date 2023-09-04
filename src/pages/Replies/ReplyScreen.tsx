@@ -21,7 +21,7 @@ interface QuestionData {
 function ReplyScreen({ day, question }: ReplyScreenProps) {
   const { state } = useLocation();
   const [questionData, setQuestionData] = useState<QuestionData | null>(null);
-  const { accessToken, refreshToken } = useToken();
+ const accessToken = localStorage.getItem("accessToken"); 
 
   useEffect(() => {
     const fetchData = async () => {

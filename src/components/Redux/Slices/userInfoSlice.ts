@@ -18,7 +18,9 @@ const initialState: UserInfoState = {
   completionYear: "0000",
   completionMonth: "00",
   completionday: "00",
+
 };
+
 
 const userInfoSlice = createSlice({
   name: "userInfo",

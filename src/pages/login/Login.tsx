@@ -18,12 +18,6 @@ type LoginCredentials = {
 };
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // useNavigate hook 사용
-  const [isErrorModalOpen, setErrorModalOpen] = useState(false);
-  const [modalErrorContent, setModalErrorContent] =
-    useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
 
   return (
     <s.BackgroundContainer>

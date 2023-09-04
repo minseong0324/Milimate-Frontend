@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { s } from "./style";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUserInfo } from "src/components/Redux/Slices/userInfoSlice";
+import { userInfo } from "os";
 //import ErrorModal from "src/components/ErrorModal/ErrorModal";
 
 function KakaoCallback() {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
+  
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
   const [modalErrorContent, setModalErrorContent] =
     useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
@@ -42,8 +44,10 @@ function KakaoCallback() {
               completionYear: response.data.enlistmentYear,
               completionMonth: response.data.completionMonth,
               completionday: response.data.completionDay,
+            
             })
           );
+            
           localStorage.setItem("userId", response.data.userId);
           navigate(`/home/${response.data.userId}`, { replace: true }); // 인가 코드 제거 및 /OwnerHome/${email}로 리다이렉트
         } else if (response.data.requireInfo == true) {
@@ -67,6 +71,7 @@ function KakaoCallback() {
             <s.ModalButton onClick={handleErrorModalClose}>닫기</s.ModalButton>
           </s.ErrorCenterModalWrapper>
         );
+        setErrorModalOpen(true);
         if (status === 404) {
           // 리소스를 찾을 수 없음
         } else if (status === 500) {
