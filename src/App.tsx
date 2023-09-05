@@ -117,7 +117,7 @@ function App() {
                                     />
                                     <Route
                                         path="/questionlistscreen"
-                                        element={<QuestionListScreen/>}
+                                        element={<QuestionListScreen nowDate = {0}/>}
                                     />
                                     <Route path="/send/:userId" element={<AddReply/>}/>
                                     {/* <Route path="/mypage/:userId" element={<MyPage />} /> */}
