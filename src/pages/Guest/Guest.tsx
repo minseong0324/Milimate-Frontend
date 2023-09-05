@@ -17,7 +17,7 @@ function Guest() {
   const navigate = useNavigate();
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
   const [modalErrorContent, setModalErrorContent] =
-    useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
+    useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장
   const { userId } = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
   const getUserInfoFromServer = async (userId: string) => {
     try {
