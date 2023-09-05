@@ -54,7 +54,7 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
     if (newUserName.trim() == "") {
       alert("모든 필수 정보를 입력해주세요")!;
     } else {
-      try {
+      try { //
         const response = await axios.put(
           `https://api.mili-mate.com/api/${userId}/editUserName`,
 
