@@ -14,7 +14,7 @@ function Guest() {
   const [userName, setUserName] = useState<string>("훈련병");
   const [todayQuestion, setTodayQuestion] =
     useState<string>("질문을 불러오지 못했어요.");
-  const navigate = useNavigate(); // useNavigate hook 사용
+  const navigate = useNavigate();
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
   const [modalErrorContent, setModalErrorContent] =
     useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
