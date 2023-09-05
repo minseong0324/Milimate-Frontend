@@ -135,13 +135,13 @@ function MainScreen() {
                             <s.NoneReplText>아직은 답변이 없습니다.</s.NoneReplText>
                         )}
 
-                        {data && data.nowData > 1 ? (
+
                         <s.TotalQuestionList onClick={() => {
                             navigateQuestionListScreen(data!.nowData)
                         }} >
                             "질문 리스트 확인"
                         </s.TotalQuestionList>
-                            ) : <></> }
+
                         <s.ShareQuestion onClick={handleCopyClipBoard}>
                             "공유하기"
                         </s.ShareQuestion>
