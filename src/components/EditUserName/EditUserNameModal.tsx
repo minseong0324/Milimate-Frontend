@@ -52,7 +52,7 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
   }, []);
   const UpdateUserNameBtn = async () => {
     if (newUserName.trim() == "") {
-      alert("모든 필수 정보를 입력해주세요")!;
+      alert("모든 필수 정보를 입력해주세요");
     } else {
       try { //
         const response = await axios.put(
