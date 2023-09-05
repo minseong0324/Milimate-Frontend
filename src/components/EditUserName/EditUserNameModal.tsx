@@ -83,13 +83,16 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
 
           if (status === 404) {
             // 리소스를 찾을 수 없음
+            alert('404')
           } else if (status === 500) {
+            alert('500')
             // 서버 내부 오류
           } else {
             // 기타 상태 코드 처리
+            alert('기타 에러')
           }
         }
-
+        alert(error);
         return null;
       }
     }
