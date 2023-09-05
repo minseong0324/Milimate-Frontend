@@ -29,11 +29,13 @@ function QuestionListScreen() {
           }
         );
         setQuestions(response.data); // 데이터를 가져온 후 상태 업데이트
+        setIsLoading(false);
+        alert(response.data);
       } catch (error) {
         //console.error("Error fetching questions:", error);
         alert(error);
       }
-      setIsLoading(false);
+
     };
     fetchData();
   }, []);
