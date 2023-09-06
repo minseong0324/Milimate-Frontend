@@ -184,7 +184,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
           completionDay: completionDay,
         },
         {
-          headers: {
+          headers: { //
             authorization: `${accessToken}`,
           },
         }
