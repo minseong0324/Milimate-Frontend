@@ -16,7 +16,9 @@ interface ResponseData {
     endDate: number;
     todayQuestion: string;
     isInsertedEndDate: boolean;
+    isRead : string,
 }
+//read 1) unRead, read, none
 
 function MainScreen() {
     const userId = localStorage.getItem("userId");
