@@ -1,25 +1,135 @@
 import styled, { createGlobalStyle } from "styled-components";
 import cabinet from "../../assets/Cabinet/cabinet.svg";
-import tmpChar from "../../assets/ProfileHomeChar/tmpchar.svg";
+import sadCharacter from "../../assets/charater/ch_sad_character.svg";
+import noneEnvelope from '../../assets/EnvelopeImage/noneEnvelope.svg';
+import existEnvelope from '../../assets/EnvelopeImage/trueEnvelope.svg';
 // import button1 from '../../assets/button/button1.png';
 // import button4 from '../../assets/button/button4.png';
 // import buttonMidium1 from '../../assets/button/button-midium-1.png';
 // import buttonMidium2 from '../../assets/button/button-midium-2.png';
 
-const WrapperLayout = styled.div`
-  background-color: #ede8d7;
 
-  font-family: "EF_jejudoldam";
+const WHITE_GREY = '#f2f1ee';
+
+
+const WrapperLayout = styled.div`
+  //background-color: #f2f1ee;
+
+  //font-family: "EF_jejudoldam";
   //position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
-
+  
   marine: 0;
   align-items: center;
   justify-content: center;
-  background: #ede8d7 no-repeat center center;
+  background: #f2f1ee no-repeat center center;
+  
+
+  @media (min-width: 600px) {
+    max-width: 600px; /* 원하는 최대 너비 값으로 설정 */
+    margin: 0 auto; /* 좌우 중앙 정렬 */
+  }
 `;
+const AppBarWrapperDiv = styled.div`
+  background-color: #f2f1ee;
+  
+  
+  //background-color: green;
+  display: flex;
+  align-items:  center;
+  width : 100%;
+  justify-content: space-between;
+  flex-direction: row;
+
+  @media (min-width: 600px) {
+    max-width: 600px; /* 원하는 최대 너비 값으로 설정 */
+    margin: 0 auto; /* 좌우 중앙 정렬 */
+  }
+`;
+
+const AppBarTitleText = styled.p`
+  margin-left: 16px;
+  font-size:32px;
+  color: #4c544b;
+`;
+const MainContent = styled.div`
+  display:  flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+`;
+const D_dayText = styled.p`
+  margin-top: 32px;
+  margin-bottom: 40px;
+  color: #4c544b;
+  font-size: 24px;
+  font-weight: bold;
+`
+const MainContentText = styled.p`
+  color: #4c544b;
+  font-size: 20px;
+  font-weight: bold;
+  margin : 0;
+`;
+const SadCharImg = styled.img.attrs({
+  src: sadCharacter,
+})`
+  display: flex;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+
+`;
+
+const ShareBtnDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  width : 90%;
+  align-items: center;
+  justify-content: center;
+  border : 1px solid grey;
+  border-radius: 20px;
+  background-color: #4c544b;
+  font-weight: bold;
+  color: white;
+  
+`;
+
+const NoneEnvelope = styled.img.attrs({
+  src: noneEnvelope,
+})`
+  margin-top : 24px;
+  margin-bottom: 24px;
+  width: 95%;
+  //height: 670px;
+  position: relative; // 이 부분 추가
+`;
+
+const ExistEnvelope = styled.img.attrs({
+  src: existEnvelope,
+})`
+  margin-top : 24px;
+  margin-bottom: 24px;
+  width: 95%;
+  //height: 670px;
+  position: relative; // 이 부분 추가
+`;
+
+const NormalText = styled.p`
+  color: #4c544b;
+  font-size: 20px;
+  
+  margin : 0;
+  margin-left: 8px;
+`;
+
+
+
+
 const ProfileWrapper = styled.div`
   display: flex;
   flex-direction: row; // Flexbox의 방향을 세로로 설정
@@ -133,15 +243,7 @@ const NeedAddCompletion = styled.button`
   left: 230px; // 이미지의 왼쪽에서 10px 오른쪽에 위치
   z-index: 5; // 이 부분 추가
 `;
-const tmpCharImg = styled.img.attrs({
-  src: tmpChar,
-})`
-  display: flex;
 
-  align-items: center;
-  width: 100px;
-  height: 100px;
-`;
 
 //background: url(${button4}) no-repeat center center; // 이미지를 배경으로 사용
 //background: url(${button1}) no-repeat center center; // 눌렸을 때의 배경 이미지
@@ -277,21 +379,16 @@ const ModalButton = styled.button`
 //background: url(${buttonMidium1}) no-repeat center center; // 이미지를 배경으로 사용
 //background: url(${buttonMidium2}) no-repeat center center; // 눌렸을 때의 배경 이미지
 export const s = {
-  MainNameText,
+
   WrapperLayout,
-  CenteredDiv,
-  MainTextWrapper,
-  ProfileWrapper,
-  CabinetImg,
-  MainEnlistmentText,
-  tmpCharImg,
-  ImageContainer,
-  TodayQuestionBtn,
-  CheckReplyBtn,
-  TotalQuestionList,
-  MyCompletion,
-  ShareQuestion,
-  test,
-  NeedAddCompletion,
-  NoneReplText,
+  AppBarWrapperDiv,
+  AppBarTitleText,
+  MainContent,
+  D_dayText,
+  MainContentText,
+  SadCharImg,
+  ShareBtnDiv,
+  Envelope: NoneEnvelope,
+  NormalText,
+  ExistEnvelope
 };

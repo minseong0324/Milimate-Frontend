@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { s } from "./styled";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {s} from "./styled";
+import {useLocation, useNavigate} from "react-router-dom";
 import axios from "axios";
 import ModalBasic from "src/components/SimpleModal/SimpleModal";
-import { useToken } from "src/contexts/TokenProvider/TokenProvider";
+import {useToken} from "src/contexts/TokenProvider/TokenProvider";
 import {useSelector} from "react-redux";
 import {RootState} from "../../components/Redux/store";
+import {MdPersonOutline} from "react-icons/md";
+import {FiUpload} from "react-icons/fi";
+
+import {AiOutlineUnorderedList} from "react-icons/ai";
 
 interface ResponseData {
     userName: string;
@@ -16,8 +20,9 @@ interface ResponseData {
     endDate: number;
     todayQuestion: string;
     isInsertedEndDate: boolean;
-    isRead : string,
+    isRead: string,
 }
+
 //read 1) unRead, read, none
 
 function MainScreen() {
@@ -26,7 +31,7 @@ function MainScreen() {
     const [lastCompletionDate, setLastCompletionDate] = useState("0");
     const [data, setData] = useState<ResponseData | null>(null);
     const location = useLocation();
-    const { accessToken, refreshToken } = useToken();
+    const {accessToken, refreshToken} = useToken();
     const navigate = useNavigate();
 
 
@@ -50,8 +55,8 @@ function MainScreen() {
     //   }
     // };
     // testToken();
-    const navigateQuestionListScreen = async ( nowDate : number) => {
-        navigate("/questionListScreen" , { state: { nowDate } });
+    const navigateQuestionListScreen = async (nowDate: number) => {
+        navigate("/questionListScreen", {state: {nowDate}});
     };
 
 
@@ -97,72 +102,43 @@ function MainScreen() {
 
     const questionClick = (day: string, question: string) => {
         console.log("이벤트");
-        navigate("/replyscreen", { state: { day, question } });
+        navigate("/replyscreen", {state: {day, question}});
     };
 
-    const profileImgClick = (
-    ) => {
+    const profileImgClick = () => {
         navigate("/mypage");
     };
 
-    const intendAddCompletion = (
-    ) => {
+    const intendAddCompletion = () => {
         navigate("/mypage");
     };
     return (
         <>
             <s.WrapperLayout>
-                <s.test>
-                    <s.ProfileWrapper>
-                        <s.tmpCharImg
-                            onClick={() => {
-                                profileImgClick();
-                            }}
-                        ></s.tmpCharImg>
-                        <s.MainTextWrapper>
-                            <s.MainNameText>훈련병 {userInfo.userName}</s.MainNameText>
-                            <s.MainEnlistmentText>입대일 : {userInfo.enlistmentYear}. {userInfo.enlistmentMonth}. {userInfo.enlistmentday}</s.MainEnlistmentText>
-                        </s.MainTextWrapper>
-                    </s.ProfileWrapper>
-
-                    <s.ImageContainer>
-                        <s.TodayQuestionBtn>
-                            {data && data.todayQuestion ? data.todayQuestion : "오늘은 질문이 없습니다"}
-                        </s.TodayQuestionBtn>
-
-
-                        {data && data.nowData > 1 ? (
-                            <s.CheckReplyBtn>"어제의 답변 확인"</s.CheckReplyBtn>
-                        ) : (
-                            <s.NoneReplText>아직은 답변이 없습니다.</s.NoneReplText>
-                        )}
-
-
-                        <s.TotalQuestionList onClick={() => {
-                            navigateQuestionListScreen(data!.nowData)
-                        }} >
-                            "질문 리스트 확인"
-                        </s.TotalQuestionList>
-
-                        <s.ShareQuestion onClick={handleCopyClipBoard}>
-                            "공유하기"
-                        </s.ShareQuestion>
-
-                        {data && data.isInsertedEndDate ? (
-                            <s.MyCompletion>수료일 : {data.endDate}</s.MyCompletion>
-                        ) : (
-                            <s.NeedAddCompletion
-                                onClick={() =>
-                                    intendAddCompletion()
-                                }
-                            >
-                                "수료일을 입력해주세요"
-                            </s.NeedAddCompletion>
-                        )}
-
-                        <s.CabinetImg></s.CabinetImg>
-                    </s.ImageContainer>
-                </s.test>
+                <s.AppBarWrapperDiv>
+                    <s.AppBarTitleText>MILLI MATE</s.AppBarTitleText>
+                    <div>
+                        <MdPersonOutline size={32} color={'#4c544b'} style={{marginRight: 16}}></MdPersonOutline>
+                        <AiOutlineUnorderedList size={32} color={'#4c544b'}
+                                                style={{marginRight: 16}}></AiOutlineUnorderedList>
+                    </div>
+                </s.AppBarWrapperDiv>
+                <s.MainContent>
+                    <s.D_dayText>D-30</s.D_dayText>
+                    <s.MainContentText>훈련병이 된지 1주 째입니다.</s.MainContentText>
+                    <s.MainContentText>해주고 싶은 말이 있나요?</s.MainContentText>
+                    <s.SadCharImg></s.SadCharImg>
+                    <div style={{flexDirection: "row", display : 'flex', marginBottom : 16}}>
+                        <s.MainContentText>귀염둥이 김민성 </s.MainContentText>
+                        <s.NormalText> 훈령병</s.NormalText>
+                    </div>
+                </s.MainContent>
+                <s.ShareBtnDiv>
+                    <p>오늘의 질문 공유하기</p>
+                    <FiUpload size={24} style={{marginLeft: 12}}></FiUpload>
+                </s.ShareBtnDiv>
+                {/*<s.Envelope></s.Envelope>*/}
+                <s.ExistEnvelope></s.ExistEnvelope>
             </s.WrapperLayout>
             {modalOpen && (
                 <ModalBasic
