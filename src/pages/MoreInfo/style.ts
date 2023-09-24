@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import bodyBackground from "../../assets/background/background.svg";
 
 // import button1 from '../../assets/button/button1.png';
 // import button4 from '../../assets/button/button4.png';
@@ -33,7 +32,6 @@ const BackgroundContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: url(${bodyBackground}) no-repeat center center; // 배경 이미지 중앙 배치
 `;
 
 //background: url(${button4}) no-repeat center center; // 이미지를 배경으로 사용

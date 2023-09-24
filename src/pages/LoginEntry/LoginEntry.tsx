@@ -1,7 +1,25 @@
 import { s } from "./style";
 import { useNavigate } from "react-router-dom"; // useNavigate import
+import React, { useState, useEffect } from 'react';
 
 function HomeBeforeLogin() {
+    const [buttonSize, setButtonSize] = useState(s.calculateButtonSize());
+    const [logoAndSubtitleSize, setLogoAndSubtitleSize] = useState(s.calculateButtonSize());
+
+    useEffect(() => {
+      const handleResize = () => {
+        const sizes = s.calculateButtonSize();
+        setButtonSize(sizes);
+        setLogoAndSubtitleSize(sizes);
+      };
+  
+      window.addEventListener('resize', handleResize);
+  
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
+
   const navigate = useNavigate(); // useNavigate hook 사용
 
   return (
@@ -9,16 +27,22 @@ function HomeBeforeLogin() {
       <s.CenteredWrapper>
         {/*<s.Title>My</s.Title>
         <s.Title>Cabinet</s.Title>*/}
-        <s.Title>고무링</s.Title>
-        <s.Title> </s.Title>
-        <s.P>5주간 힘든 훈련병을 위해 대답해주세요!</s.P>
+        <s.LogoTitleWrapper logoTitleTopMargin={logoAndSubtitleSize.logoTitleTopMargin}>
+          <s.MainLogo width={logoAndSubtitleSize.mainLogoWidth} />
+          <s.SubTitle width={logoAndSubtitleSize.subtitleWidth} />
+        </s.LogoTitleWrapper>
+        
 
         <s.ButtonWrapper>
-          <s.Break />
-          <s.Button onClick={() => navigate("/login")}>로그인</s.Button>
-          <s.Break />
-          <s.Button onClick={() => navigate("/signup")}>회원가입</s.Button>
+          <s.Button width={buttonSize.width} height={buttonSize.height} onClick={() => navigate("/login")}>
+            로그인
+          </s.Button>
+          <s.Button width={buttonSize.width} height={buttonSize.height} onClick={() => navigate("/signup")}>
+            회원가입
+          </s.Button>
         </s.ButtonWrapper>
+
+        
       </s.CenteredWrapper>
     </s.BackgroundContainer>
   );

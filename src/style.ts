@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
         z-index: 1;
     }
     body {
-        background: #f2f1ee; // 배경색 추가
+        background: #F2F1EE; // 배경색 추가
         margin: 0; // 화면의 모든 공간을 채우기 위해 margin을 0으로 설정
     }
 

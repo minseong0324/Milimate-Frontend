@@ -1,44 +1,63 @@
 import styled from "styled-components";
-import bodyBackground from "../../assets/background/background.svg";
-import loginTitleimg from "../../assets/title/title.svg";
 
-// import button1 from '../../assets/button/button1.png';
-// import button4 from '../../assets/button/button4.png';
-// import buttonMidium1 from '../../assets/button/button-midium-1.png';
-// import buttonMidium2 from '../../assets/button/button-midium-2.png';
+// 이 함수는 버튼의 크기를 계산합니다.
+const calculateButtonSize = () => {
+  // 뷰포트의 너비와 높이를 얻습니다.
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
 
-const LoginButton = styled.button`
-  width: 250px; // 버튼 너비를 조정
-  height: 40px; // 버튼 높이를 조정
-  padding: 10px; // 내부 패딩을 조정
+  // 배경 이미지의 원래 비율을 계산합니다.
+  const originalAspectRatio = 375 / 812;
 
-  background-size: cover; // 이미지가 버튼에 맞게 조절
-  color: black;
-  border-radius: 30px;
-  font-size: 17px;
-  border: 0px transparent; // 테두리 색상을 투명
-  position: relative;
-  z-index: 2;
-  &:active {
-    // 버튼이 눌렸을 때의 스타일
-
-    background-size: cover; // 이미지가 버튼에 맞게 조절
+  // 배경 이미지의 실제 크기를 계산합니다.
+  let backgroundImageWidth;
+  let backgroundImageHeight;
+  if (viewportWidth / viewportHeight > originalAspectRatio) {
+    backgroundImageHeight = viewportHeight;
+    backgroundImageWidth = backgroundImageHeight * originalAspectRatio;
+  } else {
+    backgroundImageWidth = viewportWidth;
+    backgroundImageHeight = backgroundImageWidth / originalAspectRatio;
   }
+
+  // 버튼의 크기를 계산합니다.
+  const buttonWidth = (343 / 375) * backgroundImageWidth;
+  const buttonHeight = (48 / 812) * backgroundImageHeight;
+
+  const mainLogoWidth = (340 / 375) * backgroundImageWidth;  // 80% of the background image width
+  const subtitleWidth = (220 / 375) * backgroundImageWidth;  // 60% of the background image width
+  
+  const logoTitleTopMargin = (-10 / 812) * backgroundImageHeight;  // 이 값은 조절 가능
+
+  return { width: buttonWidth, height: buttonHeight, mainLogoWidth,
+    subtitleWidth, logoTitleTopMargin };
+};
+
+
+const LoginButton = styled.button<{ width: number; height: number }>`
+width: ${(props) => props.width}px;
+height: ${(props) => props.height}px;
+position: relative;
+font-family: "";
+border-radius: 10px;
+background: #4A544A;
+font-size: calc(17px * (100vw / 375));  // 폰트 크기를 화면 너비에 따라 조절
+border: 0px transparent;
+z-index: 2;
+color: white;
+margin-bottom: 2vh;
 `;
 
 const BackgroundContainer = styled.div`
-  font-family: "EF_jejudoldam";
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: url(${bodyBackground}) no-repeat center center; // 배경 이미지 중앙 배치
+  width: 100%;
+  height: 100%;
 `;
 
 //background: url(${button4}) no-repeat center center; // 이미지를 배경으로 사용
 //background: url(${button1}) no-repeat center center; // 눌렸을 때의 배경 이미지
 const LoginWrapper = styled.div`
+  font-family: "";  
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;

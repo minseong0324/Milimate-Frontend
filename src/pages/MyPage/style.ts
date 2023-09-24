@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import bodyBackground from "../../assets/background/background.svg";
 // import button1 from '../../assets/button/button1.png';
 // import button4 from '../../assets/button/button4.png';
 // import buttonMidium1 from '../../assets/button/button-midium-1.png';
@@ -32,7 +31,6 @@ const BackgroundContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  // background: url(${bodyBackground}) no-repeat center center; // 배경 이미지 중앙 배치
   //background: rgb(242 242 242) no-repeat center center;
 `;
 
@@ -211,7 +209,7 @@ const DesignReferDiv = styled.div`
   align-items: center;
   margin: 0;
   font-size: 12px;
-  font-weigh: light;
+  font-weight: light;
 `;
 const DesignReferText = styled.p`
   margin: 0;
