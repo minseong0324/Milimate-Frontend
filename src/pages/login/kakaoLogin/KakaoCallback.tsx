@@ -106,12 +106,12 @@ function KakaoCallback() {
   };
 
   return (
-    <s.KakaoWrapper>
+    <>
       로그인 중...
       {/* <ErrorModal isOpen={isErrorModalOpen} onClose={() => setErrorModalOpen(false)} >
           {modalErrorContent}
       </ErrorModal> */}
-    </s.KakaoWrapper>
+    </>
   );
 }
 

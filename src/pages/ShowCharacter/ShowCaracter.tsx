@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { s } from "./style";
 import { useNavigate } from "react-router-dom";
-import CharacterImage from "../../assets/charater/character.svg";
+import CharacterImage from "../../assets/charater/MainCharacter.svg";
 import { useLocation } from "react-router-dom";
 import { RootState } from "src/components/Redux/store";
 import { useSelector } from "react-redux";

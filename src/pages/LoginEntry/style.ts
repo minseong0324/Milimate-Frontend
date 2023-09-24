@@ -17,7 +17,7 @@ const calculateButtonSize = () => {
   // 배경 이미지의 실제 크기를 계산합니다.
   let backgroundImageWidth;
   let backgroundImageHeight;
-  if (viewportWidth / viewportHeight > originalAspectRatio) {
+  if (viewportWidth  > originalAspectRatio) {
     backgroundImageHeight = viewportHeight;
     backgroundImageWidth = backgroundImageHeight * originalAspectRatio;
   } else {
@@ -26,11 +26,11 @@ const calculateButtonSize = () => {
   }
 
   // 버튼의 크기를 계산합니다.
-  const buttonWidth = (343 / 375) * backgroundImageWidth;
-  const buttonHeight = (48 / 812) * backgroundImageHeight;
+  const buttonWidth = (343 / 375) * backgroundImageWidth * 1.2;
+  const buttonHeight = (48 / 812) * backgroundImageHeight * 1.2;
 
-  const mainLogoWidth = (340 / 375) * backgroundImageWidth;  // 80% of the background image width
-  const subtitleWidth = (220 / 375) * backgroundImageWidth;  // 60% of the background image width
+  const mainLogoWidth = (340 / 375) * backgroundImageWidth * 1.1;  // 80% of the background image width
+  const subtitleWidth = (220 / 375) * backgroundImageWidth * 1.1;  // 60% of the background image width
   
   const logoTitleTopMargin = (-10 / 812) * backgroundImageHeight;  // 이 값은 조절 가능
 
@@ -46,7 +46,7 @@ const Button = styled.button<{ width: number; height: number }>`
   font-family: "";
   border-radius: 10px;
   background: #4A544A;
-  font-size: calc(17px * (100vw / 375));  // 폰트 크기를 화면 너비에 따라 조절
+  font-size: 16px;
   border: 0px transparent;
   z-index: 2;
   color: white;
@@ -54,7 +54,7 @@ const Button = styled.button<{ width: number; height: number }>`
 `;
 
 const ButtonWrapper = styled.div`
-  position: fixed;
+  position: absolute;
   bottom: 5vh;
   left: 50%;
   transform: translateX(-50%);
@@ -79,10 +79,10 @@ const CenteredWrapper = styled.div`
 `;
 
 const BackgroundContainer = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh; 
   background: url(${BackgroundImg}) no-repeat center center;
-  background-size: contain;
+  background-size: cover;
 `;
 
 const LogoTitleWrapper = styled.div<{ logoTitleTopMargin: number }>`
@@ -98,7 +98,7 @@ const MainLogo = styled.img.attrs({
   src: MainLogoImg
 })<{ width: number }>`
   position: relative;
-  left: -5%;
+  //left: -5%;
   top: -30%;  // 상단으로부터의 위치를 조정
   width: ${(props) => props.width}px;
   height: auto;

@@ -18,19 +18,47 @@ type LoginCredentials = {
 };
 
 function Login() {
+  const [logoAndSubtitleSize, setLogoAndSubtitleSize] = useState(s.calculateButtonSize());
+  const [charSize, setCharSize] = useState(s.calculateButtonSize());
+
+  useEffect(() => {
+    const handleResize = () => {
+      const sizes = s.calculateButtonSize();
+      setLogoAndSubtitleSize(sizes);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <s.BackgroundContainer>
+                <s.BackButton/>
+                
       <s.LoginWrapper>
-        <s.TextsStyle>
-          <s.Title>로그인</s.Title>
-        </s.TextsStyle>
 
-        <s.LoginForm>
-          <KakaoLogin imageUrl={KakaoLoginImage} />
+      <s.Text>
+            로그인
+          </s.Text>
+        
+         
+        <s.LogoTitleWrapper logoTitleTopMargin={logoAndSubtitleSize.logoTitleTopMargin}>
+          <s.MainLogo width={logoAndSubtitleSize.mainLogoWidth} />
+          <s.SubTitle width={logoAndSubtitleSize.subtitleWidth} />
+        </s.LogoTitleWrapper>
+        <s.Character width={logoAndSubtitleSize.charWidth}/>
+        
+
+        <s.ButtonWrapper>
           <NaverLogin imageUrl={NaverLoginImage} />
+          <KakaoLogin imageUrl={KakaoLoginImage} />
           <GoogleLogin buttonImage={GoogleLoginImage} />
-        </s.LoginForm>
+        </s.ButtonWrapper>
+          
+       
 
         {/* <ErrorModal isOpen={isErrorModalOpen} onClose={() => setErrorModalOpen(false)} >
           {modalErrorContent}

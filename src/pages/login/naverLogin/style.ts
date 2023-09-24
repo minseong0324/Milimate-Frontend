@@ -2,17 +2,44 @@ import styled from "styled-components";
 //import buttonMidium1 from '../../../assets/button/button-midium-1.png';
 //import buttonMidium2 from '../../../assets/button/button-midium-2.png';
 
-const NaverLoginButton = styled.button`
-  position: relative;
-  z-index: 2;
-  width: 250px;
-  height: 40px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
+// 이 함수는 버튼의 크기를 계산합니다.
+const calculateButtonSize = () => {
+  // 뷰포트의 너비와 높이를 얻습니다.
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+
+  // 배경 이미지의 원래 비율을 계산합니다.
+  const originalAspectRatio = 375 / 812;
+
+  // 배경 이미지의 실제 크기를 계산합니다.
+  let backgroundImageWidth;
+  let backgroundImageHeight;
+  if (viewportWidth / viewportHeight > originalAspectRatio) {
+    backgroundImageHeight = viewportHeight;
+    backgroundImageWidth = backgroundImageHeight * originalAspectRatio;
+  } else {
+    backgroundImageWidth = viewportWidth;
+    backgroundImageHeight = backgroundImageWidth / originalAspectRatio;
+  }
+
+  // 버튼의 크기를 계산합니다.
+  const buttonWidth = (343 / 375) * backgroundImageWidth;
+  const buttonHeight = (48 / 812) * backgroundImageHeight;
+
+  return { width: buttonWidth, height: buttonHeight };
+};
+
+const NaverLoginButton = styled.button<{ width: number; height: number }>`
+width: ${(props) => props.width}px;
+height: ${(props) => props.height}px;
+position: relative;
+font-family: "";
+background-color: transparent;
+border-radius: 15px;
+font-size: calc(17px * (100vw / 375));  // 폰트 크기를 화면 너비에 따라 조절
+border: 0px transparent;
+z-index: 2;
+margin-bottom: 2vh;
 `;
 
 const NaverWrapper = styled.div`
@@ -96,4 +123,5 @@ export const s = {
   ErrorModalTextsWrapper1,
   ErrorModalTextsWrapper2,
   ModalButton,
+  calculateButtonSize
 };

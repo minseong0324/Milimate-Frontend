@@ -3,52 +3,44 @@ import GoogleLoginButtonSVG from "../../../assets/socialLoginButton/GoogleLogin.
 // import buttonMidium1 from '../../../assets/button/button-midium-1.png';
 // import buttonMidium2 from '../../../assets/button/button-midium-2.png';
 
-const ButtonWrapper = styled.div`
-  z-index: 2;
-`;
+// 이 함수는 버튼의 크기를 계산합니다.
+const calculateButtonSize = () => {
+  // 뷰포트의 너비와 높이를 얻습니다.
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
 
-// 여기에 스타일드 컴포넌트를 정의합니다.
-const HiddenDiv = styled.div`
-  position: absolute;
-  opacity: 0;
-  z-index: 10;
-`;
+  // 배경 이미지의 원래 비율을 계산합니다.
+  const originalAspectRatio = 375 / 812;
 
-type CustomButtonProps = {
-  buttonImage: string;
+  // 배경 이미지의 실제 크기를 계산합니다.
+  let backgroundImageWidth;
+  let backgroundImageHeight;
+  if (viewportWidth / viewportHeight > originalAspectRatio) {
+    backgroundImageHeight = viewportHeight;
+    backgroundImageWidth = backgroundImageHeight * originalAspectRatio;
+  } else {
+    backgroundImageWidth = viewportWidth;
+    backgroundImageHeight = backgroundImageWidth / originalAspectRatio;
+  }
+
+  // 버튼의 크기를 계산합니다.
+  const buttonWidth = (343 / 375) * backgroundImageWidth;
+  const buttonHeight = (48 / 812) * backgroundImageHeight;
+
+  return { width: buttonWidth, height: buttonHeight };
 };
 
-const CustomButton = styled.button<CustomButtonProps>`
-  background-image: url(${(props) => props.buttonImage});
-  background-image: url(${(props) => props.buttonImage});
-  background-color: transparent;
-  color: white;
-  border: none;
-  width: 250px;
-  height: 40px;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-`;
-
-const GoogleLoginButton = styled.button<CustomButtonProps>`
-  background-image: url(${(props) => props.buttonImage});
-  background-image: url(${(props) => props.buttonImage});
-  background-color: transparent;
-  color: white;
-  border: none;
-  width: 250px;
-  height: 40px;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: 2;
+const GoogleLoginButton = styled.button<{ width: number; height: number }>`
+width: ${(props) => props.width}px;
+height: ${(props) => props.height}px;
+position: relative;
+font-family: "";
+background-color: transparent;
+border-radius: 15px;
+font-size: calc(17px * (100vw / 375));  // 폰트 크기를 화면 너비에 따라 조절
+border: 0px transparent;
+z-index: 2;
+margin-bottom: 2vh;
 `;
 
 const ModalTextsWrapper = styled.div`
@@ -126,9 +118,6 @@ const GoogleWrapper = styled.div`
 `;
 
 export const s = {
-  ButtonWrapper,
-  CustomButton,
-  HiddenDiv,
   ModalTextsWrapper,
   ModalWrapper,
   Wrapper,
@@ -138,4 +127,5 @@ export const s = {
   ModalButton,
   GoogleLoginButton,
   GoogleWrapper,
+  calculateButtonSize
 };
