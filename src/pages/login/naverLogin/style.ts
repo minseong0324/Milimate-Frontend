@@ -23,8 +23,8 @@ const calculateButtonSize = () => {
   }
 
   // 버튼의 크기를 계산합니다.
-  const buttonWidth = (343 / 375) * backgroundImageWidth;
-  const buttonHeight = (48 / 812) * backgroundImageHeight;
+  const buttonWidth = (343 / 375) * backgroundImageWidth * 1.2;
+  const buttonHeight = (48 / 812) * backgroundImageHeight * 1.2;
 
   return { width: buttonWidth, height: buttonHeight };
 };

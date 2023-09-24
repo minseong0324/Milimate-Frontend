@@ -36,13 +36,15 @@ function Login() {
 
   return (
     <s.BackgroundContainer>
-                <s.BackButton/>
+      <s.Container>
+        <s.Text>
+          로그인
+        </s.Text>
+      </s.Container>
                 
       <s.LoginWrapper>
 
-      <s.Text>
-            로그인
-          </s.Text>
+      
         
          
         <s.LogoTitleWrapper logoTitleTopMargin={logoAndSubtitleSize.logoTitleTopMargin}>

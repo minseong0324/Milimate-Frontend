@@ -30,9 +30,9 @@ const calculateButtonSize = () => {
   const mainLogoWidth = (234 / 375) * backgroundImageWidth * 1.2;  // 80% of the background image width
   const subtitleWidth = (220 / 375) * backgroundImageWidth * 1.2;  // 60% of the background image width
   
-  const logoTitleTopMargin = (-10 / 812) * backgroundImageHeight;  // 이 값은 조절 가능
+  const logoTitleTopMargin = (-10 / 812) * backgroundImageHeight ;  // 이 값은 조절 가능
 
-  const charWidth = (109 / 375) * backgroundImageWidth;  // 이 값은 조절 가능
+  const charWidth = (109 / 375) * backgroundImageWidth * 1.2;  // 이 값은 조절 가능
 
   return { width: buttonWidth, height: buttonHeight, mainLogoWidth,
     subtitleWidth, logoTitleTopMargin, charWidth };
@@ -58,7 +58,7 @@ const LoginWrapper = styled.div`
 `;
 
 const ButtonWrapper = styled.div`
-  position: fixed;
+  position: absolute;
   bottom: 5vh;
   left: 50%;
   transform: translateX(-50%);
@@ -76,14 +76,14 @@ const LogoTitleWrapper = styled.div<{ logoTitleTopMargin: number }>`
   flex-direction: column;
   align-items: center;
   margin-top: ${(props) => props.logoTitleTopMargin}px;
-  top: -15%;  // 상단으로부터의 위치를 조정
+  top: -12%;  // 상단으로부터의 위치를 조정
 `;
 
 const MainLogo = styled.img.attrs({
   src: MainLogo2Img
 })<{ width: number }>`
   position: relative;
-  top: -30%;  // 상단으로부터의 위치를 조정
+  top: -10%;  // 상단으로부터의 위치를 조정
   width: ${(props) => props.width}px;
   height: auto;
   z-index: 2;
@@ -97,7 +97,7 @@ const SubTitle = styled.img.attrs({
   height: auto;
   position: relative;
   z-index: 2;
-  margin-top: -5%;  // 위로 이동
+  margin-top: 5%;  // 위로 이동
 `;
 
 const Character = styled.img.attrs({
@@ -107,24 +107,34 @@ const Character = styled.img.attrs({
   height: auto;
   position: relative;
   z-index: 2;
-  margin-top: -4%;  // 위로 이동
+  margin-bottom: 20%;  // 위로 이동
+  margin-top: -10%;  // 위로 이동
+
 `;
 
-const Text = styled.text`
+const Container = styled.div`
   position: relative;
-  font-size: 15px;
-  top: -31%;
+  width: 100%;
+  //height: 100vh;
+  display: flex;
+  align-items: flex-start;  /* 상단에 정렬 */
+  justify-content: center;  /* 중앙에 정렬 */
+`;
 
+const Text = styled.div`
+  position: relative;
+  margin-top: 3%;
+  font-size: 18px;
 `;
 
 const BackButton = styled.img.attrs({
   src: BackButtonImg
 })`
+  position: absolute;
   width: 24px;
   height: auto;
-  position: absolute;
-  top: 3%;
-  left: 31%;
+  left: 2%;  /* 화면의 좌측에서 약간 떨어진 정도 설정 */
+  top: ${window.innerWidth <= 726 ? "725px" : "3%"};
 `;
 
 const ModalTextsWrapper = styled.div`
@@ -214,5 +224,5 @@ export const s = {
   Character,
   Text,
   BackButton,
-  
+  Container
 };
