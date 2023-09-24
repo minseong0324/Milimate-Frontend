@@ -18,30 +18,49 @@ type SignUpCredentials = {
 };
 
 function SignUp() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // useNavigate hook 사용
-  const [isErrorModalOpen, setErrorModalOpen] = useState(false);
-  const [modalErrorContent, setModalErrorContent] =
-    useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
+  const [logoAndSubtitleSize, setLogoAndSubtitleSize] = useState(s.calculateButtonSize());
+  const [charSize, setCharSize] = useState(s.calculateButtonSize());
 
-  // 서비스 설명 함수
-  const handleServiceDescription = () => {
-    setErrorModalOpen(true);
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      const sizes = s.calculateButtonSize();
+      setLogoAndSubtitleSize(sizes);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <s.BackgroundContainer>
+      <s.Container>
+        <s.Text>
+          회원가입
+        </s.Text>
+      </s.Container>
+                
       <s.SignUpWrapper>
-        <s.TextsStyle>
-          <s.Title>회원가입</s.Title>
-        </s.TextsStyle>
 
-        <s.SignUpForm>
-          <KakaoLogin imageUrl={KakaoSignUpImage} />
+      
+        
+         
+        <s.LogoTitleWrapper logoTitleTopMargin={logoAndSubtitleSize.logoTitleTopMargin}>
+          <s.MainLogo width={logoAndSubtitleSize.mainLogoWidth} />
+          <s.SubTitle width={logoAndSubtitleSize.subtitleWidth} />
+        </s.LogoTitleWrapper>
+        <s.Character width={logoAndSubtitleSize.charWidth}/>
+        
+
+        <s.ButtonWrapper>
           <NaverLogin imageUrl={NaverSignUpImage} />
+          <KakaoLogin imageUrl={KakaoSignUpImage} />
           <GoogleLogin buttonImage={GoogleSignUpImage} />
-        </s.SignUpForm>
+        </s.ButtonWrapper>
+          
+       
 
         {/* <ErrorModal isOpen={isErrorModalOpen} onClose={() => setErrorModalOpen(false)} >
           {modalErrorContent}

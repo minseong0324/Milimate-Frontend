@@ -1,42 +1,55 @@
 import styled from "styled-components";
+import MainLogo2Img from "../../assets/Logo/Logo2.svg"
+import SubTitleImg from "../../assets/SubTitle/SubTitle.svg";
+import CharImg from "../../assets/charater/MainCharacter.svg"
+import BackButtonImg from "../../assets/BackButton/BackButton.svg"
+// 이 함수는 버튼의 크기를 계산합니다.
+const calculateButtonSize = () => {
+  // 뷰포트의 너비와 높이를 얻습니다.
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
 
-// import button1 from '../../assets/button/button1.png';
-// import button4 from '../../assets/button/button4.png';
-// import buttonMidium1 from '../../assets/button/button-midium-1.png';
-// import buttonMidium2 from '../../assets/button/button-midium-2.png';
+  // 배경 이미지의 원래 비율을 계산합니다.
+  const originalAspectRatio = 375 / 812;
 
-const SignUpButton = styled.button`
-
-  width: 250px; // 버튼 너비를 조정
-  height: 40px; // 버튼 높이를 조정
-  padding: 10px; // 내부 패딩을 조정
-
-  background-size: cover; // 이미지가 버튼에 맞게 조절
-  color: black;
-  border-radius: 30px;
-  font-size: 17px;
-  border: 0px transparent; // 테두리 색상을 투명
-  position: relative;
-  z-index: 2;
-  &:active {
-    // 버튼이 눌렸을 때의 스타일
-
-    background-size: cover; // 이미지가 버튼에 맞게 조절
+  // 배경 이미지의 실제 크기를 계산합니다.
+  let backgroundImageWidth;
+  let backgroundImageHeight;
+  if (viewportWidth / viewportHeight > originalAspectRatio) {
+    backgroundImageHeight = viewportHeight;
+    backgroundImageWidth = backgroundImageHeight * originalAspectRatio;
+  } else {
+    backgroundImageWidth = viewportWidth;
+    backgroundImageHeight = backgroundImageWidth / originalAspectRatio;
   }
-`;
+
+  // 버튼의 크기를 계산합니다.
+  const buttonWidth = (343 / 375) * backgroundImageWidth * 1.2;
+  const buttonHeight = (48 / 812) * backgroundImageHeight * 1.2;
+
+  const mainLogoWidth = (234 / 375) * backgroundImageWidth * 1.2;  // 80% of the background image width
+  const subtitleWidth = (220 / 375) * backgroundImageWidth * 1.2;  // 60% of the background image width
+  
+  const logoTitleTopMargin = (-10 / 812) * backgroundImageHeight ;  // 이 값은 조절 가능
+
+  const charWidth = (109 / 375) * backgroundImageWidth * 1.2;  // 이 값은 조절 가능
+
+  return { width: buttonWidth, height: buttonHeight, mainLogoWidth,
+    subtitleWidth, logoTitleTopMargin, charWidth };
+};
+
 
 const BackgroundContainer = styled.div`
-    font-family: 'EF_jejudoldam';
-  position: relative; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
 `;
 
 //background: url(${button4}) no-repeat center center; // 이미지를 배경으로 사용
 //background: url(${button1}) no-repeat center center; // 눌렸을 때의 배경 이미지
 const SignUpWrapper = styled.div`
+  font-family: "";
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,64 +57,84 @@ const SignUpWrapper = styled.div`
   height: 100vh;
 `;
 
-const SignUpForm = styled.form`
-
+const ButtonWrapper = styled.div`
+  position: absolute;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  margin-top: 67px;
+  justify-content: center;
+  z-index: 2;
+  width: 100%;
 `;
 
-const SignUpInput = styled.input`
-
-  padding: 10px;
-  font-size: 16px;
-  width: 250px;
-  border: none; // 모든 테두리를 제거합니다.
-  border-bottom: 1px solid #777; // 아래쪽 테두리만 추가합니다.
-  background-color: transparent;
-  color: #111;
-  z-index: 5;
-
-  &::placeholder {
-    color: #777;
-  }
-
-  &:focus {
-    outline: none;
-  }
-`;
-
-const TextsStyle = styled.div`
+const LogoTitleWrapper = styled.div<{ logoTitleTopMargin: number }>`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  line-height: 0.2; // 글자 간격
-  z-index: 0;
+  margin-top: ${(props) => props.logoTitleTopMargin}px;
+  top: -12%;  // 상단으로부터의 위치를 조정
 `;
 
-const Title = styled.text`
-    font-size: 45px;
-    line-height: 1;  // 글자 간격
-    color: rgb(56 87 35);
+const MainLogo = styled.img.attrs({
+  src: MainLogo2Img
+})<{ width: number }>`
+  position: relative;
+  top: -10%;  // 상단으로부터의 위치를 조정
+  width: ${(props) => props.width}px;
+  height: auto;
+  z-index: 2;
 `;
 
-const H3 = styled.h3`
-  margin-bottom: 5px;
-  font-size: 15px;
+
+const SubTitle = styled.img.attrs({
+  src: SubTitleImg
+})<{ width: number }>`
+  width: ${(props) => props.width}px;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  margin-top: 5%;  // 위로 이동
 `;
 
-const H1 = styled.h1`
-  //margin-top: 0px;
-  font-size: 28px;
-  font-family: "DOSGothic";
+const Character = styled.img.attrs({
+  src: CharImg
+})<{ width: number }>`
+  width: ${(props) => props.width}px;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 20%;  // 위로 이동
+  margin-top: -10%;  // 위로 이동
+
 `;
 
-const P = styled.p`
-  margin-top: 6px;
-  font-size: 14px;
-  padding-bottom: 30px;
+const Container = styled.div`
+  position: relative;
+  width: 100%;
+  //height: 100vh;
+  display: flex;
+  align-items: flex-start;  /* 상단에 정렬 */
+  justify-content: center;  /* 중앙에 정렬 */
+`;
+
+const Text = styled.div`
+  position: relative;
+  margin-top: 3%;
+  font-size: 18px;
+`;
+
+const BackButton = styled.img.attrs({
+  src: BackButtonImg
+})`
+  position: absolute;
+  width: 24px;
+  height: auto;
+  left: 2%;  /* 화면의 좌측에서 약간 떨어진 정도 설정 */
+  top: ${window.innerWidth <= 726 ? "725px" : "3%"};
 `;
 
 const ModalTextsWrapper = styled.div`
@@ -169,23 +202,27 @@ const ModalButton = styled.button`
     background-size: cover; // 이미지가 버튼에 맞게 조절
   }
 `;
+
+
 //background: url(${buttonMidium1}) no-repeat center center; // 이미지를 배경으로 사용
 //background: url(${buttonMidium2}) no-repeat center center; // 눌렸을 때의 배경 이미지
 export const s = {
-    SignUpWrapper,
-    SignUpForm,
-    SignUpInput,
-    SignUpButton,
-    TextsStyle,
-    H3,
-    H1,
-    P,
-    ModalTextsWrapper,
-    ModalWrapper,
-    ErrorCenterModalWrapper,
-    ErrorModalTextsWrapper1,
-    ErrorModalTextsWrapper2,
-    ModalButton,
-    BackgroundContainer,
-    Title
+  SignUpWrapper,
+  ButtonWrapper,
+
+  ModalTextsWrapper,
+  ModalWrapper,
+  ErrorCenterModalWrapper,
+  ErrorModalTextsWrapper1,
+  ErrorModalTextsWrapper2,
+  ModalButton,
+  BackgroundContainer,
+  SubTitle,
+  MainLogo,
+  LogoTitleWrapper,
+  calculateButtonSize,
+  Character,
+  Text,
+  BackButton,
+  Container
 };
