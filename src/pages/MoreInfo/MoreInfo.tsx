@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios, { AxiosError } from "axios";
 import { s } from "./style";
@@ -28,6 +28,23 @@ function MoreInfo() {
   const [numericmodalOpen, setNumericModalOpen] = useState(false);
 
   const [modalMessage, setModalMessage] = useState("");
+  const [buttonSize, setButtonSize] = useState(s.calculateButtonSize());
+    const [logoAndSubtitleSize, setLogoAndSubtitleSize] = useState(s.calculateButtonSize());
+
+    useEffect(() => {
+      const handleResize = () => {
+        const sizes = s.calculateButtonSize();
+        setButtonSize(sizes);
+        setLogoAndSubtitleSize(sizes);
+      };
+  
+      window.addEventListener('resize', handleResize);
+  
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
+
   const isLeapYear = (year: number) => {
     return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
   };
@@ -216,10 +233,11 @@ function MoreInfo() {
 
   return (
     <s.BackgroundContainer>
+      <s.Container>
+          <s.Text>상세정보 입력</s.Text>
+        </s.Container>
       <s.Wrapper>
-        <s.Title>추가정보</s.Title>
         <s.MoreInfoForm>
-          <s.InputContainer>
             <s.TextsStyle>이름</s.TextsStyle>
             <s.MoreInfoInput
               type="text"
@@ -228,9 +246,8 @@ function MoreInfo() {
                 target: { value: React.SetStateAction<string> };
               }) => setUserName(e.target.value)}
             />
-          </s.InputContainer>
-          <s.InputContainer>
             <s.TextsStyle>입대일</s.TextsStyle>
+            <s.InputContainer>
             <s.MoreInfoInputYear
               type="text"
               value={enlistmentYear}
@@ -256,8 +273,8 @@ function MoreInfo() {
             />
             <s.TextsStyle2>일</s.TextsStyle2>
           </s.InputContainer>
-          <s.InputContainer>
             <s.TextsStyle>수료일</s.TextsStyle>
+            <s.InputContainer>
             <s.MoreInfoInputYear
               type="text"
               value={completionYear}
@@ -283,11 +300,11 @@ function MoreInfo() {
             />
             <s.TextsStyle2>일</s.TextsStyle2>
           </s.InputContainer>
-          <s.Button onClick={handleMoreInfo} type="submit">
+          <s.ButtonWrapper>
+            <s.Button width={buttonSize.width} height={buttonSize.height} onClick={handleMoreInfo} type="submit">
             가입하기
-          </s.Button>{" "}
-          {/* onclick 이벤트로 회원가입하기를 누르면 로그인 페이지로 */}
-          {/* <GoogleLoginButton buttonImage={GoogleSignUpImage}/> */}
+          </s.Button>
+          </s.ButtonWrapper>
           <s.RequiredInfoText>
             이름, 입대일은 필수정보 입니다.
           </s.RequiredInfoText>
