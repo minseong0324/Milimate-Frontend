@@ -16,7 +16,6 @@ const Button = styled.button`
   z-index: 2;
   color: white;
   margin-bottom: 2vh;
-
 `;
 
 const ButtonWrapper = styled.div`
@@ -30,9 +29,9 @@ const ButtonWrapper = styled.div`
   justify-content: center;
   z-index: 2;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 100px;
   @media (min-width: 600px) {
-    margin-top: 100px;
+    margin-top: 200px;
   }
 
   /* 가로모드용 스타일 */
@@ -48,7 +47,7 @@ const CenteredWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
 `;
 
 const TopBackground = styled.div`
@@ -117,8 +116,8 @@ const LogoTitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 280px;
-  top: -12%;  // 상단으로부터의 위치를 조정
+  margin-top: 230px;
+  top: -30px;  // 상단으로부터의 위치를 조정
   @media (min-width: 600px) {
     margin-top: 300px;
   }
@@ -152,7 +151,7 @@ const SubTitle = styled.img.attrs({
   height: auto;
   position: relative;
   z-index: 2;
-  margin-top: 5%;  // 위로 이동
+  margin-top: 20px;  // 위로 이동
   @media (min-width: 600px) {
     width: 286px;
   }
