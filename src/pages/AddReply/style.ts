@@ -145,12 +145,12 @@ const ButtonStyle = styled.button`
   font-size: 16px;
   width: 450px;
   padding: 12px;
-  margin-bottom:  250px;
+  margin-bottom: 250px;
   @media (max-width: 768px) {
-    
+
     top: 40px;
     height: 56px;
-    width : 343px;
+    width: 343px;
     margin-bottom: 100px;
   }
 `;
