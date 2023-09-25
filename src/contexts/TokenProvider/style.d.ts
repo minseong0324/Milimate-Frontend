@@ -51,7 +51,7 @@ export declare const s: {
         results?: number | undefined;
         security?: string | undefined;
         unselectable?: "on" | "off" | undefined;
-        inputMode?: "none" | "text" | "search" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
+        inputMode?: "none" | "search" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
         is?: string | undefined;
         'aria-activedescendant'?: string | undefined;
         'aria-atomic'?: (boolean | "true" | "false") | undefined;
@@ -323,7 +323,7 @@ export declare const s: {
         results?: number | undefined;
         security?: string | undefined;
         unselectable?: "on" | "off" | undefined;
-        inputMode?: "none" | "text" | "search" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
+        inputMode?: "none" | "search" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
         is?: string | undefined;
         'aria-activedescendant'?: string | undefined;
         'aria-atomic'?: (boolean | "true" | "false") | undefined;
@@ -595,7 +595,7 @@ export declare const s: {
         results?: number | undefined;
         security?: string | undefined;
         unselectable?: "on" | "off" | undefined;
-        inputMode?: "none" | "text" | "search" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
+        inputMode?: "none" | "search" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
         is?: string | undefined;
         'aria-activedescendant'?: string | undefined;
         'aria-atomic'?: (boolean | "true" | "false") | undefined;
@@ -828,7 +828,7 @@ export declare const s: {
         formNoValidate?: boolean | undefined;
         formTarget?: string | undefined;
         name?: string | undefined;
-        type?: "button" | "submit" | "reset" | undefined;
+        type?: "button" | "reset" | "submit" | undefined;
         value?: string | number | readonly string[] | undefined;
         defaultChecked?: boolean | undefined;
         defaultValue?: string | number | readonly string[] | undefined;
@@ -877,7 +877,7 @@ export declare const s: {
         results?: number | undefined;
         security?: string | undefined;
         unselectable?: "on" | "off" | undefined;
-        inputMode?: "none" | "text" | "search" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
+        inputMode?: "none" | "search" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
         is?: string | undefined;
         'aria-activedescendant'?: string | undefined;
         'aria-atomic'?: (boolean | "true" | "false") | undefined;

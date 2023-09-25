@@ -50,7 +50,7 @@ export declare const s: {
         results?: number | undefined;
         security?: string | undefined;
         unselectable?: "on" | "off" | undefined;
-        inputMode?: "none" | "text" | "search" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
+        inputMode?: "none" | "search" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
         is?: string | undefined;
         'aria-activedescendant'?: string | undefined;
         'aria-atomic'?: (boolean | "true" | "false") | undefined;
@@ -322,7 +322,7 @@ export declare const s: {
         results?: number | undefined;
         security?: string | undefined;
         unselectable?: "on" | "off" | undefined;
-        inputMode?: "none" | "text" | "search" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
+        inputMode?: "none" | "search" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
         is?: string | undefined;
         'aria-activedescendant'?: string | undefined;
         'aria-atomic'?: (boolean | "true" | "false") | undefined;
@@ -545,21 +545,7 @@ export declare const s: {
         onTransitionEndCapture?: React.TransitionEventHandler<HTMLDivElement> | undefined;
     }>;
     BubbleImage: import("styled-components").IStyledComponent<"web", {
-        slot?: string | undefined;
-        style?: React.CSSProperties | undefined;
-        title?: string | undefined;
         key?: React.Key | null | undefined;
-        alt?: string | undefined;
-        crossOrigin?: "" | "anonymous" | "use-credentials" | undefined;
-        decoding?: "async" | "auto" | "sync" | undefined;
-        height?: string | number | undefined;
-        loading?: "eager" | "lazy" | undefined;
-        referrerPolicy?: React.HTMLAttributeReferrerPolicy | undefined;
-        sizes?: string | undefined;
-        src?: string | undefined;
-        srcSet?: string | undefined;
-        useMap?: string | undefined;
-        width?: string | number | undefined;
         defaultChecked?: boolean | undefined;
         defaultValue?: string | number | readonly string[] | undefined;
         suppressContentEditableWarning?: boolean | undefined;
@@ -576,8 +562,11 @@ export declare const s: {
         lang?: string | undefined;
         nonce?: string | undefined;
         placeholder?: string | undefined;
+        slot?: string | undefined;
         spellCheck?: (boolean | "true" | "false") | undefined;
+        style?: React.CSSProperties | undefined;
         tabIndex?: number | undefined;
+        title?: string | undefined;
         translate?: "yes" | "no" | undefined;
         radioGroup?: string | undefined;
         role?: React.AriaRole | undefined;
@@ -604,7 +593,7 @@ export declare const s: {
         results?: number | undefined;
         security?: string | undefined;
         unselectable?: "on" | "off" | undefined;
-        inputMode?: "none" | "text" | "search" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
+        inputMode?: "none" | "search" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
         is?: string | undefined;
         'aria-activedescendant'?: string | undefined;
         'aria-atomic'?: (boolean | "true" | "false") | undefined;
@@ -825,6 +814,17 @@ export declare const s: {
         onAnimationIterationCapture?: React.AnimationEventHandler<HTMLImageElement> | undefined;
         onTransitionEnd?: React.TransitionEventHandler<HTMLImageElement> | undefined;
         onTransitionEndCapture?: React.TransitionEventHandler<HTMLImageElement> | undefined;
+        src?: string | undefined;
+        alt?: string | undefined;
+        crossOrigin?: "" | "anonymous" | "use-credentials" | undefined;
+        decoding?: "async" | "auto" | "sync" | undefined;
+        height?: string | number | undefined;
+        loading?: "eager" | "lazy" | undefined;
+        referrerPolicy?: React.HTMLAttributeReferrerPolicy | undefined;
+        sizes?: string | undefined;
+        srcSet?: string | undefined;
+        useMap?: string | undefined;
+        width?: string | number | undefined;
         ref?: ((instance: HTMLImageElement | null) => void) | React.RefObject<HTMLImageElement> | null | undefined;
     }>;
     BubbleText: import("styled-components").IStyledComponent<"web", {
@@ -877,7 +877,7 @@ export declare const s: {
         results?: number | undefined;
         security?: string | undefined;
         unselectable?: "on" | "off" | undefined;
-        inputMode?: "none" | "text" | "search" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
+        inputMode?: "none" | "search" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
         is?: string | undefined;
         'aria-activedescendant'?: string | undefined;
         'aria-atomic'?: (boolean | "true" | "false") | undefined;
@@ -1149,7 +1149,7 @@ export declare const s: {
         results?: number | undefined;
         security?: string | undefined;
         unselectable?: "on" | "off" | undefined;
-        inputMode?: "none" | "text" | "search" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
+        inputMode?: "none" | "search" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
         is?: string | undefined;
         'aria-activedescendant'?: string | undefined;
         'aria-atomic'?: (boolean | "true" | "false") | undefined;
@@ -1421,7 +1421,7 @@ export declare const s: {
         results?: number | undefined;
         security?: string | undefined;
         unselectable?: "on" | "off" | undefined;
-        inputMode?: "none" | "text" | "search" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
+        inputMode?: "none" | "search" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
         is?: string | undefined;
         'aria-activedescendant'?: string | undefined;
         'aria-atomic'?: (boolean | "true" | "false") | undefined;
@@ -1693,7 +1693,7 @@ export declare const s: {
         results?: number | undefined;
         security?: string | undefined;
         unselectable?: "on" | "off" | undefined;
-        inputMode?: "none" | "text" | "search" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
+        inputMode?: "none" | "search" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
         is?: string | undefined;
         'aria-activedescendant'?: string | undefined;
         'aria-atomic'?: (boolean | "true" | "false") | undefined;
@@ -1916,21 +1916,7 @@ export declare const s: {
         onTransitionEndCapture?: React.TransitionEventHandler<HTMLDivElement> | undefined;
     }>;
     BubbleReplyImage: import("styled-components").IStyledComponent<"web", {
-        slot?: string | undefined;
-        style?: React.CSSProperties | undefined;
-        title?: string | undefined;
         key?: React.Key | null | undefined;
-        alt?: string | undefined;
-        crossOrigin?: "" | "anonymous" | "use-credentials" | undefined;
-        decoding?: "async" | "auto" | "sync" | undefined;
-        height?: string | number | undefined;
-        loading?: "eager" | "lazy" | undefined;
-        referrerPolicy?: React.HTMLAttributeReferrerPolicy | undefined;
-        sizes?: string | undefined;
-        src?: string | undefined;
-        srcSet?: string | undefined;
-        useMap?: string | undefined;
-        width?: string | number | undefined;
         defaultChecked?: boolean | undefined;
         defaultValue?: string | number | readonly string[] | undefined;
         suppressContentEditableWarning?: boolean | undefined;
@@ -1947,8 +1933,11 @@ export declare const s: {
         lang?: string | undefined;
         nonce?: string | undefined;
         placeholder?: string | undefined;
+        slot?: string | undefined;
         spellCheck?: (boolean | "true" | "false") | undefined;
+        style?: React.CSSProperties | undefined;
         tabIndex?: number | undefined;
+        title?: string | undefined;
         translate?: "yes" | "no" | undefined;
         radioGroup?: string | undefined;
         role?: React.AriaRole | undefined;
@@ -1975,7 +1964,7 @@ export declare const s: {
         results?: number | undefined;
         security?: string | undefined;
         unselectable?: "on" | "off" | undefined;
-        inputMode?: "none" | "text" | "search" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
+        inputMode?: "none" | "search" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
         is?: string | undefined;
         'aria-activedescendant'?: string | undefined;
         'aria-atomic'?: (boolean | "true" | "false") | undefined;
@@ -2196,6 +2185,17 @@ export declare const s: {
         onAnimationIterationCapture?: React.AnimationEventHandler<HTMLImageElement> | undefined;
         onTransitionEnd?: React.TransitionEventHandler<HTMLImageElement> | undefined;
         onTransitionEndCapture?: React.TransitionEventHandler<HTMLImageElement> | undefined;
+        src?: string | undefined;
+        alt?: string | undefined;
+        crossOrigin?: "" | "anonymous" | "use-credentials" | undefined;
+        decoding?: "async" | "auto" | "sync" | undefined;
+        height?: string | number | undefined;
+        loading?: "eager" | "lazy" | undefined;
+        referrerPolicy?: React.HTMLAttributeReferrerPolicy | undefined;
+        sizes?: string | undefined;
+        srcSet?: string | undefined;
+        useMap?: string | undefined;
+        width?: string | number | undefined;
         ref?: ((instance: HTMLImageElement | null) => void) | React.RefObject<HTMLImageElement> | null | undefined;
     }>;
     ButtonDesign: import("styled-components").IStyledComponent<"web", {
@@ -2209,7 +2209,7 @@ export declare const s: {
         formNoValidate?: boolean | undefined;
         formTarget?: string | undefined;
         name?: string | undefined;
-        type?: "button" | "submit" | "reset" | undefined;
+        type?: "button" | "reset" | "submit" | undefined;
         value?: string | number | readonly string[] | undefined;
         defaultChecked?: boolean | undefined;
         defaultValue?: string | number | readonly string[] | undefined;
@@ -2258,7 +2258,7 @@ export declare const s: {
         results?: number | undefined;
         security?: string | undefined;
         unselectable?: "on" | "off" | undefined;
-        inputMode?: "none" | "text" | "search" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
+        inputMode?: "none" | "search" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | undefined;
         is?: string | undefined;
         'aria-activedescendant'?: string | undefined;
         'aria-atomic'?: (boolean | "true" | "false") | undefined;
