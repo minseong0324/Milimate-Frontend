@@ -29,13 +29,13 @@ const LoginWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
 
 `;
 
 const ButtonWrapper = styled.div`
   position: relative;
-  bottom: 5vh;
+  //bottom: 5vh;
   //left: 50%;
   //transform: translateX(-50%);
   display: flex;
@@ -44,8 +44,14 @@ const ButtonWrapper = styled.div`
   justify-content: center;
   z-index: 2;
   width: 100%;
+  //margin-top: 150px;
   @media (min-width: 600px) {
-    bottom: 2vh;
+    //margin-top: 200px;
+  }
+
+  /* 가로모드용 스타일 */
+  @media screen and (max-width: 768px) and (orientation: landscape) {
+    //margin-top: 150px;
   }
 `;
 
@@ -54,15 +60,15 @@ const LogoTitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 200px;
+  margin-top: 120px;
   top: -12%;  // 상단으로부터의 위치를 조정
   @media (min-width: 600px) {
-    margin-top: 250px;
+    margin-top: 200px;
   }
 
   /* 가로모드용 스타일 */
   @media screen and (max-width: 767px) and (orientation: landscape) {
-    margin-top: 600px;
+    margin-top: 150px;
   }
 
 `;
@@ -71,7 +77,7 @@ const MainLogo = styled.img.attrs({
   src: MainLogo2Img
 })`
   position: relative;
-  top: -10%;  // 상단으로부터의 위치를 조정
+  //top: -10%;  // 상단으로부터의 위치를 조정
   width: 234px;
   height: auto;
   z-index: 2;
@@ -88,7 +94,7 @@ const SubTitle = styled.img.attrs({
   height: auto;
   position: relative;
   z-index: 2;
-  margin-top: 5%;  // 위로 이동
+  margin-top: 15px;  // 위로 이동
   @media (min-width: 600px) {
     width: 286px;
   }
@@ -101,10 +107,12 @@ const Character = styled.img.attrs({
   height: auto;
   position: relative;
   z-index: 2;
-  margin-bottom: 20%;  // 위로 이동
-  margin-top: -10%;  // 위로 이동
+  margin-bottom: 60px;  // 위로 이동
+  margin-top: 40px;  // 위로 이동
   @media (min-width: 600px) {
     width: 130px;
+    margin-bottom: 90px;  // 위로 이동
+  margin-top: 60px;  // 위로 이동
   }
 `;
 
