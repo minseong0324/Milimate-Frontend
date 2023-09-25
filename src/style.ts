@@ -18,9 +18,10 @@ export const GlobalStyle = createGlobalStyle`
         overflow: auto;
         z-index: 1;
     }
-    body {
+    body,html {
         background: #F2F1EE; // 배경색 추가
         font-family: 'Pretendard';
+        font-weight: bold;
         margin: 0; // 화면의 모든 공간을 채우기 위해 margin을 0으로 설정
     }
 
