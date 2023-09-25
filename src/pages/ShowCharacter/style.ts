@@ -1,9 +1,8 @@
 import styled from "styled-components";
-// import button1 from '../../assets/button/button1.png';
-// import button4 from '../../assets/button/button4.png';
-// import buttonMidium1 from '../../assets/button/button-midium-1.png';
-// import buttonMidium2 from '../../assets/button/button-midium-2.png';
-
+import BackButtonImg from "../../assets/BackButton/BackButton.svg"
+import TwinkleImg from "../../assets/Twinkle/Twinkle.svg"
+import CharSaluteImg from "../../assets/charater/CharacterSalute.svg"
+import SolierTagImg from "../../assets/Logo/SoldierTagBig.svg"
 
 const Button = styled.button`
   width: 343px;
@@ -17,6 +16,28 @@ const Button = styled.button`
   z-index: 2;
   color: white;
   margin-bottom: 2vh;
+`;
+
+const ButtonWrapper = styled.div`
+  position: relative;
+  //bottom: 5vh;
+  //left: 50%;
+  //transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  width: 100%;
+  //margin-top: 150px;
+  @media (min-width: 600px) {
+    //margin-top: 200px;
+  }
+
+  /* 가로모드용 스타일 */
+  @media screen and (max-width: 768px) and (orientation: landscape) {
+    //margin-top: 150px;
+  }
 `;
 
 const BackgroundContainer = styled.div`
@@ -42,63 +63,166 @@ const Wrapper = styled.div`
   justify-content: center;
   height: 100vh;
   margin-top: 50px;
+
+    /* 가로모드용 스타일 */
+    @media screen and (max-width: 768px) and (orientation: landscape) {
+    margin-top: 280px;
+  }
+
+  @media screen and (min-width: 768px) and (orientation: landscape) {
+    margin-top: 280px;
+  }
 `;
 
-const CharImgContainer = styled.div`
-  position: relative;  // 추가된 부분
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(222 212 195);
+const Character = styled.img.attrs({
+  src: CharSaluteImg
+})`
   width: 150px;
-  height: 150px;
-  border-radius: 30px;
-  margin-bottom: 30px;
-  box-shadow: 3px 3px 7px 3px rgba(0, 0, 0, 0.2);
-`;
-
-const CharImgName = styled.span`
-  
-  font-family: '';
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 27px;
-  color: rgb(255 255 0);
+  height: auto;
+  position: relative;
   z-index: 2;
-  margin-bottom: 35px;
+  margin-bottom: 20px;  // 위로 이동
+  margin-top: 15px;  // 위로 이동
+  @media (min-width: 600px) {
+    width: 170px;
+    margin-bottom: 25px;  // 위로 이동
+    margin-top: 0px;  // 위로 이동
+  }
 `;
 
-const CharImg = styled.img`
-    position: absolute;  // 추가된 부분
-    bottom:10%;         // 추가된 부분: 이미지의 중앙에 위치하게 합니다. (조절 가능)
-    left: 10%;
-    font-family: '';
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-    width: 230px;
+const SolierTag = styled.img.attrs({
+  src: SolierTagImg
+})`
+  width: 340px;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 45px;  // 위로 이동
+  //margin-top: 100px;  // 위로 이동
+  @media (min-width: 600px) {
+    width: 400px;
+  }
 `;
 
 const TextsStyle = styled.div`
   text-align: left !important;
   line-height: 0.2; // 글자 간격
   z-index: 0;
-  font-size: 16px;
-  margin-left: 10px;
+  font-size: 18px;
+  position: absolute;
+  top: 35px;
+  left: 80px;
+  color : #668444;
+  @media (min-width: 600px) {
+    top: 44px;
+    left: 100px;
+    font-size: 20px;
+  }
 `;
 
+const TextsStyle_1 = styled(TextsStyle)`
+  top: 71px;  // 또는 원하는 값으로 변경
+  @media (min-width: 600px) {
+    top: 87px;  // 미디어 쿼리에서도 top 값을 변경하려면 이렇게 설정
+  }
+`;
+
+const TextsStyle_2 = styled(TextsStyle)`
+  top: 107px;  // 또는 원하는 값으로 변경
+  @media (min-width: 600px) {
+    top: 130px;  // 미디어 쿼리에서도 top 값을 변경하려면 이렇게 설정
+  }
+`;
+
+
 const TextsStyle2 = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: left !important;
   line-height: 0.2; // 글자 간격
   z-index: 0;
-  font-size: 16px;
+  font-size: 18px;
+  position: absolute;
+  top: 35px;
+  left: 150px;
+  color : #4a544a;
+  @media (min-width: 600px) {
+    top: 44px;
+    left: 180px;
+    font-size: 20px;
+  }
+`;
+
+const TextsStyle2_1 = styled(TextsStyle2)`
+  top: 71px;  // 또는 원하는 값으로 변경
+  @media (min-width: 600px) {
+    top: 87px;  // 미디어 쿼리에서도 top 값을 변경하려면 이렇게 설정
+  }
+`;
+
+const TextsStyle2_2 = styled(TextsStyle2)`
+  top: 107px;  // 또는 원하는 값으로 변경
+  @media (min-width: 600px) {
+    top: 130px;  // 미디어 쿼리에서도 top 값을 변경하려면 이렇게 설정
+  }
+`;
+
+const TagContainer = styled.div`
+  position: relative;
+  width: 100%;
+  //height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  
+`;
+
+const Container = styled.div`
+  position: relative;
+  width: 100%;
+  //height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+`;
+
+const Twinkle = styled.img.attrs({
+  src: TwinkleImg
+})`
+  position: absolute;
+  top: -20px;
+  right: 180px;
+  font-size: 18px;
+  @media (min-width: 600px) {
+    top: -20px;
+    right: 200px;
+    font-size: 20px;
+  }
+`;
+
+const Text = styled.div`
+  position: absolute;
+  top: 80px;
+  font-size: 18px;
+  @media (min-width: 600px) {
+    top: 100px;
+    font-size: 20px;
+  }
+
+`;
+
+const BackButton = styled.img.attrs({
+  src: BackButtonImg
+})`
+  position: absolute;
+  width: 24px;
+  height: auto;
+  left: 2%;  /* 화면의 좌측에서 약간 떨어진 정도 설정 */
+  top: 10px;
+  @media (min-width: 600px) {
+    left: calc(50% - 300px + 10px);
+  }
+  /* 가로모드용 스타일 */
+  @media screen and (max-width: 767px) and (orientation: landscape) {
+    top: 10px;
+  }
 `;
 
 
@@ -164,7 +288,16 @@ export const s = {
     ModalButton,
     BackgroundContainer,
     TextsStyle2,
-    CharImgContainer,
-    CharImgName,
-    CharImg
+    Character,
+    Container,
+    TagContainer,
+    Text,
+    BackButton,
+    Twinkle,
+    SolierTag,
+    TextsStyle_1,
+    TextsStyle_2,
+    TextsStyle2_1,
+    TextsStyle2_2,
+    ButtonWrapper
 };

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { s } from "./style";
 import { useNavigate } from "react-router-dom";
-import CharacterImage from "../../assets/charater/MainCharacter.svg";
 import { useLocation } from "react-router-dom";
 import { RootState } from "src/components/Redux/store";
 import { useSelector } from "react-redux";
@@ -19,6 +18,7 @@ function ShowCaracter() {
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
   const [modalErrorContent, setModalErrorContent] =
     useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
+    
 
   // 서비스 설명 함수
   const handleGoHome = async () => {
@@ -26,21 +26,42 @@ function ShowCaracter() {
   };
 
   return (
+    <>
+    <s.BackButton/>
+    
     <s.BackgroundContainer>
+      <s.Container>
+        <s.Text>
+          <s.Twinkle />
+          캐릭터가 생성되었습니다!
+        </s.Text>
+      </s.Container>
       <s.Wrapper>
-        <s.CharImgContainer>
-          <s.CharImg src={CharacterImage} alt="Character Description" />
-          <s.CharImgName>{userInfo.userName}</s.CharImgName>
-        </s.CharImgContainer>
-        <s.TextsStyle>해당 이미지는 답변 페이지 공유 시</s.TextsStyle>
-        <s.TextsStyle>친구들에게 보여지는 이미지입니다.</s.TextsStyle>
-        <s.TextsStyle2>* 마이페이지에서 수정 가능</s.TextsStyle2>
-        <s.Button onClick={handleGoHome}>내 홈으로 가기</s.Button>
+
+      <s.Character alt="Character Description" />
+      <s.TagContainer>
+        <s.SolierTag />
+        <s.TextsStyle>이름  </s.TextsStyle>
+        <s.TextsStyle2>{userInfo.userName}</s.TextsStyle2>
+        <s.TextsStyle_1>입대일</s.TextsStyle_1>
+        <s.TextsStyle2_1>
+          {`${userInfo.enlistmentYear}년 ${userInfo.enlistmentMonth}월 ${userInfo.enlistmentday}일`}
+        </s.TextsStyle2_1>
+        <s.TextsStyle_2>수료일</s.TextsStyle_2>
+        <s.TextsStyle2_2>
+          {`${userInfo.completionYear}년 ${userInfo.completionMonth}월 ${userInfo.completionday}일`}
+        </s.TextsStyle2_2>
+      </s.TagContainer>
+      <s.ButtonWrapper>
+        <s.Button onClick={handleGoHome}>다음</s.Button>
+      </s.ButtonWrapper>
+
         {/* <ErrorModal isOpen={isErrorModalOpen} onClose={() => setErrorModalOpen(false)} >
           {modalErrorContent}
       </ErrorModal> */}
       </s.Wrapper>
     </s.BackgroundContainer>
+    </>
   );
 }
 
