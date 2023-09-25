@@ -1,42 +1,9 @@
 import styled from "styled-components";
-// 이 함수는 버튼의 크기를 계산합니다.
-// 이 함수는 버튼의 크기를 계산합니다.
-const calculateButtonSize = () => {
-  // 뷰포트의 너비와 높이를 얻습니다.
-  const viewportWidth = window.innerWidth;
-  const viewportHeight = window.innerHeight;
+import BackButtonImg from "../../assets/BackButton/BackButton.svg"
 
-  // 배경 이미지의 원래 비율을 계산합니다.
-  const originalAspectRatio = 375 / 812;
-
-  // 배경 이미지의 실제 크기를 계산합니다.
-  let backgroundImageWidth;
-  let backgroundImageHeight;
-  if (viewportWidth  > originalAspectRatio) {
-    backgroundImageHeight = viewportHeight;
-    backgroundImageWidth = backgroundImageHeight * originalAspectRatio;
-  } else {
-    backgroundImageWidth = viewportWidth;
-    backgroundImageHeight = backgroundImageWidth / originalAspectRatio;
-  }
-
-  // 버튼의 크기를 계산합니다.
-  const buttonWidth = (343 / 375) * backgroundImageWidth * 1.2;
-  const buttonHeight = (48 / 812) * backgroundImageHeight * 1.2;
-
-  const mainLogoWidth = (340 / 375) * backgroundImageWidth * 1.1;  // 80% of the background image width
-  const subtitleWidth = (220 / 375) * backgroundImageWidth * 1.1;  // 60% of the background image width
-  
-  const logoTitleTopMargin = (-10 / 812) * backgroundImageHeight;  // 이 값은 조절 가능
-
-  return { width: buttonWidth, height: buttonHeight, mainLogoWidth,
-    subtitleWidth, logoTitleTopMargin };
-};
-
-
-const Button = styled.button<{ width: number; height: number }>`
-  width: ${(props) => props.width}px;
-  height: ${(props) => props.height}px;
+const Button = styled.button`
+  width: 343px;
+  height: 48px;
   position: relative;
   font-family: "";
   border-radius: 10px;
@@ -49,56 +16,84 @@ const Button = styled.button<{ width: number; height: number }>`
 `;
 
 const ButtonWrapper = styled.div`
-  position: absolute;
-  bottom: 5vh;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
+  //bottom: 5vh;
+  //left: 50%;
+  //transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 2;
   width: 100%;
+  margin-top: 150px;
+  @media (min-width: 600px) {
+    margin-top: 200px;
+  }
+
+  /* 가로모드용 스타일 */
+  @media screen and (max-width: 768px) and (orientation: landscape) {
+    margin-top: 150px;
+  }
 `;
 
 const BackgroundContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background: #f2f1ee no-repeat center center;
+  
+  @media (min-width: 600px) {
+    background-size: 600px auto;/* 원하는 최대 너비 값으로 설정 */
+    margin: 0 auto; /* 좌우 중앙 정렬 */
+  }
+`;
+
+
+const Wrapper = styled.div`
   font-family: "";
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
-
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   height: 100vh;
+  margin-top: 50px;
 `;
 
 const MoreInfoForm = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 20px;
   margin-top: 67px;
+
+  /* 가로모드용 스타일 */
+  @media screen and (max-width: 768px) and (orientation: landscape) {
+    margin-top: 500px;
+  }
+
+  @media screen and (min-width: 768px) and (orientation: landscape) {
+    margin-top: 500px;
+  }
 `;
 
 const MoreInfoInput = styled.input`
+  font-family: '';
   padding: 10px;
   font-size: 16px;
-  width: 215px;
+  width: 313px;
   border: none; // 모든 테두리를 제거합니다.
-  border-radius: 30px;
-  background-color: rgb(84 130 53);
-  color: #111;
+  border-bottom: 1px solid #8fad6d; // 아래쪽 테두리만 추가합니다.
+  border-radius: 0; 
+  background-color: transparent;
+  color: #222;
   z-index: 5;
+  margin-bottom: 20px;
 
   &::placeholder {
-    color: #777;
+    color: #8fad6d;
   }
 
   &:focus {
@@ -109,33 +104,35 @@ const MoreInfoInput = styled.input`
 const MoreInfoInputYear = styled.input`
   padding: 10px;
   font-size: 16px;
-  width: 40px;
+  width: 80px;
   border: none; // 모든 테두리를 제거합니다.
-  border-radius: 30px;
-  background-color: rgb(84 130 53);
-  color: #111;
+  border-bottom: 1px solid #8fad6d; // 아래쪽 테두리만 추가합니다.
+  border-radius: 0; 
+  background-color: transparent;
+  color: #222;
   z-index: 5;
 
   &::placeholder {
-    color: #777;
+    color: #8fad6d;
   }
 
   &:focus {
     outline: none;
   }
 `;
+
 const MoreInfoInputYMonthDay = styled.input`
   padding: 10px;
   font-size: 16px;
-  width: 30px;
+  width: 50px;
   border: none; // 모든 테두리를 제거합니다.
-  border-radius: 30px;
-  background-color: rgb(84 130 53);
-  color: #111;
+  border-bottom: 1px solid #8fad6d; // 아래쪽 테두리만 추가합니다.
+  border-radius: 0; 
+  background-color: transparent;
+  color: #222;
   z-index: 5;
-
   &::placeholder {
-    color: #777;
+    color: #8fad6d;
   }
 
   &:focus {
@@ -146,6 +143,7 @@ const MoreInfoInputYMonthDay = styled.input`
 const InputContainer = styled.div`
   display: flex;
   align-items: center; // 만약 input들이 세로축에서 중앙에 위치하길 원한다면 추가
+  margin-bottom: 20px;
 
   & > *:not(:last-child) {
     margin-right: 10px; // 마지막 input을 제외한 모든 input에 오른쪽 마진 15px 부여
@@ -153,11 +151,11 @@ const InputContainer = styled.div`
 `;
 
 const TextsStyle = styled.div`
-  align-items: left;
-  text-align: left;
+  text-align: left !important;
   line-height: 0.2; // 글자 간격
   z-index: 0;
-  font-size: 15px;
+  font-size: 16px;
+  margin-left: 10px;
 `;
 
 const TextsStyle2 = styled.div`
@@ -166,7 +164,7 @@ const TextsStyle2 = styled.div`
   align-items: center;
   line-height: 0.2; // 글자 간격
   z-index: 0;
-  font-size: 12px;
+  font-size: 16px;
 `;
 
 const Container = styled.div`
@@ -179,16 +177,37 @@ const Container = styled.div`
 `;
 
 const Text = styled.div`
-  position: relative;
-  margin-top: 3%;
+  position: absolute;
+  top: 13px;
   font-size: 18px;
+  @media (min-width: 600px) {
+    top: 15px;
+    font-size: 20px;
+  }
+
+`;
+
+const BackButton = styled.img.attrs({
+  src: BackButtonImg
+})`
+  position: absolute;
+  width: 24px;
+  height: auto;
+  left: 2%;  /* 화면의 좌측에서 약간 떨어진 정도 설정 */
+  top: 10px;
+  @media (min-width: 600px) {
+    left: calc(50% - 300px + 10px);
+  }
+  /* 가로모드용 스타일 */
+  @media screen and (max-width: 767px) and (orientation: landscape) {
+    top: 10px;
+  }
 `;
 
 const ModalTextsWrapper = styled.div`
   position: relative;
   display: flex;
   font-size: 18px;
-
   line-height: 2; // 글자 간격
   margin-bottom: 10px;
 `;
@@ -251,6 +270,7 @@ const ModalButton = styled.button`
 `;
 
 const RequiredInfoText = styled.p`
+  font-size: 13px;
   margin: 0;
 `;
 
@@ -278,5 +298,5 @@ export const s = {
   TextsStyle2,
   RequiredInfoText,
   ButtonWrapper,
-  calculateButtonSize
+  BackButton
 };

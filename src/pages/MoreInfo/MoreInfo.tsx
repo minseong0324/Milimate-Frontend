@@ -28,22 +28,6 @@ function MoreInfo() {
   const [numericmodalOpen, setNumericModalOpen] = useState(false);
 
   const [modalMessage, setModalMessage] = useState("");
-  const [buttonSize, setButtonSize] = useState(s.calculateButtonSize());
-    const [logoAndSubtitleSize, setLogoAndSubtitleSize] = useState(s.calculateButtonSize());
-
-    useEffect(() => {
-      const handleResize = () => {
-        const sizes = s.calculateButtonSize();
-        setButtonSize(sizes);
-        setLogoAndSubtitleSize(sizes);
-      };
-  
-      window.addEventListener('resize', handleResize);
-  
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }, []);
 
   const isLeapYear = (year: number) => {
     return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
@@ -232,15 +216,22 @@ function MoreInfo() {
   };
 
   return (
+    <>
+    <s.BackButton/>
+    
     <s.BackgroundContainer>
+    
       <s.Container>
-          <s.Text>상세정보 입력</s.Text>
-        </s.Container>
+        <s.Text>
+          상세정보 입력
+        </s.Text>
+      </s.Container>
       <s.Wrapper>
         <s.MoreInfoForm>
             <s.TextsStyle>이름</s.TextsStyle>
             <s.MoreInfoInput
               type="text"
+              placeholder="이름을 입력해주세요"
               value={userName}
               onChange={(e: {
                 target: { value: React.SetStateAction<string> };
@@ -250,6 +241,7 @@ function MoreInfo() {
             <s.InputContainer>
             <s.MoreInfoInputYear
               type="text"
+              placeholder="YYYY"
               value={enlistmentYear}
               onChange={(e: {
                 target: { value: React.SetStateAction<string> };
@@ -258,6 +250,7 @@ function MoreInfo() {
             <s.TextsStyle2>년</s.TextsStyle2>
             <s.MoreInfoInputYMonthDay
               type="text"
+              placeholder="MM"
               value={enlistmentMonth}
               onChange={(e: {
                 target: { value: React.SetStateAction<string> };
@@ -266,6 +259,7 @@ function MoreInfo() {
             <s.TextsStyle2>월</s.TextsStyle2>
             <s.MoreInfoInputYMonthDay
               type="text"
+              placeholder="DD"
               value={enlistmentDay}
               onChange={(e: {
                 target: { value: React.SetStateAction<string> };
@@ -277,6 +271,7 @@ function MoreInfo() {
             <s.InputContainer>
             <s.MoreInfoInputYear
               type="text"
+              placeholder="YYYY"
               value={completionYear}
               onChange={(e: {
                 target: { value: React.SetStateAction<string> };
@@ -285,6 +280,7 @@ function MoreInfo() {
             <s.TextsStyle2>년</s.TextsStyle2>
             <s.MoreInfoInputYMonthDay
               type="text"
+              placeholder="MM"
               value={completionMonth}
               onChange={(e: {
                 target: { value: React.SetStateAction<string> };
@@ -293,6 +289,7 @@ function MoreInfo() {
             <s.TextsStyle2>월</s.TextsStyle2>
             <s.MoreInfoInputYMonthDay
               type="text"
+              placeholder="DD"
               value={completionDay}
               onChange={(e: {
                 target: { value: React.SetStateAction<string> };
@@ -301,12 +298,15 @@ function MoreInfo() {
             <s.TextsStyle2>일</s.TextsStyle2>
           </s.InputContainer>
           <s.ButtonWrapper>
-            <s.Button width={buttonSize.width} height={buttonSize.height} onClick={handleMoreInfo} type="submit">
+            <s.Button onClick={handleMoreInfo} type="submit">
             가입하기
           </s.Button>
           </s.ButtonWrapper>
           <s.RequiredInfoText>
-            이름, 입대일은 필수정보 입니다.
+            이름, 입대일은 필수정보입니다.
+          </s.RequiredInfoText>
+          <s.RequiredInfoText>
+            수료일은 선택정보입니다. 마이페이지에서 수정 가능합니다.
           </s.RequiredInfoText>
         </s.MoreInfoForm>
 
@@ -333,6 +333,7 @@ function MoreInfo() {
         />
       )}
     </s.BackgroundContainer>
+    </>
   );
 }
 
