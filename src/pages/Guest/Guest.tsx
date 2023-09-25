@@ -91,15 +91,23 @@ function Guest() {
 
   return (
     <s.BackgroundContainer>
+    
+      <s.Container>
+        <s.Text>
+          오늘의 질문
+        </s.Text>
+      </s.Container>
       <s.Wrapper>
-        <s.QuotationStyle>"</s.QuotationStyle>
-        <s.TextsStyle>{todayQuestion}</s.TextsStyle>
-        <s.CharImgContainer>
-          <s.CharImg src={CharacterImage} alt="Character Description" />
-          <s.CharImgName>{userName}</s.CharImgName>
-        </s.CharImgContainer>
-
-        <s.Button onClick={handleGoSend}>답변 쓰러가기</s.Button>
+      <s.TagContainer>
+        <s.SolierTag />
+        <s.TextsStyle>TO.</s.TextsStyle>
+        <s.TextsStyle2>{userName} 훈련병</s.TextsStyle2>
+        <s.TextsStyle2_1>{todayQuestion}</s.TextsStyle2_1>
+      </s.TagContainer>
+          <s.Character src={CharacterImage} alt="Character Description" />
+        <s.ButtonWrapper>
+          <s.Button onClick={handleGoSend}>답변 작성하러 가기</s.Button>
+        </s.ButtonWrapper>
         {/* <ErrorModal isOpen={isErrorModalOpen} onClose={() => setErrorModalOpen(false)} >
           {modalErrorContent}
       </ErrorModal> */}

@@ -1,98 +1,121 @@
-import styled from "styled-components";
-// import button1 from '../../assets/button/button1.png';
-// import button4 from '../../assets/button/button4.png';
-// import buttonMidium1 from '../../assets/button/button-midium-1.png';
-// import buttonMidium2 from '../../assets/button/button-midium-2.png';
+import styled, { css } from "styled-components";
+import React, { useState, useEffect } from 'react';
+import BackButtonImg from "../../assets/BackButton/BackButton.svg"
+import SolierTagImg from "../../assets/Logo/SoldierTagBig.svg"
+
+import HeartCharacter1 from "../../assets/charater/HeartCharacter1.svg";
+import HeartCharacter2 from "../../assets/charater/HeartCharacter2.svg";
+import HeartCharacter3 from "../../assets/charater/HeartCharacter3.svg";
+import HeartCharacter4 from "../../assets/charater/HeartCharacter4.svg";
 
 const Button = styled.button`
-
-  width: 250px; // 버튼 너비를 조정
-  height: 40px; // 버튼 높이를 조정
-  padding: 10px; // 내부 패딩을 조정
-  background-color: rgb(58 56 56);
-  background-size: cover; // 이미지가 버튼에 맞게 조절
-  color: black;
-  border-radius: 30px;
-  font-size: 17px;
-  border: 0px transparent; // 테두리 색상을 투명
+  width: 343px;
+  height: 48px;
   position: relative;
+  font-family: "";
+  border-radius: 10px;
+  background: #4A544A;
+  font-size: 16px;
+  border: 0px transparent;
   z-index: 2;
-  &:active {
-    // 버튼이 눌렸을 때의 스타일
-    background-color: rgb(58 56 56);
-    background-size: cover; // 이미지가 버튼에 맞게 조절
-  }
   color: white;
+  margin-top: 40px;
+`;
+
+const ButtonWrapper = styled.div`
+  position: relative;
+  //bottom: 5vh;
+  //left: 50%;
+  //transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  width: 100%;
+  @media (min-width: 600px) {
+    //margin-top: 200px;
+  }
+
+  /* 가로모드용 스타일 */
+  @media screen and (max-width: 768px) and (orientation: landscape) {
+    //margin-top: 150px;
+  }
 `;
 
 const BackgroundContainer = styled.div`
-    font-family: 'EF_jejudoldam';
-  position: relative; 
   display: flex;
   flex-direction: column;
+  width: 100%;
   align-items: center;
   justify-content: center;
-  background: rgb(237 232 216) no-repeat center center;
-`;
-
-//background: url(${button4}) no-repeat center center; // 이미지를 배경으로 사용
-//background: url(${button1}) no-repeat center center; // 눌렸을 때의 배경 이미지
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-`;
-
-const CharImgContainer = styled.div`
-  position: relative;  // 추가된 부분
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(222 212 195);
-  width: 150px;
-  height: 150px;
-  border-radius: 30px;
-  margin-bottom: 60px;
-  box-shadow: 3px 3px 7px 3px rgba(0, 0, 0, 0.2);
-`;
-
-const CharImgName = styled.span`
+  background: #f2f1ee no-repeat center center;
   
-  font-family: 'EF_jejudoldam';
+  @media (min-width: 600px) {
+    background-size: 600px auto;/* 원하는 최대 너비 값으로 설정 */
+    margin: 0 auto; /* 좌우 중앙 정렬 */
+  }
+
+  
+`;
+
+const isMobile = isMobileDevice();
+
+function isMobileDevice() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+const mobileLandscape = isMobile && css`
+  @media screen and (max-width: 767px) and (orientation: landscape) {
+    margin-top: 100px;
+  }
+
+  @media screen and (min-width: 768px) and (orientation: landscape) {
+    margin-top: 100px;
+  }
+`;
+
+
+const Wrapper = styled.div`
+  font-family: "";
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 27px;
-  color: rgb(255 255 0);
+  height: 100%;
+  margin-top: 90px;
+
+  ${mobileLandscape}
+
+  @media (min-width: 600px) {
+    margin-top: 140px;
+
+  }
+`;
+
+const images = [HeartCharacter1, HeartCharacter2, HeartCharacter3, HeartCharacter4];
+
+const getRandomImage = () => {
+  const randomIndex = Math.floor(Math.random() * images.length);
+  return images[randomIndex];
+};
+
+const Character = styled.img.attrs({
+  src: getRandomImage()
+})`
+  width: 150px;
+  height: auto;
+  position: relative;
   z-index: 2;
-  margin-bottom: 35px;
+  margin-bottom: 20px;  // 위로 이동
+  margin-top: 15px;  // 위로 이동
+  @media (min-width: 600px) {
+    width: 170px;
+    margin-bottom: 25px;  // 위로 이동
+    margin-top: 0px;  // 위로 이동
+  }
 `;
 
-const CharImg = styled.img`
-    position: absolute;  // 추가된 부분
-    bottom:10%;         // 추가된 부분: 이미지의 중앙에 위치하게 합니다. (조절 가능)
-    left: 10%;
-    font-family: 'EF_jejudoldam';
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-    width: 230px;
-`;
-
-const TextsStyle = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 0;
-  font-size: 15px;
-  margin-bottom: 50px;
-`;
 
 const QuotationStyle = styled.div`
   display: flex;
@@ -105,6 +128,94 @@ const QuotationStyle = styled.div`
 
 `;
 
+const TagContainer = styled.div`
+  position: relative;
+  width: 100%;
+  //height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  
+`;
+
+const SolierTag = styled.img.attrs({
+  src: SolierTagImg
+})`
+  width: 340px;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 45px;  // 위로 이동
+  //margin-top: 100px;  // 위로 이동
+  @media (min-width: 600px) {
+    width: 400px;
+  }
+`;
+
+const TextsStyle = styled.div`
+  text-align: left !important;
+  line-height: 0.2; // 글자 간격
+  z-index: 0;
+  font-size: 18px;
+  position: absolute;
+  top: 35px;
+  left: 105px;
+  color : #668444;
+  @media (min-width: 600px) {
+    top: 44px;
+    left: 120px;
+    font-size: 20px;
+  }
+`;
+
+const TextsStyle2 = styled.div`
+  text-align: left !important;
+  line-height: 0.2; // 글자 간격
+  z-index: 0;
+  font-size: 18px;
+  position: absolute;
+  top: 35px;
+  left: 140px;
+  color : #4a544a;
+  font-weight: bolder;
+  @media (min-width: 600px) {
+    top: 44px;
+    left: 160px;
+    font-size: 20px;
+  }
+`;
+
+const TextsStyle2_1 = styled(TextsStyle2)`
+  top: 71px;  // 또는 원하는 값으로 변경
+  left: 80px;
+  font-weight: normal;
+  word-wrap: break-word;  // 긴 단어를 다음 줄로 래핑
+  white-space: normal;  // 공백을 존중하면서 텍스트를 래핑
+  @media (min-width: 600px) {
+    top: 87px;  // 미디어 쿼리에서도 top 값을 변경하려면 이렇게 설정
+    left: 100px;
+  }
+`;
+
+
+const Container = styled.div`
+  position: relative;
+  width: 100%;
+  //height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+`;
+
+const Text = styled.div`
+  position: absolute;
+  top: 13px;
+  font-size: 18px;
+  @media (min-width: 600px) {
+    top: 15px;
+    font-size: 20px;
+  }
+
+`;
 
 const ErrorCenterModalWrapper = styled.div`
   //에러 모달창 wrapper
@@ -168,7 +279,12 @@ export const s = {
     ModalButton,
     BackgroundContainer,
     QuotationStyle,
-    CharImgContainer,
-    CharImgName,
-    CharImg
+    Character,
+    Container,
+    Text,
+    ButtonWrapper,
+    SolierTag,
+    TagContainer,
+    TextsStyle2,
+    TextsStyle2_1
 };

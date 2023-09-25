@@ -1,10 +1,10 @@
 // styles.ts
 import { createGlobalStyle } from "styled-components";
-import EF_jejudoldam from "./static/font/EF_jejudoldam.ttf"
+import Pretendard from "./static/font/Pretendard-Light.woff2"
 export const GlobalStyle = createGlobalStyle`
    @font-face {
-    font-family: 'EF_jejudoldam';
-    src: url(${EF_jejudoldam}) format('truetype');
+    font-family: 'Pretendard';
+    src: url(${Pretendard}) format('woff2');
     font-weight: normal;
     font-style: normal;
     }
@@ -16,7 +16,7 @@ export const GlobalStyle = createGlobalStyle`
     }
     body {
         background: #F2F1EE; // 배경색 추가
-        //background-color: white;
+        font-family: 'Pretendard';
         margin: 0; // 화면의 모든 공간을 채우기 위해 margin을 0으로 설정
     }
 
