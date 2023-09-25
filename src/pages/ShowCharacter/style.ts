@@ -4,44 +4,44 @@ import styled from "styled-components";
 // import buttonMidium1 from '../../assets/button/button-midium-1.png';
 // import buttonMidium2 from '../../assets/button/button-midium-2.png';
 
-const Button = styled.button`
 
-  width: 250px; // 버튼 너비를 조정
-  height: 40px; // 버튼 높이를 조정
-  padding: 10px; // 내부 패딩을 조정
-  background-color: rgb(58 56 56);
-  background-size: cover; // 이미지가 버튼에 맞게 조절
-  color: black;
-  border-radius: 30px;
-  font-size: 17px;
-  border: 0px transparent; // 테두리 색상을 투명
+const Button = styled.button`
+  width: 343px;
+  height: 48px;
   position: relative;
+  font-family: "";
+  border-radius: 10px;
+  background: #4A544A;
+  font-size: 16px;
+  border: 0px transparent;
   z-index: 2;
-  &:active {
-    // 버튼이 눌렸을 때의 스타일
-    background-color: rgb(58 56 56);
-    background-size: cover; // 이미지가 버튼에 맞게 조절
-  }
   color: white;
+  margin-bottom: 2vh;
 `;
 
 const BackgroundContainer = styled.div`
-    font-family: 'EF_jejudoldam';
-  position: relative; 
   display: flex;
   flex-direction: column;
+  width: 100%;
   align-items: center;
   justify-content: center;
+  background: #f2f1ee no-repeat center center;
+  
+  @media (min-width: 600px) {
+    background-size: 600px auto;/* 원하는 최대 너비 값으로 설정 */
+    margin: 0 auto; /* 좌우 중앙 정렬 */
+  }
 `;
 
-//background: url(${button4}) no-repeat center center; // 이미지를 배경으로 사용
-//background: url(${button1}) no-repeat center center; // 눌렸을 때의 배경 이미지
 const Wrapper = styled.div`
+  font-family: "";
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  margin-top: 50px;
 `;
 
 const CharImgContainer = styled.div`
@@ -60,7 +60,7 @@ const CharImgContainer = styled.div`
 
 const CharImgName = styled.span`
   
-  font-family: 'EF_jejudoldam';
+  font-family: '';
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -75,7 +75,7 @@ const CharImg = styled.img`
     position: absolute;  // 추가된 부분
     bottom:10%;         // 추가된 부분: 이미지의 중앙에 위치하게 합니다. (조절 가능)
     left: 10%;
-    font-family: 'EF_jejudoldam';
+    font-family: '';
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -85,22 +85,20 @@ const CharImg = styled.img`
 `;
 
 const TextsStyle = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: left !important;
+  line-height: 0.2; // 글자 간격
   z-index: 0;
-  font-size: 15px;
+  font-size: 16px;
+  margin-left: 10px;
 `;
 
 const TextsStyle2 = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  line-height: 0.2; // 글자 간격
   z-index: 0;
-  font-size: 12px;
-  margin-top: 30px;
-  color: #777;
-  margin-bottom: 20px;
+  font-size: 16px;
 `;
 
 
@@ -136,7 +134,7 @@ const ErrorModalTextsWrapper2 = styled.div`
 
 const ModalButton = styled.button`
   margin-top: 45px;
-  font-family: "DOSSaemmul";
+  font-family: "";
   width: 170px; // 버튼 너비를 조정
   height: 40px; // 버튼 높이를 조정
   padding: 10px; // 내부 패딩을 조정
