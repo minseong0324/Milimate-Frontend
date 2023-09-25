@@ -1,8 +1,171 @@
 import styled from "styled-components";
+import CharacterFace from "../../assets/charater/CharacterFace.svg";
+import SoliderTag from "../../assets/Logo/SoldierTag.svg";
+import SmallBubble from "../../assets/Logo/SoldierTag.svg";
 // import button1 from '../../assets/button/button1.png';
 // import button4 from '../../assets/button/button4.png';
 // import buttonMidium1 from '../../assets/button/button-midium-1.png';
 // import buttonMidium2 from '../../assets/button/button-midium-2.png';
+
+const Wrapper = styled.div`
+  display: flex;
+  //background-color: #ede8d7;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  //padding-top: 88px;
+  background: #f2f1ee no-repeat center center;
+`;
+const IconLayout = styled.div`
+  flex-direction: row;
+  width: 630px;
+  margin-top: 56px;
+  //margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  //background-color: grey;
+  @media (max-width: 768px) {
+    margin-top: 0px;
+    width: 100%;
+  }
+`;
+const ButtonDesign = styled.button`
+  background-color: transparent;
+  border: none;
+`;
+const TitleText = styled.p`
+  font-size: 32px;
+  text-align: start;
+  @media (max-width: 768px) {
+    font-size: 20px
+  }
+`;
+const SoldierTagContainer = styled.div`
+  position: relative;
+  flex-direction: row;
+  width: 580px;
+  height: 70px;
+  display: flex;
+  //flex-direction: column;
+  align-items: center;
+  padding: 32px;
+  //padding-bottom: 32px;
+  //margin-bottom: 32px;
+  @media (max-width: 768px) {
+    width: 80%;
+    //  height: 20px;
+  }
+`;
+
+
+const SoldierTagImage = styled.img.attrs({
+    src: SoliderTag,
+})`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%; // 부모 div의 너비에 맞게 이미지 너비 설정
+  height: auto; // 이미지의 비율을 유지하면서 높이 조절
+  background-image: url(${SmallBubble});
+  background: #f2f1ee no-repeat center center;
+  z-index: 1;
+`;
+const SadCharImg = styled.img.attrs({
+    src: CharacterFace,
+})`
+  display: flex;
+  margin-top: 160px;
+  margin-bottom: 16px;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  z-index: 3;
+  @media (max-width: 768px) {
+    width: 100px;
+    margin-top: 40px;
+  }
+`;
+const InfoDiv = styled.div`
+  flex-direction: column;
+  display: flex;
+  text-align: start;
+  margin-left: 12px;
+`;
+const UserNameText = styled.p`
+  position: relative;
+  z-index: 2;
+  //align-items: center;
+  color: #4c544b;
+  //color: #6a804a;
+  //padding: 8px;
+  font-size: 32px;
+  font-weight: bold;
+  //margin-left: 32px;
+  top: -30px;
+  margin-top: 220px;
+  @media (max-width: 768px) {
+    //max-height: 20px; // 원하는 최대 높이값을 지정하세요
+    top: -80px;
+    //margin-left: 8px;
+    font-size: 20px;
+  }
+`;
+
+const userInfoContentDiv = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  //background-color: grey;
+  z-index: 4;
+  margin-bottom: 30px;
+  top: -30px;
+  //background-color: grey;
+  align-items: center;
+  @media (max-width: 768px) {
+    top: 0
+  }
+`;
+const UserEnlistmentKey = styled.div`
+  //background-color: grey;
+  align-items: center;
+  display: flex;
+  padding: 0;
+  height: 30px;
+  font-size: 24px;
+  z-index: 2;
+  color: #6d844c;
+  font-weight: bold;
+  margin-top: -20px;
+  //max-width: 90%; // 필요한 너비로 조절
+  @media (max-width: 768px) {
+    margin-top: -150px;
+    font-size: 16px;
+  }
+
+`;
+const UserEnlistmentText = styled.div`
+  //background-color: grey;
+  align-items: center;
+  display: flex;
+  padding: 0;
+  height: 30px;
+  font-size: 24px;
+  z-index: 2;
+  color: #4c544b;
+  font-weight: bold;
+  margin-top: -20px;
+  margin-left: 24px;
+  //max-width: 90%; // 필요한 너비로 조절
+  @media (max-width: 768px) {
+    margin-top: -150px;
+    margin-left: 12px;
+    font-size: 16px;
+  }
+`;
 
 const Button = styled.button`
   width: 250px; // 버튼 너비를 조정
@@ -16,11 +179,13 @@ const Button = styled.button`
   border: 0px transparent; // 테두리 색상을 투명
   position: relative;
   z-index: 2;
+
   &:active {
     // 버튼이 눌렸을 때의 스타일
     background-color: rgb(58 56 56);
     background-size: cover; // 이미지가 버튼에 맞게 조절
   }
+
   color: white;
 `;
 
@@ -36,13 +201,7 @@ const BackgroundContainer = styled.div`
 
 //background: url(${button4}) no-repeat center center; // 이미지를 배경으로 사용
 //background: url(${button1}) no-repeat center center; // 눌렸을 때의 배경 이미지
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-`;
+
 
 const UserInfoContainer = styled.div`
   position: relative; // 추가된 부분
@@ -98,18 +257,7 @@ const MainEnlistmentText = styled.p`
   font-size: 16px;
   margin: 0;
 `;
-const CharImg = styled.img`
-  position: absolute; // 추가된 부분
-  bottom: 10%; // 추가된 부분: 이미지의 중앙에 위치하게 합니다. (조절 가능)
-  left: 10%;
-  font-family: "EF_jejudoldam";
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-  width: 130px;
-`;
+
 
 const TextsStyle = styled.div`
   display: flex;
@@ -174,6 +322,7 @@ const ModalButton = styled.button`
   border: 0px transparent; // 테두리 색상을 투명
   position: relative;
   z-index: 2;
+
   &:active {
     // 버튼이 눌렸을 때의 스타일
 
@@ -185,8 +334,14 @@ const MenuWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 170px;
   width: 320px;
   align-items: start;
+  @media (max-width: 768px) {
+    margin-top: 30px;
+    //margin-left: 12px;
+    font-size: 16px;
+  }
 `;
 const ButtonStyle = styled.button`
   background-color: transparent;
@@ -209,7 +364,7 @@ const DesignReferDiv = styled.div`
   align-items: center;
   margin: 0;
   font-size: 12px;
-  font-weight: light;
+  //font-weight: light;
 `;
 const DesignReferText = styled.p`
   margin: 0;
@@ -218,24 +373,36 @@ const DesignReferText = styled.p`
 //background: url(${buttonMidium1}) no-repeat center center; // 이미지를 배경으로 사용
 //background: url(${buttonMidium2}) no-repeat center center; // 눌렸을 때의 배경 이미지
 export const s = {
-  Wrapper,
-  Button,
-  TextsStyle,
-  ErrorCenterModalWrapper,
-  ErrorModalTextsWrapper1,
-  ErrorModalTextsWrapper2,
-  ModalButton,
-  BackgroundContainer,
-  QuotationStyle,
-  CharImgContainer,
-  CharImgName,
-  CharImg,
-  UserInfoContainer,
-  MainTextWrapper,
-  MainNameText,
-  MainEnlistmentText,
-  MenuWrapper,
-  ButtonStyle,
-  DesignReferDiv,
-  DesignReferText,
+    Wrapper,
+    IconLayout,
+    ButtonDesign,
+    TitleText,
+    Button,
+    InfoDiv,
+
+    SoldierTagContainer,
+    UserNameText,
+    SadCharImg,
+    UserEnlistmentText,
+    SoldierTagImage,
+    TextsStyle,
+    ErrorCenterModalWrapper,
+    ErrorModalTextsWrapper1,
+    ErrorModalTextsWrapper2,
+    ModalButton,
+    BackgroundContainer,
+    QuotationStyle,
+    CharImgContainer,
+    CharImgName,
+
+    UserInfoContainer,
+    MainTextWrapper,
+    MainNameText,
+    MainEnlistmentText,
+    MenuWrapper,
+    ButtonStyle,
+    DesignReferDiv,
+    DesignReferText,
+    userInfoContentDiv,
+    UserEnlistmentKey
 };

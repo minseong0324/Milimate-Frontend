@@ -40,23 +40,22 @@ function QuestionListScreen({nowDate}: Date) {
                 //console.error("Error fetching questions:", error);
                 alert(error);
             }
-
         };
         //fetchData();
     }, []);
-    //   const questionClick = (question: Question) => {
-    //     console.log("이벤트");
-    //   };
     const questionClick = (day: string, question: string) => {
         console.log("이벤트");
         navigate("/replyscreen", {state: {day, question}});
+    };
+
+    const goBackBtn = () => {
+        navigate(-1);
     };
     return (
         <>
             <s.MainWrapper>
                 <s.IconLayout>
-                    <s.ButtonDesign onClick={() => {
-                    }}>
+                    <s.ButtonDesign onClick={goBackBtn}>
                         <BiChevronLeft size={36} color="black"/>
 
                     </s.ButtonDesign>
@@ -86,7 +85,9 @@ function QuestionListScreen({nowDate}: Date) {
                     <li>
                         <s.LiLayout>
                             <s.DayText>09/25</s.DayText>
-                            <s.CustomLi onClick={() => {}}>
+                            <s.CustomLi onClick={() => {
+                                questionClick( "09/10", "전역하고 저와 하고 싶은 것들은 무엇인가요")
+                            }}>
                                 {/*//               {() => questionClick(question.day, question.todayQuestion)}>*/}
                                 전역하고 저와 하고 싶은 것들은 무엇인가요?
                             </s.CustomLi>

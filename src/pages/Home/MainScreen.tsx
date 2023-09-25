@@ -86,20 +86,14 @@ function MainScreen() {
         };
         fetchData();
     }, [accessToken]);
-
     const [modalOpen, setModalOpen] = useState(false);
-
     // 모달창 노출
     const showModal = () => {
         setModalOpen(true);
     };
-
-    // const [tmpBool, setTempBool] = useState(false);
-    // const [tmpReply, setTmpReply] = useState(1);
-
     const questionClick = (day: string, question: string) => {
         console.log("이벤트");
-        navigate("/replyscreen", {state: {day, question}});
+        navigate(`/replyscreen`, {state: {day, question}});
     };
 
     const profileImgClick = () => {
@@ -110,7 +104,7 @@ function MainScreen() {
         navigate("/mypage");
     };
     const navigateQuestionListScreen = async (nowDate: number) => {
-        navigate("/questionListScreen", {state: {nowDate}});
+        navigate(`/questionListScreen/${userId}`, {state: {nowDate}});
     };
 
     return (
@@ -119,8 +113,10 @@ function MainScreen() {
                 <s.AppBarWrapperDiv>
                     <s.AppBarTitleText>MILLI MATE</s.AppBarTitleText>
                     <div>
-                        <MdPersonOutline size={32} color={'#4c544b'} style={{marginRight: 16}}></MdPersonOutline>
-                        <AiOutlineUnorderedList onClick={()=> {
+                        <MdPersonOutline onClick={()=> {
+                            profileImgClick()
+                        }} size={32} color={'#4c544b'} style={{marginRight: 16}}></MdPersonOutline>
+                        <AiOutlineUnorderedList onClick={() => {
                             //navigateQuestionListScreen(data!.nowData);
                             navigateQuestionListScreen(1);
 
@@ -133,8 +129,8 @@ function MainScreen() {
                     <s.MainContentText>훈련병이 된지 1주 째입니다.</s.MainContentText>
                     <s.MainContentText>해주고 싶은 말이 있나요?</s.MainContentText>
                     <s.SadCharImg></s.SadCharImg>
-                    <div style={{flexDirection: "row", display : 'flex', marginBottom : 16}}>
-                        <s.MainContentText>귀염둥이 김민성 </s.MainContentText>
+                    <div style={{flexDirection: "row", display: 'flex', marginBottom: 16}}>
+                        <s.MainContentText>귀염둥이 김민성</s.MainContentText>
                         <s.NormalText> 훈령병</s.NormalText>
                     </div>
                 </s.MainContent>
@@ -146,7 +142,15 @@ function MainScreen() {
                 {/*<s.ExistEnvelope></s.ExistEnvelope>*/}
                 <s.EnvelopeDiv>
                     <s.ContentEnvelope></s.ContentEnvelope>
-                    <s.CenteredText>안녕 승준아! 잘 지내고 있어?ㅠㅠㅠ 입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아! 잘 지내고 있어?ㅠㅠㅠ 입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아! 입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!많이 힘들었지... 너무 보고싶다...안녕 승준아!잘 지내고 있어?ㅠㅠㅠ 입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아! 잘 지내고 있어?ㅠㅠㅠ 입대하고 첫주라 많이 힘들었지... 너무 보고싶다...</s.CenteredText>
+                    <s.CenteredText>안녕 승준아! 잘 지내고 있어?ㅠㅠㅠ 입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아! 잘 지내고 있어?ㅠㅠㅠ 입대하고 첫주라 많이
+                        힘들었지... 너무 보고싶다...안녕 승준아! 입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕
+                        승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이
+                        힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕
+                        승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 입대하고 첫주라
+                        많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무
+                        보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!많이 힘들었지... 너무 보고싶다...안녕 승준아!잘 지내고 있어?ㅠㅠㅠ 입대하고
+                        첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아! 잘 지내고 있어?ㅠㅠㅠ 입대하고 첫주라 많이 힘들었지... 너무 보고싶다...
+                    </s.CenteredText>
                     <s.NameText>from. 김건휘</s.NameText>
                 </s.EnvelopeDiv>
             </s.WrapperLayout>

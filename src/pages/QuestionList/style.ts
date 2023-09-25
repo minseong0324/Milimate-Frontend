@@ -19,7 +19,7 @@ const IconLayout = styled.div`
   align-items: center;
   //background-color: grey;
   @media (max-width: 768px) {
-    width: 90%;
+    width: 100%;
   }
 `;
 const Spacer = styled.div`
@@ -35,16 +35,16 @@ const ButtonDesign = styled.button`
 const TitleText = styled.p`
   font-size: 24px;
   text-align: start;
-;
 `;
 const CustomUl = styled.ul`
   list-style-type: none; // 목록 항목 앞의 기호(점) 제거
-  padding: 24px;
+  padding: 12px;
   //margin: 20px 0; // 상하 여백 설정
   //background-color: grey;
   width: 600px;
+  
   @media (max-width: 768px) {
-    width: 80%;
+    width: 90%;
   }
 `;
 const CustomLi = styled.li`
@@ -56,9 +56,10 @@ const CustomLi = styled.li`
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: start;
-  color: black;
-  font-size: 20px;
-  margin: 10px 5px; // 세로로 10px, 가로로 5px의 여백 추가
+  color: #4c544b;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 10px 16px; // 세로로 10px, 가로로 5px의 여백 추가
 `;
 const Splice = styled.div`
   border: 0.5px solid #adc786;
@@ -66,7 +67,7 @@ const Splice = styled.div`
   //maring : 20px;
 `;
 const DayText = styled.p`
-  font-size:  20px;
+  font-size:  16px;
   color: #6d844c;
 `;
 const LiLayout = styled.div`
@@ -88,5 +89,6 @@ export const s = {
   ButtonDesign,
   TitleText,
   Spacer,
-  Splice
+  Splice,
+
 };

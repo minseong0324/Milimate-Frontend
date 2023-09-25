@@ -155,7 +155,7 @@ const CenteredText = styled.p`
   transform: translate(-50%, -50%);
   color: #000; // 원하는 색상으로 변경하세요
   text-align: center;
-  max-height: calc(1.45em * 3); // 1.2em은 한 줄의 높이로 가정, 3줄까지 표시
+  max-height: calc(1.4em * 3); // 1.2em은 한 줄의 높이로 가정, 3줄까지 표시
   width: 90%; // 원하는 폭으로 설정 (예: 이미지의 80%)
 
   overflow: hidden; // 텍스트가 박스 밖으로 나가지 않도록
@@ -173,16 +173,20 @@ const NormalText = styled.p`
 
   margin: 0;
   margin-left: 8px;
+  
 `;
 const NameText = styled.p`
   position: absolute;
   top: 70%;
-  left: 65%;
+  left: 75%;
   //text-align: end;
   font-size: 18px;
   color: #000; // 원하는 색상으로 변경하세요
   margin: 0;
   margin-left: 8px;
+  @media (max-width: 768px) {
+    left : 67%;
+  }
   
 `;
 //background: url(${buttonMidium1}) no-repeat center center; // 이미지를 배경으로 사용
