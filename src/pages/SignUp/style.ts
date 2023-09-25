@@ -61,7 +61,7 @@ const LogoTitleWrapper = styled.div`
   }
 
   /* 가로모드용 스타일 */
-  @media screen and (min-width: 600px) and (orientation: landscape) {
+  @media screen and (max-width: 767px) and (orientation: landscape) {
     margin-top: 600px;
   }
 
@@ -119,10 +119,10 @@ const Container = styled.div`
 
 const Text = styled.div`
   position: absolute;
-  margin-top: 4%;
+  top: 13px;
   font-size: 18px;
   @media (min-width: 600px) {
-    margin-top: 3%;
+    top: 15px;
     font-size: 20px;
   }
 
@@ -135,13 +135,13 @@ const BackButton = styled.img.attrs({
   width: 24px;
   height: auto;
   left: 2%;  /* 화면의 좌측에서 약간 떨어진 정도 설정 */
-  top: 2%;
+  top: 10px;
   @media (min-width: 600px) {
     left: calc(50% - 300px + 10px);
   }
   /* 가로모드용 스타일 */
-  @media screen and (min-width: 600px) and (orientation: landscape) {
-    top: 5.5%;
+  @media screen and (max-width: 767px) and (orientation: landscape) {
+    top: 10px;
   }
 `;
 

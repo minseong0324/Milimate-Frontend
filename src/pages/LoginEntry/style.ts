@@ -5,43 +5,9 @@ import BackgroundImg from "../../assets/background/Background.svg"
 import ButtonImg from "../../assets/Button/Button.svg"
 
 
-// 이 함수는 버튼의 크기를 계산합니다.
-const calculateButtonSize = () => {
-  // 뷰포트의 너비와 높이를 얻습니다.
-  const viewportWidth = window.innerWidth;
-  const viewportHeight = window.innerHeight;
-
-  // 배경 이미지의 원래 비율을 계산합니다.
-  const originalAspectRatio = 375 / 812;
-
-  // 배경 이미지의 실제 크기를 계산합니다.
-  let backgroundImageWidth;
-  let backgroundImageHeight;
-  if (viewportWidth  > originalAspectRatio) {
-    backgroundImageHeight = viewportHeight;
-    backgroundImageWidth = backgroundImageHeight * originalAspectRatio;
-  } else {
-    backgroundImageWidth = viewportWidth;
-    backgroundImageHeight = backgroundImageWidth / originalAspectRatio;
-  }
-
-  // 버튼의 크기를 계산합니다.
-  const buttonWidth = (343 / 375) * backgroundImageWidth * 1.2;
-  const buttonHeight = (48 / 812) * backgroundImageHeight * 1.2;
-
-  const mainLogoWidth = (340 / 375) * backgroundImageWidth * 1.1;  // 80% of the background image width
-  const subtitleWidth = (220 / 375) * backgroundImageWidth * 1.1;  // 60% of the background image width
-  
-  const logoTitleTopMargin = (-10 / 812) * backgroundImageHeight;  // 이 값은 조절 가능
-
-  return { width: buttonWidth, height: buttonHeight, mainLogoWidth,
-    subtitleWidth, logoTitleTopMargin };
-};
-
-
-const Button = styled.button<{ width: number; height: number }>`
-  width: ${(props) => props.width}px;
-  height: ${(props) => props.height}px;
+const Button = styled.button`
+  width: 343px;
+  height: 56px;
   position: relative;
   font-family: "";
   border-radius: 10px;
@@ -54,16 +20,19 @@ const Button = styled.button<{ width: number; height: number }>`
 `;
 
 const ButtonWrapper = styled.div`
-  position: absolute;
+  position: relative;
   bottom: 5vh;
-  left: 50%;
-  transform: translateX(-50%);
+  //left: 50%;
+  //transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 2;
   width: 100%;
+  @media (min-width: 600px) {
+    bottom: 2vh;
+  }
 `;
 
 
@@ -98,35 +67,49 @@ const BackgroundContainer = styled.div`
 
 
 
-const LogoTitleWrapper = styled.div<{ logoTitleTopMargin: number }>`
+const LogoTitleWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: ${(props) => props.logoTitleTopMargin}px;
-  top: -3%;  // 상단으로부터의 위치를 조정
+  margin-top: 200px;
+  top: -12%;  // 상단으로부터의 위치를 조정
+  @media (min-width: 600px) {
+    margin-top: 250px;
+  }
+
+  /* 가로모드용 스타일 */
+  @media screen and (min-width: 600px) and (orientation: landscape) {
+    margin-top: 600px;
+  }
+
 `;
 
 const MainLogo = styled.img.attrs({
   src: MainLogoImg
-})<{ width: number }>`
+})`
   position: relative;
-  //left: -5%;
-  top: -30%;  // 상단으로부터의 위치를 조정
-  width: ${(props) => props.width}px;
+  top: -10%;  // 상단으로부터의 위치를 조정
+  width: 234px;
   height: auto;
   z-index: 2;
+  @media (min-width: 600px) {
+    width: 304.2px;
+  }
 `;
 
 
 const SubTitle = styled.img.attrs({
   src: SubTitleImg
-})<{ width: number }>`
-  width: ${(props) => props.width}px;
+})`
+  width: 220px;
   height: auto;
   position: relative;
   z-index: 2;
-  margin-top: -5%;  // 위로 이동
+  margin-top: 5%;  // 위로 이동
+  @media (min-width: 600px) {
+    width: 286px;
+  }
 `;
 
 
@@ -141,5 +124,4 @@ export const s = {
   BackgroundContainer,
   SubTitle,
   MainLogo,
-  calculateButtonSize,
 };
