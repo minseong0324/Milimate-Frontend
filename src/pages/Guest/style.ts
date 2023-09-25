@@ -195,6 +195,7 @@ const TextsStyle2_1 = styled(TextsStyle2)`
   font-weight: normal;
   word-wrap: break-word;  // 긴 단어를 다음 줄로 래핑
   white-space: normal;  // 공백을 존중하면서 텍스트를 래핑
+  max-width: 200px;  // 또는 원하는 값으로 변경. 이 값은 단어가 래핑되는 포인트를 제어합니다.
   @media (min-width: 600px) {
     top: 87px;  // 미디어 쿼리에서도 top 값을 변경하려면 이렇게 설정
     left: 100px;
