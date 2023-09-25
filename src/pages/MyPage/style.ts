@@ -2,6 +2,13 @@ import styled from "styled-components";
 import CharacterFace from "../../assets/charater/CharacterFace.svg";
 import SoliderTag from "../../assets/Logo/SoldierTag.svg";
 import SmallBubble from "../../assets/Logo/SoldierTag.svg";
+import deleteIcon from "../../assets/Icons/delete.svg";
+import editIcon from "../../assets/Icons/editIcon.svg";
+import logoutIcon from "../../assets/Icons/logout.svg";
+import versionIcon from "../../assets/Icons/version.svg";
+import personIcon from "../../assets/Icons/person.svg";
+
+
 // import button1 from '../../assets/button/button1.png';
 // import button4 from '../../assets/button/button4.png';
 // import buttonMidium1 from '../../assets/button/button-midium-1.png';
@@ -13,6 +20,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  
   //padding-top: 88px;
   background: #f2f1ee no-repeat center center;
 `;
@@ -59,7 +67,130 @@ const SoldierTagContainer = styled.div`
   }
 `;
 
+const MenuWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 170px;
+  width: 600px;
+  margin-bottom: 100px;
+ // align-items: start;
+  @media (max-width: 768px) {
+    margin-top: 30px;
+    width: 100%;
+    //margin-left: 12px;
+    // font-size: 16px;
+  }
+`;
+const VersionText = styled.div`
+  color: #adc786;
+  text-align: end;
+  font-size: 20px;
+`;
+const VersionDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  //background-color: grey;
+  align-items: center;
+  justify-content: space-between;
+  
+  width: 600px;
+  @media (max-width: 768px) {
+    //margin-top: 30px;
+    justify-content: space-between;
+    //align-items: center;
+    //padding-left:16px;
+    width: 89%;
+    //margin-left: 12px;
+    // font-size: 16px;
+  }
+`
+const MenuDiv = styled.div `
+  display: flex;
+  flex-direction: row;
+  //background-color: grey;
+  align-items: center;
+  
+  
+  width: 600px;
+  @media (max-width: 768px) {
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
+    //padding-left:16px;
+    width: 90%;
+    //margin-left: 12px;
+    // font-size: 16px;
+  }
+`;
 
+const PersonIcon = styled.img.attrs({
+    src: personIcon,
+})`
+  //position: absolute;
+  //top: 0;
+  //left: 0;
+  //right: 0;
+  //bottom: 0;
+  width: 40px; // 부모 div의 너비에 맞게 이미지 너비 설정
+  
+  //height: auto; // 이미지의 비율을 유지하면서 높이 조절
+  background-image: url(${SmallBubble});
+  background: #f2f1ee no-repeat center center;
+  //z-index: 1;
+`;
+const EditIcon = styled.img.attrs({
+    src: editIcon,
+})`
+  width: 40px; // 부모 div의 너비에 맞게 이미지 너비 설정
+
+  //height: auto; // 이미지의 비율을 유지하면서 높이 조절
+  background-image: url(${SmallBubble});
+  background: #f2f1ee no-repeat center center;
+`;
+const VersionIcon = styled.img.attrs({
+    src: versionIcon,
+})`
+  width: 40px; // 부모 div의 너비에 맞게 이미지 너비 설정
+
+  //height: auto; // 이미지의 비율을 유지하면서 높이 조절
+  background-image: url(${SmallBubble});
+  background: #f2f1ee no-repeat center center;
+`;
+const LogoutIcon = styled.img.attrs({
+    src: logoutIcon,
+})`
+  width: 40px; // 부모 div의 너비에 맞게 이미지 너비 설정
+
+  //height: auto; // 이미지의 비율을 유지하면서 높이 조절
+  background-image: url(${SmallBubble});
+  background: #f2f1ee no-repeat center center;
+`;
+const DeleteIcon = styled.img.attrs({
+    src: deleteIcon,
+})`
+  width: 40px; // 부모 div의 너비에 맞게 이미지 너비 설정
+
+  //height: auto; // 이미지의 비율을 유지하면서 높이 조절
+  background-image: url(${SmallBubble});
+  background: #f2f1ee no-repeat center center;
+`;
+const Splice = styled.div`
+  border: 0.5px solid #adc786;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  width : 600px;
+  @media (max-width: 768px) {
+    margin-top: 0;
+    margin-bottom: -12px;
+    //padding-left:16px;
+    width: 92%;
+    //margin-left: 12px;
+    // font-size: 16px;
+  }
+  //maring : 20px;
+`;
 const SoldierTagImage = styled.img.attrs({
     src: SoliderTag,
 })`
@@ -268,15 +399,7 @@ const TextsStyle = styled.div`
   margin-bottom: 50px;
 `;
 
-const QuotationStyle = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 0;
-  font-size: 60px;
 
-  color: #777;
-`;
 
 const ErrorCenterModalWrapper = styled.div`
   //에러 모달창 wrapper
@@ -330,29 +453,31 @@ const ModalButton = styled.button`
   }
 `;
 
-const MenuWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 170px;
-  width: 320px;
-  align-items: start;
-  @media (max-width: 768px) {
-    margin-top: 30px;
-    //margin-left: 12px;
-    font-size: 16px;
-  }
-`;
+
 const ButtonStyle = styled.button`
   background-color: transparent;
+  
   //background-color: grey;
   width: 320px;
   height: 75px;
   border: none;
   text-align: start;
-  font-size: 16px;
-  color: grey;
-  font-weight: bold;
+  font-size: 24px;
+  color: black;
+  //font-weight: bold;
+  margin-left: 12px;
+  &:focus {
+    outline: none;  // 포커스 테두리 제거
+  }
+
+  &:active {
+    transform: none;  // 클릭 시 버튼이 움직이는 효과 제거
+    color: black;     // 클릭 시 글자 색상 변경 제거 (필요하다면)
+  }
+  @media (max-width: 768px) {
+    font-size: 18px;
+    margin-left: 0;
+  }
 `;
 const DesignReferDiv = styled.div`
   flex-direction: column;
@@ -391,7 +516,7 @@ export const s = {
     ErrorModalTextsWrapper2,
     ModalButton,
     BackgroundContainer,
-    QuotationStyle,
+
     CharImgContainer,
     CharImgName,
 
@@ -399,10 +524,22 @@ export const s = {
     MainTextWrapper,
     MainNameText,
     MainEnlistmentText,
-    MenuWrapper,
+
     ButtonStyle,
     DesignReferDiv,
     DesignReferText,
     userInfoContentDiv,
-    UserEnlistmentKey
+    UserEnlistmentKey,
+
+    MenuWrapper,
+    DeleteIcon,
+    LogoutIcon,
+    EditIcon,
+    PersonIcon,
+    VersionIcon,
+    MenuDiv,
+
+    Splice,
+    VersionDiv,
+    VersionText
 };

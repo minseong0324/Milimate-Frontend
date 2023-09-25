@@ -27,7 +27,7 @@ const ModalBox = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #ede8d7;
+  background: #f2f1ee no-repeat center center;
   border: 1px solid black;
   border-radius: 8px;
 `;
@@ -38,14 +38,18 @@ const OkBtnStyle = styled.button`
   left: 75%; // 버튼의 좌측을 모달창의 중앙에 위치시킵니다.
   top: 240px;
   transform: translate(-50%, 0); // 버튼의 중앙을 기준으로 위치 조정
-  background-color: #ede8d7;
+  //background-color: #ede8d7;
   border: 1px solid black;
   border-radius: 12px;
-  padding-horizontal: 16px;
+  //padding-horizontal: 16px;
   //padding-vertical: 12px;
   padding-top: 8px;
   padding-bottom: 8px;
-  width: 100px;
+  width: 130px;
+  height : 40px;
+  color : white;
+  background-color: #4c534b;
+  font-size: 16px;
 `;
 const CancelBtnStyle = styled.button`
   /* 버튼의 위치를 모달창의 가운데 하단으로 설정 */
@@ -54,14 +58,20 @@ const CancelBtnStyle = styled.button`
   left: 25%; // 버튼의 좌측을 모달창의 중앙에 위치시킵니다.
   top: 240px;
   transform: translate(-50%, 0); // 버튼의 중앙을 기준으로 위치 조정
-  background-color: #ede8d7;
+  
+  
   border: 1px solid black;
   border-radius: 12px;
-  padding-horizontal: 16px;
+  //padding-horizontal: 16px;
   //padding-vertical: 12px;
   padding-top: 8px;
   padding-bottom: 8px;
-  width: 100px;
+  width: 130px;
+  height: 40px;
+  
+  background-color: #f2f1ee;
+  color : black;
+  font-size: 16px;
 `;
 const BtnDiv = styled.div`
   display: flex;

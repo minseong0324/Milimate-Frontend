@@ -86,8 +86,9 @@ function ReplyScreen({day, question}: ReplyScreenProps) {
 
                 </s.ButtonDesign>
                 <s.TitleText>밀리메이트의 답변</s.TitleText>
-
+                <s.ButtonDesign onClick={()=>{}}>
                 <BiChevronLeft size={36} color="#f2f1ee"/>
+                </s.ButtonDesign>
             </s.IconLayout>
             {/* Today's Question */}
             <s.SoldierTagContainer>

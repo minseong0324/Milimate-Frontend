@@ -60,8 +60,9 @@ function QuestionListScreen({nowDate}: Date) {
 
                     </s.ButtonDesign>
                     <s.TitleText>질문 리스트</s.TitleText>
-
+                    <s.ButtonDesign onClick={()=>{}}>
                     <BiChevronLeft size={36} color="#f2f1ee"/>
+                    </s.ButtonDesign>
                 </s.IconLayout>
 
                 {/*{nowDate > 1 ? (*/}

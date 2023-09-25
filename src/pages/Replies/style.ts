@@ -77,7 +77,7 @@ const DayText = styled.p`
   padding-bottom: 12px;
   background-color: #f4efce;
   align-items: center;
-  color: white;
+  color: #4c544b;
   //padding: 8px;
   font-size: 24px;
   font-weight: bold;

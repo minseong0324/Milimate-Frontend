@@ -96,17 +96,7 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
       }
     }
   };
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const userId = localStorage.getItem("userId");
-  //     const response = await axios.get(
-  //       `http://localhost:8080/api/myPage/${userId}/editCompletion`
-  //     );
-  //     if (response.status == 200) {
-  //       setResponseData(response.data);
-  //     }
-  //   };
-  // }, []);
+
   return (
     <s.Wrapper onClick={closeModal}>
       <s.ModalBox ref={modalRef} onClick={stopPropagation}>

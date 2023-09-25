@@ -71,8 +71,9 @@ function MyPage() {
                     <BiChevronLeft size={36} color="black"/>
                 </s.ButtonDesign>
                 <s.TitleText>마이페이지</s.TitleText>
-                <s.ButtonDesign onClick={()=>{}}>
-                <BiChevronLeft size={36} color="#f2f1ee"/>
+                <s.ButtonDesign onClick={() => {
+                }}>
+                    <BiChevronLeft size={36} color="#f2f1ee"/>
                 </s.ButtonDesign>
             </s.IconLayout>
             <s.SoldierTagContainer>
@@ -92,22 +93,78 @@ function MyPage() {
                 </s.InfoDiv>
             </s.SoldierTagContainer>
             <s.MenuWrapper>
-                <s.ButtonStyle onClick={deleteAccBtn}>• 회원탈퇴</s.ButtonStyle>
-                <s.ButtonStyle onClick={updateCompletionBtn}>
-                    • 수료일 수정하기
-                </s.ButtonStyle>
-                <s.ButtonStyle onClick={updateEnlistmentBtn}>
-                    • 입대일 수정하기
-                </s.ButtonStyle>
-                <s.ButtonStyle onClick={editUserNameModalBtn}>
-                    • 이름 변경하기
-                </s.ButtonStyle>
+                <s.MenuDiv>
+                    <s.PersonIcon></s.PersonIcon>
+                    <s.ButtonStyle onClick={editUserNameModalBtn}>이름 변경하기</s.ButtonStyle>
+                </s.MenuDiv>
+                <s.Splice></s.Splice>
+                <s.MenuDiv>
+                    <s.EditIcon></s.EditIcon>
+                    <s.ButtonStyle onClick={updateEnlistmentBtn}>
+                        입대일 수정하기
+                    </s.ButtonStyle>
+                </s.MenuDiv>
+                <s.Splice></s.Splice>
+                <s.MenuDiv>
+                    <s.EditIcon></s.EditIcon>
+                    <s.ButtonStyle onClick={updateCompletionBtn}>
+                        수료일 수정하기
+                    </s.ButtonStyle>
+                </s.MenuDiv>
+                <s.Splice></s.Splice>
+                <s.MenuDiv>
+                    <s.VersionIcon></s.VersionIcon>
+                    <s.VersionDiv>
+                        <s.ButtonStyle>
+                            버전정보
+                        </s.ButtonStyle>
+                        <s.VersionText>1.0.0</s.VersionText>
+                    </s.VersionDiv>
+                </s.MenuDiv>
+                <s.Splice></s.Splice>
+                <s.MenuDiv>
+                    <s.LogoutIcon></s.LogoutIcon>
+                    <s.ButtonStyle onClick={userLogouModalOpenBtn}>
+                        로그아웃
+                    </s.ButtonStyle>
+                </s.MenuDiv>
 
-                <s.ButtonStyle onClick={userLogouModalOpenBtn}>
-                    • 로그아웃
-                </s.ButtonStyle>
+                <s.Splice></s.Splice>
+                <s.MenuDiv>
+                    <s.DeleteIcon></s.DeleteIcon>
+                    <s.ButtonStyle onClick={deleteAccBtn
+                        }>
+                        회원탈퇴하기
+                    </s.ButtonStyle>
+                </s.MenuDiv>
+                <s.Splice></s.Splice>
             </s.MenuWrapper>
+            {deleteAccModalOpen && (
+                <DeleteModalBasic
+                    setModalOpen={setDeleteAccModalOpen}
+                    contentText="계정을 삭제하시겠습니까?"
+                />
+            )}
+            {updateCompletionModalOpen && (
+                <UpdateCompletionModalBasic
+                    setModalOpen={setUpdateCompletionModalOpen}
+                />
+            )}
+            {updateEnlistModalOpen && (
+                <UpdateEnlistmentModalBasic setModalOpen={setUpdateEnlistModalOpen} />
+            )}
+
+            {editUserNameModalOpen && (
+                <EditUserNameModalBasic setModalOpen={setEditUserNameModalOpen} />
+            )}
+            {userLogoutModalOpen && (
+                <LogoutModalBasic
+                    setModalOpen={setUserLogoutModalOpen}
+                    contentText="로그아웃 하시겠습니까?"
+                />
+            )}
         </s.Wrapper>
+
         // <s.BackgroundContainer>
         //   <s.UserInfoContainer>
         //     <s.CharImgContainer>
@@ -172,6 +229,9 @@ function MyPage() {
         //       {modalErrorContent}
         //   </ErrorModal> */}
         // </s.BackgroundContainer>
+
+
+
     );
 }
 
