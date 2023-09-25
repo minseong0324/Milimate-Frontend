@@ -97,14 +97,14 @@ function App() {
                                     <Route path="/mypage" element={<MyPage/>}/>
                                     <Route
                                         path="/replyscreen"
-                                        element={<ReplyScreen day={""} question={""}/>}
+                                        element={<ReplyScreen day={""}/>}
                                     />
                                     <Route path="/showcharacter" element={<ShowCaracter/>}/>
 
-                                    <Route
-                                        path="/replyscreen"
-                                        element={<ReplyScreen day={""} question={""}/>}
-                                    />
+                                    {/*<Route*/}
+                                    {/*    path="/replyscreen"*/}
+                                    {/*    element={<ReplyScreen day={""} question={""}/>}*/}
+                                    {/*/>*/}
 
                                     {/* <Route path="/select-character-tree/:userId" element={<SelectTreeCharacter />} /> */}
 

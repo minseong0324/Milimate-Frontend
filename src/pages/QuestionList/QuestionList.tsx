@@ -43,9 +43,9 @@ function QuestionListScreen({nowDate}: Date) {
         };
         //fetchData();
     }, []);
-    const questionClick = (day: string, question: string) => {
+    const questionClick = (day: string) => {
         console.log("이벤트");
-        navigate("/replyscreen", {state: {day, question}});
+        navigate("/replyscreen", {state: {day}});
     };
 
     const goBackBtn = () => {
@@ -60,8 +60,9 @@ function QuestionListScreen({nowDate}: Date) {
 
                     </s.ButtonDesign>
                     <s.TitleText>질문 리스트</s.TitleText>
-                    <s.ButtonDesign onClick={()=>{}}>
-                    <BiChevronLeft size={36} color="#f2f1ee"/>
+                    <s.ButtonDesign onClick={() => {
+                    }}>
+                        <BiChevronLeft size={36} color="#f2f1ee"/>
                     </s.ButtonDesign>
                 </s.IconLayout>
 
@@ -87,7 +88,7 @@ function QuestionListScreen({nowDate}: Date) {
                         <s.LiLayout>
                             <s.DayText>09/25</s.DayText>
                             <s.CustomLi onClick={() => {
-                                questionClick( "09/10", "전역하고 저와 하고 싶은 것들은 무엇인가요")
+                                questionClick("09/10")
                             }}>
                                 {/*//               {() => questionClick(question.day, question.todayQuestion)}>*/}
                                 전역하고 저와 하고 싶은 것들은 무엇인가요?
@@ -98,7 +99,8 @@ function QuestionListScreen({nowDate}: Date) {
                     <li>
                         <s.LiLayout>
                             <s.DayText>09/25</s.DayText>
-                            <s.CustomLi onClick={() => {}}>
+                            <s.CustomLi onClick={() => {
+                            }}>
                                 {/*//               {() => questionClick(question.day, question.todayQuestion)}>*/}
                                 전역하고 저와 하고 싶은 것들은 무엇인가요?
                             </s.CustomLi>
@@ -108,7 +110,8 @@ function QuestionListScreen({nowDate}: Date) {
                     <li>
                         <s.LiLayout>
                             <s.DayText>09/25</s.DayText>
-                            <s.CustomLi onClick={() => {}}>
+                            <s.CustomLi onClick={() => {
+                            }}>
                                 {/*//               {() => questionClick(question.day, question.todayQuestion)}>*/}
                                 전역하고 저와 하고 싶은 것들은 무엇인가요?
                             </s.CustomLi>

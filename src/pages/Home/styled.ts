@@ -22,7 +22,7 @@ const WrapperLayout = styled.div`
   flex-direction: column;
   width: 100%;
 
-  marine: 0;
+  //marine: 0;
   align-items: center;
   justify-content: center;
   background: #f2f1ee no-repeat center center;
@@ -131,10 +131,10 @@ const ExistEnvelope = styled.img.attrs({
 
 const EnvelopeDiv = styled.div`
   margin-top: 12px;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
   width: 100%;
   //height: 300px;
-  background: url(${contentEnvelop}) no-repeat center;
+  //background: url(${contentEnvelop}) no-repeat center;
   background-size: contain; // 이미지가 div를 채우도록 조절
   position: relative;
   //height: 300px; // 적절한 높이로 설정 (이미지 높이에 따라 조절 필요)
@@ -143,14 +143,17 @@ const ContentEnvelope = styled.img.attrs({
   src: contentEnvelop,
 })`
   //margin-top: 12px;
-  //margin-bottom: 24px;
+  margin-bottom: -124px;
   width: 100%;
   //height: 670px;
   position: relative; // 이 부분 추가
+  
 `;
 const CenteredText = styled.p`
-  position: absolute;
-  top: 35%;
+  position: relative;
+  //margin-bottom: 100px;
+  top: -130px;
+  //background-color: grey;
   left: 50%;
   transform: translate(-50%, -50%);
   color: #000; // 원하는 색상으로 변경하세요
@@ -165,28 +168,41 @@ const CenteredText = styled.p`
 
   padding: 10px; // 원하는 값으로 조정 가능
   box-sizing: border-box; // padding 값이 전체 높이/폭에 포함되도록
-  z-index: 1;
+  z-index: 3;
+  @media (max-width: 768px) {
+    //left : 67%;
+    top : -50px;
+    
+  }
 `;
+
+
+const NameText = styled.p`
+  //position: absolute;
+  
+  //text-align: end;
+  position: relative;
+  top: -80px;
+  left: 75%;
+  //top  : 180px;
+  font-size: 18px;
+  color: #000; // 원하는 색상으로 변경하세요
+  margin: 0;
+  z-index: 4;
+  margin-left: 8px;
+  @media (max-width: 768px) {
+    left : 67%;
+    top : -30px;
+  }
+  
+`;
+
 const NormalText = styled.p`
   color: #4c544b;
   font-size: 16px;
 
   margin: 0;
   margin-left: 8px;
-  
-`;
-const NameText = styled.p`
-  position: absolute;
-  top: 70%;
-  left: 75%;
-  //text-align: end;
-  font-size: 18px;
-  color: #000; // 원하는 색상으로 변경하세요
-  margin: 0;
-  margin-left: 8px;
-  @media (max-width: 768px) {
-    left : 67%;
-  }
   
 `;
 //background: url(${buttonMidium1}) no-repeat center center; // 이미지를 배경으로 사용
@@ -207,5 +223,6 @@ export const s = {
     EnvelopeDiv,
     CenteredText,
     ContentEnvelope,
-    NameText
+    NameText,
+
 };

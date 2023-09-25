@@ -8,6 +8,7 @@ import {useSelector} from "react-redux";
 import {RootState} from "../../components/Redux/store";
 import {MdPersonOutline} from "react-icons/md";
 import {FiUpload} from "react-icons/fi";
+import Slider, {Settings} from "react-slick";
 
 import {AiOutlineUnorderedList} from "react-icons/ai";
 
@@ -24,8 +25,27 @@ interface ResponseData {
 }
 
 //read 1) unRead, read, none
+interface Reply {
+    senderName: string;
+    replyContent: string;
+}
+
+interface EnvelopeData {
+    replies: Reply[];
+}
+
 
 function MainScreen() {
+    const [SlideData, setSLideData] = useState<EnvelopeData[] | null>(null);
+    const settings: Settings = {
+        dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true, // 이 부분을 추가하세요.
+    };
+
     const userId = localStorage.getItem("userId");
     const userInfo = useSelector((state: RootState) => state.userInfo);
     const [lastCompletionDate, setLastCompletionDate] = useState("0");
@@ -34,10 +54,33 @@ function MainScreen() {
     const {accessToken, refreshToken} = useToken();
     const navigate = useNavigate();
 
-
+    const dummyData: EnvelopeData = {
+        "replies": [
+            {
+                "senderName": "김건휘",
+                "replyContent": "첫번째 편지내용첫번째 편지내용첫번째 편지내용첫번째 편지" +
+                    "내용첫번째 편지내용첫번째 편지내용첫번째 편지내용첫번째 편지내용첫번째 편지내용첫번째 편" +
+                    "지내용첫번째 편지내용첫번째 편지내용첫번째 편지내용첫번째 편지내용첫번째 편지내용첫번" +
+                    "째 편지내용첫번째 편지내용첫번째 편지내용첫번째 편지내용첫번째 편지내용첫번째 " +
+                    "편지내용첫번째 편지내용첫번째 편지내용첫번째 편지내용첫번째 편지내용첫번째 편지내용첫번째 편지내용"
+            },
+            {
+                "senderName": "가슴준",
+                "replyContent": "두번째 편지 내용"
+            },
+            {
+                "senderName": "김민성",
+                "replyContent": "세번째 편지 내용"
+            },
+            {
+                "senderName": "가슴준",
+                "replyContent": "4번재 편지 내용"
+            }
+        ]
+    };
     const handleCopyClipBoard = async () => {
         const linkToShare = `https://mili-mate.com/guest/${userId}`;
-
+        console.log(linkToShare);
         try {
             await navigator.clipboard.writeText(linkToShare);
             console.log(linkToShare);
@@ -91,9 +134,9 @@ function MainScreen() {
     const showModal = () => {
         setModalOpen(true);
     };
-    const questionClick = (day: string, question: string) => {
+    const questionClick = (day: string) => {
         console.log("이벤트");
-        navigate(`/replyscreen`, {state: {day, question}});
+        navigate(`/replyscreen`, {state: {day}});
     };
 
     const profileImgClick = () => {
@@ -113,7 +156,7 @@ function MainScreen() {
                 <s.AppBarWrapperDiv>
                     <s.AppBarTitleText>MILLI MATE</s.AppBarTitleText>
                     <div>
-                        <MdPersonOutline onClick={()=> {
+                        <MdPersonOutline onClick={() => {
                             profileImgClick()
                         }} size={32} color={'#4c544b'} style={{marginRight: 16}}></MdPersonOutline>
                         <AiOutlineUnorderedList onClick={() => {
@@ -135,24 +178,31 @@ function MainScreen() {
                     </div>
                 </s.MainContent>
                 <s.ShareBtnDiv>
-                    <p>오늘의 질문 공유하기</p>
+                    <p onClick={handleCopyClipBoard}>오늘의 질문 공유하기</p>
                     <FiUpload size={24} style={{marginLeft: 12}}></FiUpload>
                 </s.ShareBtnDiv>
                 {/*<s.Envelope></s.Envelope>*/}
                 {/*<s.ExistEnvelope></s.ExistEnvelope>*/}
                 <s.EnvelopeDiv>
-                    <s.ContentEnvelope></s.ContentEnvelope>
-                    <s.CenteredText>안녕 승준아! 잘 지내고 있어?ㅠㅠㅠ 입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아! 잘 지내고 있어?ㅠㅠㅠ 입대하고 첫주라 많이
-                        힘들었지... 너무 보고싶다...안녕 승준아! 입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕
-                        승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이
-                        힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕
-                        승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 입대하고 첫주라
-                        많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무
-                        보고싶다...안녕 승준아!입대하고 첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아!많이 힘들었지... 너무 보고싶다...안녕 승준아!잘 지내고 있어?ㅠㅠㅠ 입대하고
-                        첫주라 많이 힘들었지... 너무 보고싶다...안녕 승준아! 잘 지내고 있어?ㅠㅠㅠ 입대하고 첫주라 많이 힘들었지... 너무 보고싶다...
-                    </s.CenteredText>
-                    <s.NameText>from. 김건휘</s.NameText>
+                    <Slider {...settings}>
+                        {dummyData.replies.map((item: Reply, index: number) => (
+                            <div key={index} style={{width: '100%'}}>
+                                <s.ContentEnvelope></s.ContentEnvelope>
+                                <s.CenteredText>{item.replyContent}</s.CenteredText>
+                                <s.NameText>from. {item.senderName}</s.NameText>
+                            </div>
+                        ))}
+                        {dummyData.replies.length === 4 && (
+
+                            <s.EnvelopeDiv>
+                                <s.ContentEnvelope></s.ContentEnvelope>
+                                <s.CenteredText onClick={ () => {questionClick("12")}}>모두 확인하기</s.CenteredText>
+
+                            </s.EnvelopeDiv>
+                        )}
+                    </Slider>
                 </s.EnvelopeDiv>
+                <div style={{margin : 36}}></div>
             </s.WrapperLayout>
 
 

@@ -8,7 +8,7 @@ import {BiChevronLeft} from "react-icons/bi";
 
 type ReplyScreenProps = {
     day: string;
-    question: string;
+
 };
 
 interface Reply {
@@ -21,7 +21,7 @@ interface QuestionData {
     replies: Reply[];
 }
 
-function ReplyScreen({day, question}: ReplyScreenProps) {
+function ReplyScreen({day}: ReplyScreenProps) {
     const {state} = useLocation();
     const {accessToken, refreshToken} = useToken();
 
