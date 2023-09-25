@@ -55,9 +55,6 @@ function MainScreen() {
     //   }
     // };
     // testToken();
-    const navigateQuestionListScreen = async (nowDate: number) => {
-        navigate("/questionListScreen", {state: {nowDate}});
-    };
 
 
     useEffect(() => {
@@ -112,6 +109,10 @@ function MainScreen() {
     const intendAddCompletion = () => {
         navigate("/mypage");
     };
+    const navigateQuestionListScreen = async (nowDate: number) => {
+        navigate("/questionListScreen", {state: {nowDate}});
+    };
+
     return (
         <>
             <s.WrapperLayout>
@@ -119,7 +120,11 @@ function MainScreen() {
                     <s.AppBarTitleText>MILLI MATE</s.AppBarTitleText>
                     <div>
                         <MdPersonOutline size={32} color={'#4c544b'} style={{marginRight: 16}}></MdPersonOutline>
-                        <AiOutlineUnorderedList size={32} color={'#4c544b'}
+                        <AiOutlineUnorderedList onClick={()=> {
+                            //navigateQuestionListScreen(data!.nowData);
+                            navigateQuestionListScreen(1);
+
+                        }} size={32} color={'#4c544b'}
                                                 style={{marginRight: 16}}></AiOutlineUnorderedList>
                     </div>
                 </s.AppBarWrapperDiv>
