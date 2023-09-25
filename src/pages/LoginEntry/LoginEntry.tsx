@@ -8,6 +8,11 @@ function HomeBeforeLogin() {
 
   return (
     <s.BackgroundContainer>
+      <s.BackgroundWrapper>
+        <s.TopBackground />
+        <s.BottomBackground />
+      </s.BackgroundWrapper>
+
       <s.CenteredWrapper>
         {/*<s.Title>My</s.Title>
         <s.Title>Cabinet</s.Title>*/}
