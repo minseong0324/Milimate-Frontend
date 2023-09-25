@@ -2197,9 +2197,4 @@ export declare const s: {
         onTransitionEnd?: import("react").TransitionEventHandler<HTMLButtonElement> | undefined;
         onTransitionEndCapture?: import("react").TransitionEventHandler<HTMLButtonElement> | undefined;
     }>;
-    calculateButtonSize: () => {
-        width: number;
-        height: number;
-        viewportHeight: number;
-    };
 };

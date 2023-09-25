@@ -13,6 +13,10 @@ const Button = styled.button`
   z-index: 2;
   color: white;
   margin-bottom: 2vh;
+  @media (min-width: 600px) {
+    width: 410px;
+    height: 50px;
+  }
 `;
 
 const ButtonWrapper = styled.div`
@@ -110,6 +114,9 @@ const MoreInfoInput = styled.input`
   &:focus {
     outline: none;
   }
+  @media (min-width: 600px) {
+    width: 405px;
+  }
 `;
 
 const MoreInfoInputYear = styled.input`
@@ -130,6 +137,9 @@ const MoreInfoInputYear = styled.input`
   &:focus {
     outline: none;
   }
+  @media (min-width: 600px) {
+    width: 105px;
+  }
 `;
 
 const MoreInfoInputYMonthDay = styled.input`
@@ -148,6 +158,9 @@ const MoreInfoInputYMonthDay = styled.input`
 
   &:focus {
     outline: none;
+  }
+  @media (min-width: 600px) {
+    width: 80px;
   }
 `;
 

@@ -20,6 +20,10 @@ const Button = styled.button`
   z-index: 2;
   color: white;
   margin-top: 40px;
+  @media (min-width: 600px) {
+    width: 410px;
+    height: 50px;
+  }
 `;
 
 const ButtonWrapper = styled.div`
@@ -140,7 +144,7 @@ const TagContainer = styled.div`
 const SolierTag = styled.img.attrs({
   src: SolierTagImg
 })`
-  width: 340px;
+  width: 343px;
   height: auto;
   position: relative;
   z-index: 2;

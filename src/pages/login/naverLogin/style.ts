@@ -14,6 +14,11 @@ font-size: 17px;  // 폰트 크기를 화면 너비에 따라 조절
 border: 0px transparent;
 z-index: 2;
 margin-bottom: 2vh;
+@media (min-width: 600px) {
+  background-size: cover;
+  width: 440px;
+  height: 62px;
+  }
 `;
 
 const NaverWrapper = styled.div`

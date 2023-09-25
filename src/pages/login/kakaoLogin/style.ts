@@ -1,33 +1,4 @@
 import styled from "styled-components";
-//import buttonMidium1 from '../../../assets/button/button-midium-1.png';
-//import buttonMidium2 from '../../../assets/button/button-midium-2.png';
-
-// 이 함수는 버튼의 크기를 계산합니다.
-const calculateButtonSize = () => {
-  // 뷰포트의 너비와 높이를 얻습니다.
-  const viewportWidth = window.innerWidth;
-  const viewportHeight = window.innerHeight;
-
-  // 배경 이미지의 원래 비율을 계산합니다.
-  const originalAspectRatio = 375 / 812;
-
-  // 배경 이미지의 실제 크기를 계산합니다.
-  let backgroundImageWidth;
-  let backgroundImageHeight;
-  if (viewportWidth / viewportHeight > originalAspectRatio) {
-    backgroundImageHeight = viewportHeight;
-    backgroundImageWidth = backgroundImageHeight * originalAspectRatio;
-  } else {
-    backgroundImageWidth = viewportWidth;
-    backgroundImageHeight = backgroundImageWidth / originalAspectRatio;
-  }
-
-  // 버튼의 크기를 계산합니다.
-  const buttonWidth = (343 / 375) * backgroundImageWidth * 1.2;
-  const buttonHeight = (48 / 812) * backgroundImageHeight * 1.2;
-
-  return { width: buttonWidth, height: buttonHeight, viewportHeight };
-};
 
 const KakaoLoginButton = styled.button`
 width: 343px;
@@ -40,7 +11,11 @@ font-size: calc(17px * (100vh / 375));  // 폰트 크기를 화면 너비에 따
 border: 0px transparent;
 z-index: 2;
 margin-bottom: 2vh;
-
+@media (min-width: 600px) {
+  background-size: cover;
+  width: 440px;
+  height: 62px;
+  }
   `;
   
 
@@ -133,6 +108,5 @@ export const s = {
   ErrorCenterModalWrapper,
   ErrorModalTextsWrapper1,
   ErrorModalTextsWrapper2,
-  ModalButton,
-  calculateButtonSize
+  ModalButton
 };

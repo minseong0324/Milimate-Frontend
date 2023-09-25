@@ -16,6 +16,10 @@ const Button = styled.button`
   z-index: 2;
   color: white;
   margin-bottom: 2vh;
+  @media (min-width: 600px) {
+    width: 410px;
+    height: 50px;
+  }
 `;
 
 const ButtonWrapper = styled.div`
