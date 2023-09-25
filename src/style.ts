@@ -1,12 +1,9 @@
 // styles.ts
 import { createGlobalStyle } from "styled-components";
-<<<<<<< HEAD
 import Pretendard from "./static/font/Pretendard-Light.woff2"
-=======
-import EF_jejudoldam from "./static/font/EF_jejudoldam.ttf"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
->>>>>>> 2366ece (pull before push)
+
 export const GlobalStyle = createGlobalStyle`
   
    @font-face {

@@ -1704,7 +1704,7 @@ export declare const s: {
         formNoValidate?: boolean | undefined;
         formTarget?: string | undefined;
         name?: string | undefined;
-        type?: "button" | "reset" | "submit" | undefined;
+        type?: "button" | "submit" | "reset" | undefined;
         value?: string | number | readonly string[] | undefined;
         defaultChecked?: boolean | undefined;
         defaultValue?: string | number | readonly string[] | undefined;
@@ -3074,7 +3074,7 @@ export declare const s: {
         formNoValidate?: boolean | undefined;
         formTarget?: string | undefined;
         name?: string | undefined;
-        type?: "button" | "reset" | "submit" | undefined;
+        type?: "button" | "submit" | "reset" | undefined;
         value?: string | number | readonly string[] | undefined;
         defaultChecked?: boolean | undefined;
         defaultValue?: string | number | readonly string[] | undefined;

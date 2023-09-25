@@ -54,11 +54,13 @@ const TopBackground = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 600px;
+  width: 100%;
   height: 300px;  // 높이를 조정하여 필요한 배경 이미지 크기를 얻으세요
   background: url(${BackgroundTopImg}) no-repeat center top;
   background-size: cover;
+
   flex-grow: 1;
+
   @media (min-width: 600px) {
     width: 600px;
     height: 400px;  // 높이를 조정하여 필요한 배경 이미지 크기를 얻으세요
@@ -69,10 +71,11 @@ const BottomBackground = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 600px;
+  width: 100%;
   height: 300px;  // 높이를 조정하여 필요한 배경 이미지 크기를 얻으세요
   background: url(${BackgroundBottomImg}) no-repeat center bottom;
   background-size: cover;
+
   flex-grow: 1;
   @media (min-width: 600px) {
     width: 600px;
@@ -89,6 +92,7 @@ const BackgroundContainer = styled.div`
   height: 800px;
   position: relative;  // 중요: 내부 절대 위치 div를위한 위치 지정 컨텍스트 제공
   overflow: auto;  // 선택 사항: 내부 배경이 컨테이너를 벗어나지 않도록합니다.
+  overflow-x: hidden;
   @media (min-width: 600px) {
     margin: 0 auto;  // 좌우 중앙 정렬
     height: 1000px;
