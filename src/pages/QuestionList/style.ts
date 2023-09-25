@@ -33,8 +33,14 @@ const ButtonDesign = styled.button`
   align-items: start;
 `;
 const TitleText = styled.p`
-  font-size: 24px;
+  font-size: 18px;
   text-align: start;
+  font-weight: bolder;
+  color : #4c544b;
+  @media (max-width: 768px) {
+    font-size: 18px;
+    font-weight: bolder;
+  }
 `;
 const CustomUl = styled.ul`
   list-style-type: none; // 목록 항목 앞의 기호(점) 제거
@@ -42,7 +48,7 @@ const CustomUl = styled.ul`
   //margin: 20px 0; // 상하 여백 설정
   //background-color: grey;
   width: 600px;
-  
+  margin: 0;
   @media (max-width: 768px) {
     width: 90%;
   }

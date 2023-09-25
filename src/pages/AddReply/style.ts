@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 `;
 const IconLayout = styled.div`
   flex-direction: row;
-  width: 630px;
+  width: 500px;
   margin-top: 56px;
   //margin-bottom: 24px;
   display: flex;
@@ -31,7 +31,7 @@ const IconLayout = styled.div`
   align-items: center;
   margin-bottom: 12px;
   //background-color: grey;
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     margin-top: 0px;
     width: 100%;
   }
@@ -42,16 +42,20 @@ const ButtonDesign = styled.button`
 `;
 const SoldierTagContainer = styled.div`
   position: relative;
-  width: 580px;
-  height: 70px;
+  width: 600px;
+  //height: 70px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 32px;
+  white-space: normal;
+  word-wrap: break-word;
   //padding-bottom: 32px;
   //margin-bottom: 32px;
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     width: 80%;
+    white-space: normal;
+    word-wrap: break-word;
     //  height: 20px;
   }
 `;
@@ -60,16 +64,21 @@ const SoldierTagImage = styled.img.attrs({
     src: SoliderTag,
 })`
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   right: 0;
   bottom: 0;
-  width: 100%; // 부모 div의 너비에 맞게 이미지 너비 설정
+  width: 400px; // 부모 div의 너비에 맞게 이미지 너비 설정
   height: auto; // 이미지의 비율을 유지하면서 높이 조절
   background-image: url(${SmallBubble});
   background: #f2f1ee no-repeat center center;
   z-index: 1;
-
+  //background-color: grey;
+  @media (max-width: 600px) {
+    width: 343px;
+    //  height: 20px;
+  }
 `;
 
 const DayText = styled.p`
@@ -79,13 +88,14 @@ const DayText = styled.p`
   border-radius: 24px;
   padding-left: 16px;
   padding-right: 16px;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  top : -25px;
   background-color: #adc786;
   align-items: center;
   color: white;
   //padding: 8px;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
 
   //padding: 8px;
@@ -102,62 +112,74 @@ const DayText = styled.p`
   }
 `;
 const QuestionText = styled.div`
+  //background-color: grey;
   position: relative;
-  font-size: 24px;
+  font-size: 20px;
+  top : -40px;
   z-index: 2;
   color: #4c544b;
   font-weight: bold;
+  max-width: 300px; // 필요한 너비로 조절
   white-space: normal; // 필요하면 추가
   word-wrap: break-word;
-  max-width: 90%; // 필요한 너비로 조절
 
+  
 
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     top: -30px;
     font-size: 18px;
+    max-width: 80%;
+    white-space: normal; // 필요하면 추가
+    word-wrap: break-word;
+    
   }
 `;
 const ButtonStyle = styled.button`
   position: relative;
-  top: 200px;
+  top: 70px;
   height: 50px;
   background-color: #4c544b;
   border: 1px solid #a39154;
   border-radius: 12px;
   color: white;
   font-size: 16px;
-  width: 630px;
+  width: 450px;
   padding: 12px;
   margin-bottom:  250px;
   @media (max-width: 768px) {
-    top: 70px;
-    width : 95%;
+    
+    top: 40px;
+    height: 56px;
+    width : 343px;
     margin-bottom: 100px;
   }
 `;
 const TitleText = styled.p`
-  font-size: 32px;
+  font-size: 20px;
   text-align: start;
+  font-weight: bolder;
   @media (max-width: 768px) {
-    font-size: 20px
+    font-size: 18px;
+    font-weight: bolder;
   }
 `;
 const ReplyContainer = styled.div<ReplyContainerProps>`
   position: relative;
-  width: 600px;
+  width: 410px;
   height: 400px;
   display: flex;
   border: 1px solid white;
   border-radius: 20px;
   background-color: ${props => props.backgroundColor || 'white'}; // 프롭스 값이 주어지면 그 값을 사용하고, 아니면 기본값인 'white'를 사용합니다.
-  top: 180px;
+  top: 40px;
+  
   padding: 16px;
   margin-bottom: 48px;
   flex-direction: column;
   box-shadow: 0px 5px 15px rgba(136, 136, 136, 0.3);
-  @media (max-width: 768px) {
-    width: 85%;
-    top: 50px;
+  @media (max-width: 600px) {
+    width: 305px;
+    top: 20px;
     height: 250px;
   }
 `;
@@ -176,10 +198,12 @@ const ReplyText = styled.textarea`
   width: 100%; // 부모 div의 너비에 맞게 너비 설정
   resize: none; // 사용자가 크기를 조절하지 못하게 함
   &::placeholder {
+    font-size: 18px;
+    
     color: black;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     font-size: 20px;
     width: 96%;
     height: 250px; // 원하는 최대 높이값을 지정하세요
@@ -200,7 +224,7 @@ const SenderDiv = styled.div`
 `;
 const SenderNameFrom = styled.p`
   display: flex;
-  font-size: 24px;
+  font-size: 20px;
   z-index: 2;
   color: #4c544b;
   font-weight: bold;
@@ -212,13 +236,14 @@ const SenderNameFrom = styled.p`
 
   @media (max-width: 768px) {
     top: -30px;
-    font-size: 22px;
+    font-size: 18px;
   }
 `;
 const SenderReplyText = styled.input`
   text-align: center;
   display: flex;
   margin-left: 16px;
+  width: 200px;
   border: 0;
   z-index: 3;
   //height: 50px;
@@ -227,27 +252,33 @@ const SenderReplyText = styled.input`
   outline: none; // 클릭 시 테두리 제거
   color: #000; // 텍스트 색상
   font-size: 20px; // 폰트 크기
-  width: 30%; // 부모 div의 너비에 맞게 너비 설정
+ // width: 30%; // 부모 div의 너비에 맞게 너비 설정
   resize: none; // 사용자가 크기를 조절하지 못하게 함
   &::placeholder {
     color: black;
+    font-size: 20px;
   }
 
-  @media (max-width: 768px) {
-    font-size: 16px;
+  @media (max-width: 600px) {
+    font-size: 18px;
     width: 40%;
+    &::placeholder {
+      color: black;
+      font-size: 18px;
+    }
     //height: 50px; // 원하는 최대 높이값을 지정하세요
   }
 `;
 const SelectColorDiv = styled.div`
   position: relative;
   flex-direction: row;
-  top: 170px;
-  width: 600px;
+  top: 30px;
+  width: 410px;
   //background-color: grey;
   @media (max-width: 768px) {
     font-size: 16px;
-    top: 40px;
+    top: 10px;
+    margin-left: 20px;
     width: 92%;
     //height: 50px; // 원하는 최대 높이값을 지정하세요
   }

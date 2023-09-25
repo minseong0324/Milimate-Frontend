@@ -82,12 +82,12 @@ function ReplyScreen({day}: ReplyScreenProps) {
 
             <s.IconLayout>
                 <s.ButtonDesign onClick={goBackBtn}>
-                    <BiChevronLeft size={36} color="black"/>
+                    <BiChevronLeft size={24} color="#4c544b"/>
 
                 </s.ButtonDesign>
                 <s.TitleText>밀리메이트의 답변</s.TitleText>
                 <s.ButtonDesign onClick={()=>{}}>
-                <BiChevronLeft size={36} color="#f2f1ee"/>
+                <BiChevronLeft size={24} color="#f2f1ee"/>
                 </s.ButtonDesign>
             </s.IconLayout>
             {/* Today's Question */}

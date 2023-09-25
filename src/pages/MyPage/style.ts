@@ -44,10 +44,12 @@ const ButtonDesign = styled.button`
   border: none;
 `;
 const TitleText = styled.p`
-  font-size: 32px;
+  font-size: 20px;
   text-align: start;
+  font-weight: bolder;
   @media (max-width: 768px) {
-    font-size: 20px
+    font-size: 18px;
+    font-weight: bolder;
   }
 `;
 const SoldierTagContainer = styled.div`

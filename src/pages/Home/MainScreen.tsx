@@ -193,16 +193,20 @@ function MainScreen() {
                             </div>
                         ))}
                         {dummyData.replies.length === 4 && (
-
                             <s.EnvelopeDiv>
+
                                 <s.ContentEnvelope></s.ContentEnvelope>
-                                <s.CenteredText onClick={ () => {questionClick("12")}}>모두 확인하기</s.CenteredText>
+                                <s.CenteredText onClick={() => {
+                                    questionClick("12")
+                                }}>모두 확인하기
+                                </s.CenteredText>
+                                <s.NameText></s.NameText>
 
                             </s.EnvelopeDiv>
                         )}
                     </Slider>
                 </s.EnvelopeDiv>
-                <div style={{margin : 36}}></div>
+                <div style={{margin: 36}}></div>
             </s.WrapperLayout>
 
 

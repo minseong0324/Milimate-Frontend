@@ -1,6 +1,11 @@
 // styles.ts
 import { createGlobalStyle } from "styled-components";
+
 import Pretendard from "./static/font/Pretendard-Light.woff2"
+
+
+import EF_jejudoldam from "./static/font/EF_jejudoldam.ttf"
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 

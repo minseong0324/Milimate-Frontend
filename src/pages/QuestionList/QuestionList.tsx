@@ -56,13 +56,13 @@ function QuestionListScreen({nowDate}: Date) {
             <s.MainWrapper>
                 <s.IconLayout>
                     <s.ButtonDesign onClick={goBackBtn}>
-                        <BiChevronLeft size={36} color="black"/>
+                        <BiChevronLeft size={24} color="#4c544b"/>
 
                     </s.ButtonDesign>
                     <s.TitleText>질문 리스트</s.TitleText>
                     <s.ButtonDesign onClick={() => {
                     }}>
-                        <BiChevronLeft size={36} color="#f2f1ee"/>
+                        <BiChevronLeft size={24} color="#f2f1ee"/>
                     </s.ButtonDesign>
                 </s.IconLayout>
 

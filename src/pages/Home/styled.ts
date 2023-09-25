@@ -130,13 +130,14 @@ const ExistEnvelope = styled.img.attrs({
 `;
 
 const EnvelopeDiv = styled.div`
-  margin-top: 12px;
+  margin-top: 10px;
   margin-bottom: 12px;
   width: 100%;
   //height: 300px;
   //background: url(${contentEnvelop}) no-repeat center;
   background-size: contain; // 이미지가 div를 채우도록 조절
   position: relative;
+  
   //height: 300px; // 적절한 높이로 설정 (이미지 높이에 따라 조절 필요)
 `;
 const ContentEnvelope = styled.img.attrs({
