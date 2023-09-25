@@ -206,7 +206,7 @@ const Text = styled.div`
   font-size: 18px;
   font-weight: bolder;
   @media (min-width: 600px) {
-    top: 15px;
+    top: 36px;
     font-size: 20px;
   }
 
@@ -222,6 +222,8 @@ const BackButton = styled.img.attrs({
   top: 10px;
   @media (min-width: 600px) {
     left: calc(50% - 300px + 10px);
+    top: 36px;
+
   }
   /* 가로모드용 스타일 */
   @media screen and (max-width: 767px) and (orientation: landscape) {

@@ -24,7 +24,7 @@ const Wrapper = styled.div`
 const IconLayout = styled.div`
   flex-direction: row;
   width: 500px;
-  margin-top: 56px;
+  margin-top: 16px;
   //margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
