@@ -17,11 +17,17 @@ type LoginCredentials = {
   password: string;
 };
 
+
+
 function Login() {
-  
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate('/');
+  }
   return (
     <>
-    <s.BackButton/>
+    <s.BackButton onClick = {handleNavigate}/>
     
     <s.BackgroundContainer>
     

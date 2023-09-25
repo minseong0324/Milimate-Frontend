@@ -26,9 +26,7 @@ function ShowCaracter() {
   };
 
   return (
-    <>
-    <s.BackButton/>
-    
+
     <s.BackgroundContainer>
       <s.Container>
         <s.Text>
@@ -61,7 +59,7 @@ function ShowCaracter() {
       </ErrorModal> */}
       </s.Wrapper>
     </s.BackgroundContainer>
-    </>
+  
   );
 }
 

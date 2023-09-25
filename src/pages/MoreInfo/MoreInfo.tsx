@@ -215,9 +215,12 @@ function MoreInfo() {
     setErrorModalOpen(false);
   };
 
+  const handleNavigate = () => {
+    navigate('/signup');
+  }
   return (
     <>
-    <s.BackButton/>
+    <s.BackButton onClick = {handleNavigate}/>
     
     <s.BackgroundContainer>
     

@@ -210,6 +210,7 @@ const Text = styled.div`
   position: absolute;
   top: 13px;
   font-size: 18px;
+  font-weight: bolder;
   @media (min-width: 600px) {
     top: 15px;
     font-size: 20px;
