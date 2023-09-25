@@ -166,9 +166,6 @@ const CenteredText = styled.p`
   box-sizing: border-box; // padding 값이 전체 높이/폭에 포함되도록
   z-index: 1;
 `;
-
-
-
 const NormalText = styled.p`
   color: #4c544b;
   font-size: 16px;
@@ -176,7 +173,17 @@ const NormalText = styled.p`
   margin: 0;
   margin-left: 8px;
 `;
-
+const NameText = styled.p`
+  position: absolute;
+  top: 70%;
+  left: 65%;
+  //text-align: end;
+  font-size: 18px;
+  color: #000; // 원하는 색상으로 변경하세요
+  margin: 0;
+  margin-left: 8px;
+  
+`;
 //background: url(${buttonMidium1}) no-repeat center center; // 이미지를 배경으로 사용
 //background: url(${buttonMidium2}) no-repeat center center; // 눌렸을 때의 배경 이미지
 export const s = {
@@ -192,6 +199,8 @@ export const s = {
     Envelope: NoneEnvelope,
     NormalText,
     ExistEnvelope,
-  EnvelopeDiv, CenteredText,
-  ContentEnvelope
+    EnvelopeDiv,
+    CenteredText,
+    ContentEnvelope,
+    NameText
 };

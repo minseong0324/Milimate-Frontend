@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import {s} from "./style";
 import {useNavigate} from "react-router-dom";
 import {useToken} from "../../contexts/TokenProvider/TokenProvider";
+import {BiChevronLeft} from "react-icons/bi";
 
 interface Question {
     day: string;
@@ -41,7 +42,7 @@ function QuestionListScreen({nowDate}: Date) {
             }
 
         };
-        fetchData();
+        //fetchData();
     }, []);
     //   const questionClick = (question: Question) => {
     //     console.log("이벤트");
@@ -53,24 +54,67 @@ function QuestionListScreen({nowDate}: Date) {
     return (
         <>
             <s.MainWrapper>
-                <h1>질문 리스트</h1>
-                {nowDate > 1 ? (
-                    <s.CustomUl>
-                        {isLoading ? (<div>Loading...</div>) : (
-                            questions.map((question, index) => (
-                                <li key={index}>
-                                    <s.LiLayout>
-                                        <s.BootImg></s.BootImg>
-                                        <s.CustomLi onClick={() => questionClick(question.day, question.todayQuestion)}>
-                                            {question.todayQuestion}
-                                        </s.CustomLi>
-                                        <s.CommaText>"</s.CommaText>
-                                    </s.LiLayout>
-                                </li>
-                            ))
-                        )}
-                    </s.CustomUl>
-                ) : (<div> 아직은 확인할 수 없습니다. </div>)}
+                <s.IconLayout>
+                    <s.ButtonDesign onClick={() => {
+                    }}>
+                        <BiChevronLeft size={36} color="black"/>
+
+                    </s.ButtonDesign>
+                    <s.TitleText>질문 리스트</s.TitleText>
+
+                    <BiChevronLeft size={36} color="#f2f1ee"/>
+                </s.IconLayout>
+
+                {/*{nowDate > 1 ? (*/}
+                {/*    <s.CustomUl>*/}
+                {/*        {isLoading ? (<div>Loading...</div>) : (*/}
+                {/*            questions.map((question, index) => (*/}
+                {/*                <li key={index}>*/}
+                {/*                    <s.LiLayout>*/}
+                {/*                        <s.BootImg></s.BootImg>*/}
+                {/*                        <s.CustomLi onClick={() => questionClick(question.day, question.todayQuestion)}>*/}
+                {/*                            {question.todayQuestion}*/}
+                {/*                        </s.CustomLi>*/}
+                {/*                        <s.CommaText>"</s.CommaText>*/}
+                {/*                    </s.LiLayout>*/}
+                {/*                </li>*/}
+                {/*            ))*/}
+                {/*        )}*/}
+                {/*    </s.CustomUl>*/}
+                {/*) : (<div> 아직은 확인할 수 없습니다. </div>)}*/}
+                <s.CustomUl>
+                    <li>
+                        <s.LiLayout>
+                            <s.DayText>09/25</s.DayText>
+                            <s.CustomLi onClick={() => {}}>
+                                {/*//               {() => questionClick(question.day, question.todayQuestion)}>*/}
+                                전역하고 저와 하고 싶은 것들은 무엇인가요?
+                            </s.CustomLi>
+                        </s.LiLayout>
+                        <s.Splice></s.Splice>
+                    </li>
+                    <li>
+                        <s.LiLayout>
+                            <s.DayText>09/25</s.DayText>
+                            <s.CustomLi onClick={() => {}}>
+                                {/*//               {() => questionClick(question.day, question.todayQuestion)}>*/}
+                                전역하고 저와 하고 싶은 것들은 무엇인가요?
+                            </s.CustomLi>
+                        </s.LiLayout>
+                        <s.Splice></s.Splice>
+                    </li>
+                    <li>
+                        <s.LiLayout>
+                            <s.DayText>09/25</s.DayText>
+                            <s.CustomLi onClick={() => {}}>
+                                {/*//               {() => questionClick(question.day, question.todayQuestion)}>*/}
+                                전역하고 저와 하고 싶은 것들은 무엇인가요?
+                            </s.CustomLi>
+                        </s.LiLayout>
+                        <s.Splice></s.Splice>
+                    </li>
+                </s.CustomUl>
+
             </s.MainWrapper>
         </>
     );
