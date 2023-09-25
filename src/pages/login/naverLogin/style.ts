@@ -29,14 +29,14 @@ const calculateButtonSize = () => {
   return { width: buttonWidth, height: buttonHeight };
 };
 
-const NaverLoginButton = styled.button<{ width: number; height: number }>`
-width: ${(props) => props.width}px;
-height: ${(props) => props.height}px;
+const NaverLoginButton = styled.button`
+width: 343px;
+height: 48px;
 position: relative;
 font-family: "";
 background-color: transparent;
 border-radius: 15px;
-font-size: calc(17px * (100vw / 375));  // 폰트 크기를 화면 너비에 따라 조절
+font-size: 17px;  // 폰트 크기를 화면 너비에 따라 조절
 border: 0px transparent;
 z-index: 2;
 margin-bottom: 2vh;

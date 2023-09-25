@@ -29,9 +29,9 @@ const calculateButtonSize = () => {
   return { width: buttonWidth, height: buttonHeight, viewportHeight };
 };
 
-const KakaoLoginButton = styled.img<{ width: number; height: number }>`
-width: ${(props) => props.width}px;
-height: ${(props) => props.height}px;
+const KakaoLoginButton = styled.button`
+width: 343px;
+height: 48px;
 position: relative;
 font-family: "";
 background-color: transparent;

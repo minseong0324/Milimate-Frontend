@@ -30,9 +30,9 @@ const calculateButtonSize = () => {
   return { width: buttonWidth, height: buttonHeight };
 };
 
-const GoogleLoginButton = styled.button<{ width: number; height: number }>`
-width: ${(props) => props.width}px;
-height: ${(props) => props.height}px;
+const GoogleLoginButton = styled.button`
+width: 343px;
+height: 48px;
 position: relative;
 font-family: "";
 background-color: transparent;

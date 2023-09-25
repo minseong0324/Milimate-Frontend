@@ -16,6 +16,7 @@ export const GlobalStyle = createGlobalStyle`
     }
     body {
         background: #F2F1EE; // 배경색 추가
+        //background-color: white;
         margin: 0; // 화면의 모든 공간을 채우기 위해 margin을 0으로 설정
     }
 

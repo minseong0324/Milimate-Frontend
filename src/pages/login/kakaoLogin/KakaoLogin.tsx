@@ -32,8 +32,6 @@ const KakaoLogin: React.FC<KakaoProps> = ({ imageUrl }) => {
 
   return (
         <s.KakaoLoginButton
-            width={buttonSize.width} 
-            height={buttonSize.height}
             style={{
                 backgroundImage: `url(${imageUrl})`,
                 backgroundRepeat: 'no-repeat',

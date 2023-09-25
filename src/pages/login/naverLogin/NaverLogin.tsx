@@ -30,8 +30,6 @@ const NaverLogin: React.FC<NaverProps> = ({ imageUrl }) => {
 
   return (
     <s.NaverLoginButton
-      width={buttonSize.width} 
-      height={buttonSize.height}
       style={{
           backgroundImage: `url(${imageUrl})`,
           backgroundRepeat: 'no-repeat',

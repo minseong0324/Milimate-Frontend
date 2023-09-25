@@ -79,21 +79,24 @@ const CenteredWrapper = styled.div`
 `;
 
 const BackgroundContainer = styled.div`
-  width: 100%;
-  height: 100vh; 
-  background: url(${BackgroundImg}) no-repeat center center;
-  background-size: cover;
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  height: auto;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  min-height: 100vh;  // 뷰포트 높이와 동일하게 설정
+  background: url(${BackgroundImg}) no-repeat center center;
+  background-position: center top;  // 배경 이미지의 위치를 중앙 상단으로 설정
+  background-size: contain;
+  overflow-y: auto;
   @media (min-width: 600px) {
-    background-size: 600px auto;
-    margin: 0 auto; /* 좌우 중앙 정렬 */
+    background-size: 820px auto;  // 가로 크기를 600px로 유지하고, 세로 크기는 자동으로 조절
+    background-position: center top;  // 배경 이미지의 위치를 중앙 상단으로 설정
+    margin: 0 auto;  // 좌우 중앙 정렬
   }
 `;
+
+
 
 const LogoTitleWrapper = styled.div<{ logoTitleTopMargin: number }>`
   position: relative;

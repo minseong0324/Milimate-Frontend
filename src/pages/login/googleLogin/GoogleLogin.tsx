@@ -30,8 +30,6 @@ const GoogleLogin: React.FC<GoogleLoginButtonProps> = ({ buttonImage }) => {
   return (
     <s.GoogleLoginButton
       onClick={handleButtonClick}
-      width={buttonSize.width} 
-      height={buttonSize.height}
       style={{
           backgroundImage: `url(${buttonImage})`,
           backgroundRepeat: 'no-repeat',

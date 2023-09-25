@@ -18,23 +18,11 @@ type SignUpCredentials = {
 };
 
 function SignUp() {
-  const [logoAndSubtitleSize, setLogoAndSubtitleSize] = useState(s.calculateButtonSize());
-  const [charSize, setCharSize] = useState(s.calculateButtonSize());
-
-  useEffect(() => {
-    const handleResize = () => {
-      const sizes = s.calculateButtonSize();
-      setLogoAndSubtitleSize(sizes);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
+  
   return (
+    <>
+    <s.BackButton/>
+    
     <s.BackgroundContainer>
       <s.Container>
         <s.Text>
@@ -47,11 +35,11 @@ function SignUp() {
       
         
          
-        <s.LogoTitleWrapper logoTitleTopMargin={logoAndSubtitleSize.logoTitleTopMargin}>
-          <s.MainLogo width={logoAndSubtitleSize.mainLogoWidth} />
-          <s.SubTitle width={logoAndSubtitleSize.subtitleWidth} />
+        <s.LogoTitleWrapper>
+          <s.MainLogo />
+          <s.SubTitle />
         </s.LogoTitleWrapper>
-        <s.Character width={logoAndSubtitleSize.charWidth}/>
+        <s.Character/>
         
 
         <s.ButtonWrapper>
@@ -67,6 +55,7 @@ function SignUp() {
       </ErrorModal> */}
       </s.SignUpWrapper>
     </s.BackgroundContainer>
+    </>
   );
 }
 

@@ -61,6 +61,7 @@ const MainContent = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
 const D_dayText = styled.p`
   margin-top: 4px;
   margin-bottom: 16px;
