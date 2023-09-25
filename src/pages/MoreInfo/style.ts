@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import BackButtonImg from "../../assets/BackButton/BackButton.svg"
 
 const Button = styled.button`
@@ -51,6 +51,21 @@ const BackgroundContainer = styled.div`
   }
 `;
 
+const isMobile = isMobileDevice();
+
+function isMobileDevice() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+const mobileLandscape = isMobile && css`
+  @media screen and (max-width: 767px) and (orientation: landscape) {
+    margin-top: 100px;
+  }
+
+  @media screen and (min-width: 768px) and (orientation: landscape) {
+    margin-top: 100px;
+  }
+`;
+
 
 const Wrapper = styled.div`
   font-family: "";
@@ -59,8 +74,11 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  margin-top: 50px;
+  height: 100%;
+  margin-top: 90px;
+
+  ${mobileLandscape}
+
 `;
 
 const MoreInfoForm = styled.form`
@@ -69,14 +87,7 @@ const MoreInfoForm = styled.form`
   gap: 20px;
   margin-top: 67px;
 
-  /* 가로모드용 스타일 */
-  @media screen and (max-width: 768px) and (orientation: landscape) {
-    margin-top: 500px;
-  }
 
-  @media screen and (min-width: 768px) and (orientation: landscape) {
-    margin-top: 500px;
-  }
 `;
 
 const MoreInfoInput = styled.input`

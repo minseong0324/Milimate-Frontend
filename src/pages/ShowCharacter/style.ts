@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import BackButtonImg from "../../assets/BackButton/BackButton.svg"
 import TwinkleImg from "../../assets/Twinkle/Twinkle.svg"
 import CharSaluteImg from "../../assets/charater/CharacterSalute.svg"
@@ -52,7 +52,25 @@ const BackgroundContainer = styled.div`
     background-size: 600px auto;/* 원하는 최대 너비 값으로 설정 */
     margin: 0 auto; /* 좌우 중앙 정렬 */
   }
+
+  
 `;
+
+const isMobile = isMobileDevice();
+
+function isMobileDevice() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+const mobileLandscape = isMobile && css`
+  @media screen and (max-width: 767px) and (orientation: landscape) {
+    margin-top: 150px;
+  }
+
+  @media screen and (min-width: 768px) and (orientation: landscape) {
+    margin-top: 150px;
+  }
+`;
+
 
 const Wrapper = styled.div`
   font-family: "";
@@ -61,17 +79,11 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  margin-top: 50px;
+  height: 100%;
+  margin-top: 160px;
 
-    /* 가로모드용 스타일 */
-    @media screen and (max-width: 768px) and (orientation: landscape) {
-    margin-top: 280px;
-  }
+  ${mobileLandscape}
 
-  @media screen and (min-width: 768px) and (orientation: landscape) {
-    margin-top: 280px;
-  }
 `;
 
 const Character = styled.img.attrs({
