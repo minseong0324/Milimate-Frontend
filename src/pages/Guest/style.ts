@@ -20,6 +20,7 @@ const Button = styled.button`
   z-index: 2;
   color: white;
   margin-top: 40px;
+  margin-bottom: 30px;
   @media (min-width: 600px) {
     width: 410px;
     height: 50px;
