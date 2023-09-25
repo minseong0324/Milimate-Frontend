@@ -79,10 +79,20 @@ const CenteredWrapper = styled.div`
 `;
 
 const BackgroundContainer = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 100vh; 
   background: url(${BackgroundImg}) no-repeat center center;
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  @media (min-width: 600px) {
+    background-size: 600px auto;
+    margin: 0 auto; /* 좌우 중앙 정렬 */
+  }
 `;
 
 const LogoTitleWrapper = styled.div<{ logoTitleTopMargin: number }>`
