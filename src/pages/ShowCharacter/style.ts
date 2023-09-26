@@ -127,11 +127,11 @@ const TextsStyle = styled.div`
   font-size: 18px;
   position: absolute;
   top: 35px;
-  left: 80px;
+  left: 60px;
   color : #668444;
   @media (min-width: 600px) {
     top: 44px;
-    left: 100px;
+    left: 80px;
     font-size: 20px;
   }
 `;
@@ -158,11 +158,11 @@ const TextsStyle2 = styled.div`
   font-size: 18px;
   position: absolute;
   top: 35px;
-  left: 150px;
+  left: 130px;
   color : #4a544a;
   @media (min-width: 600px) {
     top: 44px;
-    left: 180px;
+    left: 160px;
     font-size: 20px;
   }
 `;

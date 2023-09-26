@@ -299,6 +299,7 @@ const ModalButton = styled.button`
 const RequiredInfoText = styled.p`
   font-size: 13px;
   margin: 0;
+  text-align: center;
 `;
 
 //background: url(${buttonMidium1}) no-repeat center center; // 이미지를 배경으로 사용

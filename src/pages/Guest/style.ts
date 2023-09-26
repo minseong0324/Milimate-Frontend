@@ -163,7 +163,7 @@ const TextsStyle = styled.div`
   font-size: 18px;
   position: absolute;
   top: 35px;
-  left: 105px;
+  left: 95px;
   color : #668444;
   @media (min-width: 600px) {
     top: 44px;
@@ -179,7 +179,7 @@ const TextsStyle2 = styled.div`
   font-size: 18px;
   position: absolute;
   top: 35px;
-  left: 140px;
+  left: 135px;
   color : #4a544a;
   font-weight: bolder;
   @media (min-width: 600px) {
@@ -194,7 +194,7 @@ const TextsStyle2_1 = styled(TextsStyle2)`
   left: 80px;
   font-weight: normal;
   word-wrap: break-word;  // 긴 단어를 다음 줄로 래핑
-  white-space: normal;  // 공백을 존중하면서 텍스트를 래핑
+  white-space: pre-wrap;  // 공백을 존중하면서 텍스트를 래핑
   max-width: 200px;  // 또는 원하는 값으로 변경. 이 값은 단어가 래핑되는 포인트를 제어합니다.
   @media (min-width: 600px) {
     top: 87px;  // 미디어 쿼리에서도 top 값을 변경하려면 이렇게 설정
