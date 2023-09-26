@@ -72,6 +72,7 @@ function MainScreen() {
     };
 
     useEffect(() => {
+        const userId = localStorage.getItem("userId");
         const fetchData = async () => {
             try {
                 const response = await axios.get<RepliesResponse>(
@@ -93,6 +94,7 @@ function MainScreen() {
 
 
     useEffect(() => {
+        const userId = localStorage.getItem("userId");
         const fetchData = async () => {
             try {
                 const response = await axios.get(
@@ -153,6 +155,7 @@ function MainScreen() {
 
 // 2. 클릭 이벤트 핸들러
     const handleEnvelopeClick = async () => {
+        const userId = localStorage.getItem("userId");
         if (blur) {
             try {
                 await axios.put(

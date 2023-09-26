@@ -89,19 +89,25 @@ const D_dayText = styled.p`
   background-color : white;
   
 `;
-const MainContentText = styled.p`
+const MainContentText = styled.div`
   color: #4c544b;
-  font-size: 16px;
-  font-weight: bold;
+  line-height: 1.2; // 글자 간격
+  font-size: 18px;
+  font-weight: bolder;
   margin-top: 30px;
   margin: 0;
+  word-wrap: break-word;  // 긴 단어를 다음 줄로 래핑
+  white-space: pre-wrap;  // 공백을 존중하면서 텍스트를 래핑
+  max-width: 180px;  // 또는 원하는 값으로 변경. 이 값은 단어가 래핑되는 포인트를 제어합니다.
+  text-align: center;
 `;
+
 const SadCharImg = styled.img.attrs({
     src: heartSadCharacter,
 })`
   display: flex;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  margin-top: 25px;
+  margin-bottom: 0px;
   align-items: center;
   width: 110px;
   height: 196px;
@@ -114,8 +120,8 @@ const hearCharaImg1 = styled.img.attrs({
     src: heartCharacter1,
 })`
   display: flex;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  margin-top: 25px;
+  margin-bottom: 0px;
   align-items: center;
   width: 110px;
   height: 196px;
@@ -128,8 +134,8 @@ const hearCharaImg2 = styled.img.attrs({
     src: heartCharacter2,
 })`
   display: flex;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  margin-top: 25px;
+  margin-bottom: 0px;
   align-items: center;
   width: 110px;
   height: 196px;
@@ -142,8 +148,8 @@ const hearCharaImg3 = styled.img.attrs({
     src: heartCharacter3,
 })`
   display: flex;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  margin-top: 25px;
+  margin-bottom: 0px;
   align-items: center;
   width: 110px;
   height: 196px;
@@ -177,9 +183,13 @@ const NoneEnvelope = styled.img.attrs({
 })`
   margin-top: 12px;
   margin-bottom: 24px;
-  width: 100%;
-  //height: 670px;
+  width: 343px;
+  height: 201px;
   position: relative; // 이 부분 추가
+  @media (min-width: 600px) {
+    width: 410px;
+    height: 240.26px;
+  }
 `;
 
 const ExistEnvelope = styled.img.attrs({
@@ -187,9 +197,13 @@ const ExistEnvelope = styled.img.attrs({
 })`
   margin-top: 12px;
   margin-bottom: 24px;
-  width: 100%;
-  //height: 670px;
+  width: 343px;
+  height: 201px;
   position: relative; // 이 부분 추가
+  @media (min-width: 600px) {
+    width: 410px;
+    height: 240.26px;
+  }
 `;
 
 const EnvelopeDiv = styled.div<{ blur?: boolean }>`
