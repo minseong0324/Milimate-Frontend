@@ -65,67 +65,50 @@ function MyPage() {
         navigate(-1);
     };
     return (
-        <s.Wrapper>
-            <s.IconLayout>
-                <s.ButtonDesign onClick={goBackBtn}>
-                    <BiChevronLeft size={24} color="#4c544b"/>
-                </s.ButtonDesign>
-                <s.TitleText>마이페이지</s.TitleText>
-                <s.ButtonDesign onClick={() => {
-                }}>
-                    <BiChevronLeft size={24} color="#f2f1ee"/>
-                </s.ButtonDesign>
-            </s.IconLayout>
+        <>
+        <s.BackButton onClick = {goBackBtn}/>
+    
+            <s.BackgroundContainer>
+            <s.Container>
+                <s.Text>
+                마이페이지
+                </s.Text>
+            </s.Container>
+            <s.Wrapper>
             <s.SoldierTagContainer>
-                <s.SadCharImg></s.SadCharImg>
+                <s.SoldierTagImage/>
+                <s.CharImg/>
                 <s.InfoDiv>
-                    <s.UserNameText>김건휘 훈련병</s.UserNameText>
-                    {/*<s.QuestionText>{state.question}</s.QuestionText>*/}
-                    <s.userInfoContentDiv>
-                        <s.UserEnlistmentKey>입대일</s.UserEnlistmentKey>
-                        <s.UserEnlistmentText>2025년 09월 11일</s.UserEnlistmentText>
-                    </s.userInfoContentDiv>
-                    <s.userInfoContentDiv>
-                        <s.UserEnlistmentKey>입대일</s.UserEnlistmentKey>
-                        <s.UserEnlistmentText>2025년 09월 11일</s.UserEnlistmentText>
-                    </s.userInfoContentDiv>
-                    <s.SoldierTagImage/>
+                    <s.TextsStyle>김건휘 훈련병</s.TextsStyle>
+                        <s.TextsStyle_1>입대일</s.TextsStyle_1>
+                        <s.TextsStyle2>2025년 09월 11일</s.TextsStyle2>
+  
+                        <s.TextsStyle_2>수료일</s.TextsStyle_2>
+                        <s.TextsStyle2_1>2025년 09월 11일</s.TextsStyle2_1>
                 </s.InfoDiv>
             </s.SoldierTagContainer>
             <s.MenuWrapper>
                 <s.MenuDiv>
-                    <s.PersonIcon></s.PersonIcon>
+                    <s.PersonIcon/>
                     <s.ButtonStyle onClick={editUserNameModalBtn}>이름 변경하기</s.ButtonStyle>
                 </s.MenuDiv>
                 {/*<s.Splice></s.Splice>*/}
                 <s.MenuDiv>
-                    <s.EditIcon></s.EditIcon>
+                    <s.EditIcon/>
                     <s.ButtonStyle onClick={updateEnlistmentBtn}>
                         입대일 수정하기
                     </s.ButtonStyle>
                 </s.MenuDiv>
 
                 <s.MenuDiv>
-                    <s.EditIcon></s.EditIcon>
+                    <s.EditIcon/>
                     <s.ButtonStyle onClick={updateCompletionBtn}>
                         수료일 수정하기
                     </s.ButtonStyle>
                 </s.MenuDiv>
 
                 <s.MenuDiv>
-                    <s.VersionDiv>
-                    <s.VersionIcon></s.VersionIcon>
-
-                        <s.ButtonStyle>
-                            버전정보
-                        </s.ButtonStyle>
-                    </s.VersionDiv>
-                        <s.VersionText>1.0.0</s.VersionText>
-
-                </s.MenuDiv>
-
-                <s.MenuDiv>
-                    <s.LogoutIcon></s.LogoutIcon>
+                    <s.LogoutIcon/>
                     <s.ButtonStyle onClick={userLogouModalOpenBtn}>
                         로그아웃
                     </s.ButtonStyle>
@@ -133,7 +116,7 @@ function MyPage() {
 
 
                 <s.MenuDiv>
-                    <s.DeleteIcon></s.DeleteIcon>
+                    <s.DeleteIcon/>
                     <s.ButtonStyle onClick={deleteAccBtn
                         }>
                         회원탈퇴하기
@@ -165,8 +148,9 @@ function MyPage() {
                     contentText="로그아웃 하시겠습니까?"
                 />
             )}
-        </s.Wrapper>
-
+            </s.Wrapper>
+        </s.BackgroundContainer>
+        </>
         // <s.BackgroundContainer>
         //   <s.UserInfoContainer>
         //     <s.CharImgContainer>

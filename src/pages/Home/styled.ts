@@ -172,6 +172,7 @@ const ShareBtnDiv = styled.button`
   font-weight: bold;
   font-size: 16px;
   color: white;
+  margin-bottom: 20px;
   @media (min-width: 600px) {
     width: 410px;
     height: 50px;
