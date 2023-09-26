@@ -47,13 +47,12 @@ function MainScreen() {
         slidesToScroll: 1,
         //arrows: true, // 이 부분을 추가하세요.
     };
-
+    const accessToken = localStorage.getItem("accessToken");
     const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
     const userInfo = useSelector((state: RootState) => state.userInfo);
     const [lastCompletionDate, setLastCompletionDate] = useState("0");
     const [data, setData] = useState<ResponseData | null>(null);
     const location = useLocation();
-    const {accessToken, refreshToken} = useToken();
     const navigate = useNavigate();
     const [ddayCount, setDdayCount] = useState<number>(0);
 
