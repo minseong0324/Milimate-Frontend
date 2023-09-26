@@ -48,7 +48,7 @@ function MainScreen() {
         //arrows: true, // 이 부분을 추가하세요.
     };
 
-    const { userId } = useParams();
+    const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
     const userInfo = useSelector((state: RootState) => state.userInfo);
     const [lastCompletionDate, setLastCompletionDate] = useState("0");
     const [data, setData] = useState<ResponseData | null>(null);
