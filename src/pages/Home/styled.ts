@@ -1,22 +1,17 @@
 import styled, {createGlobalStyle} from "styled-components";
 import cabinet from "../../assets/Cabinet/cabinet.svg";
 import sadCharacter from "../../assets/charater/ch_sad_character.png";
-import heartSadCharacter from "../../assets/charater/HeartCharacter4.svg";
-import heartCharacter1 from "../../assets/charater/HeartCharacter1.svg";
-import heartCharacter2 from "../../assets/charater/HeartCharacter2.svg";
-import heartCharacter3 from "../../assets/charater/HeartCharacter3.svg";
+import heartSadCharacter from "../../assets/charater/HeartCharacter4.png";
+import heartCharacter1 from "../../assets/charater/HeartCharacter1.png";
+import heartCharacter2 from "../../assets/charater/HeartCharacter2.png";
+import heartCharacter3 from "../../assets/charater/HeartCharacter3.png";
 
 
 import noneEnvelope from '../../assets/EnvelopeImage/noneEnvelope.svg';
 import existEnvelope from '../../assets/EnvelopeImage/trueEnvelope.svg';
 import contentEnvelop from '../../assets/EnvelopeImage/contentEnvelope.svg';
-// import button1 from '../../assets/button/button1.png';
-// import button4 from '../../assets/button/button4.png';
-// import buttonMidium1 from '../../assets/button/button-midium-1.png';
-// import buttonMidium2 from '../../assets/button/button-midium-2.png';
 
-
-const WHITE_GREY = '#f2f1ee';
+import MilimateImg from '../../assets/Logo/Milimate.svg'
 
 
 const WrapperLayout = styled.div`
@@ -65,6 +60,18 @@ const AppBarTitleText = styled.p`
     font-size: 20px;
   }
 `;
+
+const MilimateLogo = styled.img.attrs({
+  src: MilimateImg,
+})`
+margin-left: 16px;
+width: 117px;
+height: 16px;
+  @media (min-width: 600px) {
+    
+  }
+`;
+
 const MainContent = styled.div`
   display: flex;
   justify-content: center;
@@ -135,7 +142,7 @@ const ShareBtnDiv = styled.button`
   display: flex;
   flex-direction: row;
   width: 88%;
-  height: 40px;
+  height: 48px;
   align-items: center;
   justify-content: center;
   border: 1px solid grey;
@@ -267,5 +274,5 @@ export const s = {
     hearCharaImg1,
     hearCharaImg2,
     hearCharaImg3,
-
+    MilimateLogo,
 };

@@ -22,8 +22,8 @@ interface ResponseData {
     endDate: number;
     todayQuestion: string;
     existNewRepl: boolean, //true, false //todayquestion이 존재한다. 그런다음 만약 이게 false면 질문은 있는데 그거에 대한 답변이 없는것, 만약 답변이 존재하면 밑으로 넘어감감
-    isBlur: string, //
-    isInsertedEndDate: boolean;
+    blur: string, //
+    insertedEndDate: boolean;
     //isRead: string,
 }
 
@@ -55,7 +55,7 @@ function MainScreen() {
     const location = useLocation();
     const {accessToken, refreshToken} = useToken();
     const navigate = useNavigate();
-
+    const [ddayCount, setDdayCount] = useState<number>(0);
 
     const [replies, setReplies] = useState<Reply[]>([]); // 상태 초기화
 
@@ -70,15 +70,6 @@ function MainScreen() {
             console.log(err);
         }
     };
-
-    // const testToken = async () => {
-    //   const userId = await localStorage.getItem("userId");
-    //   console.log(userId);
-    //   if (userId == null) {
-    //     console.log("널 판단");
-    //   }
-    // };
-    // testToken();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -119,14 +110,17 @@ function MainScreen() {
                     day: Number(response.data.day),
                     nowDate: Number(response.data.nowDate),
                     endDate: Number(response.data.endDate),
-                    isInsertedEndDate: response.data.insertedEndDate,
+                    insertedEndDate: response.data.insertedEndDate,
                     todayQuestion: response.data.todayQuestion,
-                    isBlur: response.data.isBlur,
+                    blur: response.data.blur,
                     existNewRepl: response.data.existNewRepl,
+                    userName: response.data.userName,
+
                 };
                 // alert(response.data.existNewRepl);
                 // alert(response.data.todayQuestion);
                 setData(responseData); // 형변를환된 응답 데이터 상태에 할당
+                setDdayCount(responseData.nowDate - responseData.endDate);
             } catch (e) {
                 console.log(e);
             }
@@ -155,7 +149,7 @@ function MainScreen() {
     const navigateQuestionListScreen = async (nowDate: number) => {
         navigate(`/questionListScreen/${userId}`, {state: {nowDate}});
     };
-    const [blur, setBlur] = useState(data?.isBlur === "true");
+    const [blur, setBlur] = useState(data?.blur === "true");
 
 // 2. 클릭 이벤트 핸들러
     const handleEnvelopeClick = async () => {
@@ -184,7 +178,7 @@ function MainScreen() {
         <>
             <s.WrapperLayout>
                 <s.AppBarWrapperDiv>
-                    <s.AppBarTitleText>MILLI MATE</s.AppBarTitleText>
+                    <s.MilimateLogo/>
                     <div>
                         <MdPersonOutline onClick={() => {
                             profileImgClick()
@@ -199,7 +193,7 @@ function MainScreen() {
                 </s.AppBarWrapperDiv>
                 <s.MainContent>
 
-                    <s.D_dayText>D-{data?.nowDate}</s.D_dayText>
+                    <s.D_dayText>D-{ddayCount}</s.D_dayText>
 
                     <s.MainContentText>{data?.todayQuestion}</s.MainContentText>
 
@@ -218,7 +212,7 @@ function MainScreen() {
                     </>
                     <div style={{flexDirection: "row", display: 'flex', marginTop: 32, marginBottom: 32}}>
                         <s.MainContentText>{userInfo.userName}</s.MainContentText>
-                        <s.NormalText> 훈령병</s.NormalText>
+                        <s.NormalText> 훈련병</s.NormalText>
                     </div>
                 </s.MainContent>
                 <s.ShareBtnDiv onClick={handleCopyClipBoard}>
