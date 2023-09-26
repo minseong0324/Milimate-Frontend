@@ -72,7 +72,6 @@ function MainScreen() {
     };
 
     useEffect(() => {
-        const accessToken = localStorage.getItem("accessToken");
         alert(accessToken)
         const fetchData = async () => {
             try {
@@ -91,11 +90,10 @@ function MainScreen() {
         };
 
         fetchData(); // 함수 실행
-    }, [userId]); // useEffect의 의존성 배열에 userId와 accessToken 추가
+    }, [userId, accessToken]); // useEffect의 의존성 배열에 userId와 accessToken 추가
 
 
     useEffect(() => {
-        const accessToken = localStorage.getItem("accessToken");
         alert(accessToken)
 
         const fetchData = async () => {
@@ -131,7 +129,7 @@ function MainScreen() {
             }
         };
         fetchData();
-    }, [userId]);
+    }, [userId, accessToken]);
     const [modalOpen, setModalOpen] = useState(false);
     // 모달창 노출
     const showModal = () => {
