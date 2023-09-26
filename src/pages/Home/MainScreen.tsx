@@ -70,33 +70,11 @@ function MainScreen() {
         }
     };
     
-    
-    useEffect(() => {
-        alert(accessToken)
-        const fetchData = async () => {
-            try {
-                const response = await axios.get<RepliesResponse>(
-                    `https://api.mili-mate.com/api/user/${userId}/home/repl`,
-                    {
-                        headers: {
-                            authorization: `${accessToken}`,
-                        },
-                    }
-                );
-                setReplies(response.data.replies); // 데이터 저장
-            } catch (error) {
-                console.error("데이터를 불러오는데 실패했습니다:", error);
-            }
-        };
-
-        fetchData(); // 함수 실행
-    }, [userId]); // useEffect의 의존성 배열에 userId와 accessToken 추가
-
-
     useEffect(() => {
         alert(accessToken)
 
         const fetchData = async () => {
+           
             try {
                 const response = await axios.get(
                     `https://api.mili-mate.com/api/user/${userId}/home`,
@@ -129,6 +107,27 @@ function MainScreen() {
             }
         };
         fetchData();
+
+        if(data?.existNewRepl) {
+            alert(accessToken)
+            const fetchReplData = async () => {
+                try {
+                    const response = await axios.get<RepliesResponse>(
+                        `https://api.mili-mate.com/api/user/${userId}/home/repl`,
+                        {
+                            headers: {
+                                authorization: `${accessToken}`,
+                            },
+                        }
+                    );
+                    setReplies(response.data.replies); // 데이터 저장
+                } catch (error) {
+                    console.error("데이터를 불러오는데 실패했습니다:", error);
+                }
+            };
+    
+            fetchReplData(); // 함수 실행
+        }
     }, [userId]);
     const [modalOpen, setModalOpen] = useState(false);
     // 모달창 노출
