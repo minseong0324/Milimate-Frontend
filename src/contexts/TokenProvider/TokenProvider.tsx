@@ -10,8 +10,8 @@ type TokenContextType = {
     refreshToken: string | null;
 };
 const TokenContext = React.createContext<TokenContextType>({
-    accessToken: null,
-    refreshToken: null,
+    accessToken: localStorage.getItem('accessToken'),
+    refreshToken: localStorage.getItem('refreshToken')
 });
 
 interface TokenProviderProps {
