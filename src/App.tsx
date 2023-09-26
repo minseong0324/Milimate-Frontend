@@ -30,7 +30,7 @@ import ShowCaracter from "./pages/ShowCharacter/ShowCaracter";
 import AddReply from "./pages/AddReply/AddReply";
 import Guest from "./pages/Guest/Guest";
 import MyPage from "./pages/MyPage/MyPage";
-import React from "react";
+import UserProvider from './contexts/UserProvider/UserProvider';
 //import TokenProvider from './contexts/TokenProvider/TokenProvider';
 
 import {Provider} from "react-redux";
@@ -81,6 +81,7 @@ function App() {
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
                     <QueryClientProvider client={queryClient}>
+                        <UserProvider>
                         <Router>
                             <TokenProvider>
 
@@ -125,6 +126,7 @@ function App() {
                             </TokenProvider>
 
                         </Router>
+                        </UserProvider>
                     </QueryClientProvider>
                 </PersistGate>
             </Provider>
