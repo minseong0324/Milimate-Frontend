@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import MainLogo2Img from "../../assets/Logo/Logo2.svg"
 import SubTitleImg from "../../assets/SubTitle/SubTitle.svg";
-import CharImg from "../../assets/charater/MainCharacter.svg"
+import CharImg from "../../assets/charater/MainCharacter.png"
 import BackButtonImg from "../../assets/BackButton/BackButton.svg"
 
 
@@ -103,14 +103,15 @@ const SubTitle = styled.img.attrs({
 const Character = styled.img.attrs({
   src: CharImg
 })`
-  width: 110px;
-  height: auto;
+  width: 109px;
+  height: 180px;
   position: relative;
   z-index: 2;
   margin-bottom: 60px;  // 위로 이동
   margin-top: 40px;  // 위로 이동
   @media (min-width: 600px) {
     width: 130px;
+    height: 214.678899px;
     margin-bottom: 90px;  // 위로 이동
   margin-top: 60px;  // 위로 이동
   }

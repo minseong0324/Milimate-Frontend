@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import BackButtonImg from "../../assets/BackButton/BackButton.svg"
 import TwinkleImg from "../../assets/Twinkle/Twinkle.svg"
-import CharSaluteImg from "../../assets/charater/CharacterSalute.svg"
+import CharSaluteImg from "../../assets/charater/CharacterSalute.png"
 import SolierTagImg from "../../assets/Logo/SoldierTagBig.svg"
 
 const Button = styled.button`
@@ -94,13 +94,14 @@ const Character = styled.img.attrs({
   src: CharSaluteImg
 })`
   width: 150px;
-  height: auto;
+  height: 244.63px;
   position: relative;
   z-index: 2;
   margin-bottom: 20px;  // 위로 이동
   margin-top: 15px;  // 위로 이동
   @media (min-width: 600px) {
     width: 170px;
+    height: 277.247333px;
     margin-bottom: 25px;  // 위로 이동
     margin-top: 0px;  // 위로 이동
   }

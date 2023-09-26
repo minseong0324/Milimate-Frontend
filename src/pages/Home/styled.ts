@@ -1,6 +1,6 @@
 import styled, {createGlobalStyle} from "styled-components";
 import cabinet from "../../assets/Cabinet/cabinet.svg";
-import sadCharacter from "../../assets/charater/ch_sad_character.svg";
+import sadCharacter from "../../assets/charater/ch_sad_character.png";
 import heartSadCharacter from "../../assets/charater/HeartCharacter4.svg";
 import heartCharacter1 from "../../assets/charater/HeartCharacter1.svg";
 import heartCharacter2 from "../../assets/charater/HeartCharacter2.svg";

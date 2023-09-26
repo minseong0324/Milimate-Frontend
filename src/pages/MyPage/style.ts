@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import CharacterFace from "../../assets/charater/CharacterFace.svg";
+import CharacterFace from "../../assets/charater/CharacterFace.png";
 import SoliderTag from "../../assets/Logo/SoldierTag.svg";
 import SmallBubble from "../../assets/Logo/SoldierTag.svg";
 import deleteIcon from "../../assets/Icons/delete.svg";
@@ -190,7 +190,7 @@ const Splice = styled.div`
     margin-top: 0;
     margin-bottom: -12px;
     //padding-left:16px;
-    width: 35-;
+    width: 350px;
     //margin-left: 12px;
     // font-size: 16px;
   }
@@ -221,7 +221,7 @@ const SadCharImg = styled.img.attrs({
   margin-bottom: 16px;
   align-items: center;
   width: 104px;
-  //height: 200px;
+  height: 78px;
   z-index: 3;
   @media (max-width: 768px) {
     width: 100px;

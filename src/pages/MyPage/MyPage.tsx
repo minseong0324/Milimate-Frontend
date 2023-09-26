@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {s} from "./style";
 import {useParams, useNavigate} from "react-router-dom";
-import CharacterImage from "../../assets/charater/MainCharacter.svg";
+import CharacterImage from "../../assets/charater/MainCharacter.png";
 import {useLocation} from "react-router-dom";
 import axios, {AxiosError} from "axios";
 import DeleteModalBasic from "src/components/DeleteModalAcc/DeleteModal";

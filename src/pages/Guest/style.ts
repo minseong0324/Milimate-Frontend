@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react';
 import BackButtonImg from "../../assets/BackButton/BackButton.svg"
 import SolierTagImg from "../../assets/Logo/SoldierTagBig.svg"
 
-import HeartCharacter1 from "../../assets/charater/HeartCharacter1.svg";
-import HeartCharacter2 from "../../assets/charater/HeartCharacter2.svg";
-import HeartCharacter3 from "../../assets/charater/HeartCharacter3.svg";
-import HeartCharacter4 from "../../assets/charater/HeartCharacter4.svg";
+import HeartCharacter1 from "../../assets/charater/HeartCharacter1.png";
+import HeartCharacter2 from "../../assets/charater/HeartCharacter2.png";
+import HeartCharacter3 from "../../assets/charater/HeartCharacter3.png";
+import HeartCharacter4 from "../../assets/charater/HeartCharacter4.png";
 
 const Button = styled.button`
   width: 343px;
