@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {s} from "./styled";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 import ModalBasic from "src/components/SimpleModal/SimpleModal";
 import {useToken} from "src/contexts/TokenProvider/TokenProvider";
@@ -48,7 +48,7 @@ function MainScreen() {
         //arrows: true, // 이 부분을 추가하세요.
     };
 
-    const userId = localStorage.getItem("userId");
+    const { userId } = useParams();
     const userInfo = useSelector((state: RootState) => state.userInfo);
     const [lastCompletionDate, setLastCompletionDate] = useState("0");
     const [data, setData] = useState<ResponseData | null>(null);
@@ -72,7 +72,6 @@ function MainScreen() {
     };
 
     useEffect(() => {
-        const userId = localStorage.getItem("userId");
         const fetchData = async () => {
             try {
                 const response = await axios.get<RepliesResponse>(
@@ -94,7 +93,6 @@ function MainScreen() {
 
 
     useEffect(() => {
-        const userId = localStorage.getItem("userId");
         const fetchData = async () => {
             try {
                 const response = await axios.get(
@@ -155,7 +153,6 @@ function MainScreen() {
 
 // 2. 클릭 이벤트 핸들러
     const handleEnvelopeClick = async () => {
-        const userId = localStorage.getItem("userId");
         if (blur) {
             try {
                 await axios.put(

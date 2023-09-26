@@ -98,7 +98,7 @@ const MainContentText = styled.div`
   margin: 0;
   word-wrap: break-word;  // 긴 단어를 다음 줄로 래핑
   white-space: pre-wrap;  // 공백을 존중하면서 텍스트를 래핑
-  max-width: 180px;  // 또는 원하는 값으로 변경. 이 값은 단어가 래핑되는 포인트를 제어합니다.
+  max-width: 220px;  // 또는 원하는 값으로 변경. 이 값은 단어가 래핑되는 포인트를 제어합니다.
   text-align: center;
 `;
 
@@ -186,6 +186,8 @@ const NoneEnvelope = styled.img.attrs({
   width: 343px;
   height: 201px;
   position: relative; // 이 부분 추가
+  margin: auto;
+  display: block; 
   @media (min-width: 600px) {
     width: 410px;
     height: 240.26px;
@@ -200,6 +202,8 @@ const ExistEnvelope = styled.img.attrs({
   width: 343px;
   height: 201px;
   position: relative; // 이 부분 추가
+  margin: auto;
+  display: block; 
   @media (min-width: 600px) {
     width: 410px;
     height: 240.26px;
@@ -221,7 +225,8 @@ const EnvelopeDiv = styled.div<{ blur?: boolean }>`
 const ContentEnvelope = styled.img.attrs({
   src: contentEnvelop,
 })`
-  //margin-top: 12px;
+  margin: auto;
+  display: block; 
   margin-bottom: -124px;
   width: 343px;
   height: 201px;
