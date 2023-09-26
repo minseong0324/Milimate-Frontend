@@ -3,7 +3,7 @@ import {s} from "./styled";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 import ModalBasic from "src/components/SimpleModal/SimpleModal";
-import {useToken} from "src/contexts/TokenProvider/TokenProvider";
+import {useToken} from "../../contexts/TokenProvider/TokenProvider";
 import {useSelector} from "react-redux";
 import {RootState} from "../../components/Redux/store";
 import {MdPersonOutline} from "react-icons/md";
