@@ -60,7 +60,6 @@ function TokenProvider({ children }: TokenProviderProps) {
                       }
                     } 
                     setErrorModalOpen(true)
-                    localStorage.clear();
                 
             }
         
