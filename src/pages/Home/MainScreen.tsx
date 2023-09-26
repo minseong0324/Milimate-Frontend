@@ -73,6 +73,7 @@ function MainScreen() {
 
     useEffect(() => {
         const accessToken = localStorage.getItem("accessToken");
+        alert(accessToken)
         const fetchData = async () => {
             try {
                 const response = await axios.get<RepliesResponse>(
@@ -95,6 +96,8 @@ function MainScreen() {
 
     useEffect(() => {
         const accessToken = localStorage.getItem("accessToken");
+        alert(accessToken)
+
         const fetchData = async () => {
             try {
                 const response = await axios.get(
