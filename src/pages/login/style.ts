@@ -103,8 +103,8 @@ const SubTitle = styled.img.attrs({
 const Character = styled.img.attrs({
   src: CharImg
 })`
-  width: 110px;
-  height: auto;
+  width: 109px;
+  height: 180px;
   position: relative;
   z-index: 2;
   margin-bottom: 60px;  // 위로 이동

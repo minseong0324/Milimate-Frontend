@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { s } from "./style";
 import { useParams, useNavigate } from "react-router-dom";
-import CharacterImage from "../../assets/charater/MainCharacter.svg";
 import { useLocation } from "react-router-dom";
 import axios, { AxiosError } from "axios";
 
@@ -104,7 +103,7 @@ function Guest() {
         <s.TextsStyle2>{userName} 훈련병</s.TextsStyle2>
         <s.TextsStyle2_1>{todayQuestion}</s.TextsStyle2_1>
       </s.TagContainer>
-          <s.Character src={CharacterImage} alt="Character Description" />
+          <s.Character alt="Character Description" />
         <s.ButtonWrapper>
           <s.Button onClick={handleGoSend}>답변 작성하러 가기</s.Button>
         </s.ButtonWrapper>

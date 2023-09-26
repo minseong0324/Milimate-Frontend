@@ -135,7 +135,7 @@ const QuotationStyle = styled.div`
 
 const TagContainer = styled.div`
   position: relative;
-  width: 100%;
+  width: 343px;
   //height: 100vh;
   display: flex;
   align-items: flex-start;
