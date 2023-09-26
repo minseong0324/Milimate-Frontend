@@ -70,24 +70,24 @@ function MainScreen() {
         }
     };
     
-    const fetchData = async () => {
-        try {
-            const response = await axios.get<RepliesResponse>(
-                `https://api.mili-mate.com/api/user/${userId}/home/repl`,
-                {
-                    headers: {
-                        authorization: `${accessToken}`,
-                    },
-                }
-            );
-            setReplies(response.data.replies); // 데이터 저장
-        } catch (error) {
-            console.error("데이터를 불러오는데 실패했습니다:", error);
-        }
-    };
+    
     useEffect(() => {
         alert(accessToken)
-        
+        const fetchData = async () => {
+            try {
+                const response = await axios.get<RepliesResponse>(
+                    `https://api.mili-mate.com/api/user/${userId}/home/repl`,
+                    {
+                        headers: {
+                            authorization: `${accessToken}`,
+                        },
+                    }
+                );
+                setReplies(response.data.replies); // 데이터 저장
+            } catch (error) {
+                console.error("데이터를 불러오는데 실패했습니다:", error);
+            }
+        };
 
         fetchData(); // 함수 실행
     }, [userId, accessToken]); // useEffect의 의존성 배열에 userId와 accessToken 추가
