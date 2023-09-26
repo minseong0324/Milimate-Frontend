@@ -93,7 +93,7 @@ const SadCharImg = styled.img.attrs({
 
 `;
 
-const ShareBtnDiv = styled.div`
+const ShareBtnDiv = styled.button`
   display: flex;
   flex-direction: row;
   width: 88%;

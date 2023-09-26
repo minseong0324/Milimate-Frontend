@@ -177,8 +177,8 @@ function MainScreen() {
                         <s.NormalText> 훈령병</s.NormalText>
                     </div>
                 </s.MainContent>
-                <s.ShareBtnDiv>
-                    <p onClick={handleCopyClipBoard}>오늘의 질문 공유하기</p>
+                <s.ShareBtnDiv  onClick={handleCopyClipBoard}>
+                    <p>오늘의 질문 공유하기</p>
                     <FiUpload size={24} style={{marginLeft: 12}}></FiUpload>
                 </s.ShareBtnDiv>
                 {/*<s.Envelope></s.Envelope>*/}
