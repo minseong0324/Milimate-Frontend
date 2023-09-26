@@ -17,7 +17,6 @@ const TokenContext = React.createContext<TokenContextType>({
 interface TokenProviderProps {
     children: ReactNode;
 }
-
 function TokenProvider({ children }: TokenProviderProps) {
     const navigate = useNavigate();
     const [isErrorModalOpen, setErrorModalOpen] = useState(false);
@@ -61,7 +60,7 @@ function TokenProvider({ children }: TokenProviderProps) {
                       }
                     } 
                     setErrorModalOpen(true)
-                    localStorage.clear()
+                    localStorage.clear();
                 
             }
         
