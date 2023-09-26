@@ -89,7 +89,7 @@ function MainScreen() {
         };
 
         fetchData(); // 함수 실행
-    }, []); // useEffect의 의존성 배열에 userId와 accessToken 추가
+    }, [userId]); // useEffect의 의존성 배열에 userId와 accessToken 추가
 
 
     useEffect(() => {
@@ -126,7 +126,7 @@ function MainScreen() {
             }
         };
         fetchData();
-    }, []);
+    }, [userId]);
     const [modalOpen, setModalOpen] = useState(false);
     // 모달창 노출
     const showModal = () => {
