@@ -1,6 +1,7 @@
 import styled, {createGlobalStyle} from "styled-components";
 import cabinet from "../../assets/Cabinet/cabinet.svg";
 import sadCharacter from "../../assets/charater/ch_sad_character.svg";
+import heartSadCharacter from "../../assets/charater/HeartCharacter4.svg";
 import noneEnvelope from '../../assets/EnvelopeImage/noneEnvelope.svg';
 import existEnvelope from '../../assets/EnvelopeImage/trueEnvelope.svg';
 import contentEnvelop from '../../assets/EnvelopeImage/contentEnvelope.svg';
@@ -52,8 +53,12 @@ const AppBarWrapperDiv = styled.div`
 
 const AppBarTitleText = styled.p`
   margin-left: 16px;
-  font-size: 24px;
+  font-size: 18px;
   color: #4c544b;
+  @media (min-width: 600px) {
+    
+    font-size: 20px;
+  }
 `;
 const MainContent = styled.div`
   display: flex;
@@ -82,7 +87,7 @@ const MainContentText = styled.p`
   margin: 0;
 `;
 const SadCharImg = styled.img.attrs({
-    src: sadCharacter,
+    src: heartSadCharacter,
 })`
   display: flex;
   margin-top: 16px;

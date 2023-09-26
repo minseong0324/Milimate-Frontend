@@ -43,7 +43,7 @@ function MainScreen() {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: true, // 이 부분을 추가하세요.
+        //arrows: true, // 이 부분을 추가하세요.
     };
 
     const userId = localStorage.getItem("userId");
@@ -158,12 +158,12 @@ function MainScreen() {
                     <div>
                         <MdPersonOutline onClick={() => {
                             profileImgClick()
-                        }} size={32} color={'#4c544b'} style={{marginRight: 16}}></MdPersonOutline>
+                        }} size={24} color={'#4c544b'} style={{marginRight: 16}}></MdPersonOutline>
                         <AiOutlineUnorderedList onClick={() => {
                             //navigateQuestionListScreen(data!.nowData);
                             navigateQuestionListScreen(1);
 
-                        }} size={32} color={'#4c544b'}
+                        }} size={24} color={'#4c544b'}
                                                 style={{marginRight: 16}}></AiOutlineUnorderedList>
                     </div>
                 </s.AppBarWrapperDiv>
@@ -172,7 +172,7 @@ function MainScreen() {
                     <s.MainContentText>훈련병이 된지 1주 째입니다.</s.MainContentText>
                     <s.MainContentText>해주고 싶은 말이 있나요?</s.MainContentText>
                     <s.SadCharImg></s.SadCharImg>
-                    <div style={{flexDirection: "row", display: 'flex', marginBottom: 16}}>
+                    <div style={{flexDirection: "row", display: 'flex',marginTop : 32, marginBottom: 32}}>
                         <s.MainContentText>귀염둥이 김민성</s.MainContentText>
                         <s.NormalText> 훈령병</s.NormalText>
                     </div>

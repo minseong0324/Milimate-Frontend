@@ -97,31 +97,33 @@ function MyPage() {
                     <s.PersonIcon></s.PersonIcon>
                     <s.ButtonStyle onClick={editUserNameModalBtn}>이름 변경하기</s.ButtonStyle>
                 </s.MenuDiv>
-                <s.Splice></s.Splice>
+                {/*<s.Splice></s.Splice>*/}
                 <s.MenuDiv>
                     <s.EditIcon></s.EditIcon>
                     <s.ButtonStyle onClick={updateEnlistmentBtn}>
                         입대일 수정하기
                     </s.ButtonStyle>
                 </s.MenuDiv>
-                <s.Splice></s.Splice>
+
                 <s.MenuDiv>
                     <s.EditIcon></s.EditIcon>
                     <s.ButtonStyle onClick={updateCompletionBtn}>
                         수료일 수정하기
                     </s.ButtonStyle>
                 </s.MenuDiv>
-                <s.Splice></s.Splice>
+
                 <s.MenuDiv>
-                    <s.VersionIcon></s.VersionIcon>
                     <s.VersionDiv>
+                    <s.VersionIcon></s.VersionIcon>
+
                         <s.ButtonStyle>
                             버전정보
                         </s.ButtonStyle>
-                        <s.VersionText>1.0.0</s.VersionText>
                     </s.VersionDiv>
+                        <s.VersionText>1.0.0</s.VersionText>
+
                 </s.MenuDiv>
-                <s.Splice></s.Splice>
+
                 <s.MenuDiv>
                     <s.LogoutIcon></s.LogoutIcon>
                     <s.ButtonStyle onClick={userLogouModalOpenBtn}>
@@ -129,7 +131,7 @@ function MyPage() {
                     </s.ButtonStyle>
                 </s.MenuDiv>
 
-                <s.Splice></s.Splice>
+
                 <s.MenuDiv>
                     <s.DeleteIcon></s.DeleteIcon>
                     <s.ButtonStyle onClick={deleteAccBtn
@@ -137,7 +139,7 @@ function MyPage() {
                         회원탈퇴하기
                     </s.ButtonStyle>
                 </s.MenuDiv>
-                <s.Splice></s.Splice>
+
             </s.MenuWrapper>
             {deleteAccModalOpen && (
                 <DeleteModalBasic

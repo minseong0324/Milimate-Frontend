@@ -26,8 +26,8 @@ const Wrapper = styled.div`
 `;
 const IconLayout = styled.div`
   flex-direction: row;
-  width: 630px;
-  margin-top: 56px;
+  width: 380px;
+  margin-top: 24px;
   //margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
@@ -74,13 +74,13 @@ const MenuWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 170px;
-  width: 600px;
+  margin-top: 10px;
+  width: 343px;
   margin-bottom: 100px;
  // align-items: start;
   @media (max-width: 768px) {
-    margin-top: 30px;
-    width: 100%;
+    margin-top: 10px;
+    width: 343px;
     //margin-left: 12px;
     // font-size: 16px;
   }
@@ -89,6 +89,9 @@ const VersionText = styled.div`
   color: #adc786;
   text-align: end;
   font-size: 20px;
+  @media  (max-width:  768px) {
+    font-size: 18px;
+  }
 `;
 const VersionDiv = styled.div`
   display: flex;
@@ -97,13 +100,13 @@ const VersionDiv = styled.div`
   align-items: center;
   justify-content: space-between;
   
-  width: 600px;
+  width: 310px;
   @media (max-width: 768px) {
     //margin-top: 30px;
     justify-content: space-between;
     //align-items: center;
     //padding-left:16px;
-    width: 89%;
+    width: 310px;
     //margin-left: 12px;
     // font-size: 16px;
   }
@@ -113,15 +116,15 @@ const MenuDiv = styled.div `
   flex-direction: row;
   //background-color: grey;
   align-items: center;
+  border-bottom: 1px solid #adc786;
   
-  
-  width: 600px;
+  width: 350px;
   @media (max-width: 768px) {
-    margin-top: 30px;
+    //margin-top: 30px;
     justify-content: center;
     align-items: center;
     //padding-left:16px;
-    width: 90%;
+   // width: 90%;
     //margin-left: 12px;
     // font-size: 16px;
   }
@@ -135,7 +138,7 @@ const PersonIcon = styled.img.attrs({
   //left: 0;
   //right: 0;
   //bottom: 0;
-  width: 40px; // 부모 div의 너비에 맞게 이미지 너비 설정
+  width: 30px; // 부모 div의 너비에 맞게 이미지 너비 설정
   
   //height: auto; // 이미지의 비율을 유지하면서 높이 조절
   background-image: url(${SmallBubble});
@@ -145,7 +148,7 @@ const PersonIcon = styled.img.attrs({
 const EditIcon = styled.img.attrs({
     src: editIcon,
 })`
-  width: 40px; // 부모 div의 너비에 맞게 이미지 너비 설정
+  width: 30px; // 부모 div의 너비에 맞게 이미지 너비 설정
 
   //height: auto; // 이미지의 비율을 유지하면서 높이 조절
   background-image: url(${SmallBubble});
@@ -154,7 +157,7 @@ const EditIcon = styled.img.attrs({
 const VersionIcon = styled.img.attrs({
     src: versionIcon,
 })`
-  width: 40px; // 부모 div의 너비에 맞게 이미지 너비 설정
+  width: 30px; // 부모 div의 너비에 맞게 이미지 너비 설정
 
   //height: auto; // 이미지의 비율을 유지하면서 높이 조절
   background-image: url(${SmallBubble});
@@ -163,7 +166,7 @@ const VersionIcon = styled.img.attrs({
 const LogoutIcon = styled.img.attrs({
     src: logoutIcon,
 })`
-  width: 40px; // 부모 div의 너비에 맞게 이미지 너비 설정
+  width: 30px; // 부모 div의 너비에 맞게 이미지 너비 설정
 
   //height: auto; // 이미지의 비율을 유지하면서 높이 조절
   background-image: url(${SmallBubble});
@@ -172,7 +175,7 @@ const LogoutIcon = styled.img.attrs({
 const DeleteIcon = styled.img.attrs({
     src: deleteIcon,
 })`
-  width: 40px; // 부모 div의 너비에 맞게 이미지 너비 설정
+  width: 30px; // 부모 div의 너비에 맞게 이미지 너비 설정
 
   //height: auto; // 이미지의 비율을 유지하면서 높이 조절
   background-image: url(${SmallBubble});
@@ -182,12 +185,12 @@ const Splice = styled.div`
   border: 0.5px solid #adc786;
   margin-top: 8px;
   margin-bottom: 8px;
-  width : 600px;
+  width : 350px;
   @media (max-width: 768px) {
     margin-top: 0;
     margin-bottom: -12px;
     //padding-left:16px;
-    width: 92%;
+    width: 35-;
     //margin-left: 12px;
     // font-size: 16px;
   }
@@ -197,11 +200,10 @@ const SoldierTagImage = styled.img.attrs({
     src: SoliderTag,
 })`
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%; // 부모 div의 너비에 맞게 이미지 너비 설정
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 343px; // 부모 div의 너비에 맞게 이미지 너비 설정
   height: auto; // 이미지의 비율을 유지하면서 높이 조절
   background-image: url(${SmallBubble});
   background: #f2f1ee no-repeat center center;
@@ -211,22 +213,38 @@ const SadCharImg = styled.img.attrs({
     src: CharacterFace,
 })`
   display: flex;
-  margin-top: 160px;
+  //margin-top: 160px;
+  position: absolute;
+  top: 50%;
+  left: 35%;
+  transform: translate(-50%, -50%);
   margin-bottom: 16px;
   align-items: center;
-  width: 200px;
-  height: 200px;
+  width: 104px;
+  //height: 200px;
   z-index: 3;
   @media (max-width: 768px) {
     width: 100px;
     margin-top: 40px;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    transform: translate(-50%, -50%);
   }
 `;
 const InfoDiv = styled.div`
   flex-direction: column;
   display: flex;
+  
+  
   text-align: start;
-  margin-left: 12px;
+  margin-left: 250px;
+  margin-bottom: 140px;
+  @media (max-width: 768px) {
+    //top: 0
+    margin-left: 120px;
+    margin-top: 80px;
+  }
 `;
 const UserNameText = styled.p`
   position: relative;
@@ -235,16 +253,18 @@ const UserNameText = styled.p`
   color: #4c544b;
   //color: #6a804a;
   //padding: 8px;
-  font-size: 32px;
+  font-size: 18px;
   font-weight: bold;
   //margin-left: 32px;
   top: -30px;
   margin-top: 220px;
   @media (max-width: 768px) {
     //max-height: 20px; // 원하는 최대 높이값을 지정하세요
-    top: -80px;
+    top: -70px;
     //margin-left: 8px;
-    font-size: 20px;
+    //margin-top: 250px;
+    font-size: 18px;
+    
   }
 `;
 
@@ -255,11 +275,17 @@ const userInfoContentDiv = styled.div`
   //background-color: grey;
   z-index: 4;
   margin-bottom: 30px;
-  top: -30px;
+  top: -20px;
   //background-color: grey;
   align-items: center;
+  @media (min-width: 768px) {
+    top: -20px;
+    margin-bottom : 20px;
+  }
   @media (max-width: 768px) {
-    top: 0
+    top: 0px;
+    margin-top : 5px;
+    margin-bottom: 16px;
   }
 `;
 const UserEnlistmentKey = styled.div`
@@ -268,7 +294,7 @@ const UserEnlistmentKey = styled.div`
   display: flex;
   padding: 0;
   height: 30px;
-  font-size: 24px;
+  font-size: 14px;
   z-index: 2;
   color: #6d844c;
   font-weight: bold;
@@ -276,7 +302,7 @@ const UserEnlistmentKey = styled.div`
   //max-width: 90%; // 필요한 너비로 조절
   @media (max-width: 768px) {
     margin-top: -150px;
-    font-size: 16px;
+    font-size: 14px;
   }
 
 `;
@@ -286,17 +312,17 @@ const UserEnlistmentText = styled.div`
   display: flex;
   padding: 0;
   height: 30px;
-  font-size: 24px;
+  font-size: 14px;
   z-index: 2;
   color: #4c544b;
   font-weight: bold;
   margin-top: -20px;
-  margin-left: 24px;
+  margin-left: 12px;
   //max-width: 90%; // 필요한 너비로 조절
   @media (max-width: 768px) {
     margin-top: -150px;
     margin-left: 12px;
-    font-size: 16px;
+    font-size: 14px;
   }
 `;
 
@@ -308,7 +334,7 @@ const Button = styled.button`
   background-size: cover; // 이미지가 버튼에 맞게 조절
   color: black;
   border-radius: 30px;
-  font-size: 17px;
+  font-size: 18px;
   border: 0px transparent; // 테두리 색상을 투명
   position: relative;
   z-index: 2;
@@ -361,17 +387,7 @@ const CharImgContainer = styled.div`
   border-radius: 30px;
 `;
 
-const CharImgName = styled.span`
-  position: absolute;
-  font-family: "EF_jejudoldam";
-  display: flex;
-  bottom: 10%; // 추가된 부분: 이미지의 중앙에 위치하게 합니다. (조절 가능)
-  left: 12%;
-  font-size: 20px;
-  color: rgb(255 255 0);
-  z-index: 2;
-  margin-bottom: 35px;
-`;
+
 const MainTextWrapper = styled.div`
   position: absolute;
   display: flex;
@@ -464,8 +480,8 @@ const ButtonStyle = styled.button`
   height: 75px;
   border: none;
   text-align: start;
-  font-size: 24px;
-  color: black;
+  font-size: 20px;
+  color: #4c544b;
   //font-weight: bold;
   margin-left: 12px;
   &:focus {
@@ -520,8 +536,6 @@ export const s = {
     BackgroundContainer,
 
     CharImgContainer,
-    CharImgName,
-
     UserInfoContainer,
     MainTextWrapper,
     MainNameText,

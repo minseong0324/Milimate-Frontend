@@ -69,7 +69,7 @@ const SoldierTagImage = styled.img.attrs({
   transform: translate(-50%, -50%);
   right: 0;
   bottom: 0;
-  width: 400px; // 부모 div의 너비에 맞게 이미지 너비 설정
+  width: 343px; // 부모 div의 너비에 맞게 이미지 너비 설정
   height: auto; // 이미지의 비율을 유지하면서 높이 조절
   background-image: url(${SmallBubble});
   background: #f2f1ee no-repeat center center;
@@ -90,7 +90,7 @@ const DayText = styled.p`
   padding-right: 16px;
   padding-top: 4px;
   padding-bottom: 4px;
-  top : -25px;
+  top : -10px;
   background-color: #adc786;
   align-items: center;
   color: white;
@@ -103,7 +103,7 @@ const DayText = styled.p`
   //max-height: 120px; // 원하는 최대 높이값을 지정하세요
   @media (max-width: 768px) {
     //max-height: 20px; // 원하는 최대 높이값을 지정하세요
-    top: -20px;
+    top: -16px;
     font-size: 18px;
     padding-left: 12px;
     padding-right: 12px;
@@ -115,7 +115,7 @@ const QuestionText = styled.div`
   //background-color: grey;
   position: relative;
   font-size: 20px;
-  top : -40px;
+  top : -20px;
   z-index: 2;
   color: #4c544b;
   font-weight: bold;
@@ -143,7 +143,7 @@ const ButtonStyle = styled.button`
   border-radius: 12px;
   color: white;
   font-size: 16px;
-  width: 450px;
+  width: 343px;
   padding: 12px;
   margin-bottom: 250px;
   @media (max-width: 768px) {
@@ -165,7 +165,7 @@ const TitleText = styled.p`
 `;
 const ReplyContainer = styled.div<ReplyContainerProps>`
   position: relative;
-  width: 410px;
+  width: 343px;
   height: 400px;
   display: flex;
   border: 1px solid white;
@@ -273,7 +273,7 @@ const SelectColorDiv = styled.div`
   position: relative;
   flex-direction: row;
   top: 30px;
-  width: 410px;
+  width: 343px;
   //background-color: grey;
   @media (max-width: 768px) {
     font-size: 16px;
