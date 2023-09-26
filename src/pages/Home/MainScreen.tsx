@@ -89,7 +89,7 @@ function MainScreen() {
         };
 
         fetchData(); // 함수 실행
-    }, [userId, accessToken]); // useEffect의 의존성 배열에 userId와 accessToken 추가
+    }, []); // useEffect의 의존성 배열에 userId와 accessToken 추가
 
 
     useEffect(() => {
@@ -120,13 +120,13 @@ function MainScreen() {
                 // alert(response.data.existNewRepl);
                 // alert(response.data.todayQuestion);
                 setData(responseData); // 형변를환된 응답 데이터 상태에 할당
-                setDdayCount(responseData.nowDate - responseData.endDate);
+                setDdayCount(responseData.endDate - responseData.nowDate);
             } catch (e) {
                 console.log(e);
             }
         };
         fetchData();
-    }, [accessToken]);
+    }, []);
     const [modalOpen, setModalOpen] = useState(false);
     // 모달창 노출
     const showModal = () => {
@@ -156,8 +156,8 @@ function MainScreen() {
         if (blur) {
             try {
                 await axios.put(
-                    "http://localhost:8080/api/user/1/home/blur",
-                    {isBlur: "false"},
+                    `https://api.mili-mate.com/api/user/${userId}/home/blur`,
+                    {blur: "false"},
                     {
                         headers: {
                             authorization: `${accessToken}`,

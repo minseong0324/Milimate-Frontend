@@ -36,15 +36,12 @@ const WrapperLayout = styled.div`
 `;
 const AppBarWrapperDiv = styled.div`
   background-color: #f2f1ee;
-
-
-  //background-color: green;
   display: flex;
   align-items: center;
   width: 100%;
   justify-content: space-between;
   flex-direction: row;
-
+  margin-top: 20px;
   @media (min-width: 600px) {
     max-width: 600px; /* 원하는 최대 너비 값으로 설정 */
     margin: 0 auto; /* 좌우 중앙 정렬 */
@@ -80,7 +77,7 @@ const MainContent = styled.div`
 `;
 
 const D_dayText = styled.p`
-  margin-top: 4px;
+  margin-top: 30px;
   margin-bottom: 16px;
   color: #4c544b;
   font-size: 16px;
@@ -96,6 +93,7 @@ const MainContentText = styled.p`
   color: #4c544b;
   font-size: 16px;
   font-weight: bold;
+  margin-top: 30px;
   margin: 0;
 `;
 const SadCharImg = styled.img.attrs({
@@ -105,8 +103,12 @@ const SadCharImg = styled.img.attrs({
   margin-top: 16px;
   margin-bottom: 16px;
   align-items: center;
-  width: 200px;
-  height: 200px;
+  width: 110px;
+  height: 196px;
+  @media (min-width: 600px) {
+    width: 130px;
+    height: 231.636364px;
+  }
 `;
 const hearCharaImg1 = styled.img.attrs({
     src: heartCharacter1,
@@ -115,8 +117,12 @@ const hearCharaImg1 = styled.img.attrs({
   margin-top: 16px;
   margin-bottom: 16px;
   align-items: center;
-  width: 200px;
-  height: 200px;
+  width: 110px;
+  height: 196px;
+  @media (min-width: 600px) {
+    width: 130px;
+    height: 231.636364px;
+  }
 `;
 const hearCharaImg2 = styled.img.attrs({
     src: heartCharacter2,
@@ -125,8 +131,12 @@ const hearCharaImg2 = styled.img.attrs({
   margin-top: 16px;
   margin-bottom: 16px;
   align-items: center;
-  width: 200px;
-  height: 200px;
+  width: 110px;
+  height: 196px;
+  @media (min-width: 600px) {
+    width: 130px;
+    height: 231.636364px;
+  }
 `;
 const hearCharaImg3 = styled.img.attrs({
     src: heartCharacter3,
@@ -135,13 +145,18 @@ const hearCharaImg3 = styled.img.attrs({
   margin-top: 16px;
   margin-bottom: 16px;
   align-items: center;
-  width: 200px;
-  height: 200px;
+  width: 110px;
+  height: 196px;
+  @media (min-width: 600px) {
+    width: 130px;
+    height: 231.636364px;
+  }
+  
 `;
 const ShareBtnDiv = styled.button`
   display: flex;
   flex-direction: row;
-  width: 88%;
+  width: 343px;
   height: 48px;
   align-items: center;
   justify-content: center;
@@ -151,7 +166,10 @@ const ShareBtnDiv = styled.button`
   font-weight: bold;
   font-size: 16px;
   color: white;
-
+  @media (min-width: 600px) {
+    width: 410px;
+    height: 50px;
+  }
 `;
 
 const NoneEnvelope = styled.img.attrs({
@@ -191,10 +209,13 @@ const ContentEnvelope = styled.img.attrs({
 })`
   //margin-top: 12px;
   margin-bottom: -124px;
-  width: 100%;
-  //height: 670px;
+  width: 343px;
+  height: 201px;
   position: relative; // 이 부분 추가
-  
+  @media (min-width: 600px) {
+    width: 410px;
+    height: 240.26px;
+  }
 `;
 const CenteredText = styled.p`
   position: relative;
