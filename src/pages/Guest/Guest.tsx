@@ -12,7 +12,7 @@ function Guest() {
   const location = useLocation();
   const [userName, setUserName] = useState<string>("훈련병");
   const [todayQuestion, setTodayQuestion] =
-    useState<string>("질문을 불러오지 못했어요.");
+    useState<string>("질문을 불러오지 못했어요. 질문을 불러오지 못했어요.");
   const navigate = useNavigate();
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
   const [modalErrorContent, setModalErrorContent] =
@@ -75,7 +75,7 @@ function Guest() {
           // userInfo가 유효한 경우에만 상태 업데이트
           setUserName(userInfo.userName || "훈련병"); // 사용자 이름을 상태 변수에 저장
           setTodayQuestion(
-            userInfo.todayQuestion || "질문을 불러오지 못했어요."
+            userInfo.todayQuestion || "질문을 불러오지 못했어요. 질문을 불러오지 못했어요."
           ); // 오늘의 질문을 상태 변수에 저장
         }
       }

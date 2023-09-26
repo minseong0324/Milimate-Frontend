@@ -162,19 +162,19 @@ const TextsStyle = styled.div`
   z-index: 0;
   font-size: 18px;
   position: absolute;
-  top: 35px;
+  top: 44px;
   left: 92px;
   color : #668444;
   @media (min-width: 600px) {
-    top: 44px;
-    left: 120px;
+    top: 45px;
+    left: 90px;
     font-size: 20px;
   }
 `;
 
 const TextsStyle2 = styled.div`
   text-align: left !important;
-  line-height: 0.2; // 글자 간격
+  line-height: 1.2; // 글자 간격
   z-index: 0;
   font-size: 18px;
   position: absolute;
@@ -183,23 +183,25 @@ const TextsStyle2 = styled.div`
   color : #4a544a;
   font-weight: bolder;
   @media (min-width: 600px) {
-    top: 44px;
-    left: 160px;
+    top: 34px;
+    left: 135px;
     font-size: 20px;
   }
 `;
 
 const TextsStyle2_1 = styled(TextsStyle2)`
   top: 71px;  // 또는 원하는 값으로 변경
-  left: 75px;
+  left: 70px;
   font-weight: normal;
   word-wrap: break-word;  // 긴 단어를 다음 줄로 래핑
   white-space: pre-wrap;  // 공백을 존중하면서 텍스트를 래핑
-  max-width: 200px;  // 또는 원하는 값으로 변경. 이 값은 단어가 래핑되는 포인트를 제어합니다.
+  max-width: 210px;  // 또는 원하는 값으로 변경. 이 값은 단어가 래핑되는 포인트를 제어합니다.
   text-align: center;
   @media (min-width: 600px) {
-    top: 87px;  // 미디어 쿼리에서도 top 값을 변경하려면 이렇게 설정
-    left: 100px;
+    top: 72px;  // 미디어 쿼리에서도 top 값을 변경하려면 이렇게 설정
+    left: 50px;
+    max-width: 250px;  // 또는 원하는 값으로 변경. 이 값은 단어가 래핑되는 포인트를 제어합니다.
+
   }
 `;
 
