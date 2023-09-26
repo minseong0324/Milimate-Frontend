@@ -1,10 +1,18 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {s} from "./style";
 import axios, {AxiosError} from "axios";
 import {useParams, useNavigate} from 'react-router-dom';
 import ErrorModal from '../../components/ErrorModal/ErrorModal'
 import {BiChevronLeft} from "react-icons/bi";
+import {userInfo} from "os";
+import {useSelector} from "react-redux";
+import {RootState} from "../../components/Redux/store";
 
+interface Data {
+    userName:string,
+    todayQuestion: string,
+    day : string
+}
 function AddReply() {
     const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
     //const [sender, setSender] = useState("");
@@ -13,15 +21,34 @@ function AddReply() {
         sender: "",
         reply: "",
     });
+    const [data, setData]= useState<Data>()
     const navigate = useNavigate();
     const [errorModalContent, setModalErrorContent] = useState<React.ReactNode>(null);
     const [modalOpen, setModalOpen] = useState(false);
-
+    const userInfo = useSelector((state: RootState) => state.userInfo);
 
     const handleInputChange = (e: { target: { name: string; value: string } }) => {
         const {name, value} = e.target;
         setFormData((prevState) => ({...prevState, [name]: value}));
     };
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(
+                    `https://api.mili-mate.com/api/guest/${userId}/reply`,
+                    {
+                        data: {}
+                    }
+                );
+                setData(response.data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+
+        }
+        fetchData();
+    }, []);
     const onSubmit = async () => {
         console.log(formData.sender);
         console.log(formData.reply);
@@ -32,6 +59,7 @@ function AddReply() {
                 {
                     senderName: formData.sender,
                     replyContent: formData.reply,
+                    color: selectedColor
                 },
             );
             if (response.status === 200) {
@@ -82,14 +110,19 @@ function AddReply() {
                         <BiChevronLeft size={24} color="#4c544b"/>
                     </s.ButtonDesign>
                     <s.TitleText>밀리메이트의 답변</s.TitleText>
-                    <s.ButtonDesign onClick={()=>{}}>
+                    <s.ButtonDesign onClick={() => {
+                    }}>
                         <BiChevronLeft size={24} color="#f2f1ee"/>
                     </s.ButtonDesign>
                 </s.IconLayout>
                 <s.SoldierTagContainer>
-                    <s.DayText>08/01</s.DayText>
+                    {data ?<>
+                        <s.DayText>{data.day}</s.DayText> :
+
                     {/*<s.QuestionText>{state.question}</s.QuestionText>*/}
-                    <s.QuestionText>훈련병이 된지 1주 째입니다. 해주고 싶은 말이 있나요?</s.QuestionText>
+                        <s.QuestionText>{data.todayQuestion}</s.QuestionText>
+                        </> :<></>
+                        }
                     <s.SoldierTagImage/>
                 </s.SoldierTagContainer>
                 <s.ReplyContainer backgroundColor={selectedColor}>

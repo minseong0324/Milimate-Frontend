@@ -42,7 +42,7 @@ function QuestionListScreen({nowDate}: Date) {
                 alert(error);
             }
         };
-        //fetchData();
+        fetchData();
     }, []);
     const questionClick = (day: string) => {
         console.log("이벤트");
