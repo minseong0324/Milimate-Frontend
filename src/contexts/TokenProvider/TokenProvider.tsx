@@ -9,7 +9,6 @@ type TokenContextType = {
     accessToken: string | null;
     refreshToken: string | null;
 };
-
 const TokenContext = React.createContext<TokenContextType>({
     accessToken: null,
     refreshToken: null,
@@ -23,9 +22,7 @@ function TokenProvider({ children }: TokenProviderProps) {
     const navigate = useNavigate();
     const [isErrorModalOpen, setErrorModalOpen] = useState(false);
     const [modalErrorContent, setModalErrorContent] = useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
-    const [accessToken, setAccessToken] = useState<string | null>(localStorage.getItem('accessToken'));
-    const [refreshToken, setRefreshToken] = useState<string | null>(localStorage.getItem('refreshToken'));
-    
+
     useEffect(() => {
         const interval = setInterval(async () => {
             const refreshToken = localStorage.getItem('refreshToken');
@@ -39,10 +36,9 @@ function TokenProvider({ children }: TokenProviderProps) {
 
                 if (response.status === 200) {
                     const accessToken = response.headers['authorization'];
-                    const newRefreshToken = response.headers['reauthorization'];
-                    setAccessToken(accessToken);
-                    setRefreshToken(newRefreshToken);
                     localStorage.setItem('accessToken', accessToken);
+
+                    const newRefreshToken = response.headers['reauthorization'];
                     localStorage.setItem('refreshToken', newRefreshToken);
                 } 
             }
@@ -65,7 +61,7 @@ function TokenProvider({ children }: TokenProviderProps) {
                       }
                     } 
                     setErrorModalOpen(true)
-                    localStorage.clear();
+                    localStorage.clear()
                 
             }
         
@@ -75,18 +71,20 @@ function TokenProvider({ children }: TokenProviderProps) {
         
   }, []);
 
-
   const handleNavigateHome = () => {
     setErrorModalOpen(false)
     navigate('/')
   };
 
   return (
-    <TokenContext.Provider value={{ accessToken, refreshToken }}>
-    {children}
-    <ErrorModal isOpen={isErrorModalOpen} onClose={() => setErrorModalOpen(false)} >
-        {modalErrorContent}
-    </ErrorModal>
+    <TokenContext.Provider value={{ 
+        accessToken: localStorage.getItem('accessToken'),
+        refreshToken: localStorage.getItem('refreshToken')
+    }}>
+        {children}
+        <ErrorModal isOpen={isErrorModalOpen} onClose={() => setErrorModalOpen(false)} >
+            {modalErrorContent}
+        </ErrorModal>
     </TokenContext.Provider>
   );
 }
