@@ -2,6 +2,11 @@ import styled, {createGlobalStyle} from "styled-components";
 import cabinet from "../../assets/Cabinet/cabinet.svg";
 import sadCharacter from "../../assets/charater/ch_sad_character.svg";
 import heartSadCharacter from "../../assets/charater/HeartCharacter4.svg";
+import heartCharacter1 from "../../assets/charater/HeartCharacter1.svg";
+import heartCharacter2 from "../../assets/charater/HeartCharacter2.svg";
+import heartCharacter3 from "../../assets/charater/HeartCharacter3.svg";
+
+
 import noneEnvelope from '../../assets/EnvelopeImage/noneEnvelope.svg';
 import existEnvelope from '../../assets/EnvelopeImage/trueEnvelope.svg';
 import contentEnvelop from '../../assets/EnvelopeImage/contentEnvelope.svg';
@@ -95,9 +100,37 @@ const SadCharImg = styled.img.attrs({
   align-items: center;
   width: 200px;
   height: 200px;
-
 `;
-
+const hearCharaImg1 = styled.img.attrs({
+    src: heartCharacter1,
+})`
+  display: flex;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+`;
+const hearCharaImg2 = styled.img.attrs({
+    src: heartCharacter2,
+})`
+  display: flex;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+`;
+const hearCharaImg3 = styled.img.attrs({
+    src: heartCharacter3,
+})`
+  display: flex;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+`;
 const ShareBtnDiv = styled.button`
   display: flex;
   flex-direction: row;
@@ -119,7 +152,7 @@ const NoneEnvelope = styled.img.attrs({
 })`
   margin-top: 12px;
   margin-bottom: 24px;
-  width: 95%;
+  width: 100%;
   //height: 670px;
   position: relative; // 이 부분 추가
 `;
@@ -129,20 +162,21 @@ const ExistEnvelope = styled.img.attrs({
 })`
   margin-top: 12px;
   margin-bottom: 24px;
-  width: 95%;
+  width: 100%;
   //height: 670px;
   position: relative; // 이 부분 추가
 `;
 
-const EnvelopeDiv = styled.div`
+const EnvelopeDiv = styled.div<{ blur?: boolean }>`
   margin-top: 10px;
   margin-bottom: 12px;
   width: 100%;
   //height: 300px;
   //background: url(${contentEnvelop}) no-repeat center;
+  
   background-size: contain; // 이미지가 div를 채우도록 조절
   position: relative;
-  
+  filter: ${({ blur }) => (blur ? 'blur(5px)' : 'none')};
   //height: 300px; // 적절한 높이로 설정 (이미지 높이에 따라 조절 필요)
 `;
 const ContentEnvelope = styled.img.attrs({
@@ -223,12 +257,15 @@ export const s = {
     MainContentText,
     SadCharImg,
     ShareBtnDiv,
-    Envelope: NoneEnvelope,
+    NoneEnvelope,
     NormalText,
     ExistEnvelope,
     EnvelopeDiv,
     CenteredText,
     ContentEnvelope,
     NameText,
+    hearCharaImg1,
+    hearCharaImg2,
+    hearCharaImg3,
 
 };

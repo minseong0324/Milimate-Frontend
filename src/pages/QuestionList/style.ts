@@ -76,6 +76,10 @@ const DayText = styled.p`
   font-size:  16px;
   color: #6d844c;
 `;
+const GreyDayText = styled.p`
+  font-size:  16px;
+  color: grey;
+`;
 const LiLayout = styled.div`
   display: flex;
   
@@ -96,5 +100,6 @@ export const s = {
   TitleText,
   Spacer,
   Splice,
+  GreyDayText
 
 };

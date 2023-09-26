@@ -8,6 +8,7 @@ import {BiChevronLeft} from "react-icons/bi";
 interface Question {
     day: string;
     todayQuestion: string;
+    isRead: string;
 }
 
 interface Date {
@@ -83,42 +84,34 @@ function QuestionListScreen({nowDate}: Date) {
                 {/*        )}*/}
                 {/*    </s.CustomUl>*/}
                 {/*) : (<div> 아직은 확인할 수 없습니다. </div>)}*/}
-                <s.CustomUl>
-                    <li>
-                        <s.LiLayout>
-                            <s.DayText>09/25</s.DayText>
-                            <s.CustomLi onClick={() => {
-                                questionClick("09/10")
-                            }}>
-                                {/*//               {() => questionClick(question.day, question.todayQuestion)}>*/}
-                                전역하고 저와 하고 싶은 것들은 무엇인가요?
-                            </s.CustomLi>
-                        </s.LiLayout>
-                        <s.Splice></s.Splice>
-                    </li>
-                    <li>
-                        <s.LiLayout>
-                            <s.DayText>09/25</s.DayText>
-                            <s.CustomLi onClick={() => {
-                            }}>
-                                {/*//               {() => questionClick(question.day, question.todayQuestion)}>*/}
-                                전역하고 저와 하고 싶은 것들은 무엇인가요?
-                            </s.CustomLi>
-                        </s.LiLayout>
-                        <s.Splice></s.Splice>
-                    </li>
-                    <li>
-                        <s.LiLayout>
-                            <s.DayText>09/25</s.DayText>
-                            <s.CustomLi onClick={() => {
-                            }}>
-                                {/*//               {() => questionClick(question.day, question.todayQuestion)}>*/}
-                                전역하고 저와 하고 싶은 것들은 무엇인가요?
-                            </s.CustomLi>
-                        </s.LiLayout>
-                        <s.Splice></s.Splice>
-                    </li>
-                </s.CustomUl>
+
+                {questions && nowDate > 1 ? (
+                    <s.CustomUl>
+                        {isLoading ? (
+                            <div>Loading...</div>
+                        ) : (
+                            questions.map((question, index) => (
+                                <li key={index}>
+                                    <s.LiLayout>
+                                        {question.isRead == "false" ? <s.DayText>{question.day}</s.DayText> :
+                                            <s.GreyDayText>{question.day}</s.GreyDayText>}
+
+                                        <s.CustomLi
+                                            onClick={() =>
+                                                questionClick(question.day)
+                                            }
+                                        >
+                                            {question.todayQuestion}
+                                        </s.CustomLi>
+                                    </s.LiLayout>
+                                    <s.Splice></s.Splice>
+                                </li>
+                            ))
+                        )}
+                    </s.CustomUl>
+                ) : (
+                    <div> 아직은 확인할 수 없습니다. </div>
+                )}
 
             </s.MainWrapper>
         </>
