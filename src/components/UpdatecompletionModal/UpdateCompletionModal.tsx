@@ -97,7 +97,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
       !userInfo.enlistmentMonth ||
       !userInfo.enlistmentday
     ) {
-      alert("필수 정보를 입력해주세요!");
+      return alert("필수 정보를 입력해주세요!");
     }
 
     // Case 2: 입대일과 수료일을 입력하는 모든 값들은 정수여야 한다.
@@ -109,7 +109,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
       (completionMonth && !isNumeric(completionMonth)) ||
       (completionDay && !isNumeric(completionDay))
     ) {
-      alert("날짜를 숫자로 입력해주세요!");
+      return alert("날짜를 숫자로 입력해주세요!");
     }
 
     // Case 4: 입대일의 달과 수료일의 달은 1 ~ 12의 값들을 가지고 있어야 한다.
@@ -119,7 +119,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
       (completionMonth &&
         (parseInt(completionMonth) < 1 || parseInt(completionMonth) > 12))
     ) {
-      alert("월은 1 ~ 12 사이의 값이어야 합니다!");
+      return alert("월은 1 ~ 12 사이의 값이어야 합니다!");
     }
 
     // Case 1: 입대일은 수료일보다 미래일 수 없다.
@@ -136,7 +136,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
 
     if (completeDate < enlistDate) {
       alert(completeDate);
-      alert(enlistDate);
+      return alert(enlistDate);
     }
 
     // Case 5: 수료일은 필수값이 아니기 때문에 입력하는 칸 3개 중에서 하나라도 잘못하면 서버한테 completionYear, completionMonth, completionDay를 전부 "0"으로 전송한다.
@@ -164,8 +164,10 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
     const today = new Date();
     console.log("수료일", completeDate);
     console.log("오늘 날짜", today);
+    // alert(completeDate);
+    // alert(enlistDate);
     if (completeDate <= today) {
-      alert("수료일은 현재 날짜보다 미래여야 합니다!");
+      return alert("수료일은 현재 날짜보다 미래여야 합니다!");
     }
 
     const enlistmentDayInt = parseInt(userInfo.enlistmentday);
@@ -180,7 +182,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
       completionDayInt >
         getMaxDayOfMonth(parseInt(completionMonth), parseInt(completionYear))
     ) {
-      alert("입력한 날짜가 해당 달의 최대 일 수를 초과하였습니다!");
+      return alert("입력한 날짜가 해당 달의 최대 일 수를 초과하였습니다!");
     }
 
     try {
