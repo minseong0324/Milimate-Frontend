@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import axios, { AxiosError } from "axios";
 
 type UserNameProps = {
-  userName?: string;
+  userName: string;
 };
 
 function Guest() {
@@ -90,7 +90,7 @@ function Guest() {
 
   return (
     <s.BackgroundContainer>
-    
+
       <s.Container>
         <s.Text>
           오늘의 질문
