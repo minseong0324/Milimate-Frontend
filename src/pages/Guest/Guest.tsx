@@ -118,10 +118,11 @@ function Guest() {
                 {
                     enlistmentState ?
                     <s.ButtonWrapper>
-                        <s.Button onClick={handleGoSend} disabled>입대까지 D-{day}</s.Button>
+                        <s.Button onClick={handleGoSend}>답변 작성하러 가기</s.Button>
+
                     </s.ButtonWrapper> :
                     <s.ButtonWrapper>
-                        <s.Button onClick={handleGoSend}>답변 작성하러 가기</s.Button>
+                        <s.Button onClick={handleGoSend} disabled>입대까지 D-{day}</s.Button>
                     </s.ButtonWrapper>
                 }
 

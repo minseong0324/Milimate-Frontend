@@ -22,7 +22,7 @@ interface ResponseData {
     endDate: number;
     todayQuestion: string;
     existNewRepl: boolean, //true, false //todayquestion이 존재한다. 그런다음 만약 이게 false면 질문은 있는데 그거에 대한 답변이 없는것, 만약 답변이 존재하면 밑으로 넘어감감
-    blur: string, //
+    blur: boolean, //
     insertedEndDate: boolean;
     //isRead: string,
 }
@@ -181,7 +181,7 @@ function MainScreen() {
     const navigateQuestionListScreen = async (nowDate: number) => {
         navigate(`/questionlist/${userId}`, {state: {nowDate}});
     };
-    const [blur, setBlur] = useState(data?.blur === "true");
+    const [blur, setBlur] = useState(data?.blur === true);
 
 //2. 클릭 이벤트 핸들러
     const handleEnvelopeClick = async () => {
@@ -282,11 +282,11 @@ function MainScreen() {
                             <Slider {...settings}>
                                 {replies.map((item: Reply, index: number) => (
                                     <div key={index} style={{width: '100%'}}>
-                                        {data.blur && replies ? (
+                                        {data.blur ? (
                                             <>
                                                 <s.ExistEnvelope></s.ExistEnvelope>
                                                 <s.CenteredText blur={true}>{item.replyContent}</s.CenteredText>
-                                                <s.NameText></s.NameText>
+                                                <s.NameText>from. {item.senderName}</s.NameText>
                                             </>
                                         ) : (
                                             <>
@@ -295,11 +295,7 @@ function MainScreen() {
                                                 <s.NameText>from. {item.senderName}</s.NameText>
                                             </>
                                         )}
-                                            {/* <>
-                                                <s.ContentEnvelope/>
-                                                <s.CenteredText blur={false}>{item.replyContent}</s.CenteredText>
-                                                <s.NameText>from. {item.senderName}</s.NameText>
-                                            </> */}
+
                                     </div>
                                 ))}
                                 {replies.length === 4 && (
