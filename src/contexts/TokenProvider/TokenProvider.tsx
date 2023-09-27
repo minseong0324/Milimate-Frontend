@@ -32,7 +32,6 @@ function TokenProvider({ children }: TokenProviderProps) {
                         'reauthorization': `${refreshToken}`
                     }
                 });
-
                 if (response.status === 200) {
                     const accessToken = response.headers['authorization'];
                     localStorage.setItem('accessToken', accessToken);
