@@ -11,7 +11,7 @@ import SmallModal from "../../components/ErrorModal/ErrorModal"
 interface PropsType {
   setModalOpen: (open: boolean) => void;
 }
-
+//
 interface ResponseData {
   completionYear: string;
   completionMonth: string;
