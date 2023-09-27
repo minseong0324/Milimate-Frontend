@@ -120,6 +120,7 @@ function MainScreen() {
                         console.error("데이터를 불러오는데 실패했습니다:", error);
                     }
                 }
+
                 // alert(response.data.existNewRepl);
                 // alert(response.data.todayQuestion);
                 setData(responseData); // 형변를환된 응답 데이터 상태에 할당
@@ -137,7 +138,7 @@ function MainScreen() {
         //     };
         //
         //     fetchReplData(); // 함수 실행
-        // } //
+        // }
     }, []);
 
     const closeModal = () => {
