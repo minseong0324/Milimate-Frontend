@@ -87,7 +87,7 @@ function App() {
                                     />
                                     <Route
                                         path="/questionlist/:userId"
-                                        element={<QuestionListScreen nowDate = {0}/>}
+                                        element={<QuestionListScreen />}
                                     />
                                     {/*
                                     <Route

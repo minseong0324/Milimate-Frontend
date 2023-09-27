@@ -11,13 +11,8 @@ interface Question {
     isRead: string;
 }
 
-interface Date {
-    nowDate: number;
-}
-
-function QuestionListScreen({nowDate}: Date) {
-    const {state} = useLocation();
-    const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
+function QuestionListScreen() {
+    const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추
     const {accessToken, refreshToken} = useToken();
     const [questions, setQuestions] = useState<Question[]>([]); 
     
@@ -90,7 +85,7 @@ function QuestionListScreen({nowDate}: Date) {
                     {/*    </s.CustomUl>*/}
                     {/*) : (<div> 아직은 확인할 수 없습니다. </div>)}*/}
 
-                    {questions && state?.nowDate >= 1 ? (
+                    {questions ? (
 
                         <s.CustomUl>
                             {
