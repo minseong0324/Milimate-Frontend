@@ -180,7 +180,7 @@ const ReplyContainer = styled.div<ReplyContainerProps>`
   width: 330px;
   height: 324.2274px;
   display: flex;
-  border: 1px solid white;
+  border: transparent;
   border-radius: 20px;
   background-color: ${props => props.backgroundColor || 'white'}; // 프롭스 값이 주어지면 그 값을 사용하고, 아니면 기본값인 'white'를 사용합니다.  
   margin-top: 20px;
@@ -198,7 +198,7 @@ const ReplyText = styled.textarea`
   z-index: 2;
   overflow-y: auto; // 스크롤을 가능하게 하는 속성
   margin-top: 30px;
-  width: 330px;
+  width: 272px;
   height: 270px; // 원하는 최대 높이값을 지정하세요
   padding-right: 30px;
   padding-left: 30px;
@@ -219,9 +219,12 @@ const ReplyText = styled.textarea`
     color: #4A544A; // 텍스트 색상
   }
 
-  @media (max-width: 600px) {
+  @media (min-width: 600px) {
+    width: 350px;
     font-size: 17px;
     height: 250px; // 원하는 최대 높이값을 지정하세요
+    padding-right: 30px;
+
   }
 `;
 const SenderDiv = styled.div`
@@ -259,7 +262,7 @@ const SenderReplyText = styled.input`
   text-align: center;
   display: flex;
   margin-left: 16px;
-  width: 171px;
+  width: 120px;
   border: 0;
   z-index: 3;
   padding-bottom: 10px;
@@ -281,7 +284,7 @@ const SenderReplyText = styled.input`
 
   @media (min-width: 600px) {
     font-size: 17px;
-    width: 185px;
+    width: 175px;
     margin-bottom: -5px;
     margin-right: 30px;
     padding-bottom: 15px;

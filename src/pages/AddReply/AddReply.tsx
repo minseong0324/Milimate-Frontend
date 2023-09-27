@@ -149,8 +149,8 @@ function AddReply() {
                                        backgroundColor="#C8D4FF"></s.RoundButton>
                         <s.RoundButton onClick={() => selectColorBtn("#A7C87E", "green")}
                                        backgroundColor="#A7C87E"></s.RoundButton>
-                        <s.RoundButton onClick={() => selectColorBtn("#ffffff", "white")}
-                                       backgroundColor="#ffffff"></s.RoundButton>
+                        <s.RoundButton onClick={() => selectColorBtn("#FEFCFC", "white")}
+                                       backgroundColor="#FEFCFC"></s.RoundButton>
                     </s.SelectColorDiv>
                     <s.ButtonStyle onClick={onSubmit}>등록하기</s.ButtonStyle>
                 </s.Wrapper>
