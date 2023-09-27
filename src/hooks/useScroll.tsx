@@ -5,6 +5,7 @@ const useScroll = (): [React.MutableRefObject<HTMLDivElement | null>, boolean] =
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    
     const handleScroll = () => {
       if (!ref.current) return;
       const topPos = window.pageYOffset + window.innerHeight;
