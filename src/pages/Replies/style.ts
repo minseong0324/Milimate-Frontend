@@ -176,7 +176,7 @@ const DayText = styled.p`
     padding-left: 16px;
     padding-right: 16px;
     top: 10px;
-    left: 136px;
+    left: 137.5px;
     font-size: 16px;
 
   }
