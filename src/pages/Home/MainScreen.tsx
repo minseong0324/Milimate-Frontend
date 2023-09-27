@@ -75,12 +75,12 @@ function MainScreen() {
             console.log(err);
         }
     };
-    
+
     useEffect(() => {
         alert(accessToken)
 
         const fetchData = async () => {
-           
+
             try {
                 const response = await axios.get(
                     `https://api.mili-mate.com/api/user/${userId}/home`,
@@ -131,7 +131,7 @@ function MainScreen() {
                     console.error("데이터를 불러오는데 실패했습니다:", error);
                 }
             };
-    
+
             fetchReplData(); // 함수 실행
         }
     }, [userId]);
@@ -199,7 +199,7 @@ function MainScreen() {
                     </div>
                 </s.AppBarWrapperDiv>
                 <s.MainContent>
-
+                    
                     <s.D_dayText>D-{ddayCount}</s.D_dayText>
 
                     <s.MainContentText>{data?.todayQuestion}</s.MainContentText>
