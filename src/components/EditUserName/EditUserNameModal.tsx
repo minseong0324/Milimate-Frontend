@@ -35,16 +35,14 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
   useEffect(() => {
     setSmallModalOpen(true)
     setModalSmallContent(
-      
+
       <s.SmallCenterModalWrapper>
         <s.SmallModalTextsWrapper1>새 이름을 입력해주세요.</s.SmallModalTextsWrapper1>
           <s.InputContainer>
             <s.MoreInfoInputName
               type="text"
               value={newUserName}
-              onChange={(e: {
-                target: { value: React.SetStateAction<string> };
-              })=> setNewUserName(e.target.value)}
+                onChange={(e: { target: { value: string }; }) => setNewUserName(e.target.value)}
             />
           </s.InputContainer>
         <s.BtnDiv>
@@ -54,7 +52,7 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
       </s.SmallCenterModalWrapper>
     );
 
-  });
+  }, [setModalOpen]);  // 의존성 배열 추가
 
   const UpdateUserNameBtn = async () => {
     if (newUserName.trim() == "") {
