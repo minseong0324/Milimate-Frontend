@@ -35,7 +35,7 @@ function QuestionListScreen({nowDate}: Date) {
                     }
                 );
                 setQuestions(response.data); // 데이터를 가져온 후 상태 업데이트
-                setIsLoading(false);
+
                 alert(response.data);
             } catch (error) {
                 //console.error("Error fetching questions:", error);
@@ -51,71 +51,69 @@ function QuestionListScreen({nowDate}: Date) {
 
     const handleNavigate = () => {
         navigate(`/home/${userId}`);
-      }
+    }
     return (
         <>
-        <s.BackButton onClick = {handleNavigate}/>
+            <s.BackButton onClick={handleNavigate}/>
 
-        <s.BackgroundContainer>
-          <s.Container>
-            <s.Text>
-              질문 리스트
-            </s.Text>
-          </s.Container>
-            <s.MainWrapper>
+            <s.BackgroundContainer>
+                <s.Container>
+                    <s.Text>
+                        질문 리스트
+                    </s.Text>
+                </s.Container>
+                <s.MainWrapper>
 
 
-                {/*{nowDate > 1 ? (*/}
-                {/*    <s.CustomUl>*/}
-                {/*        {isLoading ? (<div>Loading...</div>) : (*/}
-                {/*            questions.map((question, index) => (*/}
-                {/*                <li key={index}>*/}
-                {/*                    <s.LiLayout>*/}
-                {/*                        <s.BootImg></s.BootImg>*/}
-                {/*                        <s.CustomLi onClick={() => questionClick(question.day, question.todayQuestion)}>*/}
-                {/*                            {question.todayQuestion}*/}
-                {/*                        </s.CustomLi>*/}
-                {/*                        <s.CommaText>"</s.CommaText>*/}
-                {/*                    </s.LiLayout>*/}
-                {/*                </li>*/}
-                {/*            ))*/}
-                {/*        )}*/}
-                {/*    </s.CustomUl>*/}
-                {/*) : (<div> 아직은 확인할 수 없습니다. </div>)}*/}
+                    {/*{nowDate > 1 ? (*/}
+                    {/*    <s.CustomUl>*/}
+                    {/*        {isLoading ? (<div>Loading...</div>) : (*/}
+                    {/*            questions.map((question, index) => (*/}
+                    {/*                <li key={index}>*/}
+                    {/*                    <s.LiLayout>*/}
+                    {/*                        <s.BootImg></s.BootImg>*/}
+                    {/*                        <s.CustomLi onClick={() => questionClick(question.day, question.todayQuestion)}>*/}
+                    {/*                            {question.todayQuestion}*/}
+                    {/*                        </s.CustomLi>*/}
+                    {/*                        <s.CommaText>"</s.CommaText>*/}
+                    {/*                    </s.LiLayout>*/}
+                    {/*                </li>*/}
+                    {/*            ))*/}
+                    {/*        )}*/}
+                    {/*    </s.CustomUl>*/}
+                    {/*) : (<div> 아직은 확인할 수 없습니다. </div>)}*/}
 
-                {questions && nowDate > 1 ? (
-                    <s.CustomUl>
-                        {isLoading ? (
-                            <div>Loading...</div>
-                        ) : (
-                            questions.map((question, index) => (
-                                <li key={index}>
-                                    <s.LiLayout>
-                                        {question.isRead == "false" ? <s.DayText>{question.day}</s.DayText> :
-                                            <s.GreyDayText>{question.day}</s.GreyDayText>}
+                    {questions && nowDate >= 1 ? (
+                        <s.CustomUl>
+                            {
+                                questions.map((question, index) => (
+                                    <li key={index}>
+                                        <s.LiLayout>
+                                            {question.isRead == "false" ? <s.DayText>{question.day}</s.DayText> :
+                                                <s.GreyDayText>{question.day}</s.GreyDayText>}
 
-                                        <s.CustomLi
-                                            onClick={() =>
-                                                questionClick(question.day)
-                                            }
-                                        >
-                                            {question.todayQuestion}
-                                        </s.CustomLi>
-                                    </s.LiLayout>
-                                    <s.Splice></s.Splice>
-                                </li>
-                            ))
-                        )}
-                    </s.CustomUl>
-                ) : (
-                    <s.VoidQuestion onClick = {()=>{
-                        questionClick("12");
-                    }}>아직은 질문이 없습니다.</s.VoidQuestion>
-                )}
+                                            <s.CustomLi
+                                                onClick={() =>
+                                                    questionClick(question.day)
+                                                }
+                                            >
+                                                {question.todayQuestion}
+                                            </s.CustomLi>
+                                        </s.LiLayout>
+                                        <s.Splice></s.Splice>
+                                    </li>
+                                ))
+                            }
+                        </s.CustomUl>
+                    ) : (
+                        <s.VoidQuestion onClick={() => {
+                            questionClick("12");
+                        }}>아직은 질문이 없습니다.</s.VoidQuestion>
+                    )}
 
-            </s.MainWrapper>
+                </s.MainWrapper>
 
-        </s.BackgroundContainer>
+            </s.BackgroundContainer>
         </>
     );
 }
