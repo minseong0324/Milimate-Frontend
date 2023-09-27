@@ -71,6 +71,35 @@ function ReplyScreen({day}: ReplyScreenProps) {
                             },
                         }
                     );
+                    const modifiedData = {
+                        ...response.data,
+                        replies: response.data.replies.map((reply: Reply) => { // 여기에서 타입을 지정
+                            let modifiedColor = reply.color;
+                            if (reply.color === 'white') {
+                                modifiedColor = '#FFFFFF';
+                            }
+                            if (reply.color === 'pink') {
+                                modifiedColor = '#FFDED9';
+                            }
+                             if (reply.color === 'yellow') {
+                                modifiedColor = '#F6EC93';
+                            }
+                             if (reply.color === 'blue') {
+                                modifiedColor = '#C8D4FF';
+                            }
+                             if (reply.color === 'green') {
+                                modifiedColor = '#A7C87E';
+                            }
+
+
+                            // 다른 색상 변환 조건들...
+
+                            return {
+                                ...reply,
+                                color: modifiedColor
+                            };
+                        })
+                    };
                     setQuestionData(response.data);
                 } catch (error) {
                     console.error("Error fetching data:", error);

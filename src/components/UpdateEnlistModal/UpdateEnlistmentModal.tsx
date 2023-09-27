@@ -28,9 +28,11 @@ function UpdateEnlistmentModalBasic({ setModalOpen }: PropsType) {
   const closeModal = () => {
     setModalOpen(false);
   };
-  if(errorState == 1) {
-    setModalOpen(false);
-  }
+  useEffect(() => {
+    if(errorState === 1) {
+      setModalOpen(false);
+    }
+  }, [errorState]);
   useEffect(() => {
     setSmallModalOpen(true)
     setModalSmallContent(
@@ -109,7 +111,7 @@ function UpdateEnlistmentModalBasic({ setModalOpen }: PropsType) {
     };
 
     if (!isValidDate(enlistmentYear, enlistmentMonth, enlistmentDay)) {
-      alert("올바른 날짜를 입력해주세요!");
+      return alert("올바른 날짜를 입력해주세요!");
     }
 
     const enlistDate = new Date(

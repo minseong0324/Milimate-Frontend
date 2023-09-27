@@ -28,9 +28,11 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
   const closeModal = () => {
     setModalOpen(false);
   };
-  if(errorState == 1) {
-    setModalOpen(false);
-  }
+  useEffect(() => {
+    if(errorState === 1) {
+      setModalOpen(false);
+    }
+  }, [errorState]);
   useEffect(() => {
     setSmallModalOpen(true)
     setModalSmallContent(
