@@ -175,6 +175,13 @@ const ShareBtnDiv = styled.button`
   font-size: 16px;
   color: white;
   margin-bottom: 20px;
+  &:disabled {
+    // 여기에 disabled 상태일 때의 스타일을 작성합니다.
+    background-color: #a0a0a0;  // 예: 배경색을 회색으로 변경
+    color: #757575;  // 예: 글자색을 연한 회색으로 변경
+    cursor: not-allowed; // 마우스 커서를 변경 (선택 사항)
+    border: 1px solid #d0d0d0; // 예: 테두리 색상 변경
+  }
   @media (min-width: 600px) {
     width: 410px;
     height: 50px;
