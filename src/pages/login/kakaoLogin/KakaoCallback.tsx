@@ -44,7 +44,7 @@ function KakaoCallback() {
               completionMonth: response.data.completionMonth,
               completionday: response.data.completionDay,
 
-            })
+            })//
           );
 
           localStorage.setItem("userId", response.data.userId);
