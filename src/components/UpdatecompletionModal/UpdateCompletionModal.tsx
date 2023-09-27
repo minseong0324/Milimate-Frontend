@@ -90,7 +90,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
     const isNumeric = (value: string) => {
       return /^\d+$/.test(value);
     };
-    
+
 
     if (
       !userInfo.enlistmentYear ||
@@ -135,7 +135,8 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
     );
 
     if (completeDate < enlistDate) {
-      alert("입대일은 수료일보다 미래일 수 없습니다!");
+      alert(completeDate);
+      alert(enlistDate);
     }
 
     // Case 5: 수료일은 필수값이 아니기 때문에 입력하는 칸 3개 중에서 하나라도 잘못하면 서버한테 completionYear, completionMonth, completionDay를 전부 "0"으로 전송한다.

@@ -104,6 +104,21 @@ function MainScreen() {
                     userName: response.data.userName,
 
                 };
+                if(response.data.existNewRepl == true) {
+                    try {
+                        const replyResponse = await axios.get<RepliesResponse>(
+                            `https://api.mili-mate.com/api/user/${userId}/home/repl`,
+                            {
+                                headers: {
+                                    authorization: `${accessToken}`,
+                                },
+                            }
+                        );
+                        setReplies(replyResponse.data.replies); // 데이터 저장
+                    } catch (error) {
+                        console.error("데이터를 불러오는데 실패했습니다:", error);
+                    }
+                }
                 // alert(response.data.existNewRepl);
                 // alert(response.data.todayQuestion);
                 setData(responseData); // 형변를환된 응답 데이터 상태에 할당
@@ -117,19 +132,7 @@ function MainScreen() {
         if(data?.existNewRepl) {
             alert(accessToken)
             const fetchReplData = async () => {
-                try {
-                    const response = await axios.get<RepliesResponse>(
-                        `https://api.mili-mate.com/api/user/${userId}/home/repl`,
-                        {
-                            headers: {
-                                authorization: `${accessToken}`,
-                            },
-                        }
-                    );
-                    setReplies(response.data.replies); // 데이터 저장
-                } catch (error) {
-                    console.error("데이터를 불러오는데 실패했습니다:", error);
-                }
+
             };
 
             fetchReplData(); // 함수 실행
@@ -199,10 +202,17 @@ function MainScreen() {
                     </div>
                 </s.AppBarWrapperDiv>
                 <s.MainContent>
-                    
-                    <s.D_dayText>D-{ddayCount}</s.D_dayText>
+                    {
+                        data ? <>  <s.D_dayText>D-{ddayCount}</s.D_dayText>
 
-                    <s.MainContentText>{data?.todayQuestion}</s.MainContentText>
+                            <s.MainContentText>{data?.todayQuestion}</s.MainContentText>
+                        </> : <>
+                            <s.D_dayText>D-0</s.D_dayText>
+
+                            <s.MainContentText></s.MainContentText>
+                        </>
+                    }
+
 
 
                     {/*<s.MainContentText></s`.MainContentText>*/}

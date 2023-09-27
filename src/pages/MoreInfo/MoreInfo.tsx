@@ -127,11 +127,7 @@ function MoreInfo() {
     }
     // 회원가입 API 요청
     try {
-      console.log("유저 아이디", userId);
-      console.log("토큰!! ", accessToken);
-      console.log(completionYear);
-      console.log(completionMonth);
-      console.log(completionDay);
+
       const response = await axios.post(
         `https://api.mili-mate.com/api/user/${userId}/moreInfo`,
         {
@@ -194,9 +190,9 @@ function MoreInfo() {
   return (
     <>
     <s.BackButton onClick = {handleNavigate}/>
-    
+
     <s.BackgroundContainer>
-    
+
       <s.Container>
         <s.Text>
           상세정보 입력
