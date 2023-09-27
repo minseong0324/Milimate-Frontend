@@ -52,7 +52,7 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
       </s.SmallCenterModalWrapper>
     );
 
-  }, [setModalOpen]);  // 의존성 배열 추가
+  }, []);  // 의존성 배열 추가
 
   const UpdateUserNameBtn = async () => {
     if (newUserName.trim() == "") {
