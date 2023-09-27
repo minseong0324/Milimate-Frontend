@@ -116,6 +116,7 @@ function MainScreen() {
 
                 setData(responseData); // 형변를환된 응답 데이터 상태에 할당
                 setDdayCount(responseData.endDate - responseData.nowDate);
+                alert(data);
                 if (response.data.existNewRepl) {
                     //alert(accessToken)
                     const fetchReplData = async () => {
@@ -204,9 +205,7 @@ function MainScreen() {
             }
         }
     };
-    useEffect(() => {
-        alert(JSON.stringify(replies));
-    }, [replies]);
+
 // ...
 
 
@@ -276,8 +275,8 @@ function MainScreen() {
                 {/*<s.Envelope></s.Envelope>*/}
                 {/*<s.ExistEnvelope></s.ExistEnvelope>*/}
                 {
-                    replies != null &&data!=null ? (
-                        data.existNewRepl === false ? (
+                    data ? (
+                        !data.existNewRepl ? (
                             <s.EnvelopeDiv >
                                 <s.NoneEnvelope/>
                             </s.EnvelopeDiv>
@@ -286,7 +285,7 @@ function MainScreen() {
                                 <Slider {...settings}>
                                     {replies.map((item: Reply, index: number) => (
                                         <div key={index} style={{width: '100%'}}>
-                                            {data.blur == true ? (
+                                            {data.blur ? (
                                                 <>
                                                     <s.ExistEnvelope onClick={handleEnvelopeClick}></s.ExistEnvelope>
                                                     <s.CenteredText blur={true}>{item.replyContent}</s.CenteredText>
@@ -345,7 +344,7 @@ function MainScreen() {
             </SmallModal>
         </>
     )
-        ;
+
 }
 
 export default MainScreen;
