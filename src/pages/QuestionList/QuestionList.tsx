@@ -12,7 +12,7 @@ interface Question {
 }
 
 interface Date {
-    nowDate: string
+    nowDate: number;
 }
 
 function QuestionListScreen({nowDate}: Date) {
@@ -40,6 +40,7 @@ function QuestionListScreen({nowDate}: Date) {
             } catch (error) {
                 //console.error("Error fetching questions:", error);
                 alert(error);
+
             }
         };
         fetchData();
@@ -52,6 +53,7 @@ function QuestionListScreen({nowDate}: Date) {
     const handleNavigate = () => {
         navigate(`/home/${userId}`);
     }
+
     return (
         <>
             <s.BackButton onClick={handleNavigate}/>
