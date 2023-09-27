@@ -48,7 +48,7 @@ function QuestionListScreen({nowDate}: Date) {
             }
         };
         fetchData();
-    },[]);
+    },[userId]);
 
     const questionClick = (day: string) => {
         console.log("이벤트");
