@@ -222,9 +222,10 @@ function MainScreen() {
                         data ? (
                             data.nowDate < 0 ? (
                                 <>
+
                                     {/*<s.MainContentText>입대까지</s.MainContentText>*/}
                                     <s.D_dayText>입대까지 D-{data.endDate - 1}</s.D_dayText>
-                                    <s.MainContentText>{data.todayQuestion}</s.MainContentText>
+                                    <s.MainContentText>입대 이후 질문이 생성됩니다! 미리 링크를 공유해 준비해두세요.</s.MainContentText>
                                 </>
                             ) : data.nowDate > 0 ? (
                                 <>
