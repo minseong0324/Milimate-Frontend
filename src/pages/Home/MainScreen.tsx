@@ -119,7 +119,7 @@ function MainScreen() {
                     //alert(accessToken)
                     const fetchReplData = async () => {
                         try {
-                            const response = await axios.get<RepliesResponse>(
+                            const replResponse = await axios.get(
                                 `https://api.mili-mate.com/api/user/${userId}/home/repl`,
                                 {
                                     headers: {
@@ -127,7 +127,7 @@ function MainScreen() {
                                     },
                                 }
                             );
-                            setReplies(response.data.replies); // 데이터 저장
+                            setReplies(replResponse.data.replies); // 데이터 저장
                             alert(replies);
                         } catch (error) {
                             alert("데이터를 불러오는데 실패했습니다:");
