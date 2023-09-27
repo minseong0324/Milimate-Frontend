@@ -121,7 +121,7 @@ function App() {
                                         element={<QuestionListScreen nowDate = {0}/>}
                                     />
                                     <Route path="/send/:userId" element={<AddReply/>}/>
-                                    {/* <Route path="/mypage/:userId" element={<MyPage />} /> */}
+                                   
                                 </Routes>
                             </TokenProvider>
 
