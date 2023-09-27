@@ -23,20 +23,6 @@ function DeleteModalBasic({ setModalOpen, contentText }: PropsType) {
     setModalOpen(false);
   };
 
-  useEffect(() => {
-    setSmallModalOpen(true)
-    setModalSmallContent(
-      <s.SmallCenterModalWrapper>
-        <s.SmallModalTextsWrapper1>회원탈퇴 하시겠습니까?</s.SmallModalTextsWrapper1>
-        <s.BtnDiv>
-          <s.OkBtnStyle onClick={deleteAccount}>확인</s.OkBtnStyle>
-          <s.CancelBtnStyle onClick={closeModal}>취소</s.CancelBtnStyle>
-        </s.BtnDiv>
-      </s.SmallCenterModalWrapper>
-    );
-
-  });
-
   const deleteAccount = async () => {
     try {
       const response = await axios.delete(
@@ -72,7 +58,13 @@ function DeleteModalBasic({ setModalOpen, contentText }: PropsType) {
   };
   return (
     <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)} >
-      {modalSmallContent}
+      <s.SmallCenterModalWrapper>
+        <s.SmallModalTextsWrapper1>회원탈퇴 하시겠습니까?</s.SmallModalTextsWrapper1>
+        <s.BtnDiv>
+          <s.OkBtnStyle onClick={deleteAccount}>확인</s.OkBtnStyle>
+          <s.CancelBtnStyle onClick={closeModal}>취소</s.CancelBtnStyle>
+        </s.BtnDiv>
+      </s.SmallCenterModalWrapper>
     </SmallModal>
   );
 }
