@@ -148,7 +148,7 @@ function MoreInfo() {
 
       // 추가 정보 입력한 후 회원가입 성공, status 200일 때
 
-        //alert("회원가입에 성공하였습니다!");
+        ////alert("회원가입에 성공하였습니다!");
         dispatch(
           setUserInfo({
             userName: userName,
