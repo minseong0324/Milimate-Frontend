@@ -265,45 +265,50 @@ function MainScreen() {
                 {/*<s.Envelope></s.Envelope>*/}
                 {/*<s.ExistEnvelope></s.ExistEnvelope>*/}
                 {
-    data ? (
-        !data.existNewRepl ? (
-            <s.EnvelopeDiv onClick={handleEnvelopeClick}>
-                <s.NoneEnvelope/>
-            </s.EnvelopeDiv>
-        ) : (
-            <s.EnvelopeDiv onClick={handleEnvelopeClick}>
-                <Slider {...settings}>
-                    {replies.map((item: Reply, index: number) => (
-                        <div key={index} style={{width: '100%'}}>
-                            {data && data.blur ? (
-                                <>
-                                    <s.ExistEnvelope></s.ExistEnvelope>
-                                    <s.CenteredText blur={true}>{item.replyContent}</s.CenteredText>
-                                    <s.NameText></s.NameText>
-                                </>
-                            ) : (
-                                <>
-                                    <s.ContentEnvelope/>
-                                    <s.CenteredText blur={false}>{item.replyContent}</s.CenteredText>
-                                    <s.NameText>from. {item.senderName}</s.NameText>
-                                </>
-                            )}
-                        </div>
-                    ))}
-                    {replies.length === 4 && (
-                        <>
-                            <s.ContentEnvelope></s.ContentEnvelope>
-                            <s.CenteredText onClick={() => questionClick("12")}>
-                                모두 확인하기
-                            </s.CenteredText>
-                            <s.NameText></s.NameText>
-                        </>
-                    )}
-                </Slider>
-            </s.EnvelopeDiv>
-        )
-    ) : null
-}
+                data ? (
+                    !data.existNewRepl ? (
+                        <s.EnvelopeDiv onClick={handleEnvelopeClick}>
+                            <s.NoneEnvelope/>
+                        </s.EnvelopeDiv>
+                    ) : (
+                        <s.EnvelopeDiv onClick={handleEnvelopeClick}>
+                            <Slider {...settings}>
+                                {replies.map((item: Reply, index: number) => (
+                                    <div key={index} style={{width: '100%'}}>
+                                        {/* {data.blur ? (
+                                            <>
+                                                <s.ExistEnvelope></s.ExistEnvelope>
+                                                <s.CenteredText blur={true}>{item.replyContent}</s.CenteredText>
+                                                <s.NameText></s.NameText>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <s.ContentEnvelope/>
+                                                <s.CenteredText blur={false}>{item.replyContent}</s.CenteredText>
+                                                <s.NameText>from. {item.senderName}</s.NameText>
+                                            </>
+                                        )} */}
+                                            <>
+                                                <s.ContentEnvelope/>
+                                                <s.CenteredText blur={false}>{item.replyContent}</s.CenteredText>
+                                                <s.NameText>from. {item.senderName}</s.NameText>
+                                            </>
+                                    </div>
+                                ))}
+                                {replies.length === 4 && (
+                                    <>
+                                        <s.ContentEnvelope></s.ContentEnvelope>
+                                        <s.CenteredText onClick={() => questionClick("12")}>
+                                            모두 확인하기
+                                        </s.CenteredText>
+                                        <s.NameText></s.NameText>
+                                    </>
+                                )}
+                            </Slider>
+                        </s.EnvelopeDiv>
+                    )
+                ) : null
+            }
 
 
                 {/*<s.EnvelopeDiv onClick={handleEnvelopeClick}>*/}
