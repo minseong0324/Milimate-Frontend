@@ -30,7 +30,6 @@ function ReplyScreen({day}: ReplyScreenProps) {
     console.log(state.day);
     console.log(state.question);
     const [questionData, setQuestionData] = useState<QuestionData | null>(null);
-    //const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
     const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
     const [isLoading, setIsLoading] = useState(true); // 초기값을 true로 설정
     const testString =
