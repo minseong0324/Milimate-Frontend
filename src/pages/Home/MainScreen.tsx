@@ -204,7 +204,9 @@ function MainScreen() {
             }
         }
     };
-
+    useEffect(() => {
+        alert(JSON.stringify(replies));
+    }, [replies]);
 // ...
 
 
@@ -274,7 +276,7 @@ function MainScreen() {
                 {/*<s.Envelope></s.Envelope>*/}
                 {/*<s.ExistEnvelope></s.ExistEnvelope>*/}
                 {
-                    data!=null ? (
+                    replies != null &&data!=null ? (
                         data.existNewRepl === false ? (
                             <s.EnvelopeDiv >
                                 <s.NoneEnvelope/>
