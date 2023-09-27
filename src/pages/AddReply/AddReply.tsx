@@ -92,7 +92,7 @@ function AddReply() {
     }
 
     const handleNavigate = () => {
-        navigate('/');
+        navigate(`/guest/${userId}`);
     }
     return (
         <>

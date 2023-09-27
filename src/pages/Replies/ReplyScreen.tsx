@@ -112,11 +112,9 @@ function ReplyScreen({day}: ReplyScreenProps) {
 
 
     const navigate = useNavigate();
-    const goBackBtn = () => {
-        navigate(-1);
-    };
+
     const handleNavigate = () => {
-        navigate('/');
+        navigate(`/questionlist/${userId}`);
     }
 
     return (

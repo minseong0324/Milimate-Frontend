@@ -50,7 +50,7 @@ function QuestionListScreen({nowDate}: Date) {
     };
 
     const handleNavigate = () => {
-        navigate(-1);
+        navigate(`/home/${userId}`);
       }
     return (
         <>
