@@ -44,11 +44,14 @@ function AddReply() {
         }
         fetchData();
     }, []);
+
+
     const onSubmit = async () => {
         console.log(formData.sender);
         console.log(formData.reply);
 
         try {
+
             const response = await axios.post(
                 `https://api.mili-mate.com/api/guest/${userId}/reply`,
                 {
@@ -66,7 +69,7 @@ function AddReply() {
             if (error instanceof AxiosError) {
                 const status = error?.response?.status;
                 alert("답변을 다는 데에 실패했습니다.");
-                
+
                 if (status === 404) {
                     // 리소스를 찾을 수 없음
                 } else if (status === 500) {
@@ -80,8 +83,10 @@ function AddReply() {
     };
 
     const [selectedColor, setSelectedColor] = useState<string>('white');
+    const [selectedColorString, setSelectedColorString] = useState('white');
+    const selectColorBtn = (color: string, colorString : string) => {
 
-    const selectColorBtn = (color: string) => {
+        setSelectedColorString(colorString);
         setSelectedColor(color);
     }
 
@@ -91,16 +96,16 @@ function AddReply() {
     return (
         <>
         <s.BackButton onClick = {handleNavigate}/>
-        
+
         <s.BackgroundContainer>
-        
+
           <s.Container>
             <s.Text>
               오늘의 질문
             </s.Text>
           </s.Container>
             <s.Wrapper>
-                
+
                 <s.SoldierTagContainer>
                     {data ?<>
                         <s.DayText>{data.day}</s.DayText> :
@@ -129,15 +134,15 @@ function AddReply() {
                     </s.SenderDiv>
                 </s.ReplyContainer>
                 <s.SelectColorDiv>
-                    <s.RoundButton onClick={() => selectColorBtn("Red")} backgroundColor="#fadfda"></s.RoundButton>
-                    <s.RoundButton onClick={() => selectColorBtn("Yellow")} backgroundColor="#f5ec9e"></s.RoundButton>
-                    <s.RoundButton onClick={() => selectColorBtn("Blue")} backgroundColor="#cad4fc"></s.RoundButton>
-                    <s.RoundButton onClick={() => selectColorBtn("Green")} backgroundColor="#adc786"></s.RoundButton>
-                    <s.RoundButton onClick={() => selectColorBtn("White")} backgroundColor="#ffffff"></s.RoundButton>
+                    <s.RoundButton onClick={() => selectColorBtn("#fadfda", "pink")} backgroundColor="#fadfda"></s.RoundButton>
+                    <s.RoundButton onClick={() => selectColorBtn("#f5ec9e", "yellow")} backgroundColor="#f5ec9e"></s.RoundButton>
+                    <s.RoundButton onClick={() => selectColorBtn("#cad4fc", "blue")} backgroundColor="#cad4fc"></s.RoundButton>
+                    <s.RoundButton onClick={() => selectColorBtn("#adc786", "green")} backgroundColor="#adc786"></s.RoundButton>
+                    <s.RoundButton onClick={() => selectColorBtn("#ffffff", "white")} backgroundColor="#ffffff"></s.RoundButton>
                 </s.SelectColorDiv>
                 <s.ButtonStyle onClick={onSubmit}>등록하기</s.ButtonStyle>
             </s.Wrapper>
-           
+
             </s.BackgroundContainer>
         </>
     );
