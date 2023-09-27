@@ -32,6 +32,7 @@ interface ResponseData {
 interface Reply {
     senderName: string;
     replyContent: string;
+    color : string;
 }
 
 interface RepliesResponse {
