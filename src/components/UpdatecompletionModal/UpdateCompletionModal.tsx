@@ -175,11 +175,14 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
     console.log("오늘 날짜", today);
     // alert(completeDate);
     // alert(enlistDate);
-    if (completeDate <= enlistDate) {
+    if (completeDate <= today) {
       setErrorState(1);
       return alert("수료일은 현재 날짜보다 미래여야 합니다!");
     }
-
+    if (completeDate <= enlistDate) {
+      setErrorState(1);
+      return alert("수료일은 입대일보다보다 미래여야 합니다!");
+    }
     const enlistmentDayInt = parseInt(userInfo.enlistmentday);
     const completionDayInt = parseInt(completionDay);
 
@@ -237,7 +240,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
         return alert(`Failed to fetch user info ${error}`);
       }
     }
-    
+
   }
   const userInfo = useSelector((state: RootState) => state.userInfo);
   return (
