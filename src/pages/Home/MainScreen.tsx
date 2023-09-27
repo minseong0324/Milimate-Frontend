@@ -60,6 +60,32 @@ function MainScreen() {
     const [isSmallModalOpen, setSmallModalOpen] = useState(false);
     const [modalSmallContent, setModalSmallContent] =
         useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장\
+    const DUMMY_DATA = {
+        replies: [
+            {
+                senderName: "가슴준",
+                replyContent: "adfasdfasdfa",
+                color: "yellow"
+            },
+            {
+                senderName: "가슴준",
+                replyContent: "adfasdfasdfa",
+                color: "yellow"
+            },
+            {
+                senderName: "가슴준",
+                replyContent: "adfasdfasdfa",
+                color: "yellow"
+            },
+            {
+                senderName: "가슴준",
+                replyContent: "adfasdfasdfa",
+                color: "yellow"
+            }
+        ]
+    };
+
+// ... [기타 코드 생략] ...
 
     const handleCopyClipBoard = async () => {
         const linkToShare = `https://mili-mate.com/guest/${userId}`;
@@ -116,7 +142,7 @@ function MainScreen() {
 
                 setData(responseData); // 형변를환된 응답 데이터 상태에 할당
                 setDdayCount(responseData.endDate - responseData.nowDate);
-                alert(data);
+                //alert(data);
                 if (response.data.existNewRepl) {
                     //alert(accessToken)
                     const fetchReplData = async () => {
@@ -129,10 +155,11 @@ function MainScreen() {
                                     },
                                 }
                             );
-                            setReplies(replResponse.data.replies); // 데이터 저장
-                            //    setReplies(replResponse.data.replies);
-                            // alert(JSON.stringify(replResponse.data));
-                            alert(JSON.stringify(replies));
+                           // setReplies(replResponse.data.replies); // 데이터 저장
+                            //
+                            setReplies(DUMMY_DATA.replies); // 더미 데이터 사용
+
+
 
                             // alert(replies[0].senderName); // senderName을 출력
                             // alert(replies[0].replyContent); // replyContent를 출력
@@ -276,15 +303,47 @@ function MainScreen() {
                 {/*<s.ExistEnvelope></s.ExistEnvelope>*/}
                 {
                     data ? (
-                        !data.existNewRepl ? (
-                            <s.EnvelopeDiv >
-                                <s.NoneEnvelope/>
-                            </s.EnvelopeDiv>
-                        ) : (
+                        // !data.existNewRepl ? (
+                        //     <s.EnvelopeDiv >
+                        //         <s.NoneEnvelope/>
+                        //     </s.EnvelopeDiv>
+                        // ) : (
+                        //     <s.EnvelopeDiv onClick={handleEnvelopeClick}>
+                        //         <Slider {...settings}>
+                        //             {replies.map((item: Reply, index: number) => (
+                        //                 <div key={index} style={{width: '100%'}}>
+                        //                     {data.blur ? (
+                        //                         <>
+                        //                             <s.ExistEnvelope onClick={handleEnvelopeClick}></s.ExistEnvelope>
+                        //                             <s.CenteredText blur={true}>{item.replyContent}</s.CenteredText>
+                        //                             <s.NameText>from. {item.senderName}</s.NameText>
+                        //                         </>
+                        //                     ) : (
+                        //                         <>
+                        //                             <s.ContentEnvelope/>
+                        //                             <s.CenteredText blur={false}>{item.replyContent}</s.CenteredText>
+                        //                             <s.NameText>from. {item.senderName}</s.NameText>
+                        //                         </>
+                        //                     )}
+                        //
+                        //                 </div>
+                        //             ))}
+                        //             {replies.length === 4 && (
+                        //                 <>
+                        //                     <s.ContentEnvelope></s.ContentEnvelope>
+                        //                     <s.CenteredText onClick={() => questionClick("12")}>
+                        //                         모두 확인하기
+                        //                     </s.CenteredText>
+                        //                     <s.NameText></s.NameText>
+                        //                 </>
+                        //             )}
+                        //         </Slider>
+                        //     </s.EnvelopeDiv>
+
                             <s.EnvelopeDiv onClick={handleEnvelopeClick}>
                                 <Slider {...settings}>
                                     {replies.map((item: Reply, index: number) => (
-                                        <div key={index} style={{width: '100%'}}>
+                                        <div key={index} style={{width : "100%"}}>
                                             {data.blur ? (
                                                 <>
                                                     <s.ExistEnvelope onClick={handleEnvelopeClick}></s.ExistEnvelope>
@@ -301,18 +360,18 @@ function MainScreen() {
 
                                         </div>
                                     ))}
-                                    {/*{replies.length === 4 && (*/}
-                                    {/*    <>*/}
-                                    {/*        <s.ContentEnvelope></s.ContentEnvelope>*/}
-                                    {/*        <s.CenteredText onClick={() => questionClick("12")}>*/}
-                                    {/*            모두 확인하기*/}
-                                    {/*        </s.CenteredText>*/}
-                                    {/*        <s.NameText></s.NameText>*/}
-                                    {/*    </>*/}
-                                    {/*)}*/}
+                                    {replies.length === 4 && (
+                                        <>
+                                            <s.ContentEnvelope></s.ContentEnvelope>
+                                            <s.CenteredText onClick={() => questionClick("12")}>
+                                                모두 확인하기
+                                            </s.CenteredText>
+                                            <s.NameText></s.NameText>
+                                        </>
+                                    )}
                                 </Slider>
                             </s.EnvelopeDiv>
-                        )
+
                     ) : <s.EnvelopeDiv>
                         <s.NoneEnvelope/>
                     </s.EnvelopeDiv>
