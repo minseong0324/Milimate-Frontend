@@ -176,7 +176,7 @@ function MainScreen() {
     };
     const [blur, setBlur] = useState(data?.blur === "true");
 
-// 2. 클릭 이벤트 핸들러
+//2. 클릭 이벤트 핸들러
     const handleEnvelopeClick = async () => {
         if (blur) {
             try {
@@ -228,7 +228,7 @@ function MainScreen() {
                                 </>
                             ) : data.nowDate > 0 ? (
                                 <>
-                                    <s.D_dayText>D-{data.endDate - 1}</s.D_dayText>
+                                    <s.D_dayText>D+{data.endDate - 1}</s.D_dayText>
                                     <s.MainContentText>{data.todayQuestion}</s.MainContentText>
                                 </>
                             ) : <></>
