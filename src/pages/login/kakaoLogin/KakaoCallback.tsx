@@ -60,18 +60,7 @@ function KakaoCallback() {
       if (error instanceof AxiosError) {
         const status = error?.response?.status;
         console.error("Failed to fetch user info:", error);
-        setModalErrorContent(
-          <s.ErrorCenterModalWrapper>
-            <s.ErrorModalTextsWrapper2>
-              카카오에서 정보를
-            </s.ErrorModalTextsWrapper2>
-            <s.ErrorModalTextsWrapper2>
-              불러오지 못했어요.
-            </s.ErrorModalTextsWrapper2>
-            <s.ModalButton onClick={handleErrorModalClose}>닫기</s.ModalButton>
-          </s.ErrorCenterModalWrapper>
-        );
-        setErrorModalOpen(true);
+        alert("카카오에서 정보를 불러오지 못했어요.")
         if (status === 404) {
           // 리소스를 찾을 수 없음
         } else if (status === 500) {
@@ -80,7 +69,6 @@ function KakaoCallback() {
           // 기타 상태 코드 처리
         }
       }
-      setErrorModalOpen(true);
       navigate("/login");
       return null;
     }
