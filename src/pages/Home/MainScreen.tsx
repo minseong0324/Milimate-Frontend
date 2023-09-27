@@ -241,7 +241,6 @@ function MainScreen() {
                 {data && data.existNewRepl == false ?
                     <s.EnvelopeDiv blur={blur} onClick={handleEnvelopeClick}>
 
-
                         <s.NoneEnvelope/>
 
 
