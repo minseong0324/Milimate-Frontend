@@ -15,13 +15,27 @@ function DeleteModalBasic({ setModalOpen, contentText }: PropsType) {
   const { accessToken, refreshToken } = useToken();
   const navigate = useNavigate();
   const modalRef = useRef<HTMLDivElement | null>(null);
-  const [isSmallModalOpen, setSmallModalOpen] = useState(false);
+  const [isSmallModalOpen, setSmallModalOpen] = useState(true);
   const [modalSmallContent, setModalSmallContent] =
     useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장\
   // 모달 끄기
   const closeModal = () => {
     setModalOpen(false);
   };
+
+  useEffect(() => {
+    setSmallModalOpen(true)
+    setModalSmallContent(
+      <s.SmallCenterModalWrapper>
+        <s.SmallModalTextsWrapper1>회원탈퇴 하시겠습니까?</s.SmallModalTextsWrapper1>
+        <s.BtnDiv>
+          <s.OkBtnStyle onClick={deleteAccount}>확인</s.OkBtnStyle>
+          <s.CancelBtnStyle onClick={closeModal}>취소</s.CancelBtnStyle>
+        </s.BtnDiv>
+      </s.SmallCenterModalWrapper>
+    );
+
+  });
 
   const deleteAccount = async () => {
     try {
@@ -58,13 +72,7 @@ function DeleteModalBasic({ setModalOpen, contentText }: PropsType) {
   };
   return (
     <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)} >
-      <s.SmallCenterModalWrapper>
-        <s.SmallModalTextsWrapper1>회원탈퇴 하시겠습니까?</s.SmallModalTextsWrapper1>
-        <s.BtnDiv>
-          <s.OkBtnStyle onClick={deleteAccount}>확인</s.OkBtnStyle>
-          <s.CancelBtnStyle onClick={closeModal}>취소</s.CancelBtnStyle>
-        </s.BtnDiv>
-      </s.SmallCenterModalWrapper>
+      {modalSmallContent}
     </SmallModal>
   );
 }

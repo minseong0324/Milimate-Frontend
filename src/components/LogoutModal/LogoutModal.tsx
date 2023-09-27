@@ -15,7 +15,7 @@ function LogoutModalBasic({ setModalOpen, contentText }: PropsType) {
   const { accessToken, refreshToken } = useToken();
   const navigate = useNavigate();
   const modalRef = useRef<HTMLDivElement | null>(null);
-  const [isSmallModalOpen, setSmallModalOpen] = useState(false);
+  const [isSmallModalOpen, setSmallModalOpen] = useState(true);
   const [modalSmallContent, setModalSmallContent] =
     useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장\
 

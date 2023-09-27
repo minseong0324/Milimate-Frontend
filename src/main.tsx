@@ -10,8 +10,10 @@ const root = CreateDOM.createRoot(rootElement); // reactDOM 쓰니 자꾸 에러
 root.render(
 
   <React.StrictMode>
-    <GlobalStyle />
-    <App />
+    <>
+      <GlobalStyle />
+      <App />
+    </>
   </React.StrictMode>
   
 );

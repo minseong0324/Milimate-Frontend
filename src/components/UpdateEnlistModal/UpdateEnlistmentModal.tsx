@@ -20,7 +20,7 @@ function UpdateEnlistmentModalBasic({ setModalOpen }: PropsType) {
   const [enlistmentYear, setEnlistmentYear] = useState("");
   const [enlistmentMonth, setEnlistmentMonth] = useState("");
   const [enlistmentDay, setEnlistmentDay] = useState("");
-  const [isSmallModalOpen, setSmallModalOpen] = useState(false);
+  const [isSmallModalOpen, setSmallModalOpen] = useState(true);
   const [modalSmallContent, setModalSmallContent] =
     useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장
   const [errorState, setErrorState]= useState(2);

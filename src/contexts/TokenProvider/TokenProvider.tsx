@@ -45,13 +45,7 @@ function TokenProvider({ children }: TokenProviderProps) {
                   
                   
                     const status = error?.response?.status;
-                    setModalErrorContent(
-                    <s.ErrorCenterModalWrapper>
-                        <s.ErrorModalTextsWrapper2>세션이 만료되었어요!</s.ErrorModalTextsWrapper2>
-                        <s.ErrorModalTextsWrapper2>로그아웃 처리 됩니다!</s.ErrorModalTextsWrapper2>
-                        <s.ModalButton onClick={handleNavigateHome}>돌아가기</s.ModalButton>
-                    </s.ErrorCenterModalWrapper>
-                    );
+                    alert("세션이 만료되었습니다. 자동으로 로그아웃 됩니다.")
                     if (status === 404) {
                         // 리소스를 찾을 수 없음
                       } else if (status === 500) {
@@ -60,8 +54,8 @@ function TokenProvider({ children }: TokenProviderProps) {
                           // 기타 상태 코드 처리
                       }
                     } 
-                    setErrorModalOpen(true)
-                
+                    localStorage.clear();
+                    navigate('/')
             }
         
         }, 1000 * 60 * 30); // 30분 마다 실행
