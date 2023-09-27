@@ -1,47 +1,70 @@
 import styled from "styled-components";
+import BackButtonImg from "../../assets/BackButton/BackButton.svg"
 
-const MainWrapper = styled.div`
+const BackButton = styled.img.attrs({
+  src: BackButtonImg
+})`
+  position: absolute;
+  width: 24px;
+  height: auto;
+  left: 2%;  /* 화면의 좌측에서 약간 떨어진 정도 설정 */
+  top: 10px;
+  @media (min-width: 600px) {
+    left: calc(50% - 300px + 10px);
+    top: 36px;
+
+  }
+  /* 가로모드용 스타일 */
+  @media screen and (max-width: 767px) and (orientation: landscape) {
+    top: 10px;
+  }
+`;
+
+const BackgroundContainer = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-
-  text-align: center;
   background: #f2f1ee no-repeat center center;
-`;
-const IconLayout = styled.div`
-  flex-direction: row;
-  width: 600px;
-  margin-top: 24px;
-  //margin-bottom: 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  //background-color: grey;
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-`;
-const Spacer = styled.div`
-  width: 36px;
   
-`;
-const ButtonDesign = styled.button`
-  background-color: transparent;
-  border: none;
-  justify-content: start;
-  align-items: start;
-`;
-const TitleText = styled.p`
-  font-size: 18px;
-  text-align: start;
-  font-weight: bolder;
-  color : #4c544b;
-  @media (max-width: 768px) {
-    font-size: 18px;
-    font-weight: bolder;
+  @media (min-width: 600px) {
+    background-size: 600px auto;/* 원하는 최대 너비 값으로 설정 */
+    margin: 0 auto; /* 좌우 중앙 정렬 */
   }
 `;
+
+const Container = styled.div`
+  position: relative;
+  width: 100%;
+  //height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+`;
+
+const Text = styled.div`
+  position: absolute;
+  top: 13px;
+  font-size: 18px;
+  font-weight: bolder;
+  @media (min-width: 600px) {
+    top: 36px;
+    font-size: 20px;
+  }
+
+`;
+
+const MainWrapper = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+`;
+
 const CustomUl = styled.ul`
   list-style-type: none; // 목록 항목 앞의 기호(점) 제거
   padding: 12px;
@@ -95,11 +118,10 @@ export const s = {
 
   LiLayout,
   DayText,
-  IconLayout,
-  ButtonDesign,
-  TitleText,
-  Spacer,
   Splice,
-  GreyDayText
-
+  GreyDayText,
+  BackButton,
+  BackgroundContainer,
+  Container,
+  Text,
 };

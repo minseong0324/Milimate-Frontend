@@ -49,23 +49,21 @@ function QuestionListScreen({nowDate}: Date) {
         navigate("/replyscreen", {state: {day}});
     };
 
-    const goBackBtn = () => {
-        navigate(-1);
-    };
+    const handleNavigate = () => {
+        navigate('/');
+      }
     return (
         <>
+        <s.BackButton onClick = {handleNavigate}/>
+        
+        <s.BackgroundContainer>
+          <s.Container>
+            <s.Text>
+              질문 리스트
+            </s.Text>
+          </s.Container>
             <s.MainWrapper>
-                <s.IconLayout>
-                    <s.ButtonDesign onClick={goBackBtn}>
-                        <BiChevronLeft size={24} color="#4c544b"/>
-
-                    </s.ButtonDesign>
-                    <s.TitleText>질문 리스트</s.TitleText>
-                    <s.ButtonDesign onClick={() => {
-                    }}>
-                        <BiChevronLeft size={24} color="#f2f1ee"/>
-                    </s.ButtonDesign>
-                </s.IconLayout>
+                
 
                 {/*{nowDate > 1 ? (*/}
                 {/*    <s.CustomUl>*/}
@@ -114,6 +112,8 @@ function QuestionListScreen({nowDate}: Date) {
                 )}
 
             </s.MainWrapper>
+        
+        </s.BackgroundContainer>
         </>
     );
 }
