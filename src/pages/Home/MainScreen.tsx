@@ -268,6 +268,7 @@ function MainScreen() {
                                                 <s.NameText> </s.NameText>
                                             </>
                                             :
+
                                             <>
                                                 <s.ContentEnvelope/>
                                                 <s.CenteredText>{item.replyContent}</s.CenteredText>
