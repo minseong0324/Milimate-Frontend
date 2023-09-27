@@ -47,8 +47,8 @@ function MainScreen() {
         slidesToScroll: 1,
         //arrows: true, // 이 부분을 추가하세요.
     };
-    const { accessToken, refreshToken } = useToken();
-
+    //    const { accessToken, refreshToken } = useToken();
+    const accessToken = localStorage.getItem("accessToken");
     const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
     const userInfo = useSelector((state: RootState) => state.userInfo);
     const [data, setData] = useState<ResponseData | null>(null);
