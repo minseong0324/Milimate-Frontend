@@ -131,7 +131,7 @@ function MainScreen() {
                             console.error("데이터를 불러오는데 실패했습니다:", error);
                         }
                     };
-                
+
                     fetchReplData(); // 함수 실행
                 }
             } catch (e) {
@@ -218,7 +218,7 @@ function MainScreen() {
                 </s.AppBarWrapperDiv>
                 <s.MainContent>
 
-                    <s.D_dayText>D-{ddayCount}</s.D_dayText>
+                    <s.D_dayText>D-{data?.endDate}</s.D_dayText>
 
                     <s.MainContentText>{data?.todayQuestion}</s.MainContentText>
 

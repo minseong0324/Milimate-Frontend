@@ -213,7 +213,7 @@ const EnvelopeDiv = styled.div`
   display: flex;
   justify-content: center;
   //align-items: center;
-  background-color: grey;
+  //background-color: grey;
   background-size: contain;
   @media (max-width: 600px) {
     width: 450px;
