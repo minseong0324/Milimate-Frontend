@@ -274,7 +274,7 @@ function MainScreen() {
                 {
                     data ? (
                         !data.existNewRepl ? (
-                            <s.EnvelopeDiv onClick={handleEnvelopeClick}>
+                            <s.EnvelopeDiv >
                                 <s.NoneEnvelope/>
                             </s.EnvelopeDiv>
                         ) : (
@@ -284,7 +284,7 @@ function MainScreen() {
                                         <div key={index} style={{width: '100%'}}>
                                             {data.blur == true ? (
                                                 <>
-                                                    <s.ExistEnvelope></s.ExistEnvelope>
+                                                    <s.ExistEnvelope onClick={handleEnvelopeClick}></s.ExistEnvelope>
                                                     <s.CenteredText blur={true}>{item.replyContent}</s.CenteredText>
                                                     <s.NameText>from. {item.senderName}</s.NameText>
                                                 </>
@@ -310,20 +310,7 @@ function MainScreen() {
                                 </Slider>
                             </s.EnvelopeDiv>
                         )
-                    ) : <s.EnvelopeDiv onClick={handleEnvelopeClick}>
-                        <Slider {...settings}>
-
-
-                                <>
-                                    <s.ContentEnvelope></s.ContentEnvelope>
-                                    <s.CenteredText onClick={() => questionClick("12")}>
-                                        모두 확인하기
-                                    </s.CenteredText>
-                                    <s.NameText></s.NameText>
-                                </>
-
-                        </Slider>
-                    </s.EnvelopeDiv>
+                    ) :<p></p>
                 }
 
 
