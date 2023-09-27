@@ -128,7 +128,8 @@ function MainScreen() {
                                 }
                             );
                             setReplies(replResponse.data.replies); // 데이터 저장
-                            alert(replies);
+                            alert(replies[0].senderName); // senderName을 출력
+                            alert(replies[0].replyContent); // replyContent를 출력
                         } catch (error) {
                             alert("데이터를 불러오는데 실패했습니다:");
                         }
