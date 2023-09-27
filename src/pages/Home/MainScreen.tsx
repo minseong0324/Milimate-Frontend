@@ -199,86 +199,86 @@ function MainScreen() {
     return (
         <>
             <s.WrapperLayout>
-                <s.AppBarWrapperDiv>
-                    <s.MilimateLogo/>
-                    <div>
-                        <MdPersonOutline onClick={() => {
-                            profileImgClick()
-                        }} size={24} color={'#4c544b'} style={{marginRight: 16}}></MdPersonOutline>
-                        <AiOutlineUnorderedList onClick={() => {
-                            //navigateQuestionListScreen(data!.nowData);
-                            navigateQuestionListScreen(1);
+                {/*<s.AppBarWrapperDiv>*/}
+                {/*    <s.MilimateLogo/>*/}
+                {/*    <div>*/}
+                {/*        <MdPersonOutline onClick={() => {*/}
+                {/*            profileImgClick()*/}
+                {/*        }} size={24} color={'#4c544b'} style={{marginRight: 16}}></MdPersonOutline>*/}
+                {/*        <AiOutlineUnorderedList onClick={() => {*/}
+                {/*            //navigateQuestionListScreen(data!.nowData);*/}
+                {/*            navigateQuestionListScreen(1);*/}
 
-                        }} size={24} color={'#4c544b'}
-                                                style={{marginRight: 16}}></AiOutlineUnorderedList>
-                    </div>
-                </s.AppBarWrapperDiv>
-                <s.MainContent>
-                    <s.D_dayText>D-{ddayCount}</s.D_dayText>
-                    <s.MainContentText>{data?.todayQuestion}</s.MainContentText>
-                    {/*<s.MainContentText></s`.MainContentText>*/}
-                    <>
-                        {data && (
-                            !data.existNewRepl
-                                ? <s.SadCharImg/>
-                                : randomNumber === 1
-                                    ? <s.hearCharaImg1/>
-                                    : randomNumber === 2
-                                        ? <s.hearCharaImg2/>
-                                        : <s.hearCharaImg3/>
-                        )}
-                    </>
-                    <div style={{flexDirection: "row", display: 'flex', marginTop: 32, marginBottom: 32}}>
-                        <s.MainContentText>{userInfo.userName}</s.MainContentText>
-                        <s.NormalText> 훈련병</s.NormalText>
-                    </div>
-                </s.MainContent>
-                <s.ShareBtnDiv onClick={handleCopyClipBoard}>
-                    <p>오늘의 질문 공유하기</p>
-                    <FiUpload size={24} style={{marginLeft: 12}}></FiUpload>
-                </s.ShareBtnDiv>
-                {/*<s.Envelope></s.Envelope>*/}
-                {/*<s.ExistEnvelope></s.ExistEnvelope>*/}
-                {data && !data.existNewRepl ?
-                    <s.EnvelopeDiv blur={blur} onClick={handleEnvelopeClick}>
-                        <s.NoneEnvelope/>
-                    </s.EnvelopeDiv>
-                    :
-                    data && data.existNewRepl ?
-                    <s.EnvelopeDiv blur={blur} onClick={handleEnvelopeClick}>
-                        <Slider {...settings}>
-                            {replies.map((item: Reply, index: number) => (
-                                <div key={index} style={{width: '100%'}}>
-                                    {data && !data.existNewRepl
-                                        ? <s.NoneEnvelope/>
-                                        : blur
-                                            ? <s.ExistEnvelope/>
-                                            : <s.ContentEnvelope/>
-                                    }
-                                    <s.CenteredText>{item.replyContent}</s.CenteredText>
-                                    <s.NameText>from. {item.senderName}</s.NameText>
-                                </div>
-                            ))}
-                            {/*{replies.length === 4 && (*/}
-                            {/*    <s.EnvelopeDiv>*/}
-                            {/*        <s.ContentEnvelope></s.ContentEnvelope>*/}
-                            {/*        <s.CenteredText onClick={() => questionClick(data.day.toString())}>*/}
-                            {/*            모두 확인하기*/}
-                            {/*        </s.CenteredText>*/}
-                            {/*        <s.NameText></s.NameText>*/}
-                            {/*    </s.EnvelopeDiv>*/}
-                            {/*)}*/}
-                            <s.EnvelopeDiv>
-                                <s.ContentEnvelope></s.ContentEnvelope>
-                                <s.CenteredText onClick={() => questionClick(data.day.toString())}>
-                                    모두 확인하기
-                                </s.CenteredText>
-                                <s.NameText></s.NameText>
-                            </s.EnvelopeDiv>
+                {/*        }} size={24} color={'#4c544b'}*/}
+                {/*                                style={{marginRight: 16}}></AiOutlineUnorderedList>*/}
+                {/*    </div>*/}
+                {/*</s.AppBarWrapperDiv>*/}
+                {/*<s.MainContent>*/}
+                {/*    <s.D_dayText>D-{ddayCount}</s.D_dayText>*/}
+                {/*    <s.MainContentText>{data?.todayQuestion}</s.MainContentText>*/}
+                {/*    /!*<s.MainContentText></s`.MainContentText>*!/*/}
+                {/*    <>*/}
+                {/*        {data && (*/}
+                {/*            !data.existNewRepl*/}
+                {/*                ? <s.SadCharImg/>*/}
+                {/*                : randomNumber === 1*/}
+                {/*                    ? <s.hearCharaImg1/>*/}
+                {/*                    : randomNumber === 2*/}
+                {/*                        ? <s.hearCharaImg2/>*/}
+                {/*                        : <s.hearCharaImg3/>*/}
+                {/*        )}*/}
+                {/*    </>*/}
+                {/*    <div style={{flexDirection: "row", display: 'flex', marginTop: 32, marginBottom: 32}}>*/}
+                {/*        <s.MainContentText>{userInfo.userName}</s.MainContentText>*/}
+                {/*        <s.NormalText> 훈련병</s.NormalText>*/}
+                {/*    </div>*/}
+                {/*</s.MainContent>*/}
+                {/*<s.ShareBtnDiv onClick={handleCopyClipBoard}>*/}
+                {/*    <p>오늘의 질문 공유하기</p>*/}
+                {/*    <FiUpload size={24} style={{marginLeft: 12}}></FiUpload>*/}
+                {/*</s.ShareBtnDiv>*/}
+                {/*/!*<s.Envelope></s.Envelope>*!/*/}
+                {/*/!*<s.ExistEnvelope></s.ExistEnvelope>*!/*/}
+                {/*{data && !data.existNewRepl ?*/}
+                {/*    <s.EnvelopeDiv blur={blur} onClick={handleEnvelopeClick}>*/}
+                {/*        <s.NoneEnvelope/>*/}
+                {/*    </s.EnvelopeDiv>*/}
+                {/*    :*/}
+                {/*    data && data.existNewRepl ?*/}
+                {/*    <s.EnvelopeDiv blur={blur} onClick={handleEnvelopeClick}>*/}
+                {/*        <Slider {...settings}>*/}
+                {/*            {replies.map((item: Reply, index: number) => (*/}
+                {/*                <div key={index} style={{width: '100%'}}>*/}
+                {/*                    {data && !data.existNewRepl*/}
+                {/*                        ? <s.NoneEnvelope/>*/}
+                {/*                        : blur*/}
+                {/*                            ? <s.ExistEnvelope/>*/}
+                {/*                            : <s.ContentEnvelope/>*/}
+                {/*                    }*/}
+                {/*                    <s.CenteredText>{item.replyContent}</s.CenteredText>*/}
+                {/*                    <s.NameText>from. {item.senderName}</s.NameText>*/}
+                {/*                </div>*/}
+                {/*            ))}*/}
+                {/*            /!*{replies.length === 4 && (*!/*/}
+                {/*            /!*    <s.EnvelopeDiv>*!/*/}
+                {/*            /!*        <s.ContentEnvelope></s.ContentEnvelope>*!/*/}
+                {/*            /!*        <s.CenteredText onClick={() => questionClick(data.day.toString())}>*!/*/}
+                {/*            /!*            모두 확인하기*!/*/}
+                {/*            /!*        </s.CenteredText>*!/*/}
+                {/*            /!*        <s.NameText></s.NameText>*!/*/}
+                {/*            /!*    </s.EnvelopeDiv>*!/*/}
+                {/*            /!*)}*!/*/}
+                {/*            <s.EnvelopeDiv>*/}
+                {/*                <s.ContentEnvelope></s.ContentEnvelope>*/}
+                {/*                <s.CenteredText onClick={() => questionClick(data.day.toString())}>*/}
+                {/*                    모두 확인하기*/}
+                {/*                </s.CenteredText>*/}
+                {/*                <s.NameText></s.NameText>*/}
+                {/*            </s.EnvelopeDiv>*/}
 
-                        </Slider>
-                    </s.EnvelopeDiv> : <></>
-                }
+                {/*        </Slider>*/}
+                {/*    </s.EnvelopeDiv> : <></>*/}
+                {/*}*/}
 
                 <div style={{margin: 36}}></div>
             </s.WrapperLayout>
