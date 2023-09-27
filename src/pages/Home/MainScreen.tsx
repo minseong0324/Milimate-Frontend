@@ -48,6 +48,7 @@ function MainScreen() {
         //arrows: true, // 이 부분을 추가하세요.
     };
     const { accessToken, refreshToken } = useToken();
+
     const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
     const userInfo = useSelector((state: RootState) => state.userInfo);
     const [data, setData] = useState<ResponseData | null>(null);
@@ -77,6 +78,7 @@ function MainScreen() {
     };
 //
     useEffect(() => {
+        alert('토큰 테스트!')
         alert(accessToken)
 
         const fetchData = async () => {
@@ -116,7 +118,7 @@ function MainScreen() {
 
 
         if(data?.existNewRepl) {
-            alert(accessToken)
+            //alert(accessToken)
             const fetchReplData = async () => {
                 try {
                     const response = await axios.get<RepliesResponse>(
@@ -135,18 +137,17 @@ function MainScreen() {
 
             fetchReplData(); // 함수 실행
         }
-        // if (data?.existNewRepl) {
-        //     alert(accessToken)
-        //     const fetchReplData = async () => {
-        //
-        //     };
-        //
-        //     fetchReplData(); // 함수 실행
-        // } ///
+    }, [accessToken]);
 
+    // if (data?.existNewRepl) {
+    //     alert(accessToken)
+    //     const fetchReplData = async () => {
+    //
+    //     };
+    //
+    //     fetchReplData(); // 함수 실행
+    // } ///
 
-
-    }, [userId, accessToken]);
 
 
     const closeModal = () => {
