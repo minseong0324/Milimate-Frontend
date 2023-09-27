@@ -51,7 +51,7 @@ const InputContainer = styled.div`
     margin-right: 10px; // 마지막 input을 제외한 모든 input에 오른쪽 마진 15px 부여
   }
 `;
-
+//
 const MoreInfoInputName = styled.input`
   padding: 10px;
   font-size: 13px;
