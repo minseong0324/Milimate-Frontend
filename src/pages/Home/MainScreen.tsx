@@ -257,16 +257,13 @@ function MainScreen() {
                     </div>
                 </s.MainContent>
 
-
                 <s.ShareBtnDiv onClick={handleCopyClipBoard}>
                     <p>오늘의 질문 공유하기</p>
                     <FiUpload size={24} style={{marginLeft: 12}}></FiUpload>
                 </s.ShareBtnDiv>
 
-
                 {/*<s.Envelope></s.Envelope>*/}
                 {/*<s.ExistEnvelope></s.ExistEnvelope>*/}
-
 
                 {data && !data.existNewRepl ?
                     <s.EnvelopeDiv onClick={handleEnvelopeClick}>
@@ -280,15 +277,15 @@ function MainScreen() {
                                         <div key={index} style={{width: '100%'}}>
                                             {data && data.blur ?
                                                 <>
-                                                    <s.ExistEnvelope blur={blur}></s.ExistEnvelope>
-                                                    <s.CenteredText>매아트가 보내준 답변을 확인해보세요!</s.CenteredText>
+                                                    <s.ExistEnvelope></s.ExistEnvelope>
+                                                    <s.CenteredText blur = {true}>{item.replyContent}</s.CenteredText>
                                                     <s.NameText></s.NameText>
                                                 </>
                                                 :
 
                                                 <>
                                                     <s.ContentEnvelope/>
-                                                    <s.CenteredText>{item.replyContent}</s.CenteredText>
+                                                    <s.CenteredText blur = {false}>{item.replyContent}</s.CenteredText>
                                                     <s.NameText>from. {item.senderName}</s.NameText>
                                                 </>
                                             }

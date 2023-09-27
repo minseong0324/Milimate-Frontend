@@ -202,10 +202,10 @@ const NoneEnvelope = styled.img.attrs({
 
 const ExistEnvelope = styled.img.attrs({
     src: existEnvelope,
-})<ExistEnvelopeProps>`
+})`
   z-index: 2;
   width: 343px;  
-  filter: ${({ blur }) => (blur ? 'blur(5px)' : 'none')};
+  
   @media (min-width: 600px) {
     width: 410px;
     //margin-bottom: -30px;
@@ -238,11 +238,12 @@ const ContentEnvelope = styled.img.attrs({
     //height: 240.26px;
   }
 `;
-const CenteredText = styled.div`
+const CenteredText = styled.div<ExistEnvelopeProps>`
   position: absolute;
   text-align: center;
   top: 40%;
   left: 50%;
+  filter: ${({ blur }) => (blur ? 'blur(5px)' : 'none')};
   transform: translate(-50%, -100%);
   max-height: calc(1.4em * 3); // 1.2em은 한 줄의 높이로 가정, 3줄까지 표시
   width: 80%;  // 텍스트가 너무 길면 줄바꿈을 위해 width 설정

@@ -107,19 +107,23 @@ function Guest() {
                     <s.SolierTag/>
                     <s.TextsStyle>TO.</s.TextsStyle>
                     <s.TextsStyle2>{userName} 훈련병</s.TextsStyle2>
-                    {enlistmentState ? <s.TextsStyle2_1>{todayQuestion}</s.TextsStyle2_1> :
-                        <s.TextsStyle2_1>입대 이후 질문이 생성됩니다! 미리 링크를 공유해 준비해두세요.</s.TextsStyle2_1>}
+                    {
+                        enlistmentState ? <s.TextsStyle2_1>{todayQuestion}</s.TextsStyle2_1> :
+                        <s.TextsStyle2_1>입대 이후 질문이 생성됩니다! 미리 링크를 공유해 준비해두세요.</s.TextsStyle2_1>
+                    }
 
                 </s.TagContainer>
                 <s.Character alt="Character Description"/>
                 {/*입대 이후 질문이 생성됩니다! 미리 링크를 공유해 준비해두세요.*/}
-                {enlistmentState ?
+                {
+                    enlistmentState ?
                     <s.ButtonWrapper>
                         <s.Button onClick={handleGoSend} disabled>입대까지 D-{day}</s.Button>
                     </s.ButtonWrapper> :
                     <s.ButtonWrapper>
                         <s.Button onClick={handleGoSend}>답변 작성하러 가기</s.Button>
-                    </s.ButtonWrapper>}
+                    </s.ButtonWrapper>
+                }
 
                 {/* <ErrorModal isOpen={isErrorModalOpen} onClose={() => setErrorModalOpen(false)} >
           {modalErrorContent}
