@@ -63,7 +63,7 @@ const Wrapper = styled.div`
 
 const SoldierTagContainer = styled.div`
   position: relative;
-  width: 343px;
+  width: 346px;
   height: 145px;
   display: flex;
   align-items: flex-start;
@@ -89,53 +89,58 @@ z-index: 2;
 `;
 
 const DayText = styled.p`
-  position: relative;
+  position: absolute;
   z-index: 2;
   border: 1px solid #f4efce;
   border-radius: 24px;
-  padding-left: 16px;
-  padding-right: 16px;
+  
   padding-top: 4px;
   padding-bottom: 4px;
-  top : -10px;
+
+  padding-left: 12px;
+  padding-right: 12px;
+  top: 10px;
+  left: 145px;
   background-color: #adc786;
   align-items: center;
   color: white;
   //padding: 8px;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: bold;
 
   //padding: 8px;
   //overflow-y: auto; // 스크롤을 가능하게 하는 속성
   //max-height: 120px; // 원하는 최대 높이값을 지정하세요
-  @media (max-width: 768px) {
-    //max-height: 20px; // 원하는 최대 높이값을 지정하세요
-    top: -16px;
-    font-size: 18px;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 4px;
-    padding-bottom: 4px;
+  @media (min-width: 600px) {
+    padding-left: 16px;
+    padding-right: 16px;
+    top: 10px;
+    left: 136px;
+    font-size: 16px;
+    
   }
 `;
 const QuestionText = styled.div`
   //background-color: grey;
-  position: relative;
-  font-size: 20px;
-  top : -20px;
+  position: absolute;
+  font-size: 16px;
+  top : 65px;
+  left: 55px;
   z-index: 2;
   color: #4c544b;
   font-weight: bold;
-  max-width: 300px; // 필요한 너비로 조절
+  max-width: 250px; // 필요한 너비로 조절
   white-space: normal; // 필요하면 추가
   word-wrap: break-word;
 
   
 
-  @media (max-width: 600px) {
+  @media (min-width: 600px) {
     top: -30px;
-    font-size: 18px;
-    max-width: 80%;
+    font-size: 17px;
+    max-width: 250px;
+    top : 65px;
+    left: 55px;
     white-space: normal; // 필요하면 추가
     word-wrap: break-word;
     
@@ -257,6 +262,7 @@ const SenderReplyText = styled.input`
   width: 171px;
   border: 0;
   z-index: 3;
+  padding-bottom: 10px;
   //height: 50px;
   border-bottom: 1px solid black;
   background: transparent; // 배경색 투명하게
@@ -265,7 +271,7 @@ const SenderReplyText = styled.input`
   font-size: 16px; // 폰트 크기
   position:relative;
   resize: none; // 사용자가 크기를 조절하지 못하게 함
-  margin-bottom: 13px;
+  margin-bottom: 3px;
   margin-right: 30px;
 
   &::placeholder {
@@ -278,6 +284,7 @@ const SenderReplyText = styled.input`
     width: 185px;
     margin-bottom: -5px;
     margin-right: 30px;
+    padding-bottom: 15px;
 
     }
 `;

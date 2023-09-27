@@ -129,7 +129,7 @@ function AddReply() {
                             name="sender"
                             value={formData.sender}
                             onChange={handleInputChange}
-                            placeholder="이름을 적어주세요."
+                            placeholder="이름을 입력해주세요."
                         ></s.SenderReplyText>
                     </s.SenderDiv>
                 </s.ReplyContainer>
