@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import {s} from "./style";
 import {useNavigate, useLocation, useParams} from "react-router-dom";
 import {useToken} from "../../contexts/TokenProvider/TokenProvider";
-import {BiChevronLeft} from "react-icons/bi";
+import dayjs from "dayjs";
 
 interface Question {
     day: string;
@@ -19,14 +19,15 @@ function QuestionListScreen({nowDate}: Date) {
     const {state} = useLocation();
     const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
     const {accessToken, refreshToken} = useToken();
-    const [questions, setQuestions] = useState<Question[]>([]); // 상태 변수와 상태 설정 함수 생성
-    const navigate = useNavigate();
+    const [questions, setQuestions] = useState<Question[]>([]); 
+    
+    // 상태 변수와 상태 설정 함수 생성
+        const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         const fetchData = async () => {
             setIsLoading(true);
             try {
-
                 const response = await axios.get<Question[]>(
                     `https://api.mili-mate.com/api/user/${userId}/questionList`,
                     {
@@ -35,16 +36,20 @@ function QuestionListScreen({nowDate}: Date) {
                         },
                     }
                 );
-                setQuestions(response.data); // 데이터를 가져온 후 상태 업데이트
-               // alert(questions[0].todayQuestion);
+                const sortedQuestions = [...response.data].sort((a, b) => {
+                    // day 값이 "MM/DD" 형식이므로 이를 "YYYY/MM/DD" 형식으로 변경하여 정렬
+                    const dateA = dayjs(`2023/${a.day}`);
+                    const dateB = dayjs(`2023/${b.day}`);
+                    return dateB.isBefore(dateA) ? -1 : dateA.isBefore(dateB) ? 1 : 0;  // 내림차순 정렬
+                });
+                setQuestions(sortedQuestions);  // 정렬된 데이터로 상태 업데이트
             } catch (error) {
-                //console.error("Error fetching questions:", error);
-                alert(error);
-
+                alert("정보를 불러오지 못했습니다.");
             }
         };
         fetchData();
     });
+
     const questionClick = (day: string) => {
         console.log("이벤트");
         navigate(`/replyscreen/${userId}`, {state: {day}});
@@ -85,7 +90,8 @@ function QuestionListScreen({nowDate}: Date) {
                     {/*    </s.CustomUl>*/}
                     {/*) : (<div> 아직은 확인할 수 없습니다. </div>)}*/}
 
-                    {questions && state.nowDate >= 1 ? (
+                    {questions && state?.nowDate >= 1 ? (
+
                         <s.CustomUl>
                             {
                                 questions.map((question, index) => (
@@ -94,13 +100,22 @@ function QuestionListScreen({nowDate}: Date) {
                                             {question.isRead == "false" ? <s.DayText>{question.day}</s.DayText> :
                                                 <s.GreyDayText>{question.day}</s.GreyDayText>}
 
+                                            {question.isRead == "false" ? 
                                             <s.CustomLi
                                                 onClick={() =>
                                                     questionClick(question.day)
                                                 }
                                             >
                                                 {question.todayQuestion}
-                                            </s.CustomLi>
+                                            </s.CustomLi> :
+                                            <s.GreyCustomLi
+                                                onClick={() =>
+                                                    questionClick(question.day)
+                                                }
+                                            >
+                                                {question.todayQuestion}
+                                            </s.GreyCustomLi>
+                                            }
                                         </s.LiLayout>
                                         <s.Splice></s.Splice>
                                     </li>

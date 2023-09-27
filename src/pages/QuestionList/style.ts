@@ -70,10 +70,11 @@ const CustomUl = styled.ul`
   padding: 12px;
   //margin: 20px 0; // 상하 여백 설정
   //background-color: grey;
-  width: 600px;
-  margin: 0;
-  @media (max-width: 768px) {
-    width: 90%;
+  width: 330px;
+  margin-top: 60px;
+  @media (min-width: 600px) {
+    width: 550px;
+    margin-top: 100px;
   }
 `;
 const CustomLi = styled.li`
@@ -86,10 +87,15 @@ const CustomLi = styled.li`
   white-space: nowrap;
   text-align: start;
   color: #4c544b;
-  font-weight: bold;
+  font-weight: bolder;
   font-size: 16px;
   margin: 10px 16px; // 세로로 10px, 가로로 5px의 여백 추가
 `;
+
+const GreyCustomLi = styled(CustomLi)`
+    color: grey;
+`;
+
 const Splice =  styled.div`
   border: 0.5px solid #adc786;
   //width : 600px;
@@ -98,6 +104,7 @@ const Splice =  styled.div`
 const DayText = styled.p`
   font-size:  16px;
   color: #6d844c;
+  font-weight: bolder;
 `;
 const GreyDayText = styled.p`
   font-size:  16px;
@@ -111,7 +118,7 @@ const LiLayout = styled.div`
   align-items: center;
 `;
 const VoidQuestion = styled.div`
-  margin-top: 100px;
+  margin-top: 200px;
   color : #4c544b;
   font-size: 20px;
   
@@ -129,4 +136,5 @@ export const s = {
   BackgroundContainer,
   Container,
   Text,
+  GreyCustomLi
 };
