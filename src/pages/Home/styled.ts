@@ -185,9 +185,9 @@ const NoneEnvelope = styled.img.attrs({
     src: noneEnvelope,
 })`
   z-index: 2;
-  width: 400px;
+  width: 343px;
   @media(min-width: 600px) {
-  //width: 450px;
+  width: 410px;
   //margin-bottom: -30px;
   //height: 240.26px;
 }
@@ -197,10 +197,10 @@ const ExistEnvelope = styled.img.attrs({
     src: existEnvelope,
 })<ExistEnvelopeProps>`
   z-index: 2;
-  width: 400px;  
+  width: 343px;  
   filter: ${({ blur }) => (blur ? 'blur(5px)' : 'none')};
   @media (min-width: 600px) {
-    width: 450px;
+    width: 410px;
     //margin-bottom: -30px;
     //height: 240.26px;
   }
@@ -208,25 +208,25 @@ const ExistEnvelope = styled.img.attrs({
 
 const EnvelopeDiv = styled.div`
   position: relative;
-  width: 500px;
+  width: 343px;
   //height: 450px;
   display: flex;
   justify-content: center;
   //align-items: center;
   //background-color: grey;
   background-size: contain;
-  @media (max-width: 600px) {
-    width: 450px;
+  @media (min-width: 600px) {
+    width: 410px;
   }
 `;
 const ContentEnvelope = styled.img.attrs({
     src: contentEnvelop,
 })`
   z-index: 2;
-  width: 380px;
+  width: 343px;
   
   @media (min-width: 600px) {
-    width: 450px;
+    width: 410px;
     //margin-bottom: -30px;
     //height: 240.26px;
   }
