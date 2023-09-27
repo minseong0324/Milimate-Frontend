@@ -40,8 +40,10 @@ function TokenProvider({ children }: TokenProviderProps) {
                     localStorage.setItem('refreshToken', newRefreshToken);
                  } 
             }
-            }catch (error: unknown) {
+            } catch (error: unknown) {
                 if (error instanceof AxiosError) {
+                  
+                  
                     const status = error?.response?.status;
                     setModalErrorContent(
                     <s.ErrorCenterModalWrapper>
