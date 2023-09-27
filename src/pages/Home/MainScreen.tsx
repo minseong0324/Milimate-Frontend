@@ -129,7 +129,8 @@ function MainScreen() {
                             );
                             setReplies(replResponse.data.replies); // 데이터 저장
                         //    setReplies(replResponse.data.replies);
-                            console.log(replies);
+                            alert(JSON.stringify(replResponse.data));
+
                             // alert(replies[0].senderName); // senderName을 출력
                             // alert(replies[0].replyContent); // replyContent를 출력
                         } catch (error) {
