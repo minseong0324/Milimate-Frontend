@@ -12,7 +12,7 @@ interface ReplyContainerProps {
     backgroundColor?: string;  // ?를 사용해서 이 프롭스가 선택적임을 나타냅니다.
 }
 
-
+//
 const BackgroundContainer = styled.div`
   display: flex;
   flex-direction: column;
