@@ -44,12 +44,12 @@ function QuestionListScreen({nowDate}: Date) {
             }
         };
         fetchData();
-    }, []);
+    });
     const questionClick = (day: string) => {
         console.log("이벤트");
         navigate(`/replyscreen/${userId}`, {state: {day}});
     };
-    
+
     const handleNavigate = () => {
         navigate(`/home/${userId}`);
     }

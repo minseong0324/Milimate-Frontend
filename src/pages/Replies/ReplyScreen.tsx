@@ -100,6 +100,7 @@ function ReplyScreen({day}: ReplyScreenProps) {
                         })
                     };
                     setQuestionData(response.data);
+                    setSelectedColor(modifiedData);
                 } catch (error) {
                     console.error("Error fetching data:", error);
                 }
@@ -162,7 +163,7 @@ function ReplyScreen({day}: ReplyScreenProps) {
                     </s.SoldierTagContainer>
                     {questionData ?
                         questionData.replies.map((reply, index) => (
-                            <s.ReplyContainer key={index} backgroundColor={reply.color}>
+                            <s.ReplyContainer key={index} backgroundColor={selectedColor}>
                                 <s.ContentText>{reply.replyContent}</s.ContentText>
                                 <s.SenderText>From.{reply.senderName}</s.SenderText>
                             </s.ReplyContainer>
