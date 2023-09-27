@@ -54,7 +54,7 @@ const SmallCenterModalWrapper = styled.div`
 `;
 
 const SmallModalTextsWrapper1 = styled.div`
-  // 한줄짜리 에러창일 때 사용
+  // 한줄 짜리 에러창일 때 사용
   position: relative;
   display: flex;
   font-size: 18px;
