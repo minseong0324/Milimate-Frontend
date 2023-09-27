@@ -64,7 +64,7 @@ function ReplyScreen({day}: ReplyScreenProps) {
                 setIsLoading(true); // 데이터를 가져오기 시작할 때 로딩 상태로 설정
                 try {
                     const response = await axios.get(
-                        `https://api.mili-mate.com/api/user/${userId}/questionList?day=${state.day}`,
+                        `https://api.mili-mate.com/api/user/${userId}/questionList/reply?day=${state.day}`,
                         {
                             headers: {
                                 authorization: `${accessToken}`,
