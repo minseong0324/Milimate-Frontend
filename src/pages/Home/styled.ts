@@ -13,7 +13,9 @@ import contentEnvelop from '../../assets/EnvelopeImage/contentEnvelope.svg';
 
 import MilimateImg from '../../assets/Logo/Milimate.svg'
 
-
+type ExistEnvelopeProps = {
+    blur?: boolean; // blur는 optional이며, boolean 타입을 가집니다.
+};
 const WrapperLayout = styled.div`
   //background-color: #f2f1ee;
 
@@ -182,98 +184,84 @@ const ShareBtnDiv = styled.button`
 const NoneEnvelope = styled.img.attrs({
     src: noneEnvelope,
 })`
-  margin-top: 12px;
-  margin-bottom: 24px;
-  width: 343px;
-  height: 201px;
-  position: relative; // 이 부분 추가
-  margin: auto;
-  display: block; 
-  @media (min-width: 600px) {
-    width: 410px;
-    height: 240.26px;
-  }
+  z-index: 2;
+  width: 400px;
+  @media(min-width: 600px) {
+  //width: 450px;
+  //margin-bottom: -30px;
+  //height: 240.26px;
+}
 `;
 
 const ExistEnvelope = styled.img.attrs({
     src: existEnvelope,
-})`
-  margin-top: 12px;
-  margin-bottom: 24px;
-  width: 343px;
-  height: 201px;
-  position: relative; // 이 부분 추가
-  margin: auto;
-  display: block;
-  filter: blur(5px);
+})<ExistEnvelopeProps>`
+  z-index: 2;
+  width: 400px;  
+  filter: ${({ blur }) => (blur ? 'blur(5px)' : 'none')};
   @media (min-width: 600px) {
-    width: 410px;
-    height: 240.26px;
+    width: 450px;
+    //margin-bottom: -30px;
+    //height: 240.26px;
   }
 `;
 
 const EnvelopeDiv = styled.div`
-  margin-top: 10px;
-  margin-bottom: 12px;
-  width: 100%;
-  
-  //height: 300px;
-  //background: url(${contentEnvelop}) no-repeat center;
-  
-  background-size: contain; // 이미지가 div를 채우도록 조절
   position: relative;
-  
-  //height: 300px; // 적절한 높이로 설정 (이미지 높이에 따라 조절 필요)
+  width: 500px;
+  //height: 450px;
+  display: flex;
+  justify-content: center;
+  //align-items: center;
+  background-color: grey;
+  background-size: contain;
+  @media (max-width: 600px) {
+    width: 450px;
+  }
 `;
 const ContentEnvelope = styled.img.attrs({
-  src: contentEnvelop,
+    src: contentEnvelop,
 })`
-  margin: auto;
-  display: block; 
-  margin-bottom: -124px;
-  width: 343px;
-  height: 201px;
-  position: relative; // 이 부분 추가
+  z-index: 2;
+  width: 380px;
+  
   @media (min-width: 600px) {
-    width: 410px;
-    height: 240.26px;
+    width: 450px;
+    //margin-bottom: -30px;
+    //height: 240.26px;
   }
 `;
-const CenteredText = styled.p`
-  position: relative;
-  //margin-bottom: 100px;
-  top: -130px;
-  //background-color: grey;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #000; // 원하는 색상으로 변경하세요
+const CenteredText = styled.div`
+  position: absolute;
   text-align: center;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -100%);
   max-height: calc(1.4em * 3); // 1.2em은 한 줄의 높이로 가정, 3줄까지 표시
-  width: 90%; // 원하는 폭으로 설정 (예: 이미지의 80%)
-
-  overflow: hidden; // 텍스트가 박스 밖으로 나가지 않도록
-  display: -webkit-box; // flexbox의 구형 구현
-  -webkit-line-clamp: 3; // 표시될 최대 라인 수
-  -webkit-box-orient: vertical; // 박스의 방향을 수직으로 설정
-
-  padding: 10px; // 원하는 값으로 조정 가능
-  box-sizing: border-box; // padding 값이 전체 높이/폭에 포함되도록
+  width: 80%;  // 텍스트가 너무 길면 줄바꿈을 위해 width 설정
+  overflow: hidden;  // 텍스트가 박스 밖으로 나가지 않도록
+  display: -webkit-box;  // flexbox의 구형 구현
+  -webkit-line-clamp: 3;  // 표시될 최대 라인 수
+  -webkit-box-orient: vertical;  // 박스의 방향을 수직으로 설정
+  box-sizing: border-box;  // padding 값이 전체 높이/폭에 포함되도록
   z-index: 3;
-  @media (max-width: 768px) {
-    //left : 67%;
-    top : -50px;
-    
+  word-wrap: break-word;  // 이 속성 추가
+  overflow-wrap: break-word;  // 필요하다면 이 속성도 추가
+
+  @media (min-width: 768px) {
+    max-width: 300px;
   }
 `;
+
 
 
 const NameText = styled.p`
   //position: absolute;
-  
+
   //text-align: end;
-  position: relative;
-  top: -80px;
-  left: 75%;
+  position: absolute;
+  top: 190px;
+  left: 65%;
   //top  : 180px;
   font-size: 18px;
   color: #000; // 원하는 색상으로 변경하세요
@@ -282,9 +270,11 @@ const NameText = styled.p`
   margin-left: 8px;
   @media (max-width: 768px) {
     left : 67%;
-    top : -30px;
+    top : 180px;
+    font-size: 15px;
+
   }
-  
+
 `;
 
 const NormalText = styled.p`
