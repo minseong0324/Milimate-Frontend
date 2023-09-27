@@ -33,45 +33,6 @@ function UpdateEnlistmentModalBasic({ setModalOpen }: PropsType) {
       setModalOpen(false);
     }
   }, [errorState]);
-  useEffect(() => {
-    setSmallModalOpen(true)
-    setModalSmallContent(
-      <s.SmallCenterModalWrapper>
-        <s.SmallModalTextsWrapper1>입대일 수정하기</s.SmallModalTextsWrapper1>
-        <s.InputContainer>
-          <s.MoreInfoInputYear
-            type="text"
-            value={enlistmentYear}
-            onChange={(e: {
-              target: { value: React.SetStateAction<string> };
-            }) => setEnlistmentYear(e.target.value)}
-          />
-          <s.TextsStyle2>년</s.TextsStyle2>
-          <s.MoreInfoInputYMonthDay
-            type="text"
-            value={enlistmentMonth}
-            onChange={(e: {
-              target: { value: React.SetStateAction<string> };
-            }) => setEnlistmentMonth(e.target.value)}
-          />
-          <s.TextsStyle2>월</s.TextsStyle2>
-          <s.MoreInfoInputYMonthDay
-            type="text"
-            value={enlistmentDay}
-            onChange={(e: {
-              target: { value: React.SetStateAction<string> };
-            }) => setEnlistmentDay(e.target.value)}
-          />
-          <s.TextsStyle2>일</s.TextsStyle2>
-        </s.InputContainer>
-        <s.BtnDiv>
-          <s.OkBtnStyle onClick={UpdateEnlistmentBtn}>확인</s.OkBtnStyle>
-          <s.CancelBtnStyle onClick={closeModal}>취소</s.CancelBtnStyle>
-        </s.BtnDiv>
-      </s.SmallCenterModalWrapper>
-    );
-
-  });
 
   const isLeapYear = (year: number) => {
     return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
@@ -201,7 +162,39 @@ function UpdateEnlistmentModalBasic({ setModalOpen }: PropsType) {
   const userInfo = useSelector((state: RootState) => state.userInfo);
   return (
     <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)} >
-      {modalSmallContent}
+      <s.SmallCenterModalWrapper>
+        <s.SmallModalTextsWrapper1>입대일 수정하기</s.SmallModalTextsWrapper1>
+        <s.InputContainer>
+          <s.MoreInfoInputYear
+            type="text"
+            value={enlistmentYear}
+            onChange={(e: {
+              target: { value: React.SetStateAction<string> };
+            }) => setEnlistmentYear(e.target.value)}
+          />
+          <s.TextsStyle2>년</s.TextsStyle2>
+          <s.MoreInfoInputYMonthDay
+            type="text"
+            value={enlistmentMonth}
+            onChange={(e: {
+              target: { value: React.SetStateAction<string> };
+            }) => setEnlistmentMonth(e.target.value)}
+          />
+          <s.TextsStyle2>월</s.TextsStyle2>
+          <s.MoreInfoInputYMonthDay
+            type="text"
+            value={enlistmentDay}
+            onChange={(e: {
+              target: { value: React.SetStateAction<string> };
+            }) => setEnlistmentDay(e.target.value)}
+          />
+          <s.TextsStyle2>일</s.TextsStyle2>
+        </s.InputContainer>
+        <s.BtnDiv>
+          <s.OkBtnStyle onClick={UpdateEnlistmentBtn}>확인</s.OkBtnStyle>
+          <s.CancelBtnStyle onClick={closeModal}>취소</s.CancelBtnStyle>
+        </s.BtnDiv>
+      </s.SmallCenterModalWrapper>
     </SmallModal>
   );
 }

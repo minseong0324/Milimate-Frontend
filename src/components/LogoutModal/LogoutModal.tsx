@@ -24,20 +24,6 @@ function LogoutModalBasic({ setModalOpen, contentText }: PropsType) {
     setModalOpen(false);
   };
 
-  useEffect(() => {
-    setSmallModalOpen(true)
-    setModalSmallContent(
-      <s.SmallCenterModalWrapper>
-        <s.SmallModalTextsWrapper1>로그아웃 하시겠습니까?</s.SmallModalTextsWrapper1>
-        <s.BtnDiv>
-          <s.OkBtnStyle onClick={logoutAccount}>확인</s.OkBtnStyle>
-          <s.CancelBtnStyle onClick={closeModal}>취소</s.CancelBtnStyle>
-        </s.BtnDiv>
-      </s.SmallCenterModalWrapper>
-    );
-
-  });
-
   const logoutAccount = async () => {
     try {
       const response = await axios.put(
@@ -74,7 +60,13 @@ function LogoutModalBasic({ setModalOpen, contentText }: PropsType) {
   };
   return (
     <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)} >
-      {modalSmallContent}
+      <s.SmallCenterModalWrapper>
+        <s.SmallModalTextsWrapper1>로그아웃 하시겠습니까?</s.SmallModalTextsWrapper1>
+        <s.BtnDiv>
+          <s.OkBtnStyle onClick={logoutAccount}>확인</s.OkBtnStyle>
+          <s.CancelBtnStyle onClick={closeModal}>취소</s.CancelBtnStyle>
+        </s.BtnDiv>
+      </s.SmallCenterModalWrapper>
     </SmallModal>
   );
 }

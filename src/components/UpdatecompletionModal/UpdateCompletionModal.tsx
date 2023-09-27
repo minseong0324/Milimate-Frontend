@@ -33,45 +33,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
       setModalOpen(false);
     }
   }, [errorState]);
-  useEffect(() => {
-    setSmallModalOpen(true)
-    setModalSmallContent(
-      <s.SmallCenterModalWrapper>
-        <s.SmallModalTextsWrapper1>수료일 수정하기</s.SmallModalTextsWrapper1>
-        <s.InputContainer>
-          <s.MoreInfoInputYear
-            type="text"
-            value={completionYear}
-            onChange={(e: {
-              target: { value: React.SetStateAction<string> };
-            }) => setcompletionYear(e.target.value)}
-          />
-          <s.TextsStyle2>년</s.TextsStyle2>
-          <s.MoreInfoInputYMonthDay
-            type="text"
-            value={completionMonth}
-            onChange={(e: {
-              target: { value: React.SetStateAction<string> };
-            }) => setcompletionMonth(e.target.value)}
-          />
-          <s.TextsStyle2>월</s.TextsStyle2>
-          <s.MoreInfoInputYMonthDay
-            type="text"
-            value={completionDay}
-            onChange={(e: {
-              target: { value: React.SetStateAction<string> };
-            }) => setcompletionDay(e.target.value)}
-          />
-          <s.TextsStyle2>일</s.TextsStyle2>
-        </s.InputContainer>
-        <s.BtnDiv>
-          <s.OkBtnStyle onClick={UpdateCompletionBtn}>확인</s.OkBtnStyle>
-          <s.CancelBtnStyle onClick={closeModal}>취소</s.CancelBtnStyle>
-        </s.BtnDiv>
-      </s.SmallCenterModalWrapper>
-    );
 
-  });
 
   const isLeapYear = (year: number) => {
     return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
@@ -245,7 +207,39 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
   const userInfo = useSelector((state: RootState) => state.userInfo);
   return (
     <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)} >
-      {modalSmallContent}
+       <s.SmallCenterModalWrapper>
+        <s.SmallModalTextsWrapper1>수료일 수정하기</s.SmallModalTextsWrapper1>
+        <s.InputContainer>
+          <s.MoreInfoInputYear
+            type="text"
+            value={completionYear}
+            onChange={(e: {
+              target: { value: React.SetStateAction<string> };
+            }) => setcompletionYear(e.target.value)}
+          />
+          <s.TextsStyle2>년</s.TextsStyle2>
+          <s.MoreInfoInputYMonthDay
+            type="text"
+            value={completionMonth}
+            onChange={(e: {
+              target: { value: React.SetStateAction<string> };
+            }) => setcompletionMonth(e.target.value)}
+          />
+          <s.TextsStyle2>월</s.TextsStyle2>
+          <s.MoreInfoInputYMonthDay
+            type="text"
+            value={completionDay}
+            onChange={(e: {
+              target: { value: React.SetStateAction<string> };
+            }) => setcompletionDay(e.target.value)}
+          />
+          <s.TextsStyle2>일</s.TextsStyle2>
+        </s.InputContainer>
+        <s.BtnDiv>
+          <s.OkBtnStyle onClick={UpdateCompletionBtn}>확인</s.OkBtnStyle>
+          <s.CancelBtnStyle onClick={closeModal}>취소</s.CancelBtnStyle>
+        </s.BtnDiv>
+      </s.SmallCenterModalWrapper>
     </SmallModal>
   );
 }
