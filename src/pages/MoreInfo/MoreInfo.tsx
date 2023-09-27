@@ -147,7 +147,7 @@ function MoreInfo() {
       );
 
       // 추가 정보 입력한 후 회원가입 성공, status 200일 때
-      if (response.status === 200) {
+
         alert("회원가입에 성공하였습니다!");
         console.log("회원가입 응답 데이터", response);
         dispatch(
@@ -162,7 +162,7 @@ function MoreInfo() {
           })
         );
         navigate("/showcharacter");
-      }
+      
     } catch (error: unknown) {
       //에러 일 경우
       if (error instanceof AxiosError) {
