@@ -106,8 +106,9 @@ function ReplyScreen({day}: ReplyScreenProps) {
                 }
                 setIsLoading(false); // 데이터를 가져온 후 로딩 상태 해제
             };
-            // fetchData();
+            fetchData();
         } //[day, accessToken]);
+        
         , []);
 
 
@@ -156,7 +157,6 @@ function ReplyScreen({day}: ReplyScreenProps) {
                             <s.DayText>12/12</s.DayText>
 
                             <s.QuestionText>입대전 저는 어떤 사람이었나요.</s.QuestionText>
-
                         </>
                         }
                         <s.SoldierTagImage/>
