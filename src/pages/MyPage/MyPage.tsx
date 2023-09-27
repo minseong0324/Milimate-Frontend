@@ -64,12 +64,12 @@ function MyPage() {
                 <s.SoldierTagImage/>
                 <s.CharImg/>
                 <s.InfoDiv>
-                    <s.TextsStyle>김건휘 훈련병</s.TextsStyle>
+                    <s.TextsStyle>{userInfo.userName} 훈련병</s.TextsStyle>
                         <s.TextsStyle_1>입대일</s.TextsStyle_1>
-                        <s.TextsStyle2>2025년 09월 11일</s.TextsStyle2>
+                        <s.TextsStyle2>{userInfo.enlistmentYear}년 {userInfo.enlistmentMonth}월 {userInfo.enlistmentday}일</s.TextsStyle2>
   
                         <s.TextsStyle_2>수료일</s.TextsStyle_2>
-                        <s.TextsStyle2_1>2025년 09월 11일</s.TextsStyle2_1>
+                        <s.TextsStyle2_1>{userInfo.completionYear}년 {userInfo.completionMonth}월 {userInfo.completionday}일</s.TextsStyle2_1>
                 </s.InfoDiv>
             </s.SoldierTagContainer>
             <s.MenuWrapper>
