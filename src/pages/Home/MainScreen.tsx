@@ -135,8 +135,6 @@ function MainScreen() {
 
             fetchReplData(); // 함수 실행
         }
-    }, []);
-
         // if (data?.existNewRepl) {
         //     alert(accessToken)
         //     const fetchReplData = async () => {
@@ -146,6 +144,9 @@ function MainScreen() {
         //     fetchReplData(); // 함수 실행
         // } ///
 
+
+
+    }, [userId, accessToken]);
 
 
     const closeModal = () => {
