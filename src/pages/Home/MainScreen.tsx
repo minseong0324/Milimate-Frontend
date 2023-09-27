@@ -312,19 +312,8 @@ function MainScreen() {
                         )
                     ) : <s.EnvelopeDiv onClick={handleEnvelopeClick}>
                         <Slider {...settings}>
-                            {replies.map((item: Reply, index: number) => (
-                                <div key={index} style={{width: '100%'}}>
-
-                                    <>
-                                        <s.ContentEnvelope/>
-                                        <s.CenteredText blur={false}>{item.replyContent}</s.CenteredText>
-                                        <s.NameText>from. {item.senderName}</s.NameText>
-                                    </>
 
 
-                                </div>
-                            ))}
-                            {replies.length === 4 && (
                                 <>
                                     <s.ContentEnvelope></s.ContentEnvelope>
                                     <s.CenteredText onClick={() => questionClick("12")}>
@@ -332,7 +321,7 @@ function MainScreen() {
                                     </s.CenteredText>
                                     <s.NameText></s.NameText>
                                 </>
-                            )}
+
                         </Slider>
                     </s.EnvelopeDiv>
                 }
