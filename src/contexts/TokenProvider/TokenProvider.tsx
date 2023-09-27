@@ -38,7 +38,7 @@ function TokenProvider({ children }: TokenProviderProps) {
 
                     const newRefreshToken = response.headers['reauthorization'];
                     localStorage.setItem('refreshToken', newRefreshToken);
-                } 
+                 } 
             }
             }catch (error: unknown) {
                 if (error instanceof AxiosError) {
