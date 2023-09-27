@@ -310,7 +310,9 @@ function MainScreen() {
                                 </Slider>
                             </s.EnvelopeDiv>
                         )
-                    ) :<p></p>
+                    ) : <s.EnvelopeDiv >
+                        <s.NoneEnvelope/>
+                    </s.EnvelopeDiv>
                 }
 
 
