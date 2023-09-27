@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, {useEffect, useState} from "react";
 import {s} from "./style";
-import {useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useLocation, useParams} from "react-router-dom";
 import {useToken} from "../../contexts/TokenProvider/TokenProvider";
 import {BiChevronLeft} from "react-icons/bi";
 
@@ -12,11 +12,11 @@ interface Question {
 }
 
 interface Date {
-    nowDate: number
+    nowDate: string
 }
 
 function QuestionListScreen({nowDate}: Date) {
-    alert(nowDate);
+    const {state} = useLocation();
     const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
     const {accessToken, refreshToken} = useToken();
     const [questions, setQuestions] = useState<Question[]>([]); // 상태 변수와 상태 설정 함수 생성
@@ -83,7 +83,7 @@ function QuestionListScreen({nowDate}: Date) {
                     {/*    </s.CustomUl>*/}
                     {/*) : (<div> 아직은 확인할 수 없습니다. </div>)}*/}
 
-                    {questions && nowDate >= 1 ? (
+                    {questions && state.nowDate >= 1 ? (
                         <s.CustomUl>
                             {
                                 questions.map((question, index) => (
