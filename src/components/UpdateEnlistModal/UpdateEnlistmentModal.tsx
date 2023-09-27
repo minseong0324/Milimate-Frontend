@@ -168,7 +168,7 @@ function UpdateEnlistmentModalBasic({ setModalOpen }: PropsType) {
             }
         );
         if (response.status == 200) {
-          alert("수료일 수정 성공");
+          alert("입대일을 수정했습니다.");
           dispatch(
               updateEnlistmentDate({
                 enlistmentYear: enlistmentYear,

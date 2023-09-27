@@ -6,7 +6,7 @@ import userInfoReducer from "./Slices/userInfoSlice";
 const persistConfig = {
   key: "root",
   storage,
-  version: 6,
+  version: 7,
 };
 
 const persistedReducer = persistReducer(persistConfig, userInfoReducer);

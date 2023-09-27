@@ -47,7 +47,7 @@ function MainScreen() {
         slidesToScroll: 1,
         //arrows: true, // 이 부분을 추가하세요.
     };
-    const { accessToken, refreshToken } = useToken();
+    const {accessToken, refreshToken} = useToken();
     const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
     const userInfo = useSelector((state: RootState) => state.userInfo);
     const [data, setData] = useState<ResponseData | null>(null);
@@ -65,13 +65,14 @@ function MainScreen() {
             await navigator.clipboard.writeText(linkToShare);
             setSmallModalOpen(true)
             setModalSmallContent(
-              <s.SmallCenterModalWrapper>
-                <s.SmallModalTextsWrapper2>링크가 복사되었습니다.</s.SmallModalTextsWrapper2>
-                <s.BtnDiv>
-                  <s.OkBtnStyle onClick={closeModal}>확인</s.OkBtnStyle>
-                </s.BtnDiv>
-              </s.SmallCenterModalWrapper>
-            );        } catch (err) {
+                <s.SmallCenterModalWrapper>
+                    <s.SmallModalTextsWrapper2>링크가 복사되었습니다.</s.SmallModalTextsWrapper2>
+                    <s.BtnDiv>
+                        <s.OkBtnStyle onClick={closeModal}>확인</s.OkBtnStyle>
+                    </s.BtnDiv>
+                </s.SmallCenterModalWrapper>
+            );
+        } catch (err) {
             console.log(err);
         }
     };
@@ -104,7 +105,7 @@ function MainScreen() {
                     userName: response.data.userName,
 
                 };
-                if(response.data.existNewRepl == true) {
+                if (response.data.existNewRepl == true) {
                     try {
                         const replyResponse = await axios.get<RepliesResponse>(
                             `https://api.mili-mate.com/api/user/${userId}/home/repl`,
@@ -129,19 +130,19 @@ function MainScreen() {
         };
         fetchData();
 
-        if(data?.existNewRepl) {
-            alert(accessToken)
-            const fetchReplData = async () => {
-
-            };
-
-            fetchReplData(); // 함수 실행
-        }
+        // if (data?.existNewRepl) {
+        //     alert(accessToken)
+        //     const fetchReplData = async () => {
+        //
+        //     };
+        //
+        //     fetchReplData(); // 함수 실행
+        // }
     }, [userId]);
 
     const closeModal = () => {
         setSmallModalOpen(false);
-        };
+    };
     const randomNumber = Math.floor(Math.random() * 3) + 1; // 1, 2, 또는 3 캐릭터 이미지
 
     const questionClick = (day: string) => {
@@ -203,7 +204,8 @@ function MainScreen() {
                 </s.AppBarWrapperDiv>
                 <s.MainContent>
                     {
-                        data ? <>  <s.D_dayText>D-{ddayCount}</s.D_dayText>
+                        data ? <>
+                            <s.D_dayText>D-{ddayCount}</s.D_dayText>
 
                             <s.MainContentText>{data?.todayQuestion}</s.MainContentText>
                         </> : <>
@@ -214,11 +216,10 @@ function MainScreen() {
                     }
 
 
-
                     {/*<s.MainContentText></s`.MainContentText>*/}
                     <>
                         {data && (
-                            data.existNewRepl == false
+                            !data.existNewRepl
                                 ? <s.SadCharImg/>
                                 : randomNumber === 1
                                     ? <s.hearCharaImg1/>
@@ -238,7 +239,7 @@ function MainScreen() {
                 </s.ShareBtnDiv>
                 {/*<s.Envelope></s.Envelope>*/}
                 {/*<s.ExistEnvelope></s.ExistEnvelope>*/}
-                {data && data.existNewRepl == false ?
+                {data && !data.existNewRepl ?
                     <s.EnvelopeDiv blur={blur} onClick={handleEnvelopeClick}>
 
                         <s.NoneEnvelope/>
@@ -277,7 +278,7 @@ function MainScreen() {
             </s.WrapperLayout>
 
 
-            <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)} >
+            <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)}>
                 {modalSmallContent}
             </SmallModal>
         </>
