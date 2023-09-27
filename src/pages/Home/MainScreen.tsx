@@ -247,39 +247,44 @@ function MainScreen() {
                 {/*<s.Envelope></s.Envelope>*/}
                 {/*<s.ExistEnvelope></s.ExistEnvelope>*/}
                 {data && !data.existNewRepl ?
-                    <s.EnvelopeDiv blur={blur} onClick={handleEnvelopeClick}>
-
-
+                    <s.EnvelopeDiv onClick={handleEnvelopeClick}>
                         <s.NoneEnvelope/>
-
-
                     </s.EnvelopeDiv>
                     :
-                    <s.EnvelopeDiv blur={blur} onClick={handleEnvelopeClick}>
+
+                    <s.EnvelopeDiv onClick={handleEnvelopeClick}>
                         <Slider {...settings}>
                             {replies.map((item: Reply, index: number) => (
                                 <div key={index} style={{width: '100%'}}>
-                                    {data && !data.existNewRepl
-                                        ? <s.NoneEnvelope/>
-                                        : blur
-                                            ? <s.ExistEnvelope/>
-                                            : <s.ContentEnvelope/>
+                                    {data && data.blur ?
+                                        <>
+                                            <s.ExistEnvelope></s.ExistEnvelope>
+                                            <s.CenteredText>{item.replyContent}</s.CenteredText>
+                                            <s.NameText>from. {item.senderName}</s.NameText>
+                                        </>
+                                        :
+                                        <>
+                                            <s.ContentEnvelope/>
+                                            <s.CenteredText>{item.replyContent}</s.CenteredText>
+                                            <s.NameText>from. {item.senderName}</s.NameText>
+                                        </>
                                     }
-                                    <s.CenteredText>{item.replyContent}</s.CenteredText>
-                                    <s.NameText>from. {item.senderName}</s.NameText>
+
                                 </div>
                             ))}
-
-                            <s.EnvelopeDiv>
-                                <s.ContentEnvelope></s.ContentEnvelope>
-                                <s.CenteredText onClick={() => questionClick("12")}>
-                                    모두 확인하기
-                                </s.CenteredText>
-                                <s.NameText></s.NameText>
-                            </s.EnvelopeDiv>
-
+                            {replies.length === 4 && (
+                                <>
+                                    <s.ContentEnvelope></s.ContentEnvelope>
+                                    <s.CenteredText onClick={() => questionClick("12")}>
+                                        모두 확인하기
+                                    </s.CenteredText>
+                                    <s.NameText></s.NameText>
+                                </>
+                            )}
                         </Slider>
                     </s.EnvelopeDiv>
+
+
                 }
 
                 <div style={{margin: 36}}></div>

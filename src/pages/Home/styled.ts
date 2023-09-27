@@ -204,23 +204,25 @@ const ExistEnvelope = styled.img.attrs({
   height: 201px;
   position: relative; // 이 부분 추가
   margin: auto;
-  display: block; 
+  display: block;
+  filter: blur(5px);
   @media (min-width: 600px) {
     width: 410px;
     height: 240.26px;
   }
 `;
 
-const EnvelopeDiv = styled.div<{ blur?: boolean }>`
+const EnvelopeDiv = styled.div`
   margin-top: 10px;
   margin-bottom: 12px;
   width: 100%;
+  
   //height: 300px;
   //background: url(${contentEnvelop}) no-repeat center;
   
   background-size: contain; // 이미지가 div를 채우도록 조절
   position: relative;
-  filter: ${({ blur }) => (blur ? 'blur(5px)' : 'none')};
+  
   //height: 300px; // 적절한 높이로 설정 (이미지 높이에 따라 조절 필요)
 `;
 const ContentEnvelope = styled.img.attrs({
