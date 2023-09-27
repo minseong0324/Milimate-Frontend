@@ -4,7 +4,7 @@ import {s} from './style';
 import { useNavigate } from 'react-router-dom';
 import ErrorModal from "src/components/ErrorModal/ErrorModal";
 
-// 1. 토큰 관리를 위한 Context 생성
+// 1. 토큰 관리를 위한 Context 생성//
 type TokenContextType = {
     accessToken: string | null;
     refreshToken: string | null;
