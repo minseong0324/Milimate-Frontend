@@ -135,8 +135,8 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
     );
 
     if (completeDate < enlistDate) {
-      alert(completeDate);
-      return alert(enlistDate);
+      console.log(completeDate);
+      console.log(enlistDate);
     }
 
     // Case 5: 수료일은 필수값이 아니기 때문에 입력하는 칸 3개 중에서 하나라도 잘못하면 서버한테 completionYear, completionMonth, completionDay를 전부 "0"으로 전송한다.
@@ -166,7 +166,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
     console.log("오늘 날짜", today);
     // alert(completeDate);
     // alert(enlistDate);
-    if (completeDate <= today) {
+    if (completeDate <= enlistDate) {
       return alert("수료일은 현재 날짜보다 미래여야 합니다!");
     }
 
@@ -214,7 +214,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
       //에러 일 경우
       if (error instanceof AxiosError) {
         const status = error?.response?.status;
-        console.error("Failed to fetch user info:", error);
+
 
         if (status === 404) {
           // 리소스를 찾을 수 없음
@@ -225,7 +225,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
         }
       }
 
-      return null;
+      return alert(`Failed to fetch user info ${error}`);
     }
   };
 
