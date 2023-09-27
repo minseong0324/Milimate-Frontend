@@ -58,15 +58,25 @@ function App() {
                                     
                                     <Route path="/login" element={<Login/>}/>
                                     <Route path="/signup" element={<SignUp/>}/>
-                                    <Route path="/moreinfo" element={<Protected><MoreInfo/></Protected>}/>
+
+                                    <Route path="/moreinfo" element={<MoreInfo/>}/>
+                                    {/*<Route path="/moreinfo" element={<Protected><MoreInfo/></Protected>}/>*/}
+
                                     <Route path="/guest/:userId" element={<Guest/>}/>
-                                    <Route path="/home/:userId" element={<Protected><MainScreen/></Protected>}/>
-                                    <Route path="/mypage" element={<Protected><MyPage/></Protected>}/>
+
+                                    <Route path="/home/:userId" element={<MainScreen/>}/>
+                                    {/*<Route path="/home/:userId" element={<Protected><MainScreen/></Protected>}/>*/}
+                                    
+                                    <Route path="/mypage" element={<MyPage/>}/>
+                                    {/*<Route path="/mypage" element={<Protected><MyPage/></Protected>}/>*/}
+
                                     <Route
                                         path="/replyscreen"
                                         element={<ReplyScreen day={""}/>}
                                     />
+
                                     <Route path="/showcharacter" element={<Protected><ShowCaracter/></Protected>}/>
+                                    {/*<Route path="/showcharacter" element={<Protected><ShowCaracter/></Protected>}/>*/}
 
                                     <Route path="/kakao/callback" element={<KakaoCallback/>}/>
 
@@ -77,8 +87,14 @@ function App() {
                                     />
                                     <Route
                                         path="/questionlist/:userId"
+                                        element={<QuestionListScreen nowDate = {0}/>}
+                                    />
+                                    {/*
+                                    <Route
+                                        path="/questionlist/:userId"
                                         element={<Protected><QuestionListScreen nowDate = {0}/></Protected>}
                                     />
+                                    */}
                                     <Route path="/send/:userId" element={<AddReply/>}/>
                                 </Routes>
                             </TokenProvider>

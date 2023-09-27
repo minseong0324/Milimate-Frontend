@@ -94,7 +94,7 @@ const D_dayText = styled.p`
 const MainContentText = styled.div`
   color: #4c544b;
   line-height: 1.2; // 글자 간격
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bolder;
   margin-top: 30px;
   margin: 0;
