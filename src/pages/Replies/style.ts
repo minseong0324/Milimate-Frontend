@@ -169,9 +169,7 @@ const DayText = styled.p`
   font-size: 14px;
   font-weight: bold;
 
-  //padding: 8px;
-  //overflow-y: auto; // 스크롤을 가능하게 하는 속성
-  //max-height: 120px; // 원하는 최대 높이값을 지정하세요
+
   @media (min-width: 600px) {
     padding-left: 16px;
     padding-right: 16px;
