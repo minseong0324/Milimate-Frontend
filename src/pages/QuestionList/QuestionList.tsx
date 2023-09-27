@@ -16,6 +16,7 @@ interface Date {
 }
 
 function QuestionListScreen({nowDate}: Date) {
+    alert(nowDate);
     const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
     const {accessToken, refreshToken} = useToken();
     const [questions, setQuestions] = useState<Question[]>([]); // 상태 변수와 상태 설정 함수 생성
@@ -35,7 +36,7 @@ function QuestionListScreen({nowDate}: Date) {
                     }
                 );
                 setQuestions(response.data); // 데이터를 가져온 후 상태 업데이트
-                alert(questions[0].todayQuestion);
+               // alert(questions[0].todayQuestion);
             } catch (error) {
                 //console.error("Error fetching questions:", error);
                 alert(error);
