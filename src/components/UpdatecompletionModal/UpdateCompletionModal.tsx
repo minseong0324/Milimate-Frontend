@@ -237,7 +237,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
         return alert(`Failed to fetch user info ${error}`);
       }
     }
-    ;
+    
   }
   const userInfo = useSelector((state: RootState) => state.userInfo);
   return (

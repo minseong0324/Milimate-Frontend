@@ -18,7 +18,6 @@ function NaverCallback() {
       const response = await axios.get(
         `https://api.mili-mate.com/api/oauth/login/naver?code=${code}`
       );
-      if (response.status === 200) {
         const accessToken = response.headers["authorization"];
         const refreshToken = response.headers["reauthorization"];
         localStorage.setItem("accessToken", accessToken);
@@ -51,7 +50,6 @@ function NaverCallback() {
           localStorage.setItem("userId", response.data.userId);
           navigate("/moreinfo"); // 인가 코드 제거 및 /OwnerHome/${email}로 리다이렉트
         }
-      }
     } catch (error: unknown) {
       //에러 일 경우
       if (error instanceof AxiosError) {
