@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateUserName } from "../Redux/Slices/userInfoSlice";
 import { RootState } from "../Redux/store";
 import SmallModal from "../../components/ErrorModal/ErrorModal"
-import { debounce } from 'lodash';
 
 interface PropsType {
   setModalOpen: (open: boolean) => void;
@@ -42,8 +41,9 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
             <s.MoreInfoInputName
               type="text"
               value={newUserName}
-              onChange={debounce((e: { target: { value: SetStateAction<string>; }; 
-              }) => setNewUserName(e.target.value), 300)}
+              onChange={(e: {
+                target: { value: React.SetStateAction<string> };
+              })=> setNewUserName(e.target.value)}
             />
           </s.InputContainer>
         <s.BtnDiv>

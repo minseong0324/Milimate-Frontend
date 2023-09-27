@@ -54,17 +54,17 @@ const InputContainer = styled.div`
 
 const MoreInfoInputName = styled.input`
   padding: 10px;
-  font-size: 16px;
+  font-size: 13px;
   width: 200px;
   height: 20px;
   border: transparent;
   border-radius: 12px;
   background-color: #f2f1ee;
-  color: #111;
+  color: #4A544A;
   z-index: 5;
 
   &::placeholder {
-    color: #111;
+    color: #4A544A;
   }
 
   &:focus {
