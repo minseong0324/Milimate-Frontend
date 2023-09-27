@@ -77,7 +77,7 @@ function MainScreen() {
             console.log(err);
         }
     };
-    const test = "asdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadfasdfsadf";
+
     useEffect(() => {
         // alert('토큰 테스트!')
         // alert(userId);
@@ -127,8 +127,9 @@ function MainScreen() {
                                 }
                             );
                             setReplies(response.data.replies); // 데이터 저장
+                            alert(replies);
                         } catch (error) {
-                            console.error("데이터를 불러오는데 실패했습니다:", error);
+                            alert("데이터를 불러오는데 실패했습니다:");
                         }
                     };
 
@@ -275,7 +276,7 @@ function MainScreen() {
                             <Slider {...settings}>
                                 {replies.map((item: Reply, index: number) => (
                                     <div key={index} style={{width: '100%'}}>
-                                        {/* {data.blur ? (
+                                        {data.blur && replies ? (
                                             <>
                                                 <s.ExistEnvelope></s.ExistEnvelope>
                                                 <s.CenteredText blur={true}>{item.replyContent}</s.CenteredText>
@@ -287,12 +288,12 @@ function MainScreen() {
                                                 <s.CenteredText blur={false}>{item.replyContent}</s.CenteredText>
                                                 <s.NameText>from. {item.senderName}</s.NameText>
                                             </>
-                                        )} */}
-                                            <>
+                                        )}
+                                            {/* <>
                                                 <s.ContentEnvelope/>
                                                 <s.CenteredText blur={false}>{item.replyContent}</s.CenteredText>
                                                 <s.NameText>from. {item.senderName}</s.NameText>
-                                            </>
+                                            </> */}
                                     </div>
                                 ))}
                                 {replies.length === 4 && (
