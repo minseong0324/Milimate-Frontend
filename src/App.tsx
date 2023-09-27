@@ -71,7 +71,7 @@ function App() {
                                     {/*<Route path="/mypage" element={<Protected><MyPage/></Protected>}/>*/}
 
                                     <Route
-                                        path="/replyscreen"
+                                        path="/replyscreen/:userId"
                                         element={<ReplyScreen day={""}/>}
                                     />
 
