@@ -75,7 +75,7 @@ function MainScreen() {
             console.log(err);
         }
     };
-
+//
     useEffect(() => {
         alert(accessToken)
 
