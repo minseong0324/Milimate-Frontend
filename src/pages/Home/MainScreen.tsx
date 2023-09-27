@@ -114,7 +114,7 @@ function MainScreen() {
 
                 setData(responseData); // 형변를환된 응답 데이터 상태에 할당
                 setDdayCount(responseData.endDate - responseData.nowDate);
-                if(response.data.existNewRepl) {
+                if (response.data.existNewRepl) {
                     //alert(accessToken)
                     const fetchReplData = async () => {
                         try {
@@ -135,7 +135,7 @@ function MainScreen() {
                     fetchReplData(); // 함수 실행
                 }
             } catch (e) {
-              //  alert(e);
+                //  alert(e);
                 console.log(e);
             }
         };
@@ -218,22 +218,35 @@ function MainScreen() {
                 </s.AppBarWrapperDiv>
                 <s.MainContent>
 
-                    <s.D_dayText>D-{data?.endDate}</s.D_dayText>
-
-                    <s.MainContentText>{data?.todayQuestion}</s.MainContentText>
+                    {
+                        data ? (
+                            data.nowDate < 0 ? (
+                                <>
+                                    <s.NormalText>입대까지</s.NormalText>
+                                    <s.D_dayText>D-{data.endDate - 1}</s.D_dayText>
+                                    <s.MainContentText>{data.todayQuestion}</s.MainContentText>
+                                </>
+                            ) : data.nowDate > 0 ? (
+                                <>
+                                    <s.D_dayText>D-{data.endDate - 1}</s.D_dayText>
+                                    <s.MainContentText>{data.todayQuestion}</s.MainContentText>
+                                </>
+                            ) : <></>
+                        ) : <></>
+                    }
 
 
                     {/*<s.MainContentText></s`.MainContentText>*/}
                     {/*<>*/}
-                        {data && (
-                            !data.existNewRepl
-                                ? <s.SadCharImg/>
-                                : randomNumber === 1
-                                    ? <s.hearCharaImg1/>
-                                    : randomNumber === 2
-                                        ? <s.hearCharaImg2/>
-                                        : <s.hearCharaImg3/>
-                        )}
+                    {data && (
+                        !data.existNewRepl
+                            ? <s.SadCharImg/>
+                            : randomNumber === 1
+                                ? <s.hearCharaImg1/>
+                                : randomNumber === 2
+                                    ? <s.hearCharaImg2/>
+                                    : <s.hearCharaImg3/>
+                    )}
                     {/*</>*/}
 
 
@@ -242,13 +255,24 @@ function MainScreen() {
                         <s.NormalText> 훈련병</s.NormalText>
                     </div>
                 </s.MainContent>
-                <s.ShareBtnDiv onClick={handleCopyClipBoard}>
-                    <p>오늘의 질문 공유하기</p>
-                    <FiUpload size={24} style={{marginLeft: 12}}></FiUpload>
-                </s.ShareBtnDiv>
+                {
+                    data ? (
+                        data.nowDate > 0 ? (
+                        <s.ShareBtnDiv  onClick={handleCopyClipBoard}>
+                            <p>오늘의 질문 공유하기</p>
+                            <FiUpload size={24} style={{marginLeft: 12}}></FiUpload>
+                        </s.ShareBtnDiv>
+                    ):
+                        data.nowDate < 0 ? (
+                            <s.ShareBtnDiv onClick={handleCopyClipBoard} disabled>
+                                <p>오늘의 질문 공유하기</p>
+                                <FiUpload size={24} style={{marginLeft: 12}}></FiUpload>
+                            </s.ShareBtnDiv>
+                        ) : <></>
+                    ):<></>
+                }
                 {/*<s.Envelope></s.Envelope>*/}
                 {/*<s.ExistEnvelope></s.ExistEnvelope>*/}
-
 
 
                 {data && !data.existNewRepl ?
@@ -257,60 +281,58 @@ function MainScreen() {
                     </s.EnvelopeDiv>
                     :
                     (data && data.existNewRepl ?
-                        <s.EnvelopeDiv onClick={handleEnvelopeClick}>
-                            <Slider {...settings}>
-                                {replies.map((item: Reply, index: number) => (
-                                    <div key={index} style={{width: '100%'}}>
-                                        {data && data.blur ?
-                                            <>
-                                                <s.ExistEnvelope blur={blur}></s.ExistEnvelope>
-                                                <s.CenteredText>매아트가 보내준 답변을 확인해보세요!</s.CenteredText>
-                                                <s.NameText> </s.NameText>
-                                            </>
-                                            :
+                            <s.EnvelopeDiv onClick={handleEnvelopeClick}>
+                                <Slider {...settings}>
+                                    {replies.map((item: Reply, index: number) => (
+                                        <div key={index} style={{width: '100%'}}>
+                                            {data && data.blur ?
+                                                <>
+                                                    <s.ExistEnvelope blur={blur}></s.ExistEnvelope>
+                                                    <s.CenteredText>매아트가 보내준 답변을 확인해보세요!</s.CenteredText>
+                                                    <s.NameText></s.NameText>
+                                                </>
+                                                :
 
-                                            <>
-                                                <s.ContentEnvelope/>
-                                                <s.CenteredText>{item.replyContent}</s.CenteredText>
-                                                <s.NameText>from. {item.senderName}</s.NameText>
-                                            </>
-                                        }
+                                                <>
+                                                    <s.ContentEnvelope/>
+                                                    <s.CenteredText>{item.replyContent}</s.CenteredText>
+                                                    <s.NameText>from. {item.senderName}</s.NameText>
+                                                </>
+                                            }
 
-                                    </div>
-                                ))}
-                                {replies.length === 4 && (
-                                    <>
-                                        <s.ContentEnvelope></s.ContentEnvelope>
-                                        <s.CenteredText onClick={() => questionClick("12")}>
-                                            모두 확인하기
-                                        </s.CenteredText>
-                                        <s.NameText></s.NameText>
-                                    </>
-                                )}
-                            </Slider>
-                        </s.EnvelopeDiv>
-                        : <></>
+                                        </div>
+                                    ))}
+                                    {replies.length === 4 && (
+                                        <>
+                                            <s.ContentEnvelope></s.ContentEnvelope>
+                                            <s.CenteredText onClick={() => questionClick("12")}>
+                                                모두 확인하기
+                                            </s.CenteredText>
+                                            <s.NameText></s.NameText>
+                                        </>
+                                    )}
+                                </Slider>
+                            </s.EnvelopeDiv>
+                            : <></>
                     )
                 }
 
 
+                {/*<s.EnvelopeDiv onClick={handleEnvelopeClick}>*/}
+                {/*    <Slider {...settings}>*/}
 
-                        {/*<s.EnvelopeDiv onClick={handleEnvelopeClick}>*/}
-                        {/*    <Slider {...settings}>*/}
+                {/*        <div style={{width: '100%',height:"100%", backgroundColor:"black"}}>*/}
 
-                        {/*        <div style={{width: '100%',height:"100%", backgroundColor:"black"}}>*/}
-
-                        {/*                    <>*/}
-                        {/*                        <s.ContentEnvelope/>*/}
-                        {/*                        <s.CenteredText>sdgfhjsdgfhjdsgfhjdsgfhjsdgfhjdsgfhjgdjhfgsdjhfgjhsdgfjhsdgfhjgsdfjhgdsjhfgdsjhfgjhsdgfjhdsgfhjsdgfjhdsgfjhsdgfjsdgfjhsdgfjhdsgfjhsdgfjsdhgfjhdsgf</s.CenteredText>*/}
-                        {/*                        <s.NameText>from. 김건휘</s.NameText>*/}
-                        {/*                    </>*/}
-
+                {/*                    <>*/}
+                {/*                        <s.ContentEnvelope/>*/}
+                {/*                        <s.CenteredText>sdgfhjsdgfhjdsgfhjdsgfhjsdgfhjdsgfhjgdjhfgsdjhfgjhsdgfjhsdgfhjgsdfjhgdsjhfgdsjhfgjhsdgfjhdsgfhjsdgfjhdsgfjhsdgfjsdgfjhsdgfjhdsgfjhsdgfjsdhgfjhdsgf</s.CenteredText>*/}
+                {/*                        <s.NameText>from. 김건휘</s.NameText>*/}
+                {/*                    </>*/}
 
 
-                        {/*        </div>*/}
-                        {/*    </Slider>*/}
-                        {/*</s.EnvelopeDiv>*/}
+                {/*        </div>*/}
+                {/*    </Slider>*/}
+                {/*</s.EnvelopeDiv>*/}
 
                 <div style={{margin: 36}}></div>
             </s.WrapperLayout>
@@ -320,7 +342,8 @@ function MainScreen() {
                 {modalSmallContent}
             </SmallModal>
         </>
-    );
+    )
+        ;
 }
 
 export default MainScreen;
