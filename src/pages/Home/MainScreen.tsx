@@ -22,7 +22,7 @@ interface ResponseData {
     endDate: number;
     todayQuestion: string;
     existNewRepl: boolean, //true, false //todayquestion이 존재한다. 그런다음 만약 이게 false면 질문은 있는데 그거에 대한 답변이 없는것, 만약 답변이 존재하면 밑으로 넘어감감
-    blur: string, //
+    blur: boolean, //
     insertedEndDate: boolean;
     //isRead: string,
 }
@@ -72,7 +72,8 @@ function MainScreen() {
                         <s.OkBtnStyle onClick={closeModal}>확인</s.OkBtnStyle>
                     </s.BtnDiv>
                 </s.SmallCenterModalWrapper>
-            );        } catch (err) {
+            );
+        } catch (err) {
             console.log(err);
         }
     };
@@ -111,35 +112,34 @@ function MainScreen() {
                 // alert(response.data.todayQuestion);
 
 
-                // setData(responseData); // 형변를환된 응답 데이터 상태에 할당
-                // setDdayCount(responseData.endDate - responseData.nowDate);
-                // if(response.data.existNewRepl) {
-                //     //alert(accessToken)
-                //     const fetchReplData = async () => {
-                //         try {
-                //             const response = await axios.get<RepliesResponse>(
-                //                 `https://api.mili-mate.com/api/user/${userId}/home/repl`,
-                //                 {
-                //                     headers: {
-                //                         authorization: `${accessToken}`,
-                //                     },
-                //                 }
-                //             );
-                //             setReplies(response.data.replies); // 데이터 저장
-                //         } catch (error) {
-                //             console.error("데이터를 불러오는데 실패했습니다:", error);
-                //         }
-                //     };
-                //
-                //     fetchReplData(); // 함수 실행
-                // }
+                setData(responseData); // 형변를환된 응답 데이터 상태에 할당
+                setDdayCount(responseData.endDate - responseData.nowDate);
+                if (response.data.existNewRepl) {
+                    //alert(accessToken)
+                    const fetchReplData = async () => {
+                        try {
+                            const response = await axios.get<RepliesResponse>(
+                                `https://api.mili-mate.com/api/user/${userId}/home/repl`,
+                                {
+                                    headers: {
+                                        authorization: `${accessToken}`,
+                                    },
+                                }
+                            );
+                            setReplies(response.data.replies); // 데이터 저장
+                        } catch (error) {
+                            console.error("데이터를 불러오는데 실패했습니다:", error);
+                        }
+                    };
+
+                    fetchReplData(); // 함수 실행
+                }
             } catch (e) {
                 alert(e);
                 console.log(e);
             }
         };
         fetchData();
-
 
 
     }, [accessToken, userId]);
@@ -152,7 +152,6 @@ function MainScreen() {
     //
     //     fetchReplData(); // 함수 실행
     // } ///
-
 
 
     const closeModal = () => {
@@ -175,15 +174,15 @@ function MainScreen() {
     const navigateQuestionListScreen = async (nowDate: number) => {
         navigate(`/questionListScreen/${userId}`, {state: {nowDate}});
     };
-    const [blur, setBlur] = useState(data?.blur === "true");
+    const [blur, setBlur] = useState(data?.blur === true);
 
-// 2. 클릭 이벤트 핸들러
+    // 2. 클릭 이벤트 핸들러
     const handleEnvelopeClick = async () => {
         if (blur) {
             try {
                 await axios.put(
                     `https://api.mili-mate.com/api/user/${userId}/home/blur`,
-                    {blur: "false"},
+                    {blur: false},
                     {
                         headers: {
                             authorization: `${accessToken}`,
@@ -196,9 +195,6 @@ function MainScreen() {
             }
         }
     };
-
-// ...
-
 
     return (
         <>
@@ -218,16 +214,12 @@ function MainScreen() {
                     </div>
                 </s.AppBarWrapperDiv>
                 <s.MainContent>
-
                     <s.D_dayText>D-{ddayCount}</s.D_dayText>
-
                     <s.MainContentText>{data?.todayQuestion}</s.MainContentText>
-
-
                     {/*<s.MainContentText></s`.MainContentText>*/}
                     <>
                         {data && (
-                            data.existNewRepl == false
+                            !data.existNewRepl
                                 ? <s.SadCharImg/>
                                 : randomNumber === 1
                                     ? <s.hearCharaImg1/>
@@ -247,20 +239,17 @@ function MainScreen() {
                 </s.ShareBtnDiv>
                 {/*<s.Envelope></s.Envelope>*/}
                 {/*<s.ExistEnvelope></s.ExistEnvelope>*/}
-                {data && data.existNewRepl == false ?
+                {data && !data.existNewRepl ?
                     <s.EnvelopeDiv blur={blur} onClick={handleEnvelopeClick}>
-
-
                         <s.NoneEnvelope/>
-
-
                     </s.EnvelopeDiv>
                     :
+                    data && data.existNewRepl ?
                     <s.EnvelopeDiv blur={blur} onClick={handleEnvelopeClick}>
                         <Slider {...settings}>
                             {replies.map((item: Reply, index: number) => (
                                 <div key={index} style={{width: '100%'}}>
-                                    {data && data.existNewRepl === false
+                                    {data && !data.existNewRepl
                                         ? <s.NoneEnvelope/>
                                         : blur
                                             ? <s.ExistEnvelope/>
@@ -270,24 +259,32 @@ function MainScreen() {
                                     <s.NameText>from. {item.senderName}</s.NameText>
                                 </div>
                             ))}
-                            {replies.length === 4 && (
-                                <s.EnvelopeDiv>
-                                    <s.ContentEnvelope></s.ContentEnvelope>
-                                    <s.CenteredText onClick={() => questionClick("12")}>
-                                        모두 확인하기
-                                    </s.CenteredText>
-                                    <s.NameText></s.NameText>
-                                </s.EnvelopeDiv>
-                            )}
+                            {/*{replies.length === 4 && (*/}
+                            {/*    <s.EnvelopeDiv>*/}
+                            {/*        <s.ContentEnvelope></s.ContentEnvelope>*/}
+                            {/*        <s.CenteredText onClick={() => questionClick(data.day.toString())}>*/}
+                            {/*            모두 확인하기*/}
+                            {/*        </s.CenteredText>*/}
+                            {/*        <s.NameText></s.NameText>*/}
+                            {/*    </s.EnvelopeDiv>*/}
+                            {/*)}*/}
+                            <s.EnvelopeDiv>
+                                <s.ContentEnvelope></s.ContentEnvelope>
+                                <s.CenteredText onClick={() => questionClick(data.day.toString())}>
+                                    모두 확인하기
+                                </s.CenteredText>
+                                <s.NameText></s.NameText>
+                            </s.EnvelopeDiv>
+
                         </Slider>
-                    </s.EnvelopeDiv>
+                    </s.EnvelopeDiv> : <></>
                 }
 
                 <div style={{margin: 36}}></div>
             </s.WrapperLayout>
 
 
-            <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)} >
+            <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)}>
                 {modalSmallContent}
             </SmallModal>
         </>
