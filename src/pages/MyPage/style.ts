@@ -506,7 +506,7 @@ const ButtonStyle = styled.button`
   height: 50px;
   border: none;
   text-align: start;
-  font-size: 18px;
+  font-size: 16px;
   color: #4c544b;
   //font-weight: bold;
   margin-left: 12px;

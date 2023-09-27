@@ -2,9 +2,6 @@ import React, {useEffect, useState} from "react";
 import {s} from "./style";
 import axios, {AxiosError} from "axios";
 import {useParams, useNavigate} from 'react-router-dom';
-import ErrorModal from '../../components/ErrorModal/ErrorModal'
-import {BiChevronLeft} from "react-icons/bi";
-import {userInfo} from "os";
 import {useSelector} from "react-redux";
 import {RootState} from "../../components/Redux/store";
 
@@ -23,8 +20,6 @@ function AddReply() {
     });
     const [data, setData]= useState<Data>()
     const navigate = useNavigate();
-    const [errorModalContent, setModalErrorContent] = useState<React.ReactNode>(null);
-    const [modalOpen, setModalOpen] = useState(false);
     const userInfo = useSelector((state: RootState) => state.userInfo);
 
     const handleInputChange = (e: { target: { name: string; value: string } }) => {
@@ -70,14 +65,8 @@ function AddReply() {
         } catch (error: unknown) {
             if (error instanceof AxiosError) {
                 const status = error?.response?.status;
-                alert("답변 달기 실패");
-                setModalErrorContent(
-                    <s.ErrorCenterModalWrapper>
-                        <s.ErrorModalTextsWrapper2>답변을 다는 것에</s.ErrorModalTextsWrapper2>
-                        <s.ErrorModalTextsWrapper2>실패했어요.</s.ErrorModalTextsWrapper2>
-                        {/*<s.ButtonStyle onClick={handleErrorModalClose}>닫기</s.ButtonStyle>*/}
-                    </s.ErrorCenterModalWrapper>
-                );
+                alert("답변을 다는 데에 실패했습니다.");
+                
                 if (status === 404) {
                     // 리소스를 찾을 수 없음
                 } else if (status === 500) {
@@ -86,35 +75,32 @@ function AddReply() {
                     // 기타 상태 코드 처리
                 }
             }
-            setModalOpen(true);
             return null;
         }
     };
-    const handleErrorModalClose = () => {
-        setModalOpen(false);
-        navigate(`/guest/${userId}`);
-    }
-    const goBackBtn = () => {
-        navigate(-1);
-    };
+
     const [selectedColor, setSelectedColor] = useState<string>('white');
 
     const selectColorBtn = (color: string) => {
         setSelectedColor(color);
     }
+
+    const handleNavigate = () => {
+        navigate('/');
+      }
     return (
         <>
+        <s.BackButton onClick = {handleNavigate}/>
+        
+        <s.BackgroundContainer>
+        
+          <s.Container>
+            <s.Text>
+              오늘의 질문
+            </s.Text>
+          </s.Container>
             <s.Wrapper>
-                <s.IconLayout>
-                    <s.ButtonDesign onClick={goBackBtn}>
-                        <BiChevronLeft size={24} color="#4c544b"/>
-                    </s.ButtonDesign>
-                    <s.TitleText>밀리메이트의 답변</s.TitleText>
-                    <s.ButtonDesign onClick={() => {
-                    }}>
-                        <BiChevronLeft size={24} color="#f2f1ee"/>
-                    </s.ButtonDesign>
-                </s.IconLayout>
+                
                 <s.SoldierTagContainer>
                     {data ?<>
                         <s.DayText>{data.day}</s.DayText> :
@@ -130,7 +116,7 @@ function AddReply() {
                         name="reply"
                         value={formData.reply}
                         onChange={handleInputChange}
-                        placeholder="질문에 대한 답을 적어주세요!!"
+                        placeholder="질문에 대한 답을 적어주세요."
                     ></s.ReplyText>
                     <s.SenderDiv>
                         <s.SenderNameFrom>From.</s.SenderNameFrom>
@@ -138,22 +124,21 @@ function AddReply() {
                             name="sender"
                             value={formData.sender}
                             onChange={handleInputChange}
-                            placeholder="이름을 입력해주세요!"
+                            placeholder="이름을 적어주세요."
                         ></s.SenderReplyText>
                     </s.SenderDiv>
                 </s.ReplyContainer>
                 <s.SelectColorDiv>
-                    <s.RoundButton onClick={() => selectColorBtn("#fadfda")} backgroundColor="#fadfda"></s.RoundButton>
-                    <s.RoundButton onClick={() => selectColorBtn("#f5ec9e")} backgroundColor="#f5ec9e"></s.RoundButton>
-                    <s.RoundButton onClick={() => selectColorBtn("#cad4fc")} backgroundColor="#cad4fc"></s.RoundButton>
-                    <s.RoundButton onClick={() => selectColorBtn("#adc786")} backgroundColor="#adc786"></s.RoundButton>
-                    <s.RoundButton onClick={() => selectColorBtn("#ffffff")} backgroundColor="#ffffff"></s.RoundButton>
+                    <s.RoundButton onClick={() => selectColorBtn("Red")} backgroundColor="#fadfda"></s.RoundButton>
+                    <s.RoundButton onClick={() => selectColorBtn("Yellow")} backgroundColor="#f5ec9e"></s.RoundButton>
+                    <s.RoundButton onClick={() => selectColorBtn("Blue")} backgroundColor="#cad4fc"></s.RoundButton>
+                    <s.RoundButton onClick={() => selectColorBtn("Green")} backgroundColor="#adc786"></s.RoundButton>
+                    <s.RoundButton onClick={() => selectColorBtn("White")} backgroundColor="#ffffff"></s.RoundButton>
                 </s.SelectColorDiv>
                 <s.ButtonStyle onClick={onSubmit}>등록하기</s.ButtonStyle>
             </s.Wrapper>
-            <ErrorModal isOpen={modalOpen} onClose={() => setModalOpen(false)}>
-                {errorModalContent}
-            </ErrorModal>
+           
+            </s.BackgroundContainer>
         </>
     );
 }

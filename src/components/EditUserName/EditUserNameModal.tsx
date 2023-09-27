@@ -29,6 +29,8 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
     setModalOpen(false);
   };
 
+
+
   useEffect(() => {
     setSmallModalOpen(true)
     setModalSmallContent(
@@ -69,12 +71,13 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
           }
         );
         if (response.status == 200) {
-          alert("이름변경 완료");
+          alert("이름이 변경되었습니다.");
           dispatch(
             updateUserName({
               userName: newUserName,
             })
           );
+          setModalOpen(false);
         }
       } catch (error: unknown) {
         //에러 일 경우
@@ -93,12 +96,13 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
             alert('기타 에러')
           }
         }
-        alert(error);
+        alert("이름 변경에 실패했습니다.");
         return null;
       }
     }
   };
 
+  
   return (
       <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)} >
           {modalSmallContent}

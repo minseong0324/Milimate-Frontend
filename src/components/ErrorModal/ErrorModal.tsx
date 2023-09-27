@@ -1,23 +1,30 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {s} from "./style";
 
-// children 프로퍼티를 포함하도록 ModalProps 인터페이스를 수정했습니다.
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+const ErrorModal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+  const contentRef = useRef<HTMLDivElement>(null);  // 여기에 타입을 지정해주었습니다.
+
+  const handleWrapperClick = (e: React.MouseEvent) => {  // SyntheticEvent 대신 MouseEvent 사용
+    if (contentRef.current && !contentRef.current.contains(e.target as Node)) {  // e.target을 Node로 타입 단언
+      onClose();
+    }
+  };
+
   return (
-    <s.ModalWrapper show={isOpen} onClick={onClose}>
-      <s.ModalContent onClick={(e: React.SyntheticEvent) => e.stopPropagation()}>
+    <s.ModalWrapper show={isOpen} onClick={handleWrapperClick}>
+      <s.ModalContent ref={contentRef}>
         <s.ModalInnerContent>
-        {children}
+          {children}
         </s.ModalInnerContent>
       </s.ModalContent>
     </s.ModalWrapper>
   );
 };
 
-export default Modal;
+export default ErrorModal;

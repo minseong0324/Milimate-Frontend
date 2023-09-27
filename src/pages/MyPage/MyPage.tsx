@@ -19,13 +19,9 @@ function MyPage() {
     const userInfo = useSelector((state: RootState) => state.userInfo);
     console.log(userInfo);
     const navigate = useNavigate(); // useNavigate hook 사용
-    const [isSmallModalOpen, setSmallModalOpen] = useState(false);
-    const [modalSmallContent, setModalSmallContent] =
         useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
-        const [isModalOpen, setModalOpen] = useState(false);
-    const [modalContent, setModalContent] =
         useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
-    const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
+    const userId = localStorage.getItem("userId")
 
     const [deleteAccModalOpen, setDeleteAccModalOpen] = useState(false);
     const [updateCompletionModalOpen, setUpdateCompletionModalOpen] =
@@ -46,14 +42,12 @@ function MyPage() {
     };
     const editUserNameModalBtn = () => {
         setEditUserNameModalOpen(true);
-        setModalOpen(true);
     };
     const userLogouModalOpenBtn = () => {
         setUserLogoutModalOpen(true);
-        setModalOpen(true);
     };
     const goBackBtn = () => {
-        navigate(-1);
+        navigate(`/home/${userId}`);
     };
     return (
         <>
@@ -141,86 +135,11 @@ function MyPage() {
             )}
             </s.Wrapper>
 
-            <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)} >
-                {modalSmallContent}
-            </SmallModal>
-
         </s.BackgroundContainer>
         </>
-        // <s.BackgroundContainer>
-        //   <s.UserInfoContainer>
-        //     <s.CharImgContainer>
-        //       <s.CharImg src={CharacterImage} alt="Character Description" />
-        //       <s.CharImgName>{userInfo.userName}</s.CharImgName>
-        //     </s.CharImgContainer>
-        //     <s.MainTextWrapper>
-        //       <s.MainNameText>훈련병 {userInfo.userName}</s.MainNameText>
-        //       <s.MainEnlistmentText>
-        //         입대일 : {userInfo.enlistmentYear}.{userInfo.enlistmentMonth}.
-        //         {userInfo.enlistmentday}
-        //       </s.MainEnlistmentText>
-        //     </s.MainTextWrapper>
-        //   </s.UserInfoContainer>
-        //   <s.MenuWrapper>
-        //     <s.ButtonStyle onClick={deleteAccBtn}>• 회원탈퇴</s.ButtonStyle>
-        //
-        //     <s.ButtonStyle onClick={updateCompletionBtn}>
-        //       • 수료일 수정하기
-        //     </s.ButtonStyle>
-        //     <s.ButtonStyle onClick={updateEnlistmentBtn}>
-        //       • 입대일 수정하기
-        //     </s.ButtonStyle>
-        //     <s.ButtonStyle onClick={editUserNameModalBtn}>
-        //       • 이름 변경하기
-        //     </s.ButtonStyle>
-        //
-        //     <s.ButtonStyle onClick={userLogouModalOpenBtn}>
-        //       • 로그아웃
-        //     </s.ButtonStyle>
-        //   </s.MenuWrapper>
-        //   <s.DesignReferDiv>
-        //     <s.DesignReferText>Designed by Freepik</s.DesignReferText>
-        //     <s.DesignReferText>Designed by pikisuperstar</s.DesignReferText>
-        //     <s.DesignReferText>Designed by pch.vector on Freepik</s.DesignReferText>
-        //   </s.DesignReferDiv>
-        //   {deleteAccModalOpen && (
-        //     <DeleteModalBasic
-        //       setModalOpen={setDeleteAccModalOpen}
-        //       contentText="계정을 삭제하시겠습니까?"
-        //     />
-        //   )}
-        //   {updateCompletionModalOpen && (
-        //     <UpdateCompletionModalBasic
-        //       setModalOpen={setUpdateCompletionModalOpen}
-        //     />
-        //   )}
-        //   {updateEnlistModalOpen && (
-        //     <UpdateEnlistmentModalBasic setModalOpen={setUpdateEnlistModalOpen} />
-        //   )}
-        //
-        //   {editUserNameModalOpen && (
-        //     <EditUserNameModalBasic setModalOpen={setEditUserNameModalOpen} />
-        //   )}
-        //   {userLogoutModalOpen && (
-        //     <LogoutModalBasic
-        //       setModalOpen={setUserLogoutModalOpen}
-        //       contentText="로그아웃 하시겠습니까?"
-        //     />
-        //   )}
-        //   {/* <ErrorModal isOpen={isErrorModalOpen} onClose={() => setErrorModalOpen(false)} >
-        //       {modalErrorContent}
-        //   </ErrorModal> */}
-        // </s.BackgroundContainer>
-
-
+       
 
     );
 }
 
 export default MyPage;
-
-/*
-function setIdToken(credential: string) {
-  throw new Error('Function not implemented.');
-}
-*/
