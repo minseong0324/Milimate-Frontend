@@ -114,6 +114,7 @@ function MainScreen() {
         };
         fetchData();
 
+
         if(data?.existNewRepl) {
             alert(accessToken)
             const fetchReplData = async () => {
@@ -134,7 +135,18 @@ function MainScreen() {
 
             fetchReplData(); // 함수 실행
         }
-    }, [userId]);
+    }, []);
+
+        // if (data?.existNewRepl) {
+        //     alert(accessToken)
+        //     const fetchReplData = async () => {
+        //
+        //     };
+        //
+        //     fetchReplData(); // 함수 실행
+        // } ///
+
+
 
     const closeModal = () => {
         setSmallModalOpen(false);
