@@ -107,7 +107,7 @@ function MainScreen() {
                 };
                 if (response.data.existNewRepl == true) {
                     try {
-                        const replyResponse = await axios.get<RepliesResponse>(
+                        const replyResponse = await axios.get(
                             `https://api.mili-mate.com/api/user/${userId}/home/repl`,
                             {
                                 headers: {
@@ -138,7 +138,7 @@ function MainScreen() {
         //
         //     fetchReplData(); // 함수 실행
         // }
-    }, [userId]);
+    }, []);
 
     const closeModal = () => {
         setSmallModalOpen(false);
