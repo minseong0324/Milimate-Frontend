@@ -299,15 +299,15 @@ function MainScreen() {
 
                                         </div>
                                     ))}
-                                    {replies.length === 4 && (
-                                        <>
-                                            <s.ContentEnvelope></s.ContentEnvelope>
-                                            <s.CenteredText onClick={() => questionClick("12")}>
-                                                모두 확인하기
-                                            </s.CenteredText>
-                                            <s.NameText></s.NameText>
-                                        </>
-                                    )}
+                                    {/*{replies.length === 4 && (*/}
+                                    {/*    <>*/}
+                                    {/*        <s.ContentEnvelope></s.ContentEnvelope>*/}
+                                    {/*        <s.CenteredText onClick={() => questionClick("12")}>*/}
+                                    {/*            모두 확인하기*/}
+                                    {/*        </s.CenteredText>*/}
+                                    {/*        <s.NameText></s.NameText>*/}
+                                    {/*    </>*/}
+                                    {/*)}*/}
                                 </Slider>
                             </s.EnvelopeDiv>
                         )
