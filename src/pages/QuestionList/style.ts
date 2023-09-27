@@ -90,7 +90,7 @@ const CustomLi = styled.li`
   font-size: 16px;
   margin: 10px 16px; // 세로로 10px, 가로로 5px의 여백 추가
 `;
-const Splice = styled.div`
+const Splice =  styled.div`
   border: 0.5px solid #adc786;
   //width : 600px;
   //maring : 20px;

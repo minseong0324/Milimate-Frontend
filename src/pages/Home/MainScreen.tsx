@@ -112,28 +112,28 @@ function MainScreen() {
                 // alert(response.data.todayQuestion);
 
 
-                // setData(responseData); // 형변를환된 응답 데이터 상태에 할당
-                // setDdayCount(responseData.endDate - responseData.nowDate);
-                // if(response.data.existNewRepl) {
-                //     //alert(accessToken)
-                //     const fetchReplData = async () => {
-                //         try {
-                //             const response = await axios.get<RepliesResponse>(
-                //                 `https://api.mili-mate.com/api/user/${userId}/home/repl`,
-                //                 {
-                //                     headers: {
-                //                         authorization: `${accessToken}`,
-                //                     },
-                //                 }
-                //             );
-                //             setReplies(response.data.replies); // 데이터 저장
-                //         } catch (error) {
-                //             console.error("데이터를 불러오는데 실패했습니다:", error);
-                //         }
-                //     };
-                //
-                //     fetchReplData(); // 함수 실행
-                // }
+                setData(responseData); // 형변를환된 응답 데이터 상태에 할당
+                setDdayCount(responseData.endDate - responseData.nowDate);
+                if(response.data.existNewRepl) {
+                    //alert(accessToken)
+                    const fetchReplData = async () => {
+                        try {
+                            const response = await axios.get<RepliesResponse>(
+                                `https://api.mili-mate.com/api/user/${userId}/home/repl`,
+                                {
+                                    headers: {
+                                        authorization: `${accessToken}`,
+                                    },
+                                }
+                            );
+                            setReplies(response.data.replies); // 데이터 저장
+                        } catch (error) {
+                            console.error("데이터를 불러오는데 실패했습니다:", error);
+                        }
+                    };
+                
+                    fetchReplData(); // 함수 실행
+                }
             } catch (e) {
               //  alert(e);
                 console.log(e);
