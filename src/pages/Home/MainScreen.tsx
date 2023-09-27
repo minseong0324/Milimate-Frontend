@@ -256,22 +256,14 @@ function MainScreen() {
                         <s.NormalText> 훈련병</s.NormalText>
                     </div>
                 </s.MainContent>
-                {
-                    data ? (
-                        data.nowDate > 0 ? (
-                                <s.ShareBtnDiv onClick={handleCopyClipBoard}>
-                                    <p>오늘의 질문 공유하기</p>
-                                    <FiUpload size={24} style={{marginLeft: 12}}></FiUpload>
-                                </s.ShareBtnDiv>
-                            ) :
-                            data.nowDate < 0 ? (
-                                <s.ShareBtnDiv onClick={handleCopyClipBoard} disabled>
-                                    <p>오늘의 질문 공유하기</p>
-                                    <FiUpload size={24} style={{marginLeft: 12}}></FiUpload>
-                                </s.ShareBtnDiv>
-                            ) : <></>
-                    ) : <></>
-                }
+
+
+                <s.ShareBtnDiv onClick={handleCopyClipBoard}>
+                    <p>오늘의 질문 공유하기</p>
+                    <FiUpload size={24} style={{marginLeft: 12}}></FiUpload>
+                </s.ShareBtnDiv>
+
+
                 {/*<s.Envelope></s.Envelope>*/}
                 {/*<s.ExistEnvelope></s.ExistEnvelope>*/}
 
