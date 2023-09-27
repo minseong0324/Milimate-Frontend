@@ -35,6 +35,7 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
   useEffect(() => {
     setSmallModalOpen(true)
     setModalSmallContent(
+      
       <s.SmallCenterModalWrapper>
         <s.SmallModalTextsWrapper1>새 이름을 입력해주세요.</s.SmallModalTextsWrapper1>
           <s.InputContainer>
