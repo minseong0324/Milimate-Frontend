@@ -222,7 +222,7 @@ function MainScreen() {
                         data ? (
                             data.nowDate < 0 ? (
                                 <>
-                                    <s.NormalText>입대까지</s.NormalText>
+                                    <s.MainContentText>입대까지</s.MainContentText>
                                     <s.D_dayText>D-{data.endDate - 1}</s.D_dayText>
                                     <s.MainContentText>{data.todayQuestion}</s.MainContentText>
                                 </>
