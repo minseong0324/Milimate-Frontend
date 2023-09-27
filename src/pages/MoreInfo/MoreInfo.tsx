@@ -161,7 +161,7 @@ function MoreInfo() {
           })
         );
         navigate("/showcharacter");
-      
+      //
     } catch (error: unknown) {
       //에러 일 경우
       if (error instanceof AxiosError) {
