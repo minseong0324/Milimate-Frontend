@@ -6,10 +6,11 @@ import {useSelector} from "react-redux";
 import {RootState} from "../../components/Redux/store";
 
 interface Data {
-    userName:string,
+    userName: string,
     todayQuestion: string,
-    day : string
+    day: string
 }
+
 function AddReply() {
     const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
     //const [sender, setSender] = useState("");
@@ -18,7 +19,7 @@ function AddReply() {
         sender: "",
         reply: "",
     });
-    const [data, setData]= useState<Data>()
+    const [data, setData] = useState<Data>()
     const navigate = useNavigate();
     const userInfo = useSelector((state: RootState) => state.userInfo);
 
@@ -84,7 +85,7 @@ function AddReply() {
 
     const [selectedColor, setSelectedColor] = useState<string>('white');
     const [selectedColorString, setSelectedColorString] = useState('white');
-    const selectColorBtn = (color: string, colorString : string) => {
+    const selectColorBtn = (color: string, colorString: string) => {
 
         setSelectedColorString(colorString);
         setSelectedColor(color);
@@ -92,56 +93,67 @@ function AddReply() {
 
     const handleNavigate = () => {
         navigate('/');
-      }
+    }
     return (
         <>
-        <s.BackButton onClick = {handleNavigate}/>
+            <s.BackButton onClick={handleNavigate}/>
 
-        <s.BackgroundContainer>
+            <s.BackgroundContainer>
 
-          <s.Container>
-            <s.Text>
-              오늘의 질문
-            </s.Text>
-          </s.Container>
-            <s.Wrapper>
+                <s.Container>
+                    <s.Text>
+                        오늘의 질문
+                    </s.Text>
+                </s.Container>
+                <s.Wrapper>
 
-                <s.SoldierTagContainer>
-                    {data ?<>
-                        <s.DayText>{data.day}</s.DayText> :
+                    <s.SoldierTagContainer>
+                        {data ? <>
+                            <s.DayText>{data.day}</s.DayText>
+                            :
 
-                    {/*<s.QuestionText>{state.question}</s.QuestionText>*/}
-                        <s.QuestionText>{data.todayQuestion}</s.QuestionText>
-                        </> :<></>
+                            {/*<s.QuestionText>{state.question}</s.QuestionText>*/}
+                            <s.QuestionText>{data.todayQuestion}</s.QuestionText>
+                        </> : <>
+                            <s.DayText>12/12</s.DayText>
+
+                            <s.QuestionText>입대전 저는 어떤 사람이었나요</s.QuestionText>
+
+                        </>
                         }
-                    <s.SoldierTagImage/>
-                </s.SoldierTagContainer>
-                <s.ReplyContainer backgroundColor={selectedColor}>
-                    <s.ReplyText
-                        name="reply"
-                        value={formData.reply}
-                        onChange={handleInputChange}
-                        placeholder="질문에 대한 답을 적어주세요."
-                    ></s.ReplyText>
-                    <s.SenderDiv>
-                        <s.SenderNameFrom>From.</s.SenderNameFrom>
-                        <s.SenderReplyText
-                            name="sender"
-                            value={formData.sender}
+                        <s.SoldierTagImage/>
+                    </s.SoldierTagContainer>
+                    <s.ReplyContainer backgroundColor={selectedColor}>
+                        <s.ReplyText
+                            name="reply"
+                            value={formData.reply}
                             onChange={handleInputChange}
-                            placeholder="이름을 입력해주세요."
-                        ></s.SenderReplyText>
-                    </s.SenderDiv>
-                </s.ReplyContainer>
-                <s.SelectColorDiv>
-                    <s.RoundButton onClick={() => selectColorBtn("#FFDED9", "pink")} backgroundColor="#FFDED9"></s.RoundButton>
-                    <s.RoundButton onClick={() => selectColorBtn("#F6EC93", "yellow")} backgroundColor="#F6EC93"></s.RoundButton>
-                    <s.RoundButton onClick={() => selectColorBtn("#C8D4FF", "blue")} backgroundColor="#C8D4FF"></s.RoundButton>
-                    <s.RoundButton onClick={() => selectColorBtn("#A7C87E", "green")} backgroundColor="#A7C87E"></s.RoundButton>
-                    <s.RoundButton onClick={() => selectColorBtn("#ffffff", "white")} backgroundColor="#ffffff"></s.RoundButton>
-                </s.SelectColorDiv>
-                <s.ButtonStyle onClick={onSubmit}>등록하기</s.ButtonStyle>
-            </s.Wrapper>
+                            placeholder="질문에 대한 답을 적어주세요."
+                        ></s.ReplyText>
+                        <s.SenderDiv>
+                            <s.SenderNameFrom>From.</s.SenderNameFrom>
+                            <s.SenderReplyText
+                                name="sender"
+                                value={formData.sender}
+                                onChange={handleInputChange}
+                                placeholder="이름을 입력해주세요."
+                            ></s.SenderReplyText>
+                        </s.SenderDiv>
+                    </s.ReplyContainer>
+                    <s.SelectColorDiv>
+                        <s.RoundButton onClick={() => selectColorBtn("#FFDED9", "pink")}
+                                       backgroundColor="#FFDED9"></s.RoundButton>
+                        <s.RoundButton onClick={() => selectColorBtn("#F6EC93", "yellow")}
+                                       backgroundColor="#F6EC93"></s.RoundButton>
+                        <s.RoundButton onClick={() => selectColorBtn("#C8D4FF", "blue")}
+                                       backgroundColor="#C8D4FF"></s.RoundButton>
+                        <s.RoundButton onClick={() => selectColorBtn("#A7C87E", "green")}
+                                       backgroundColor="#A7C87E"></s.RoundButton>
+                        <s.RoundButton onClick={() => selectColorBtn("#ffffff", "white")}
+                                       backgroundColor="#ffffff"></s.RoundButton>
+                    </s.SelectColorDiv>
+                    <s.ButtonStyle onClick={onSubmit}>등록하기</s.ButtonStyle>
+                </s.Wrapper>
 
             </s.BackgroundContainer>
         </>
@@ -149,4 +161,3 @@ function AddReply() {
 }
 
 export default AddReply;
-

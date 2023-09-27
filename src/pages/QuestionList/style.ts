@@ -110,12 +110,17 @@ const LiLayout = styled.div`
   //justify-content: center;
   align-items: center;
 `;
-
+const VoidQuestion = styled.div`
+  margin-top: 100px;
+  color : #4c544b;
+  font-size: 20px;
+  
+`
 export const s = {
   MainWrapper,
   CustomLi,
   CustomUl,
-
+  VoidQuestion,
   LiLayout,
   DayText,
   Splice,

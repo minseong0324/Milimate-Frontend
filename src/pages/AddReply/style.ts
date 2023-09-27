@@ -53,7 +53,7 @@ const Wrapper = styled.div`
   height: 100%;
   margin-top: 70px;
 
-  ${mobileLandscape}
+  ${mobileLandscape};
 
   @media (min-width: 600px) {
     margin-top: 110px;

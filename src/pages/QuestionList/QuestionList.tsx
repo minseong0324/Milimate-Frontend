@@ -50,12 +50,12 @@ function QuestionListScreen({nowDate}: Date) {
     };
 
     const handleNavigate = () => {
-        navigate('/');
+        navigate(-1);
       }
     return (
         <>
         <s.BackButton onClick = {handleNavigate}/>
-        
+
         <s.BackgroundContainer>
           <s.Container>
             <s.Text>
@@ -63,7 +63,7 @@ function QuestionListScreen({nowDate}: Date) {
             </s.Text>
           </s.Container>
             <s.MainWrapper>
-                
+
 
                 {/*{nowDate > 1 ? (*/}
                 {/*    <s.CustomUl>*/}
@@ -108,11 +108,13 @@ function QuestionListScreen({nowDate}: Date) {
                         )}
                     </s.CustomUl>
                 ) : (
-                    <div> 아직은 확인할 수 없습니다. </div>
+                    <s.VoidQuestion onClick = {()=>{
+                        questionClick("12");
+                    }}>아직은 질문이 없습니다.</s.VoidQuestion>
                 )}
 
             </s.MainWrapper>
-        
+
         </s.BackgroundContainer>
         </>
     );

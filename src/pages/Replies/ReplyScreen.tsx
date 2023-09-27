@@ -14,17 +14,19 @@ type ReplyScreenProps = {
 interface Reply {
     senderName: string;
     replyContent: string;
+    color: string;
 }
 
 interface QuestionData {
     todayQuestion: string;
     replies: Reply[];
+
 }
 
 function ReplyScreen({day}: ReplyScreenProps) {
     const {state} = useLocation();
     const {accessToken, refreshToken} = useToken();
-
+    const [selectedColor, setSelectedColor] = useState<string>('white');
     console.log(state.day);
     console.log(state.question);
     const [questionData, setQuestionData] = useState<QuestionData | null>(null);
@@ -35,7 +37,14 @@ function ReplyScreen({day}: ReplyScreenProps) {
         "안녕 히주야!  잘지내고 있어??ㅠㅠㅠ\n" +
         "입대하고 첫주라 많이 힘들었지... 너무 보고싶다\n" +
         "밥은 잘먹고 있는거지 우리 히주 라면 좋아하는데\n" +
+        "맛있는거 나와서 먹고 힘냈으면 좋겠다.\n" + "안녕 히주야!  잘지내고 있어??ㅠㅠㅠ\n" +
+        "입대하고 첫주라 많이 힘들었지... 너무 보고싶다\n" +
+        "밥은 잘먹고 있는거지 우리 히주 라면 좋아하는데\n" +
         "맛있는거 나와서 먹고 힘냈으면 좋겠다.\n" +
+        "빨리 휴가 나와서 만나자~~\"안녕 히주야!  잘지내고 있어??ㅠㅠㅠ\\n\" +\n" + "입대하고 첫주라 많이 힘들었지... 너무 보고싶다\n" +
+        "밥은 잘먹고 있는거지 우리 히주 라면 좋아하는데\n" +
+        "맛있는거 나와서 먹고 힘냈으면 좋겠다.\n" +
+
         "빨리 휴가 나와서 만나자~~\"안녕 히주야!  잘지내고 있어??ㅠㅠㅠ\\n\" +\n" +
         "        \"입대하고 첫주라 많이 힘들었지... 너무 보고싶다\\n\" +\n" +
         "        \"밥은 잘먹고 있는거지 우리 히주 라면 좋아하는데\\n\" +\n" +
@@ -77,44 +86,66 @@ function ReplyScreen({day}: ReplyScreenProps) {
     const goBackBtn = () => {
         navigate(-1);
     };
+    const handleNavigate = () => {
+        navigate('/');
+    }
+
     return (
-        <s.Wrapper>
+        <>
+            <s.BackButton onClick={handleNavigate}/>
+            <s.BackgroundContainer>
+                <s.Container>
+                    <s.Text>
+                        밀리메이트의 답변
+                    </s.Text>
+                </s.Container>
+                {/* Today's Question */}
+                {/*<s.SoldierTagContainer>*/}
+                {/*    <s.DayText>{state.day}</s.DayText>*/}
+                {/*    /!*<s.QuestionText>{state.question}</s.QuestionText>*!/*/}
+                {/*    <s.QuestionText>{state.question}</s.QuestionText>*/}
+                {/*    <s.SoldierTagImage/>*/}
+                {/*</s.SoldierTagContainer>*/}
 
-            <s.IconLayout>
-                <s.ButtonDesign onClick={goBackBtn}>
-                    <BiChevronLeft size={24} color="#4c544b"/>
+                {/* Replies */}
+                {/*{questionData?.replies.map((reply, index) => (*/}
+                {/*    <s.BubbleReplyContainer key={index}>*/}
+                {/*        <s.BubbleReplyImage/>*/}
+                {/*        <s.BubbleReplyText>*/}
+                {/*            <h2>{reply.senderName}</h2>*/}
+                {/*            <p>{reply.replyContent}</p>*/}
+                {/*        </s.BubbleReplyText>*/}
+                {/*    </s.BubbleReplyContainer>*/}
+                {/*))}*/}
+                <s.Wrapper>
+                    <s.SoldierTagContainer>
+                        {questionData ? <>
+                            <s.DayText>{state.day}</s.DayText>
+                            :
 
-                </s.ButtonDesign>
-                <s.TitleText>밀리메이트의 답변</s.TitleText>
-                <s.ButtonDesign onClick={()=>{}}>
-                <BiChevronLeft size={24} color="#f2f1ee"/>
-                </s.ButtonDesign>
-            </s.IconLayout>
-            {/* Today's Question */}
-            <s.SoldierTagContainer>
-                <s.DayText>{state.day}</s.DayText>
-                {/*<s.QuestionText>{state.question}</s.QuestionText>*/}
-                <s.QuestionText>{state.question}</s.QuestionText>
-                <s.SoldierTagImage/>
-            </s.SoldierTagContainer>
+                            {/*<s.QuestionText>{state.question}</s.QuestionText>*/}
+                            <s.QuestionText>{questionData.todayQuestion}</s.QuestionText>
+                        </> : <>
+                            <s.DayText>12/12</s.DayText>
 
-            {/* Replies */}
-            {/*{questionData?.replies.map((reply, index) => (*/}
-            {/*    <s.BubbleReplyContainer key={index}>*/}
-            {/*        <s.BubbleReplyImage/>*/}
-            {/*        <s.BubbleReplyText>*/}
-            {/*            <h2>{reply.senderName}</h2>*/}
-            {/*            <p>{reply.replyContent}</p>*/}
-            {/*        </s.BubbleReplyText>*/}
-            {/*    </s.BubbleReplyContainer>*/}
-            {/*))}*/}
-            <s.ReplyContainer>
-                <s.ContentText>{testString}</s.ContentText>
-                <s.SenderText>From.우뎡</s.SenderText>
+                            <s.QuestionText>입대전 저는 어떤 사람이었나요.</s.QuestionText>
 
-            </s.ReplyContainer>
+                        </>
+                        }
+                        <s.SoldierTagImage/>
+                    </s.SoldierTagContainer>
+                    {questionData ?
+                        questionData.replies.map((reply, index) => (
+                            <s.ReplyContainer key={index} backgroundColor={reply.color}>
+                                <s.ContentText>{reply.replyContent}</s.ContentText>
+                                <s.SenderText>From.{reply.senderName}</s.SenderText>
+                            </s.ReplyContainer>
+                        )) : <></>
+                    }
+                </s.Wrapper>
 
-        </s.Wrapper>
+            </s.BackgroundContainer>
+        </>
     );
 }
 
