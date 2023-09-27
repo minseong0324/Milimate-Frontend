@@ -47,9 +47,9 @@ function QuestionListScreen({nowDate}: Date) {
     }, []);
     const questionClick = (day: string) => {
         console.log("이벤트");
-        navigate("/replyscreen", {state: {day}});
+        navigate(`/replyscreen/${userId}`, {state: {day}});
     };
-
+    
     const handleNavigate = () => {
         navigate(`/home/${userId}`);
     }
