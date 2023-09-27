@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios, { AxiosError } from "axios";
 import { s } from "./style";
-import ErrorModal from "src/components/ErrorModal/ErrorModal";
-import ModalBasic from "src/components/SimpleModal/SimpleModal";
 import { useDispatch } from "react-redux";
 import { setUserInfo } from "src/components/Redux/Slices/userInfoSlice";
 import { useToken } from "../../contexts/TokenProvider/TokenProvider";
@@ -18,16 +16,9 @@ function MoreInfo() {
   const [completionMonth, setcompletionMonth] = useState("");
   const [completionDay, setcompletionDay] = useState("");
   const navigate = useNavigate(); // useNavigate hook 사용
-  const [isErrorModalOpen, setErrorModalOpen] = useState(false);
-  const [modalErrorContent, setModalErrorContent] =
-    useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
 
   // 회원가입 처리 함수
   const dispatch = useDispatch();
-  const [modalOpen, setModalOpen] = useState(false);
-  const [numericmodalOpen, setNumericModalOpen] = useState(false);
-
-  const [modalMessage, setModalMessage] = useState("");
 
   const isLeapYear = (year: number) => {
     return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
@@ -53,8 +44,7 @@ function MoreInfo() {
     e.preventDefault();
     // Case 3: 입대일과 이름은 필수값이다.
     if (!userName || !enlistmentYear || !enlistmentMonth || !enlistmentDay) {
-      setModalMessage("필수 정보를 입력해주세요!");
-      return setModalOpen(true);
+      alert("필수 정보를 입력해주세요!");
     }
 
     // Case 2: 입대일과 수료일을 입력하는 모든 값들은 정수여야 한다.
@@ -66,8 +56,7 @@ function MoreInfo() {
       (completionMonth && !isNumeric(completionMonth)) ||
       (completionDay && !isNumeric(completionDay))
     ) {
-      setModalMessage("날짜를 숫자로 입력해주세요!");
-      return setModalOpen(true);
+      alert("날짜를 숫자로 입력해주세요!");
     }
 
     // Case 4: 입대일의 달과 수료일의 달은 1 ~ 12의 값들을 가지고 있어야 한다.
@@ -77,8 +66,7 @@ function MoreInfo() {
       (completionMonth &&
         (parseInt(completionMonth) < 1 || parseInt(completionMonth) > 12))
     ) {
-      setModalMessage("월은 1 ~ 12 사이의 값이어야 합니다!");
-      return setModalOpen(true);
+      alert("월은 1 ~ 12 사이의 값이어야 합니다!");
     }
 
     // Case 1: 입대일은 수료일보다 미래일 수 없다.
@@ -94,8 +82,7 @@ function MoreInfo() {
     );
 
     if (completeDate < enlistDate) {
-      setModalMessage("입대일은 수료일보다 미래일 수 없습니다!");
-      return setModalOpen(true);
+      alert("입대일은 수료일보다 미래일 수 없습니다!");
     }
 
     // Case 5: 수료일은 필수값이 아니기 때문에 입력하는 칸 3개 중에서 하나라도 잘못하면 서버한테 completionYear, completionMonth, completionDay를 전부 "0"으로 전송한다.
@@ -124,8 +111,7 @@ function MoreInfo() {
     console.log("수료일", completeDate);
     console.log("오늘 날짜", today);
     if (completeDate <= today) {
-      setModalMessage("수료일은 현재 날짜보다 미래여야 합니다!");
-      return setModalOpen(true);
+      alert("수료일은 현재 날짜보다 미래여야 합니다!");
     }
 
     const enlistmentDayInt = parseInt(enlistmentDay);
@@ -137,8 +123,7 @@ function MoreInfo() {
       completionDayInt >
         getMaxDayOfMonth(parseInt(completionMonth), parseInt(completionYear))
     ) {
-      setModalMessage("입력한 날짜가 해당 달의 최대 일 수를 초과하였습니다!");
-      return setModalOpen(true);
+      alert("입력한 날짜가 해당 달의 최대 일 수를 초과하였습니다!");
     }
     // 회원가입 API 요청
     try {
@@ -187,14 +172,7 @@ function MoreInfo() {
       if (error instanceof AxiosError) {
         const status = error?.response?.status;
         console.error("Failed to fetch user info:", error);
-        setModalErrorContent(
-          <s.ErrorCenterModalWrapper>
-            <s.ErrorModalTextsWrapper1>
-              정보 저장에 실패했습니다!
-            </s.ErrorModalTextsWrapper1>
-            <s.ModalButton onClick={handleErrorModalClose}>닫기</s.ModalButton>
-          </s.ErrorCenterModalWrapper>
-        );
+        alert("사용자 정보를 불러오는데에 실패했습니다.")
         if (status === 404) {
           // 리소스를 찾을 수 없음
         } else if (status === 500) {
@@ -203,16 +181,11 @@ function MoreInfo() {
           // 기타 상태 코드 처리
         }
       }
-      setErrorModalOpen(true);
       return null;
     }
   };
   const isNumeric = (value: string) => {
     return /^\d+$/.test(value);
-  };
-  const exceptionInfo = (e: React.FormEvent<HTMLFormElement>) => {};
-  const handleErrorModalClose = () => {
-    setErrorModalOpen(false);
   };
 
   const handleNavigate = () => {
@@ -313,28 +286,7 @@ function MoreInfo() {
           </s.RequiredInfoText>
         </s.MoreInfoForm>
 
-        <ErrorModal
-          isOpen={isErrorModalOpen}
-          onClose={() => setErrorModalOpen(false)}
-        >
-          {modalErrorContent}
-        </ErrorModal>
-      </s.Wrapper>
-      {modalOpen && (
-        <ModalBasic
-          setModalOpen={setModalOpen}
-          contentText={modalMessage}
-          modalType={0}
-        />
-      )}
-
-      {numericmodalOpen && (
-        <ModalBasic
-          setModalOpen={setNumericModalOpen}
-          contentText="입대일과 수료일은 숫자로 입력해주세요!"
-          modalType={1}
-        />
-      )}
+        </s.Wrapper>
     </s.BackgroundContainer>
     </>
   );

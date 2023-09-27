@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {s} from "./style";
 import {useParams, useNavigate} from "react-router-dom";
-import CharacterImage from "../../assets/charater/MainCharacter.png";
-import {useLocation} from "react-router-dom";
 import axios, {AxiosError} from "axios";
 import DeleteModalBasic from "src/components/DeleteModalAcc/DeleteModal";
 import UpdateCompletionModalBasic from "src/components/UpdatecompletionModal/UpdateCompletionModal";
@@ -11,7 +9,7 @@ import LogoutModalBasic from "src/components/LogoutModal/LogoutModal";
 import {useSelector} from "react-redux";
 import {RootState} from "src/components/Redux/store";
 import UpdateEnlistmentModalBasic from "src/components/UpdateEnlistModal/UpdateEnlistmentModal";
-import {BiChevronLeft} from "react-icons/bi";
+import SmallModal from "../../components/ErrorModal/ErrorModal"
 
 type UserNameProps = {
     userName?: string;
@@ -21,8 +19,11 @@ function MyPage() {
     const userInfo = useSelector((state: RootState) => state.userInfo);
     console.log(userInfo);
     const navigate = useNavigate(); // useNavigate hook 사용
-    const [isErrorModalOpen, setErrorModalOpen] = useState(false);
-    const [modalErrorContent, setModalErrorContent] =
+    const [isSmallModalOpen, setSmallModalOpen] = useState(false);
+    const [modalSmallContent, setModalSmallContent] =
+        useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
+        const [isModalOpen, setModalOpen] = useState(false);
+    const [modalContent, setModalContent] =
         useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
     const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
 
@@ -33,18 +34,6 @@ function MyPage() {
     const [userLogoutModalOpen, setUserLogoutModalOpen] = useState(false);
 
     const [updateEnlistModalOpen, setUpdateEnlistModalOpen] = useState(false);
-
-    const handleUnLoggedInModalClose = () => {
-        setErrorModalOpen(false);
-        navigate(`/guest/${userId}`);
-    };
-
-    // 컴포넌트가 마운트될 때 사용자 정보를 가져온다
-
-    // 서비스 설명 함수
-    const handleGoSend = () => {
-        navigate(`/send/${userId}`);
-    };
 
     const deleteAccBtn = () => {
         setDeleteAccModalOpen(true);
@@ -57,9 +46,11 @@ function MyPage() {
     };
     const editUserNameModalBtn = () => {
         setEditUserNameModalOpen(true);
+        setModalOpen(true);
     };
     const userLogouModalOpenBtn = () => {
         setUserLogoutModalOpen(true);
+        setModalOpen(true);
     };
     const goBackBtn = () => {
         navigate(-1);
@@ -149,6 +140,11 @@ function MyPage() {
                 />
             )}
             </s.Wrapper>
+
+            <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)} >
+                {modalSmallContent}
+            </SmallModal>
+
         </s.BackgroundContainer>
         </>
         // <s.BackgroundContainer>

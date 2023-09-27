@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import modalBackground from '../../assets/modal/modal-small.png';
+import modalBackground from '../../assets/modal/SmallModal.svg';
 
 const fadeIn = keyframes`
   from { opacity: 0; }
@@ -17,14 +17,12 @@ interface ModalWrapperProps {
   }
 // ModalWrapper 컴포넌트에 ModalWrapperProps 타입을 적용하여 show 프로퍼티를 사용할 수 있도록 했습니다.
 const ModalWrapper = styled.div<ModalWrapperProps>`
-  font-family: 'DOSSaemmul';
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(197, 247, 255, 0.8);
-  animation: ${props => props.show ? fadeIn : fadeOut} 0.5s linear forwards;
+  background-color: rgba(0, 0, 0, 0.5); // 0.5는 투명도를 나타냅니다.
   display: ${props => props.show ? 'block' : 'none'};
   z-index: 999;
 `;
@@ -39,10 +37,10 @@ const ModalContent = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   box-sizing: border-box; // 이 부분을 추가
-  padding: 50px;
+  padding-top: 30px;
   width: 300px;
   height: 300px;
-  color: rgb(0, 0, 0); 
+  color: #4a534a; 
   font-size: 16px;
   overflow: auto; 
 `;

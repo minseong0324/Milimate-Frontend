@@ -6,6 +6,7 @@ import { useToken } from "../../contexts/TokenProvider/TokenProvider";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUserName } from "../Redux/Slices/userInfoSlice";
 import { RootState } from "../Redux/store";
+import SmallModal from "../../components/ErrorModal/ErrorModal"
 interface PropsType {
   setModalOpen: (open: boolean) => void;
 }
@@ -19,37 +20,38 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
   const userId = localStorage.getItem("userId");
   const { accessToken, refreshToken } = useToken();
   const dispatch = useDispatch();
-  const userInfo = useSelector((state: RootState) => state.userInfo);
-  const navigate = useNavigate();
-  const modalRef = useRef<HTMLDivElement | null>(null);
   const [newUserName, setNewUserName] = useState("");
-  const [completionMonth, setcompletionMonth] = useState("");
-  const [completionDay, setcompletionDay] = useState("");
-  // 모달 끄기
-  const [responseData, setResponseData] = useState<ResponseData>();
+  const [isSmallModalOpen, setSmallModalOpen] = useState(false);
+  const [modalSmallContent, setModalSmallContent] =
+    useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장
+
   const closeModal = () => {
     setModalOpen(false);
   };
-  // 모달 내부 클릭 시 이벤트 버블링 중지
-  const stopPropagation = (e: React.MouseEvent) => {
-    e.stopPropagation();
-  };
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        modalRef.current &&
-        !modalRef.current.contains(event.target as Node)
-      ) {
-        closeModal();
-      }
-    };
+    setSmallModalOpen(true)
+    setModalSmallContent(
+      <s.SmallCenterModalWrapper>
+        <s.SmallModalTextsWrapper1>새 이름을 입력해주세요.</s.SmallModalTextsWrapper1>
+          <s.InputContainer>
+            <s.MoreInfoInputName
+              type="text"
+              value={newUserName}
+              onChange={(e: {
+                target: { value: React.SetStateAction<string> };
+              }) => setNewUserName(e.target.value)}
+            />
+          </s.InputContainer>
+        <s.BtnDiv>
+          <s.OkBtnStyle onClick={UpdateUserNameBtn}>확인</s.OkBtnStyle>
+          <s.CancelBtnStyle onClick={closeModal}>취소</s.CancelBtnStyle>
+        </s.BtnDiv>
+      </s.SmallCenterModalWrapper>
+    );
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  });
+
   const UpdateUserNameBtn = async () => {
     if (newUserName.trim() == "") {
       alert("모든 필수 정보를 입력해주세요");
@@ -98,25 +100,9 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
   };
 
   return (
-    <s.Wrapper onClick={closeModal}>
-      <s.ModalBox ref={modalRef} onClick={stopPropagation}>
-        <s.TitleText>현재 이름 : {userInfo.userName}</s.TitleText>
-        <s.ContentText>새 이름을 입력해 주세요!</s.ContentText>
-        <s.InputContainer>
-          <s.MoreInfoInputName
-            type="text"
-            value={newUserName}
-            onChange={(e: {
-              target: { value: React.SetStateAction<string> };
-            }) => setNewUserName(e.target.value)}
-          />
-        </s.InputContainer>
-        <s.BtnDiv>
-          <s.OkBtnStyle onClick={UpdateUserNameBtn}>확인</s.OkBtnStyle>
-          <s.CancelBtnStyle onClick={closeModal}>취소</s.CancelBtnStyle>
-        </s.BtnDiv>
-      </s.ModalBox>
-    </s.Wrapper>
+      <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)} >
+          {modalSmallContent}
+      </SmallModal>
   );
 }
 

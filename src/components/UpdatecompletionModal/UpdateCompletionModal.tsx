@@ -1,59 +1,72 @@
 import { useEffect, useRef, useState } from "react";
 import { s } from "./style";
 import axios, { AxiosError } from "axios";
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCompletionDate } from "../Redux/Slices/userInfoSlice";
 import { RootState } from "../Redux/store";
 import { useToken } from "../../contexts/TokenProvider/TokenProvider";
-import ModalBasic from "../SimpleModal/SimpleModal";
+import SmallModal from "../../components/ErrorModal/ErrorModal"
 
 interface PropsType {
   setModalOpen: (open: boolean) => void;
 }
 
-interface ResponseData {
-  completionYear: string;
-  completionMonth: string;
-  completionDay: string;
-}
 function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
   const userId = localStorage.getItem("userId");
-  const [exModalOpen, setExModalOpen] = useState(false);
   const { accessToken, refreshToken } = useToken();
   const dispatch = useDispatch();
-  const [modalMessage, setModalMessage] = useState("");
-
-  const modalRef = useRef<HTMLDivElement | null>(null);
   const [completionYear, setcompletionYear] = useState("");
   const [completionMonth, setcompletionMonth] = useState("");
   const [completionDay, setcompletionDay] = useState("");
+  const [isSmallModalOpen, setSmallModalOpen] = useState(false);
+  const [modalSmallContent, setModalSmallContent] =
+    useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장
+
   // 모달 끄기
-  const [responseData, setResponseData] = useState<ResponseData>();
   const closeModal = () => {
     setModalOpen(false);
   };
 
-  // 모달 내부 클릭 시 이벤트 버블링 중지
-  const stopPropagation = (e: React.MouseEvent) => {
-    e.stopPropagation();
-  };
-
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        modalRef.current &&
-        !modalRef.current.contains(event.target as Node)
-      ) {
-        closeModal();
-      }
-    };
+    setSmallModalOpen(true)
+    setModalSmallContent(
+      <s.SmallCenterModalWrapper>
+        <s.SmallModalTextsWrapper1>수료일 수정하기</s.SmallModalTextsWrapper1>
+        <s.InputContainer>
+          <s.MoreInfoInputYear
+            type="text"
+            value={completionYear}
+            onChange={(e: {
+              target: { value: React.SetStateAction<string> };
+            }) => setcompletionYear(e.target.value)}
+          />
+          <s.TextsStyle2>년</s.TextsStyle2>
+          <s.MoreInfoInputYMonthDay
+            type="text"
+            value={completionMonth}
+            onChange={(e: {
+              target: { value: React.SetStateAction<string> };
+            }) => setcompletionMonth(e.target.value)}
+          />
+          <s.TextsStyle2>월</s.TextsStyle2>
+          <s.MoreInfoInputYMonthDay
+            type="text"
+            value={completionDay}
+            onChange={(e: {
+              target: { value: React.SetStateAction<string> };
+            }) => setcompletionDay(e.target.value)}
+          />
+          <s.TextsStyle2>일</s.TextsStyle2>
+        </s.InputContainer>
+        <s.BtnDiv>
+          <s.OkBtnStyle onClick={UpdateCompletionBtn}>확인</s.OkBtnStyle>
+          <s.CancelBtnStyle onClick={closeModal}>취소</s.CancelBtnStyle>
+        </s.BtnDiv>
+      </s.SmallCenterModalWrapper>
+    );
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  });
+
   const isLeapYear = (year: number) => {
     return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
   };
@@ -84,8 +97,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
       !userInfo.enlistmentMonth ||
       !userInfo.enlistmentday
     ) {
-      setModalMessage("필수 정보를 입력해주세요!");
-      return setExModalOpen(true);
+      alert("필수 정보를 입력해주세요!");
     }
 
     // Case 2: 입대일과 수료일을 입력하는 모든 값들은 정수여야 한다.
@@ -97,8 +109,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
       (completionMonth && !isNumeric(completionMonth)) ||
       (completionDay && !isNumeric(completionDay))
     ) {
-      setModalMessage("날짜를 숫자로 입력해주세요!");
-      return setExModalOpen(true);
+      alert("날짜를 숫자로 입력해주세요!");
     }
 
     // Case 4: 입대일의 달과 수료일의 달은 1 ~ 12의 값들을 가지고 있어야 한다.
@@ -108,8 +119,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
       (completionMonth &&
         (parseInt(completionMonth) < 1 || parseInt(completionMonth) > 12))
     ) {
-      setModalMessage("월은 1 ~ 12 사이의 값이어야 합니다!");
-      return setExModalOpen(true);
+      alert("월은 1 ~ 12 사이의 값이어야 합니다!");
     }
 
     // Case 1: 입대일은 수료일보다 미래일 수 없다.
@@ -125,8 +135,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
     );
 
     if (completeDate < enlistDate) {
-      setModalMessage("입대일은 수료일보다 미래일 수 없습니다!");
-      return setExModalOpen(true);
+      alert("입대일은 수료일보다 미래일 수 없습니다!");
     }
 
     // Case 5: 수료일은 필수값이 아니기 때문에 입력하는 칸 3개 중에서 하나라도 잘못하면 서버한테 completionYear, completionMonth, completionDay를 전부 "0"으로 전송한다.
@@ -155,8 +164,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
     console.log("수료일", completeDate);
     console.log("오늘 날짜", today);
     if (completeDate <= today) {
-      setModalMessage("수료일은 현재 날짜보다 미래여야 합니다!");
-      return setExModalOpen(true);
+      alert("수료일은 현재 날짜보다 미래여야 합니다!");
     }
 
     const enlistmentDayInt = parseInt(userInfo.enlistmentday);
@@ -171,8 +179,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
       completionDayInt >
         getMaxDayOfMonth(parseInt(completionMonth), parseInt(completionYear))
     ) {
-      setModalMessage("입력한 날짜가 해당 달의 최대 일 수를 초과하였습니다!");
-      return setExModalOpen(true);
+      alert("입력한 날짜가 해당 달의 최대 일 수를 초과하였습니다!");
     }
 
     try {
@@ -218,69 +225,13 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
       return null;
     }
   };
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const userId = localStorage.getItem("userId");
-  //     const response = await axios.get(
-  //       `http://localhost:8080/myPage/${userId}/editCompletion`
-  //     );
-  //     if (response.status == 200) {
-  //       setResponseData(response.data);
-  //     }
-  //   };
-  // }, []);
+
   const userInfo = useSelector((state: RootState) => state.userInfo);
   return (
-    <s.Wrapper onClick={closeModal}>
-      <s.ModalBox ref={modalRef} onClick={stopPropagation}>
-        <s.TitleText>수료일</s.TitleText>
-        <s.TitleText>
-          {userInfo.completionYear}년 {userInfo.completionMonth}월{" "}
-          {userInfo.completionday}일
-        </s.TitleText>
-        <s.InputContainer>
-          <s.MoreInfoInputYear
-            type="text"
-            value={completionYear}
-            onChange={(e: {
-              target: { value: React.SetStateAction<string> };
-            }) => setcompletionYear(e.target.value)}
-          />
-          <s.TextsStyle2>년</s.TextsStyle2>
-          <s.MoreInfoInputYMonthDay
-            type="text"
-            value={completionMonth}
-            onChange={(e: {
-              target: { value: React.SetStateAction<string> };
-            }) => setcompletionMonth(e.target.value)}
-          />
-          <s.TextsStyle2>월</s.TextsStyle2>
-          <s.MoreInfoInputYMonthDay
-            type="text"
-            value={completionDay}
-            onChange={(e: {
-              target: { value: React.SetStateAction<string> };
-            }) => setcompletionDay(e.target.value)}
-          />
-          <s.TextsStyle2>일</s.TextsStyle2>
-        </s.InputContainer>
-        <s.BtnDiv>
-          <s.OkBtnStyle onClick={UpdateCompletionBtn}>확인</s.OkBtnStyle>
-          <s.CancelBtnStyle onClick={closeModal}>취소</s.CancelBtnStyle>
-        </s.BtnDiv>
-      </s.ModalBox>
-      {exModalOpen && (
-        <ModalBasic
-          setModalOpen={setExModalOpen}
-          contentText={modalMessage}
-          modalType={0}
-        />
-      )}
-    </s.Wrapper>
+    <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)} >
+      {modalSmallContent}
+    </SmallModal>
   );
 }
 
 export default UpdateCompletionModalBasic;
-function setModalMessage(arg0: string) {
-  throw new Error("Function not implemented.");
-}

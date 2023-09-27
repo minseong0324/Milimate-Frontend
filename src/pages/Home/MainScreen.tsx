@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {s} from "./styled";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
-import ModalBasic from "src/components/SimpleModal/SimpleModal";
+import SmallModal from "src/components/ErrorModal/ErrorModal";
 import {useToken} from "../../contexts/TokenProvider/TokenProvider";
 import {useSelector} from "react-redux";
 import {RootState} from "../../components/Redux/store";
@@ -50,22 +50,28 @@ function MainScreen() {
     const { accessToken, refreshToken } = useToken();
     const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
     const userInfo = useSelector((state: RootState) => state.userInfo);
-    const [lastCompletionDate, setLastCompletionDate] = useState("0");
     const [data, setData] = useState<ResponseData | null>(null);
-    const location = useLocation();
     const navigate = useNavigate();
     const [ddayCount, setDdayCount] = useState<number>(0);
-
     const [replies, setReplies] = useState<Reply[]>([]); // 상태 초기화
+    const [isSmallModalOpen, setSmallModalOpen] = useState(false);
+    const [modalSmallContent, setModalSmallContent] =
+        useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장\
 
     const handleCopyClipBoard = async () => {
         const linkToShare = `https://mili-mate.com/guest/${userId}`;
         console.log(linkToShare);
         try {
             await navigator.clipboard.writeText(linkToShare);
-            console.log(linkToShare);
-            setModalOpen(true); // 모달창 띄우기
-        } catch (err) {
+            setSmallModalOpen(true)
+            setModalSmallContent(
+              <s.SmallCenterModalWrapper>
+                <s.SmallModalTextsWrapper2>링크가 복사되었습니다.</s.SmallModalTextsWrapper2>
+                <s.BtnDiv>
+                  <s.OkBtnStyle onClick={closeModal}>확인</s.OkBtnStyle>
+                </s.BtnDiv>
+              </s.SmallCenterModalWrapper>
+            );        } catch (err) {
             console.log(err);
         }
     };
@@ -129,11 +135,10 @@ function MainScreen() {
             fetchReplData(); // 함수 실행
         }
     }, [userId]);
-    const [modalOpen, setModalOpen] = useState(false);
-    // 모달창 노출
-    const showModal = () => {
-        setModalOpen(true);
-    };
+
+    const closeModal = () => {
+        setSmallModalOpen(false);
+        };
     const randomNumber = Math.floor(Math.random() * 3) + 1; // 1, 2, 또는 3 캐릭터 이미지
 
     const questionClick = (day: string) => {
@@ -263,13 +268,9 @@ function MainScreen() {
             </s.WrapperLayout>
 
 
-            {modalOpen && (
-                <ModalBasic
-                    setModalOpen={setModalOpen}
-                    contentText="링크가 복사되었습니다."
-                    modalType={0}
-                />
-            )}
+            <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)} >
+                {modalSmallContent}
+            </SmallModal>
         </>
     );
 }
