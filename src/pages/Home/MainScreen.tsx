@@ -137,7 +137,7 @@ function MainScreen() {
         //     };
         //
         //     fetchReplData(); // 함수 실행
-        // }
+        // } //
     }, []);
 
     const closeModal = () => {
