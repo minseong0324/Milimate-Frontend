@@ -11,7 +11,7 @@ function KakaoCallback() {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
-  
+
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
   const [modalErrorContent, setModalErrorContent] =
     useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
@@ -40,13 +40,13 @@ function KakaoCallback() {
               enlistmentYear: response.data.enlistmentYear,
               enlistmentMonth: response.data.enlistmentMonth,
               enlistmentday: response.data.enlistmentDay,
-              completionYear: response.data.enlistmentYear,
+              completionYear: response.data.completionYear,
               completionMonth: response.data.completionMonth,
               completionday: response.data.completionDay,
-            
+
             })
           );
-            
+
           localStorage.setItem("userId", response.data.userId);
           alert(response.data.userId);
           navigate(`/home/${response.data.userId}`, { replace: true }); // 인가 코드 제거 및 /OwnerHome/${email}로 리다이렉트
@@ -54,7 +54,7 @@ function KakaoCallback() {
           localStorage.setItem("userId", response.data.userId);
           navigate("/moreinfo"); // 인가 코드 제거 및 /OwnerHome/${email}로 리다이렉트
         }
-      
+
     } catch (error: unknown) {
       //에러 일 경우
       if (error instanceof AxiosError) {
