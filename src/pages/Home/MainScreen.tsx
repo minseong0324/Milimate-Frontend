@@ -22,7 +22,7 @@ interface ResponseData {
     endDate: number;
     todayQuestion: string;
     existNewRepl: boolean, //true, false //todayquestion이 존재한다. 그런다음 만약 이게 false면 질문은 있는데 그거에 대한 답변이 없는것, 만약 답변이 존재하면 밑으로 넘어감감
-    blur: boolean, //
+    blur: string, //
     insertedEndDate: boolean;
     //isRead: string,
 }
@@ -72,8 +72,7 @@ function MainScreen() {
                         <s.OkBtnStyle onClick={closeModal}>확인</s.OkBtnStyle>
                     </s.BtnDiv>
                 </s.SmallCenterModalWrapper>
-            );
-        } catch (err) {
+            );        } catch (err) {
             console.log(err);
         }
     };
@@ -112,34 +111,35 @@ function MainScreen() {
                 // alert(response.data.todayQuestion);
 
 
-                setData(responseData); // 형변를환된 응답 데이터 상태에 할당
-                setDdayCount(responseData.endDate - responseData.nowDate);
-                if (response.data.existNewRepl) {
-                    //alert(accessToken)
-                    const fetchReplData = async () => {
-                        try {
-                            const response = await axios.get<RepliesResponse>(
-                                `https://api.mili-mate.com/api/user/${userId}/home/repl`,
-                                {
-                                    headers: {
-                                        authorization: `${accessToken}`,
-                                    },
-                                }
-                            );
-                            setReplies(response.data.replies); // 데이터 저장
-                        } catch (error) {
-                            console.error("데이터를 불러오는데 실패했습니다:", error);
-                        }
-                    };
-
-                    fetchReplData(); // 함수 실행
-                }
+                // setData(responseData); // 형변를환된 응답 데이터 상태에 할당
+                // setDdayCount(responseData.endDate - responseData.nowDate);
+                // if(response.data.existNewRepl) {
+                //     //alert(accessToken)
+                //     const fetchReplData = async () => {
+                //         try {
+                //             const response = await axios.get<RepliesResponse>(
+                //                 `https://api.mili-mate.com/api/user/${userId}/home/repl`,
+                //                 {
+                //                     headers: {
+                //                         authorization: `${accessToken}`,
+                //                     },
+                //                 }
+                //             );
+                //             setReplies(response.data.replies); // 데이터 저장
+                //         } catch (error) {
+                //             console.error("데이터를 불러오는데 실패했습니다:", error);
+                //         }
+                //     };
+                //
+                //     fetchReplData(); // 함수 실행
+                // }
             } catch (e) {
                 alert(e);
                 console.log(e);
             }
         };
         fetchData();
+
 
 
     }, [accessToken, userId]);
@@ -152,6 +152,7 @@ function MainScreen() {
     //
     //     fetchReplData(); // 함수 실행
     // } ///
+
 
 
     const closeModal = () => {
@@ -174,15 +175,15 @@ function MainScreen() {
     const navigateQuestionListScreen = async (nowDate: number) => {
         navigate(`/questionListScreen/${userId}`, {state: {nowDate}});
     };
-    const [blur, setBlur] = useState(data?.blur === true);
+    const [blur, setBlur] = useState(data?.blur === "true");
 
-    // 2. 클릭 이벤트 핸들러
+// 2. 클릭 이벤트 핸들러
     const handleEnvelopeClick = async () => {
         if (blur) {
             try {
                 await axios.put(
                     `https://api.mili-mate.com/api/user/${userId}/home/blur`,
-                    {blur: false},
+                    {blur: "false"},
                     {
                         headers: {
                             authorization: `${accessToken}`,
@@ -196,95 +197,97 @@ function MainScreen() {
         }
     };
 
+// ...
+
+
     return (
         <>
             <s.WrapperLayout>
-                {/*<s.AppBarWrapperDiv>*/}
-                {/*    <s.MilimateLogo/>*/}
-                {/*    <div>*/}
-                {/*        <MdPersonOutline onClick={() => {*/}
-                {/*            profileImgClick()*/}
-                {/*        }} size={24} color={'#4c544b'} style={{marginRight: 16}}></MdPersonOutline>*/}
-                {/*        <AiOutlineUnorderedList onClick={() => {*/}
-                {/*            //navigateQuestionListScreen(data!.nowData);*/}
-                {/*            navigateQuestionListScreen(1);*/}
+                <s.AppBarWrapperDiv>
+                    <s.MilimateLogo/>
+                    <div>
+                        <MdPersonOutline onClick={() => {
+                            profileImgClick()
+                        }} size={24} color={'#4c544b'} style={{marginRight: 16}}></MdPersonOutline>
+                        <AiOutlineUnorderedList onClick={() => {
+                            //navigateQuestionListScreen(data!.nowData);
+                            navigateQuestionListScreen(1);
 
-                {/*        }} size={24} color={'#4c544b'}*/}
-                {/*                                style={{marginRight: 16}}></AiOutlineUnorderedList>*/}
-                {/*    </div>*/}
-                {/*</s.AppBarWrapperDiv>*/}
-                {/*<s.MainContent>*/}
-                {/*    <s.D_dayText>D-{ddayCount}</s.D_dayText>*/}
-                {/*    <s.MainContentText>{data?.todayQuestion}</s.MainContentText>*/}
-                {/*    /!*<s.MainContentText></s`.MainContentText>*!/*/}
-                {/*    <>*/}
-                {/*        {data && (*/}
-                {/*            !data.existNewRepl*/}
-                {/*                ? <s.SadCharImg/>*/}
-                {/*                : randomNumber === 1*/}
-                {/*                    ? <s.hearCharaImg1/>*/}
-                {/*                    : randomNumber === 2*/}
-                {/*                        ? <s.hearCharaImg2/>*/}
-                {/*                        : <s.hearCharaImg3/>*/}
-                {/*        )}*/}
-                {/*    </>*/}
-                {/*    <div style={{flexDirection: "row", display: 'flex', marginTop: 32, marginBottom: 32}}>*/}
-                {/*        <s.MainContentText>{userInfo.userName}</s.MainContentText>*/}
-                {/*        <s.NormalText> 훈련병</s.NormalText>*/}
-                {/*    </div>*/}
-                {/*</s.MainContent>*/}
-                {/*<s.ShareBtnDiv onClick={handleCopyClipBoard}>*/}
-                {/*    <p>오늘의 질문 공유하기</p>*/}
-                {/*    <FiUpload size={24} style={{marginLeft: 12}}></FiUpload>*/}
-                {/*</s.ShareBtnDiv>*/}
-                {/*/!*<s.Envelope></s.Envelope>*!/*/}
-                {/*/!*<s.ExistEnvelope></s.ExistEnvelope>*!/*/}
-                {/*{data && !data.existNewRepl ?*/}
-                {/*    <s.EnvelopeDiv blur={blur} onClick={handleEnvelopeClick}>*/}
-                {/*        <s.NoneEnvelope/>*/}
-                {/*    </s.EnvelopeDiv>*/}
-                {/*    :*/}
-                {/*    data && data.existNewRepl ?*/}
-                {/*    <s.EnvelopeDiv blur={blur} onClick={handleEnvelopeClick}>*/}
-                {/*        <Slider {...settings}>*/}
-                {/*            {replies.map((item: Reply, index: number) => (*/}
-                {/*                <div key={index} style={{width: '100%'}}>*/}
-                {/*                    {data && !data.existNewRepl*/}
-                {/*                        ? <s.NoneEnvelope/>*/}
-                {/*                        : blur*/}
-                {/*                            ? <s.ExistEnvelope/>*/}
-                {/*                            : <s.ContentEnvelope/>*/}
-                {/*                    }*/}
-                {/*                    <s.CenteredText>{item.replyContent}</s.CenteredText>*/}
-                {/*                    <s.NameText>from. {item.senderName}</s.NameText>*/}
-                {/*                </div>*/}
-                {/*            ))}*/}
-                {/*            /!*{replies.length === 4 && (*!/*/}
-                {/*            /!*    <s.EnvelopeDiv>*!/*/}
-                {/*            /!*        <s.ContentEnvelope></s.ContentEnvelope>*!/*/}
-                {/*            /!*        <s.CenteredText onClick={() => questionClick(data.day.toString())}>*!/*/}
-                {/*            /!*            모두 확인하기*!/*/}
-                {/*            /!*        </s.CenteredText>*!/*/}
-                {/*            /!*        <s.NameText></s.NameText>*!/*/}
-                {/*            /!*    </s.EnvelopeDiv>*!/*/}
-                {/*            /!*)}*!/*/}
-                {/*            <s.EnvelopeDiv>*/}
-                {/*                <s.ContentEnvelope></s.ContentEnvelope>*/}
-                {/*                <s.CenteredText onClick={() => questionClick(data.day.toString())}>*/}
-                {/*                    모두 확인하기*/}
-                {/*                </s.CenteredText>*/}
-                {/*                <s.NameText></s.NameText>*/}
-                {/*            </s.EnvelopeDiv>*/}
+                        }} size={24} color={'#4c544b'}
+                                                style={{marginRight: 16}}></AiOutlineUnorderedList>
+                    </div>
+                </s.AppBarWrapperDiv>
+                <s.MainContent>
 
-                {/*        </Slider>*/}
-                {/*    </s.EnvelopeDiv> : <></>*/}
-                {/*}*/}
+                    <s.D_dayText>D-{ddayCount}</s.D_dayText>
+
+                    <s.MainContentText>{data?.todayQuestion}</s.MainContentText>
+
+
+                    {/*<s.MainContentText></s`.MainContentText>*/}
+                    <>
+                        {data && (
+                            data.existNewRepl == false
+                                ? <s.SadCharImg/>
+                                : randomNumber === 1
+                                    ? <s.hearCharaImg1/>
+                                    : randomNumber === 2
+                                        ? <s.hearCharaImg2/>
+                                        : <s.hearCharaImg3/>
+                        )}
+                    </>
+                    <div style={{flexDirection: "row", display: 'flex', marginTop: 32, marginBottom: 32}}>
+                        <s.MainContentText>{userInfo.userName}</s.MainContentText>
+                        <s.NormalText> 훈련병</s.NormalText>
+                    </div>
+                </s.MainContent>
+                <s.ShareBtnDiv onClick={handleCopyClipBoard}>
+                    <p>오늘의 질문 공유하기</p>
+                    <FiUpload size={24} style={{marginLeft: 12}}></FiUpload>
+                </s.ShareBtnDiv>
+                {/*<s.Envelope></s.Envelope>*/}
+                {/*<s.ExistEnvelope></s.ExistEnvelope>*/}
+                {data && data.existNewRepl == false ?
+                    <s.EnvelopeDiv blur={blur} onClick={handleEnvelopeClick}>
+
+
+                        <s.NoneEnvelope/>
+
+
+                    </s.EnvelopeDiv>
+                    :
+                    <s.EnvelopeDiv blur={blur} onClick={handleEnvelopeClick}>
+                        <Slider {...settings}>
+                            {replies.map((item: Reply, index: number) => (
+                                <div key={index} style={{width: '100%'}}>
+                                    {data && data.existNewRepl === false
+                                        ? <s.NoneEnvelope/>
+                                        : blur
+                                            ? <s.ExistEnvelope/>
+                                            : <s.ContentEnvelope/>
+                                    }
+                                    <s.CenteredText>{item.replyContent}</s.CenteredText>
+                                    <s.NameText>from. {item.senderName}</s.NameText>
+                                </div>
+                            ))}
+                            {replies.length === 4 && (
+                                <s.EnvelopeDiv>
+                                    <s.ContentEnvelope></s.ContentEnvelope>
+                                    <s.CenteredText onClick={() => questionClick("12")}>
+                                        모두 확인하기
+                                    </s.CenteredText>
+                                    <s.NameText></s.NameText>
+                                </s.EnvelopeDiv>
+                            )}
+                        </Slider>
+                    </s.EnvelopeDiv>
+                }
 
                 <div style={{margin: 36}}></div>
             </s.WrapperLayout>
 
 
-            <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)}>
+            <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)} >
                 {modalSmallContent}
             </SmallModal>
         </>
