@@ -185,11 +185,11 @@ function MainScreen() {
 
 //2. 클릭 이벤트 핸들러
     const handleEnvelopeClick = async () => {
-        if (blur) {
+        if ( data && data.blur ) {
             try {
                 await axios.put(
                     `https://api.mili-mate.com/api/user/${userId}/home/blur`,
-                    {blur: "false"},
+                    {blur: false},
                     {
                         headers: {
                             authorization: `${accessToken}`,
@@ -282,7 +282,7 @@ function MainScreen() {
                             <Slider {...settings}>
                                 {replies.map((item: Reply, index: number) => (
                                     <div key={index} style={{width: '100%'}}>
-                                        {data.blur ? (
+                                        {data.blur == true? (
                                             <>
                                                 <s.ExistEnvelope></s.ExistEnvelope>
                                                 <s.CenteredText blur={true}>{item.replyContent}</s.CenteredText>
@@ -310,7 +310,8 @@ function MainScreen() {
                             </Slider>
                         </s.EnvelopeDiv>
                     )
-                ) : null
+                ) :
+                    <>Noasdfasdfdsfhasdjklfhasjkldhfjkasdlhfjklsadhfkjlsadhfkjlasdhfkjalsdhfkjlasdhfkjlsadhfkjalsdhfkjlasdhfkjlasdhfk data</>
             }
 
 
