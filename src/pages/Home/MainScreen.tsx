@@ -72,7 +72,8 @@ function MainScreen() {
                         <s.OkBtnStyle onClick={closeModal}>확인</s.OkBtnStyle>
                     </s.BtnDiv>
                 </s.SmallCenterModalWrapper>
-            );        } catch (err) {
+            );
+        } catch (err) {
             console.log(err);
         }
     };
@@ -141,7 +142,6 @@ function MainScreen() {
         fetchData();
 
 
-
     }, [accessToken, userId]);
 
     // if (data?.existNewRepl) {
@@ -152,7 +152,6 @@ function MainScreen() {
     //
     //     fetchReplData(); // 함수 실행
     // } ///
-
 
 
     const closeModal = () => {
@@ -227,7 +226,7 @@ function MainScreen() {
                     {/*<s.MainContentText></s`.MainContentText>*/}
                     <>
                         {data && (
-                            data.existNewRepl == false
+                            !data.existNewRepl
                                 ? <s.SadCharImg/>
                                 : randomNumber === 1
                                     ? <s.hearCharaImg1/>
@@ -247,7 +246,7 @@ function MainScreen() {
                 </s.ShareBtnDiv>
                 {/*<s.Envelope></s.Envelope>*/}
                 {/*<s.ExistEnvelope></s.ExistEnvelope>*/}
-                {data && data.existNewRepl == false ?
+                {data && !data.existNewRepl ?
                     <s.EnvelopeDiv blur={blur} onClick={handleEnvelopeClick}>
 
 
@@ -260,7 +259,7 @@ function MainScreen() {
                         <Slider {...settings}>
                             {replies.map((item: Reply, index: number) => (
                                 <div key={index} style={{width: '100%'}}>
-                                    {data && data.existNewRepl === false
+                                    {data && !data.existNewRepl
                                         ? <s.NoneEnvelope/>
                                         : blur
                                             ? <s.ExistEnvelope/>
@@ -270,15 +269,15 @@ function MainScreen() {
                                     <s.NameText>from. {item.senderName}</s.NameText>
                                 </div>
                             ))}
-                            {replies.length === 4 && (
-                                <s.EnvelopeDiv>
-                                    <s.ContentEnvelope></s.ContentEnvelope>
-                                    <s.CenteredText onClick={() => questionClick("12")}>
-                                        모두 확인하기
-                                    </s.CenteredText>
-                                    <s.NameText></s.NameText>
-                                </s.EnvelopeDiv>
-                            )}
+
+                            <s.EnvelopeDiv>
+                                <s.ContentEnvelope></s.ContentEnvelope>
+                                <s.CenteredText onClick={() => questionClick("12")}>
+                                    모두 확인하기
+                                </s.CenteredText>
+                                <s.NameText></s.NameText>
+                            </s.EnvelopeDiv>
+
                         </Slider>
                     </s.EnvelopeDiv>
                 }
@@ -287,7 +286,7 @@ function MainScreen() {
             </s.WrapperLayout>
 
 
-            <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)} >
+            <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)}>
                 {modalSmallContent}
             </SmallModal>
         </>
