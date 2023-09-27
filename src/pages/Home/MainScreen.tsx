@@ -53,6 +53,7 @@ function MainScreen() {
     const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
     const userInfo = useSelector((state: RootState) => state.userInfo);
     const [data, setData] = useState<ResponseData | null>(null);
+    //const [data, setData] = useState<ResponseData>();
     const navigate = useNavigate();
     const [ddayCount, setDdayCount] = useState<number>(0);
     const [replies, setReplies] = useState<Reply[]>([]); // 상태 초기화
@@ -272,8 +273,8 @@ function MainScreen() {
                 {/*<s.Envelope></s.Envelope>*/}
                 {/*<s.ExistEnvelope></s.ExistEnvelope>*/}
                 {
-                    data ? (
-                        !data.existNewRepl ? (
+                    data!=null ? (
+                        data.existNewRepl === false ? (
                             <s.EnvelopeDiv >
                                 <s.NoneEnvelope/>
                             </s.EnvelopeDiv>
@@ -310,7 +311,7 @@ function MainScreen() {
                                 </Slider>
                             </s.EnvelopeDiv>
                         )
-                    ) : <s.EnvelopeDiv >
+                    ) : <s.EnvelopeDiv>
                         <s.NoneEnvelope/>
                     </s.EnvelopeDiv>
                 }
