@@ -47,7 +47,7 @@ function MainScreen() {
         slidesToScroll: 1,
         //arrows: true, // 이 부분을 추가하세요.
     };
-    const {accessToken, refreshToken} = useToken();
+    const { accessToken, refreshToken } = useToken();
     const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
     const userInfo = useSelector((state: RootState) => state.userInfo);
     const [data, setData] = useState<ResponseData | null>(null);
@@ -71,8 +71,7 @@ function MainScreen() {
                         <s.OkBtnStyle onClick={closeModal}>확인</s.OkBtnStyle>
                     </s.BtnDiv>
                 </s.SmallCenterModalWrapper>
-            );
-        } catch (err) {
+            );        } catch (err) {
             console.log(err);
         }
     };
@@ -105,22 +104,6 @@ function MainScreen() {
                     userName: response.data.userName,
 
                 };
-                if (response.data.existNewRepl == true) {
-                    try {
-                        const replyResponse = await axios.get(
-                            `https://api.mili-mate.com/api/user/${userId}/home/repl`,
-                            {
-                                headers: {
-                                    authorization: `${accessToken}`,
-                                },
-                            }
-                        );
-                        setReplies(replyResponse.data.replies); // 데이터 저장
-                    } catch (error) {
-                        console.error("데이터를 불러오는데 실패했습니다:", error);
-                    }
-                }
-
                 // alert(response.data.existNewRepl);
                 // alert(response.data.todayQuestion);
                 setData(responseData); // 형변를환된 응답 데이터 상태에 할당
@@ -131,15 +114,27 @@ function MainScreen() {
         };
         fetchData();
 
-        // if (data?.existNewRepl) {
-        //     alert(accessToken)
-        //     const fetchReplData = async () => {
-        //
-        //     };
-        //
-        //     fetchReplData(); // 함수 실행
-        // }
-    }, []);
+        if(data?.existNewRepl) {
+            alert(accessToken)
+            const fetchReplData = async () => {
+                try {
+                    const response = await axios.get<RepliesResponse>(
+                        `https://api.mili-mate.com/api/user/${userId}/home/repl`,
+                        {
+                            headers: {
+                                authorization: `${accessToken}`,
+                            },
+                        }
+                    );
+                    setReplies(response.data.replies); // 데이터 저장
+                } catch (error) {
+                    console.error("데이터를 불러오는데 실패했습니다:", error);
+                }
+            };
+
+            fetchReplData(); // 함수 실행
+        }
+    }, [userId]);
 
     const closeModal = () => {
         setSmallModalOpen(false);
@@ -159,7 +154,7 @@ function MainScreen() {
         navigate("/mypage");
     };
     const navigateQuestionListScreen = async (nowDate: number) => {
-        navigate(`/questionlist/${userId}`, {state: {nowDate}});
+        navigate(`/questionListScreen/${userId}`, {state: {nowDate}});
     };
     const [blur, setBlur] = useState(data?.blur === "true");
 
@@ -204,23 +199,16 @@ function MainScreen() {
                     </div>
                 </s.AppBarWrapperDiv>
                 <s.MainContent>
-                    {
-                        data ? <>
-                            <s.D_dayText>D-{ddayCount}</s.D_dayText>
 
-                            <s.MainContentText>{data?.todayQuestion}</s.MainContentText>
-                        </> : <>
-                            <s.D_dayText>D-0</s.D_dayText>
+                    <s.D_dayText>D-{ddayCount}</s.D_dayText>
 
-                            <s.MainContentText></s.MainContentText>
-                        </>
-                    }
+                    <s.MainContentText>{data?.todayQuestion}</s.MainContentText>
 
 
                     {/*<s.MainContentText></s`.MainContentText>*/}
                     <>
                         {data && (
-                            !data.existNewRepl
+                            data.existNewRepl == false
                                 ? <s.SadCharImg/>
                                 : randomNumber === 1
                                     ? <s.hearCharaImg1/>
@@ -240,8 +228,9 @@ function MainScreen() {
                 </s.ShareBtnDiv>
                 {/*<s.Envelope></s.Envelope>*/}
                 {/*<s.ExistEnvelope></s.ExistEnvelope>*/}
-                {data && !data.existNewRepl ?
+                {data && data.existNewRepl == false ?
                     <s.EnvelopeDiv blur={blur} onClick={handleEnvelopeClick}>
+
 
                         <s.NoneEnvelope/>
 
@@ -279,7 +268,7 @@ function MainScreen() {
             </s.WrapperLayout>
 
 
-            <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)}>
+            <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)} >
                 {modalSmallContent}
             </SmallModal>
         </>
