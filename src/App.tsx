@@ -117,7 +117,7 @@ function App() {
                                         element={<GoogleCallback/>}
                                     />
                                     <Route
-                                        path="/questionlistscreen/:userId"
+                                        path="/questionlist/:userId"
                                         element={<QuestionListScreen nowDate = {0}/>}
                                     />
                                     <Route path="/send/:userId" element={<AddReply/>}/>

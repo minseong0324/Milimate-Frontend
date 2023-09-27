@@ -157,7 +157,7 @@ function MainScreen() {
         navigate("/mypage");
     };
     const navigateQuestionListScreen = async (nowDate: number) => {
-        navigate(`/questionListScreen/${userId}`, {state: {nowDate}});
+        navigate(`/questionlist/${userId}`, {state: {nowDate}});
     };
     const [blur, setBlur] = useState(data?.blur === "true");
 

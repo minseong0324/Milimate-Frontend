@@ -44,7 +44,7 @@ const AppBarWrapperDiv = styled.div`
   margin-top: 20px;
   @media (min-width: 600px) {
     max-width: 600px; /* 원하는 최대 너비 값으로 설정 */
-    margin: 0 auto; /* 좌우 중앙 정렬 */
+    margin-top: 40px;
   }
 `;
 
