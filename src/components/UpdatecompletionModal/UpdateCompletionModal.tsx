@@ -193,7 +193,7 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
       setErrorState(1);
       return alert("입력한 날짜가 해당 달의 최대 일 수를 초과하였습니다!");
     }
-    if (errorState == 0) {
+    if (errorState != 1) {
       try {
         const response = await axios.put(
             `https://api.mili-mate.com/api/myPage/${userId}/editCompletion`,

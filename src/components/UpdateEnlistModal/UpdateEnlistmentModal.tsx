@@ -23,12 +23,14 @@ function UpdateEnlistmentModalBasic({ setModalOpen }: PropsType) {
   const [isSmallModalOpen, setSmallModalOpen] = useState(false);
   const [modalSmallContent, setModalSmallContent] =
     useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장
-
+  const [errorState, setErrorState]= useState(2);
   // 모달 끄기
   const closeModal = () => {
     setModalOpen(false);
   };
-
+  if(errorState == 1) {
+    setModalOpen(false);
+  }
   useEffect(() => {
     setSmallModalOpen(true)
     setModalSmallContent(
@@ -111,85 +113,89 @@ function UpdateEnlistmentModalBasic({ setModalOpen }: PropsType) {
     }
 
     const enlistDate = new Date(
-      parseInt(enlistmentYear),
-      parseInt(enlistmentMonth) - 1,
-      parseInt(enlistmentDay)
+        parseInt(enlistmentYear),
+        parseInt(enlistmentMonth) - 1,
+        parseInt(enlistmentDay)
     );
     const completeDate = new Date(
-      parseInt(userInfo.completionYear),
-      parseInt(userInfo.completionMonth) - 1,
-      parseInt(userInfo.completionday)
+        parseInt(userInfo.completionYear),
+        parseInt(userInfo.completionMonth) - 1,
+        parseInt(userInfo.completionday)
     );
 
     if (completeDate < enlistDate) {
-      alert("입대일은 수료일보다 미래일 수 없습니다!");
+      setErrorState(1);
+      return alert("입대일은 수료일보다 미래일 수 없습니다!");
     }
 
     const today = new Date();
     if (completeDate <= today) {
-      alert("수료일은 현재 날짜보다 미래여야 합니다!");
+      setErrorState(1);
+      return alert("수료일은 현재 날짜보다 미래여야 합니다!");
     }
 
     const enlistmentDayInt = parseInt(userInfo.completionday);
     const completionDayInt = parseInt(enlistmentDay);
 
     if (
-      enlistmentDayInt >
+        enlistmentDayInt >
         getMaxDayOfMonth(parseInt(enlistmentMonth), parseInt(enlistmentYear)) ||
-      completionDayInt >
+        completionDayInt >
         getMaxDayOfMonth(
-          parseInt(userInfo.completionMonth),
-          parseInt(userInfo.completionYear)
+            parseInt(userInfo.completionMonth),
+            parseInt(userInfo.completionYear)
         )
     ) {
-      alert("입력한 날짜가 해당 달의 최대 일 수를 초과하였습니다!");
+      setErrorState(1);
+      return alert("입력한 날짜가 해당 달의 최대 일 수를 초과하였습니다!");
     }
 
-    
-    try {
-      const response = await axios.put(
-        `https://api.mili-mate.com/api/myPage/${userId}/editEnlistment`,
-        {
-          enlistmentYear: enlistmentYear,
-          enlistmentMonth: enlistmentMonth,
-          enlistmentDay: enlistmentDay,
-        },
-        {
-          headers: {
-            authorization: `${accessToken}`,
-          },
-        }
-      );
-      if (response.status == 200) {
-        alert("수료일 수정 성공");
-        dispatch(
-          updateEnlistmentDate({
-            enlistmentYear: enlistmentYear,
-            enlistmentMonth: enlistmentMonth,
-            enlistmentDay: enlistmentDay,
-          })
+    if (errorState != 1) {
+      try {
+        const response = await axios.put(
+            `https://api.mili-mate.com/api/myPage/${userId}/editEnlistment`,
+            {
+              enlistmentYear: enlistmentYear,
+              enlistmentMonth: enlistmentMonth,
+              enlistmentDay: enlistmentDay,
+            },
+            {
+              headers: {
+                authorization: `${accessToken}`,
+              },
+            }
         );
-        closeModal();
-      }
-    } catch (error: unknown) {
-      //에러 일 경우
-      if (error instanceof AxiosError) {
-        const status = error?.response?.status;
-        console.error("Failed to fetch user info:", error);
-        alert('입대일을 변경하는 데에 실패했어요.')
-        if (status === 404) {
-          // 리소스를 찾을 수 없음
-        } else if (status === 500) {
-          // 서버 내부 오류
-        } else {
-          // 기타 상태 코드 처리
+        if (response.status == 200) {
+          alert("수료일 수정 성공");
+          dispatch(
+              updateEnlistmentDate({
+                enlistmentYear: enlistmentYear,
+                enlistmentMonth: enlistmentMonth,
+                enlistmentDay: enlistmentDay,
+              })
+          );
+          closeModal();
         }
-      }
+      } catch (error: unknown) {
+        //에러 일 경우
+        if (error instanceof AxiosError) {
+          const status = error?.response?.status;
+          console.error("Failed to fetch user info:", error);
+          alert('입대일을 변경하는 데에 실패했어요.')
+          if (status === 404) {
+            // 리소스를 찾을 수 없음
+          } else if (status === 500) {
+            // 서버 내부 오류
+          } else {
+            // 기타 상태 코드 처리
+          }
+        }
 
-      return null;
+        return null;
+      }
     }
-  };
- 
+
+  }
   const userInfo = useSelector((state: RootState) => state.userInfo);
   return (
     <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)} >
