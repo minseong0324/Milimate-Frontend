@@ -134,10 +134,10 @@ function AddReply() {
                     </s.SenderDiv>
                 </s.ReplyContainer>
                 <s.SelectColorDiv>
-                    <s.RoundButton onClick={() => selectColorBtn("#fadfda", "pink")} backgroundColor="#fadfda"></s.RoundButton>
-                    <s.RoundButton onClick={() => selectColorBtn("#f5ec9e", "yellow")} backgroundColor="#f5ec9e"></s.RoundButton>
-                    <s.RoundButton onClick={() => selectColorBtn("#cad4fc", "blue")} backgroundColor="#cad4fc"></s.RoundButton>
-                    <s.RoundButton onClick={() => selectColorBtn("#adc786", "green")} backgroundColor="#adc786"></s.RoundButton>
+                    <s.RoundButton onClick={() => selectColorBtn("#FFDED9", "pink")} backgroundColor="#FFDED9"></s.RoundButton>
+                    <s.RoundButton onClick={() => selectColorBtn("#F6EC93", "yellow")} backgroundColor="#F6EC93"></s.RoundButton>
+                    <s.RoundButton onClick={() => selectColorBtn("#C8D4FF", "blue")} backgroundColor="#C8D4FF"></s.RoundButton>
+                    <s.RoundButton onClick={() => selectColorBtn("#A7C87E", "green")} backgroundColor="#A7C87E"></s.RoundButton>
                     <s.RoundButton onClick={() => selectColorBtn("#ffffff", "white")} backgroundColor="#ffffff"></s.RoundButton>
                 </s.SelectColorDiv>
                 <s.ButtonStyle onClick={onSubmit}>등록하기</s.ButtonStyle>
