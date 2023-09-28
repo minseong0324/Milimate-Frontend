@@ -60,30 +60,6 @@ function MainScreen() {
     const [isSmallModalOpen, setSmallModalOpen] = useState(false);
     const [modalSmallContent, setModalSmallContent] =
         useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장\
-    const DUMMY_DATA = {
-        replies: [
-            {
-                senderName: "가슴준",
-                replyContent: "adfasdfasdfaadfasdfasdfaadfasdfasdfaadfasdfasdfaadfasdfasdfaadfasdfasdfaadfasdfasdfaadfasdfasdfaadfasdfasdfaadfasdfasdfaadfasdfasdfaadfasdfasdfa",
-                color: "yellow"
-            },
-            {
-                senderName: "가슴준",
-                replyContent: "adfasdfasdfa",
-                color: "yellow"
-            },
-            {
-                senderName: "가슴준",
-                replyContent: "adfasdfasdfa",
-                color: "yellow"
-            },
-            {
-                senderName: "가슴준",
-                replyContent: "adfasdfasdfa",
-                color: "yellow"
-            }
-        ]
-    };
 
 // ... [기타 코드 생략] ...
 
@@ -155,9 +131,9 @@ function MainScreen() {
                                     },
                                 }
                             );
-                           // setReplies(replResponse.data.replies); // 데이터 저장
+                            setReplies(replResponse.data.replies); // 데이터 저장
                             //
-                            setReplies(DUMMY_DATA.replies); // 더미 데이터 사용
+                            //setReplies(DUMMY_DATA.replies); // 더미 데이터 사용
 
 
 
