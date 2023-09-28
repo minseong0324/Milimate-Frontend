@@ -17,7 +17,7 @@ function QuestionListScreen() {
     const [questions, setQuestions] = useState<Question[]>([]); 
     
     // 상태 변수와 상태 설정 함수 생성
-        const navigate = useNavigate();
+    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         const fetchData = async () => {

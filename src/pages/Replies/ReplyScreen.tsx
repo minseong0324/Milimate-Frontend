@@ -89,10 +89,10 @@ function ReplyScreen({day}: ReplyScreenProps) {
                              if (reply.color === 'green') {
                                 modifiedColor = '#A7C87E';
                             }
-
+                            
 
                             // 다른 색상 변환 조건들...
-
+                            console.log(reply.color);
                             return {
                                 ...reply,
                                 color: modifiedColor
@@ -100,7 +100,7 @@ function ReplyScreen({day}: ReplyScreenProps) {
                         })
                     };
                     setQuestionData(response.data);
-                    setSelectedColor(modifiedData);
+                    setSelectedColor(modifiedData.replies[0].color);
                 } catch (error) {
                     console.error("Error fetching data:", error);
                 }
