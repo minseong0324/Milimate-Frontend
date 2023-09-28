@@ -16,9 +16,6 @@ function Guest() {
     const [day, setDay] = useState<string>("");
     const [enlistmentState, setEnlistmentState] = useState<boolean>(false);
     const navigate = useNavigate();
-    const [isErrorModalOpen, setErrorModalOpen] = useState(false);
-    const [modalErrorContent, setModalErrorContent] =
-        useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장
     const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
     const getUserInfoFromServer = async (userId: string) => {
         try {
@@ -41,17 +38,7 @@ function Guest() {
             if (error instanceof AxiosError) {
                 const status = error?.response?.status;
                 alert("유저의 정보를 불러오지 못했어요.")
-                setModalErrorContent(
-                    <s.ErrorCenterModalWrapper>
-                        <s.ErrorModalTextsWrapper2>유저의 정보를</s.ErrorModalTextsWrapper2>
-                        <s.ErrorModalTextsWrapper2>
-                            불러오지 못했어요.
-                        </s.ErrorModalTextsWrapper2>
-                        <s.ModalButton onClick={handleUnLoggedInModalClose}>
-                            새로고침하기
-                        </s.ModalButton>
-                    </s.ErrorCenterModalWrapper>
-                );
+               
                 if (status === 404) {
                     // 리소스를 찾을 수 없음
                 } else if (status === 500) {
@@ -60,14 +47,8 @@ function Guest() {
                     // 기타 상태 코드 처리
                 }
             }
-            setErrorModalOpen(true);
             return null;
         }
-    };
-
-    const handleUnLoggedInModalClose = () => {
-        setErrorModalOpen(false);
-        navigate(`/guest/${userId}`);
     };
 
     // 컴포넌트가 마운트될 때 사용자 정보를 가져온다

@@ -448,13 +448,12 @@ const Button = styled.button`
   padding: 10px; // 내부 패딩을 조정
   background-color: rgb(58 56 56);
   background-size: cover; // 이미지가 버튼에 맞게 조절
-  color: black;
   border-radius: 30px;
   font-size: 18px;
   border: 0px transparent; // 테두리 색상을 투명
   position: relative;
   z-index: 2;
-
+  color: rgb(58 56 56);
   &:active {
     // 버튼이 눌렸을 때의 스타일
     background-color: rgb(58 56 56);

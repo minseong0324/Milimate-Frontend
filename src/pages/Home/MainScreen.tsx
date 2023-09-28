@@ -64,7 +64,7 @@ function MainScreen() {
         replies: [
             {
                 senderName: "가슴준",
-                replyContent: "adfasdfasdfa",
+                replyContent: "adfasdfasdfaadfasdfasdfaadfasdfasdfaadfasdfasdfaadfasdfasdfaadfasdfasdfaadfasdfasdfaadfasdfasdfaadfasdfasdfaadfasdfasdfaadfasdfasdfaadfasdfasdfa",
                 color: "yellow"
             },
             {
@@ -196,9 +196,8 @@ function MainScreen() {
     };
     const randomNumber = Math.floor(Math.random() * 3) + 1; // 1, 2, 또는 3 캐릭터 이미지
 
-    const questionClick = (day: string) => {
-        console.log("이벤트");
-        navigate(`/replyscreen`, {state: {day}});
+    const questionClick = () => {
+        navigate(`/questionlist/${userId}`);
     };
 
     const profileImgClick = () => {
@@ -303,74 +302,44 @@ function MainScreen() {
                 {/*<s.ExistEnvelope></s.ExistEnvelope>*/}
                 {
                     data ? (
-                        // !data.existNewRepl ? (
-                        //     <s.EnvelopeDiv >
-                        //         <s.NoneEnvelope/>
-                        //     </s.EnvelopeDiv>
-                        // ) : (
-                        //     <s.EnvelopeDiv onClick={handleEnvelopeClick}>
-                        //         <Slider {...settings}>
-                        //             {replies.map((item: Reply, index: number) => (
-                        //                 <div key={index} style={{width: '100%'}}>
-                        //                     {data.blur ? (
-                        //                         <>
-                        //                             <s.ExistEnvelope onClick={handleEnvelopeClick}></s.ExistEnvelope>
-                        //                             <s.CenteredText blur={true}>{item.replyContent}</s.CenteredText>
-                        //                             <s.NameText>from. {item.senderName}</s.NameText>
-                        //                         </>
-                        //                     ) : (
-                        //                         <>
-                        //                             <s.ContentEnvelope/>
-                        //                             <s.CenteredText blur={false}>{item.replyContent}</s.CenteredText>
-                        //                             <s.NameText>from. {item.senderName}</s.NameText>
-                        //                         </>
-                        //                     )}
-                        //
-                        //                 </div>
-                        //             ))}
-                        //             {replies.length === 4 && (
-                        //                 <>
-                        //                     <s.ContentEnvelope></s.ContentEnvelope>
-                        //                     <s.CenteredText onClick={() => questionClick("12")}>
-                        //                         모두 확인하기
-                        //                     </s.CenteredText>
-                        //                     <s.NameText></s.NameText>
-                        //                 </>
-                        //             )}
-                        //         </Slider>
-                        //     </s.EnvelopeDiv>
+                         !data.existNewRepl ? (
+                             <s.EnvelopeDiv >
+                                 <s.NoneEnvelope/>
+                             </s.EnvelopeDiv>
+                         ) : (
+                             <s.EnvelopeDiv onClick={handleEnvelopeClick}>
+                                 <Slider {...settings}>
+                                     {replies.map((item: Reply, index: number) => (
+                                     <div key={index} style={{width: '100%'}}>
+                                             {data.blur ? (
+                                                 <>
+                                                     <s.ExistEnvelope onClick={handleEnvelopeClick}></s.ExistEnvelope>
+                                                     <s.CenteredText blur={true}>{item.replyContent}</s.CenteredText>
+                                                     <s.NameText>from. {item.senderName}</s.NameText>
+                                                 </>
+                                             ) : (
+                                                 <>
+                                                     <s.ContentEnvelope/>
+                                                     <s.CenteredText blur={false}>{item.replyContent}</s.CenteredText>
+                                                     <s.NameText>from. {item.senderName}</s.NameText>
+                                                 </>
+                                             )}
+                        
+                                         </div>
+                                     ))}
+                            
+                                         <>
+                                             <s.ContentEnvelope></s.ContentEnvelope>
+                                             <s.CenteredText onClick={() => questionClick()}>
+                                                 모두 확인하기
+                                             </s.CenteredText>
+                                             <s.NameText></s.NameText>
+                                         </>
+                               
+                                 </Slider>
+                             </s.EnvelopeDiv>
 
-                            <s.EnvelopeDiv onClick={handleEnvelopeClick}>
-                                <Slider {...settings}>
-                                    {replies.map((item: Reply, index: number) => (
-                                        <div key={index} style={{width : "100%"}}>
-                                            {data.blur ? (
-                                                <>
-                                                    <s.ExistEnvelope onClick={handleEnvelopeClick}></s.ExistEnvelope>
-                                                    <s.CenteredText blur={true}>{item.replyContent}</s.CenteredText>
-                                                    <s.NameText>from. {item.senderName}</s.NameText>
-                                                </>
-                                            ) : (
-                                                <>
-                                                    <s.ContentEnvelope/>
-                                                    <s.CenteredText blur={false}>{item.replyContent}</s.CenteredText>
-                                                    <s.NameText>from. {item.senderName}</s.NameText>
-                                                </>
-                                            )}
-
-                                        </div>
-                                    ))}
-                                    {replies.length === 4 && (
-                                        <>
-                                            <s.ContentEnvelope></s.ContentEnvelope>
-                                            <s.CenteredText onClick={() => questionClick("12")}>
-                                                모두 확인하기
-                                            </s.CenteredText>
-                                            <s.NameText></s.NameText>
-                                        </>
-                                    )}
-                                </Slider>
-                            </s.EnvelopeDiv>
+                         )
 
                     ) : <s.EnvelopeDiv>
                         <s.NoneEnvelope/>

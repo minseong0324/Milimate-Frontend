@@ -204,14 +204,14 @@ const NoneEnvelope = styled.img.attrs({
 })`
   margin-top: 12px;
   margin-bottom: 24px;
-  width: 343px;
-  height: 201px;
+  width: 360px;
+  //height: 201px;
   position: relative; // 이 부분 추가
   margin: auto;
   display: block;
   @media (min-width: 600px) {
-    width: 410px;
-    height: 240.26px;
+    width: 430px;
+   // height: 240.26px;
   }
 `;
 
@@ -220,14 +220,14 @@ const ExistEnvelope = styled.img.attrs({
 })`
   margin-top: 12px;
   margin-bottom: 24px;
-  width: 343px;
-  height: 201px;
+  width: 360px;
+  //height: 201px;
   position: relative; // 이 부분 추가
-  margin: auto;
+  //margin: auto;
   display: block;
   @media (min-width: 600px) {
-    width: 410px;
-    height: 240.26px;
+    width: 430px;
+   // height: 240.26px;
   }
 `;
 
@@ -251,12 +251,12 @@ const ContentEnvelope = styled.img.attrs({
   margin: auto;
   display: block;
   margin-bottom: -124px;
-  width: 350px;
+  width: 360px;
   //height: 301px;
   position: relative; // 이 부분 추가
   @media (min-width: 600px) {
-    width: 410px;
-    height: 240.26px;
+    width: 430px;
+   // height: 240.26px;
   }
 `;
 // const SlideItem = styled.div`
@@ -268,35 +268,35 @@ const ContentEnvelope = styled.img.attrs({
 //
 // `;
 
-const CenteredText = styled.div`
+const CenteredText = styled.div<ExistEnvelopeProps>`
   position: relative;
   //margin-bottom: 100px;
-  top: -30px;
+  top: -10px;
   
   //background-color: grey;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #000; // 원하는 색상으로 변경하세요
+  color: #4A544A; // 원하는 색상으로 변경하세요
   text-align: center;
-  max-height: calc(1.4em * 3); // 1.2em은 한 줄의 높이로 가정, 3줄까지 표시
-  width: 90%; // 원하는 폭으로 설정 (예: 이미지의 80%)
-
+  height: 100px;
+  max-height: 60px; // 1.2em은 한 줄의 높이로 가정, 3줄까지 표시
+  width: 230px; // 원하는 폭으로 설정 (예: 이미지의 80%)
+  white-space: normal; // 필요하면 추가
+  word-wrap: break-word;
   overflow: hidden; // 텍스트가 박스 밖으로 나가지 않도록
   display: -webkit-box; // flexbox의 구형 구현
-  -webkit-line-clamp: 3; // 표시될 최대 라인 수
+  -webkit-line-clamp: 1; // 표시될 최대 라인 수
   -webkit-box-orient: vertical; // 박스의 방향을 수직으로 설정
 
-  padding: 10px; // 원하는 값으로 조정 가능
+  padding: 0px; // 원하는 값으로 조정 가능
   box-sizing: border-box; // padding 값이 전체 높이/폭에 포함되도록
   z-index: 3;
-  @media (max-width: 600px) {
+  @media (min-width: 600px) {
     //left : 67%;
     top : -20px;
     
   }
 `;
-
-
 
 const NameText = styled.p`
   //position: absolute;
@@ -304,17 +304,18 @@ const NameText = styled.p`
   //text-align: end;
   position: relative;
   top: -30px;
-  left: 60%;
+  left: 310px;
   //top  : 180px;
-  font-size: 18px;
-  color: #000; // 원하는 색상으로 변경하세요
-  margin-top: 50px;
+  font-size: 16px;
+  color: #4A544A; // 원하는 색상으로 변경하세요
+  margin-top: 30px;
   z-index: 4;
   margin-left: 8px;
-  @media (max-width: 600px) {
-    left : 62%;
+  font-weight: bolder;
+  @media (min-width: 600px) {
+    left : 365px;
     font-size: 16px;
-    top : -30px;
+    top : -40px;
   }
 
 `;
