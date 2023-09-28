@@ -213,22 +213,36 @@ const NoneEnvelope = styled.img.attrs({
     width: 430px;
    // height: 240.26px;
   }
+
+`;
+const ContentEnvelope = styled.img.attrs({
+  src: contentEnvelop,
+})`
+margin: auto;
+display: block;
+margin-bottom: -124px;
+width: 360px;
+//height: 301px;
+position: relative; // 이 부분 추가
+@media (min-width: 600px) {
+  width: 430px;
+ // height: 240.26px;
+}
 `;
 
 const ExistEnvelope = styled.img.attrs({
     src: existEnvelope,
 })`
-  margin-top: 12px;
-  margin-bottom: 24px;
-  width: 360px;
-  //height: 201px;
-  position: relative; // 이 부분 추가
-  //margin: auto;
-  display: block;
-  @media (min-width: 600px) {
-    width: 430px;
-   // height: 240.26px;
-  }
+  margin: auto;
+display: block;
+margin-bottom: -124px;
+width: 360px;
+//height: 301px;
+position: relative; // 이 부분 추가
+@media (min-width: 600px) {
+  width: 430px;
+ // height: 240.26px;
+}
 `;
 
 const EnvelopeDiv = styled.div<{ blur?: boolean }>`
@@ -245,20 +259,7 @@ const EnvelopeDiv = styled.div<{ blur?: boolean }>`
   //filter: ${({ blur }) => (blur ? 'blur(5px)' : 'none')};
   //height: 300px; // 적절한 높이로 설정 (이미지 높이에 따라 조절 필요)
 `;
-const ContentEnvelope = styled.img.attrs({
-    src: contentEnvelop,
-})`
-  margin: auto;
-  display: block;
-  margin-bottom: -124px;
-  width: 360px;
-  //height: 301px;
-  position: relative; // 이 부분 추가
-  @media (min-width: 600px) {
-    width: 430px;
-   // height: 240.26px;
-  }
-`;
+
 // const SlideItem = styled.div`
 //   display: flex;
 //   flex-direction: column;

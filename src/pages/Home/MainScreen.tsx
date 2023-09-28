@@ -186,11 +186,11 @@ function MainScreen() {
     const navigateQuestionListScreen = async (nowDate: number) => {
         navigate(`/questionlist/${userId}`, {state: {nowDate}});
     };
-    const [blur, setBlur] = useState(data?.blur === true);
+    const [blur, setBlur] = useState<boolean>(true);
 
 //2. 클릭 이벤트 핸들러
     const handleEnvelopeClick = async () => {
-        if (data && data.blur) {
+        if (data?.blur) {
             try {
                 await axios.put(
                     `https://api.mili-mate.com/api/user/${userId}/home/blur`,
@@ -283,20 +283,20 @@ function MainScreen() {
                                  <s.NoneEnvelope/>
                              </s.EnvelopeDiv>
                          ) : (
-                             <s.EnvelopeDiv onClick={handleEnvelopeClick}>
+                             <s.EnvelopeDiv >
                                  <Slider {...settings}>
                                      {replies.map((item: Reply, index: number) => (
                                      <div key={index} style={{width: '100%'}}>
                                              {data.blur ? (
                                                  <>
                                                      <s.ExistEnvelope onClick={handleEnvelopeClick}></s.ExistEnvelope>
-                                                     <s.CenteredText blur={true}>{item.replyContent}</s.CenteredText>
+                                                     <s.CenteredText blur={blur}>{item.replyContent}</s.CenteredText>
                                                      <s.NameText>from. {item.senderName}</s.NameText>
                                                  </>
                                              ) : (
                                                  <>
                                                      <s.ContentEnvelope/>
-                                                     <s.CenteredText blur={false}>{item.replyContent}</s.CenteredText>
+                                                     <s.CenteredText blur={blur}>{item.replyContent}</s.CenteredText>
                                                      <s.NameText>from. {item.senderName}</s.NameText>
                                                  </>
                                              )}
