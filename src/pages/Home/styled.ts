@@ -273,7 +273,7 @@ const CenteredText = styled.div<ExistEnvelopeProps>`
   position: relative;
   //margin-bottom: 100px;
   top: -10px;
-  
+  filter: ${({ blur }) => (blur ? 'blur(5px)' : 'none')};
   //background-color: grey;
   left: 50%;
   transform: translate(-50%, -50%);
