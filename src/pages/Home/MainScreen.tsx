@@ -115,7 +115,7 @@ function MainScreen() {
                 // alert(response.data.existNewRepl);
                 // alert(response.data.todayQuestion);
 
-
+                setBlur(response.data.blur);
                 setData(responseData); // 형변를환된 응답 데이터 상태에 할당
                 setDdayCount(responseData.endDate - responseData.nowDate);
                 //alert(data);
@@ -291,13 +291,13 @@ function MainScreen() {
                                                  <>
                                                      <s.ExistEnvelope onClick={handleEnvelopeClick}></s.ExistEnvelope>
                                                      <s.CenteredText blur={blur}>{item.replyContent}</s.CenteredText>
-                                                     <s.NameText>from. {item.senderName}</s.NameText>
+                                                     <s.NameText  blur={blur}>from. {item.senderName}</s.NameText>
                                                  </>
                                              ) : (
                                                  <>
                                                      <s.ContentEnvelope/>
                                                      <s.CenteredText blur={blur}>{item.replyContent}</s.CenteredText>
-                                                     <s.NameText>from. {item.senderName}</s.NameText>
+                                                     <s.NameText  blur={blur}>from. {item.senderName}</s.NameText>
                                                  </>
                                              )}
                         

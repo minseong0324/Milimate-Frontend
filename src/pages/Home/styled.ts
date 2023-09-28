@@ -273,7 +273,7 @@ const CenteredText = styled.div<ExistEnvelopeProps>`
   position: relative;
   //margin-bottom: 100px;
   top: -10px;
-  filter: ${({ blur }) => (blur ? 'blur(5px)' : 'none')};
+  filter: ${({ blur }) => (blur ? 'blur(5px)' : 'blur(0px)')};
   //background-color: grey;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -299,7 +299,7 @@ const CenteredText = styled.div<ExistEnvelopeProps>`
   }
 `;
 
-const NameText = styled.p`
+const NameText = styled.p<ExistEnvelopeProps>`
   //position: absolute;
 
   //text-align: end;
@@ -313,6 +313,7 @@ const NameText = styled.p`
   z-index: 4;
   margin-left: 8px;
   font-weight: bolder;
+  filter: ${({ blur }) => (blur ? 'blur(5px)' : 'blur(0px)')};
   @media (min-width: 600px) {
     left : 365px;
     font-size: 16px;
