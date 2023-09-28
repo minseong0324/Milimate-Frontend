@@ -125,11 +125,11 @@ const QuestionText = styled.div`
   position: absolute;
   font-size: 16px;
   top : 65px;
-  left: 55px;
+  left: 70px;
   z-index: 2;
   color: #4c544b;
   font-weight: bold;
-  max-width: 250px; // 필요한 너비로 조절
+  max-width: 235px; // 필요한 너비로 조절
   white-space: normal; // 필요하면 추가
   word-wrap: break-word;
 
@@ -214,14 +214,14 @@ const ReplyText = styled.textarea`
   resize: none; // 사용자가 크기를 조절하지 못하게 함
   //overflow: auto;
   &::placeholder {
-    font-size: 18px;
+    font-size: 14px;
     
     color: #4A544A; // 텍스트 색상
   }
 
   @media (min-width: 600px) {
     width: 350px;
-    font-size: 17px;
+    font-size: 16px;
     height: 250px; // 원하는 최대 높이값을 지정하세요
     padding-right: 30px;
 
@@ -259,7 +259,6 @@ const SenderNameFrom = styled.p`
   }
 `;
 const SenderReplyText = styled.input`
-  text-align: center;
   display: flex;
   margin-left: 16px;
   width: 120px;
@@ -276,14 +275,15 @@ const SenderReplyText = styled.input`
   resize: none; // 사용자가 크기를 조절하지 못하게 함
   margin-bottom: 3px;
   margin-right: 30px;
+  font-size: 15px;
 
   &::placeholder {
     color: #A7C87E;
-    font-size: 20px;
+    font-size: 14px;
   }
 
   @media (min-width: 600px) {
-    font-size: 17px;
+    font-size: 16px;
     width: 175px;
     margin-bottom: -5px;
     margin-right: 30px;

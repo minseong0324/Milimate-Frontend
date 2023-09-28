@@ -223,6 +223,7 @@ margin: auto;
 display: block;
 margin-bottom: -124px;
 width: 350px;
+right: 4px;
 //height: 301px;
 position: relative; // 이 부분 추가
 @media (min-width: 600px) {
@@ -237,7 +238,7 @@ const ExistEnvelope = styled.img.attrs({
   margin: auto;
 display: block;
 margin-bottom: -124px;
-width: 360px;
+width: 340px;
 //height: 301px;
 position: relative; // 이 부분 추가
 @media (min-width: 600px) {
@@ -250,7 +251,7 @@ const EnvelopeDiv = styled.div`
     margin-top: 10px;
     margin-bottom: 120px;
     position: relative;
-    width: 360px;
+    width: 340px;
     /* 다음 줄에서 조건부 스타일 설정 */
 
     background-size: contain; // 이미지가 div를 채우도록 조절
@@ -262,12 +263,11 @@ const EnvelopeDiv = styled.div`
 `;
 
 const TransparentEnvelopeDiv = styled.div<{ blur?: boolean }>`
-    margin-top: 10px;
+    margin-top: 0px;
     margin-bottom: 120px;
     position: relative;
-    width: 360px;
+    width: 340px;
     height: 240px;
-    margin-right: 3px;
     /* 이미지의 z-index를 1로 설정하여 자식 요소들 위에 오도록 합니다. */
     &::before {
         content: "";

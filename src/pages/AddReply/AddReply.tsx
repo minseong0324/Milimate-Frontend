@@ -115,9 +115,9 @@ function AddReply() {
                             {/*<s.QuestionText>{state.question}</s.QuestionText>*/}
                             <s.QuestionText>{data.todayQuestion}</s.QuestionText>
                         </> : <>
-                            <s.DayText>12/12</s.DayText>
+                            <s.DayText></s.DayText>
 
-                            <s.QuestionText>입대전 저는 어떤 사람이었나요</s.QuestionText>
+                            <s.QuestionText></s.QuestionText>
 
                         </>
                         }
@@ -137,6 +137,7 @@ function AddReply() {
                                 value={formData.sender}
                                 onChange={handleInputChange}
                                 placeholder="이름을 입력해주세요."
+                                maxLength={5}
                             ></s.SenderReplyText>
                         </s.SenderDiv>
                     </s.ReplyContainer>

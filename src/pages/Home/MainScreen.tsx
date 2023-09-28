@@ -283,45 +283,45 @@ function MainScreen() {
                                  <s.NoneEnvelope/>
                              </s.EnvelopeDiv>
                          ) : (
-                            <s.TransparentEnvelopeDiv onClick={handleEnvelopeClick} blur={blur}> 
-                             <s.EnvelopeDiv >
-                                 <Slider {...settings}>
-                                     {replies.map((item: Reply, index: number) => (
-                                     <div key={index} style={{width: '100%'}}>
-                                             {/* {data.blur ? ( */}
-                                                 <>
-                                                 {blur ? 
-                                                    
-                                                     <s.ContentEnvelope></s.ContentEnvelope>
-                                                     
-                                                     : <s.ContentEnvelope ></s.ContentEnvelope>
-                                                 }
-                                                     {/* {
-                                                        blur ? 
-                                                        <s.ExistText>메이튼 보낸 </s.ExistText> : 
-                                                        <></> 
-                                                    } */}
-                                                     <s.CenteredText blur={blur} >{item.replyContent}</s.CenteredText >
-                                                     <s.NameText  blur={blur}>from. {item.senderName}</s.NameText>
-                                                 </>
-                                          
-                                              
-                                             
-                        
-                                         </div>
-                                     ))}
-                            
-                                         <>
-                                             <s.ContentEnvelope></s.ContentEnvelope>
-                                             <s.CenteredText onClick={() => questionClick()}>
-                                                 모두 확인하기
-                                             </s.CenteredText>
-                                             <s.NameText></s.NameText>
-                                         </>
-                               
-                                 </Slider>
-                             </s.EnvelopeDiv>
-                             </s.TransparentEnvelopeDiv>
+                            <>
+        { blur ?
+            <s.TransparentEnvelopeDiv onClick={handleEnvelopeClick} blur={blur}>
+                <s.EnvelopeDiv>
+                    <Slider {...settings}>
+                        {replies.map((item: Reply, index: number) => (
+                            <div key={index} style={{width: '100%'}}>
+                                <s.ContentEnvelope></s.ContentEnvelope>
+                                <s.CenteredText blur={blur} >{item.replyContent}</s.CenteredText >
+                                <s.NameText blur={blur}>from. {item.senderName}</s.NameText>
+                            </div>
+                        ))}
+                        <s.ContentEnvelope></s.ContentEnvelope>
+                        <s.CenteredText onClick={() => questionClick()}>
+                            모두 확인하기
+                        </s.CenteredText>
+                        <s.NameText></s.NameText>
+                    </Slider>
+                </s.EnvelopeDiv>
+            </s.TransparentEnvelopeDiv>
+            :
+            <s.EnvelopeDiv>
+                <Slider {...settings}>
+                    {replies.map((item: Reply, index: number) => (
+                        <div key={index} style={{width: '100%'}}>
+                            <s.ContentEnvelope></s.ContentEnvelope>
+                            <s.CenteredText blur={blur}>{item.replyContent}</s.CenteredText >
+                            <s.NameText blur={blur}>from. {item.senderName}</s.NameText>
+                        </div>
+                    ))}
+                    <s.ContentEnvelope></s.ContentEnvelope>
+                    <s.CenteredText onClick={() => questionClick()}>
+                        모두 확인하기
+                    </s.CenteredText>
+                    <s.NameText></s.NameText>
+                </Slider>
+            </s.EnvelopeDiv>
+        }
+    </>
                          )
 
                     ) : <s.EnvelopeDiv>
