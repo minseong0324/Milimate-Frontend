@@ -208,28 +208,7 @@ function MainScreen() {
         }
     };
 
-    const [blurCancel, setBlurCancel] = useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장\
-    useEffect(() => {
-        const newBlurCancel = replies.map((item: Reply, index: number) => (
-            <div key={index} style={{width: '100%'}}>
-                {data?.blur ? (
-                    <>
-                        <s.ExistEnvelope onClick={handleEnvelopeClick}></s.ExistEnvelope>
-                        <s.CenteredText blur={blur}>{item.replyContent}</s.CenteredText>
-                        <s.NameText  blur={blur}>from. {item.senderName}</s.NameText>
-                    </>
-                ) : (
-                    <>
-                        <s.ContentEnvelope/>
-                        <s.CenteredText blur={blur}>{item.replyContent}</s.CenteredText>
-                        <s.NameText  blur={blur}>from. {item.senderName}</s.NameText>
-                    </>
-                )}
-            </div>
-        ));
-        setBlurCancel(newBlurCancel);  // 상태 업데이트
-    }, [blur]);
-    
+// ...
 
 
     return (
@@ -304,10 +283,33 @@ function MainScreen() {
                                  <s.NoneEnvelope/>
                              </s.EnvelopeDiv>
                          ) : (
+                            <s.TransparentEnvelopeDiv onClick={handleEnvelopeClick} blur={blur}> 
                              <s.EnvelopeDiv >
                                  <Slider {...settings}>
-                                    {blurCancel}
-
+                                     {replies.map((item: Reply, index: number) => (
+                                     <div key={index} style={{width: '100%'}}>
+                                             {/* {data.blur ? ( */}
+                                                 <>
+                                                 {blur ? 
+                                                    
+                                                     <s.ContentEnvelope></s.ContentEnvelope>
+                                                     
+                                                     : <s.ContentEnvelope ></s.ContentEnvelope>
+                                                 }
+                                                     {/* {
+                                                        blur ? 
+                                                        <s.ExistText>메이튼 보낸 </s.ExistText> : 
+                                                        <></> 
+                                                    } */}
+                                                     <s.CenteredText blur={blur} >{item.replyContent}</s.CenteredText >
+                                                     <s.NameText  blur={blur}>from. {item.senderName}</s.NameText>
+                                                 </>
+                                          
+                                              
+                                             
+                        
+                                         </div>
+                                     ))}
                             
                                          <>
                                              <s.ContentEnvelope></s.ContentEnvelope>
@@ -319,7 +321,7 @@ function MainScreen() {
                                
                                  </Slider>
                              </s.EnvelopeDiv>
-
+                             </s.TransparentEnvelopeDiv>
                          )
 
                     ) : <s.EnvelopeDiv>

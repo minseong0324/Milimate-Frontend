@@ -5,7 +5,7 @@ import heartSadCharacter from "../../assets/charater/HeartCharacter4.png";
 import heartCharacter1 from "../../assets/charater/HeartCharacter1.png";
 import heartCharacter2 from "../../assets/charater/HeartCharacter2.png";
 import heartCharacter3 from "../../assets/charater/HeartCharacter3.png";
-
+import TransparentEnvelope from '../../assets/EnvelopeImage/TransparentEnvelope.png'
 
 import noneEnvelope from '../../assets/EnvelopeImage/noneEnvelope.svg';
 import existEnvelope from '../../assets/EnvelopeImage/trueEnvelope.svg';
@@ -15,6 +15,7 @@ import MilimateImg from '../../assets/Logo/Milimate.svg'
 
 type ExistEnvelopeProps = {
     blur?: boolean; // blur는 optional이며, boolean 타입을 가집니다.
+    //pixel: number;  
 };
 const WrapperLayout = styled.div`
   //background-color: #f2f1ee;
@@ -221,7 +222,7 @@ const ContentEnvelope = styled.img.attrs({
 margin: auto;
 display: block;
 margin-bottom: -124px;
-width: 360px;
+width: 350px;
 //height: 301px;
 position: relative; // 이 부분 추가
 @media (min-width: 600px) {
@@ -245,34 +246,59 @@ position: relative; // 이 부분 추가
 }
 `;
 
-const EnvelopeDiv = styled.div<{ blur?: boolean }>`
-  margin-top: 10px;
-  margin-bottom: 120px;
-  position: relative;
-  width: 100%;
-  //padding: 100px;
-  //height: 600px;
-    //background: url(${contentEnvelop}) no-repeat center;
+const EnvelopeDiv = styled.div`
+    margin-top: 10px;
+    margin-bottom: 120px;
+    position: relative;
+    width: 360px;
+    /* 다음 줄에서 조건부 스타일 설정 */
 
-  background-size: contain; // 이미지가 div를 채우도록 조절
-  //position: relative;
-  //filter: ${({ blur }) => (blur ? 'blur(5px)' : 'none')};
-  //height: 300px; // 적절한 높이로 설정 (이미지 높이에 따라 조절 필요)
+    background-size: contain; // 이미지가 div를 채우도록 조절
+
+    @media (min-width: 600px) {
+  width: 430px;
+ // height: 240.26px;
+}
 `;
 
-// const SlideItem = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   width: 100%;
-//
-// `;
+const TransparentEnvelopeDiv = styled.div<{ blur?: boolean }>`
+    margin-top: 10px;
+    margin-bottom: 120px;
+    position: relative;
+    width: 360px;
+    height: 240px;
+    margin-right: 3px;
+    /* 이미지의 z-index를 1로 설정하여 자식 요소들 위에 오도록 합니다. */
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: ${({ blur }) => (blur ? `url(${TransparentEnvelope})` : 'none')};
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        z-index: 1;
+    }
+
+    /* 자식 요소들의 z-index를 0으로 설정하여 이미지 아래에 오도록 합니다. */
+    & > * {
+        position: relative;
+        z-index: 0;
+    }
+
+    @media (min-width: 600px) {
+        width: 430px;
+        height: 300px;
+    }
+`;
 
 const CenteredText = styled.div<ExistEnvelopeProps>`
   position: relative;
   //margin-bottom: 100px;
-  top: -10px;
+  top:  8px;
   filter: ${({ blur }) => (blur ? 'blur(5px)' : 'blur(0px)')};
   //background-color: grey;
   left: 50%;
@@ -294,18 +320,46 @@ const CenteredText = styled.div<ExistEnvelopeProps>`
   z-index: 3;
   @media (min-width: 600px) {
     //left : 67%;
+    top : -30px;
+    
+  }
+`;
+const ExistText = styled.div`
+  position: absolute;
+  //margin-bottom: 100px;
+  top: -10px;
+  
+  //background-color: grey;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #4A544A; // 원하는 색상으로 변경하세요
+  text-align: center;
+  height: 100px;
+  max-height: 60px; // 1.2em은 한 줄의 높이로 가정, 3줄까지 표시
+  width: 230px; // 원하는 폭으로 설정 (예: 이미지의 80%)
+  white-space: normal; // 필요하면 추가
+  word-wrap: break-word;
+  overflow: hidden; // 텍스트가 박스 밖으로 나가지 않도록
+  display: -webkit-box; // flexbox의 구형 구현
+  -webkit-line-clamp: 1; // 표시될 최대 라인 수
+  -webkit-box-orient: vertical; // 박스의 방향을 수직으로 설정
+
+  padding: 0px; // 원하는 값으로 조정 가능
+  box-sizing: border-box; // padding 값이 전체 높이/폭에 포함되도록
+  z-index: 4;
+  @media (min-width: 600px) {
+    //left : 67%;
     top : -20px;
     
   }
 `;
-
 const NameText = styled.p<ExistEnvelopeProps>`
   //position: absolute;
 
   //text-align: end;
   position: relative;
   top: -30px;
-  left: 310px;
+  left: 210px;
   //top  : 180px;
   font-size: 16px;
   color: #4A544A; // 원하는 색상으로 변경하세요
@@ -315,7 +369,7 @@ const NameText = styled.p<ExistEnvelopeProps>`
   font-weight: bolder;
   filter: ${({ blur }) => (blur ? 'blur(5px)' : 'blur(0px)')};
   @media (min-width: 600px) {
-    left : 365px;
+    left : 280px;
     font-size: 16px;
     top : -40px;
   }
@@ -402,5 +456,7 @@ export const s = {
     BtnDiv,
     SmallCenterModalWrapper,
     SmallModalTextsWrapper2,
+    ExistText,
+    TransparentEnvelopeDiv
    // SlideItem
 };
