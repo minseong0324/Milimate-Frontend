@@ -228,7 +228,7 @@ function MainScreen() {
             </div>
         ));
         setBlurCancel(newBlurCancel);  // 상태 업데이트
-    }, [handleEnvelopeClick]);
+    }, [blur]);
     
 
 
