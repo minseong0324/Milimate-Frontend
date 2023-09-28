@@ -208,7 +208,27 @@ function MainScreen() {
         }
     };
 
-// ...
+    const slides = [];
+    for (let i = 0; i < replies.length; i++) {
+        slides.push(
+            <s.SlideWrapper key={i}>
+                {/* Assuming s is your styled components object */}
+                <s.ContentEnvelope></s.ContentEnvelope>
+                <s.CenteredText blur={blur}>{replies[i].replyContent}</s.CenteredText>
+                <s.NameText blur={blur}>from. {replies[i].senderName}</s.NameText>
+            </s.SlideWrapper>
+        );
+    }
+
+    slides.push(
+        <s.SlideWrapper key={replies.length}>
+            <s.ContentEnvelope></s.ContentEnvelope>
+            <s.CenteredText onClick={() => questionClick()}>
+                모두 확인하기
+            </s.CenteredText>
+            <s.NameText></s.NameText>
+        </s.SlideWrapper>
+    );
 
 
     return (
@@ -288,41 +308,19 @@ function MainScreen() {
             <s.TransparentEnvelopeDiv onClick={handleEnvelopeClick} blur={blur}>
                 <s.EnvelopeDiv>
                     <Slider {...settings}>
-                        {replies.map((item: Reply, index: number) => (
-                            <div key={index} style={{width: '100%'}}>
-                                <s.ContentEnvelope></s.ContentEnvelope>
-                                <s.CenteredText blur={blur} >{item.replyContent}</s.CenteredText >
-                                <s.NameText blur={blur}>from. {item.senderName}</s.NameText>
-                            </div>
-                        ))}
-                        <s.ContentEnvelope></s.ContentEnvelope>
-                        <s.CenteredText onClick={() => questionClick()}>
-                            모두 확인하기
-                        </s.CenteredText>
-                        <s.NameText></s.NameText>
+                    {slides}
                     </Slider>
                 </s.EnvelopeDiv>
             </s.TransparentEnvelopeDiv>
             :
             <s.EnvelopeDiv>
                 <Slider {...settings}>
-                    {replies.map((item: Reply, index: number) => (
-                        <div key={index} style={{width: '100%'}}>
-                            <s.ContentEnvelope></s.ContentEnvelope>
-                            <s.CenteredText blur={blur}>{item.replyContent}</s.CenteredText >
-                            <s.NameText blur={blur}>from. {item.senderName}</s.NameText>
-                        </div>
-                    ))}
-                    <s.ContentEnvelope></s.ContentEnvelope>
-                    <s.CenteredText onClick={() => questionClick()}>
-                        모두 확인하기
-                    </s.CenteredText>
-                    <s.NameText></s.NameText>
+                {slides}
                 </Slider>
             </s.EnvelopeDiv>
         }
     </>
-                         )
+                    )
 
                     ) : <s.EnvelopeDiv>
                         <s.NoneEnvelope/>

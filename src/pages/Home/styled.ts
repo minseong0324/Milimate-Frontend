@@ -262,6 +262,12 @@ const EnvelopeDiv = styled.div`
 }
 `;
 
+const SlideWrapper = styled.div`
+    width : 100%
+`;
+
+
+
 const TransparentEnvelopeDiv = styled.div<{ blur?: boolean }>`
     margin-top: 0px;
     margin-bottom: 120px;
@@ -457,6 +463,6 @@ export const s = {
     SmallCenterModalWrapper,
     SmallModalTextsWrapper2,
     ExistText,
-    TransparentEnvelopeDiv
-   // SlideItem
-};
+    TransparentEnvelopeDiv,
+    SlideWrapper
+  };
