@@ -186,15 +186,28 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
           );
           closeModal();
         }
+        else if (response.status === 400) {
+          if (response.data.code === "OVER 60") {
+            alert('유효한 값으로 입력해주세요!');
+          } else {
+            alert('유효한 값으로 입력해주세요!');
+          }
+        }
       } catch (error: unknown) {
         //에러 일 경우
+
         if (error instanceof AxiosError) {
           const status = error?.response?.status;
+          const errorCode = error?.response?.data?.code;
           if (status === 404) {
             // 리소스를 찾을 수 없음
           } else if (status === 500) {
             // 서버 내부 오류
-          } else {
+          }
+          else if (status === 400 && errorCode === "OVER 60") {
+            alert('유효한 값으로 입력해주세요!');
+          }
+          else {
             // 기타 상태 코드 처리
           }
         }
