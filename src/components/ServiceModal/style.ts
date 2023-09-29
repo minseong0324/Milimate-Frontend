@@ -7,6 +7,7 @@ const TitleWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: -10px;
+  margin-top:-20px;
 `;
 
 const SubSubTitle = styled.span`
@@ -55,7 +56,7 @@ text-align: center;
   flex-direction: column;
   justify-content: center;
     padding: 20px;
-    margin-top: -25px;
+    margin-top: -10px;
 `;
 
 
