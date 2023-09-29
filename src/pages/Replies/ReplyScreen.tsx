@@ -75,7 +75,7 @@ function ReplyScreen({day}: ReplyScreenProps) {
                         replies: response.data.replies.map((reply: Reply) => { // 여기에서 타입을 지정
                             let modifiedColor = reply.color;
                             if (reply.color === 'white') {
-                                modifiedColor = '#FFFFFF';
+                                modifiedColor = '#FEFCFC';
                             }
                             if (reply.color === 'pink') {
                                 modifiedColor = '#FFDED9';
