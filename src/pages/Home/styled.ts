@@ -223,7 +223,8 @@ const NoneEnvelope = styled.img.attrs({
 })`
   margin-top: 12px;
   margin-bottom: 24px;
-  width: 350px;
+  //right: 5px;
+  width: 340px;
   //height: 201px;
   position: relative; // 이 부분 추가
   margin: auto;
