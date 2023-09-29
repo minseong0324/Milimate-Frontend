@@ -110,7 +110,7 @@ function AddReply() {
                     <s.SoldierTagContainer>
                         {data ? <>
                             <s.DayText>{data.day}</s.DayText>
-                            :
+                            
 
                             {/*<s.QuestionText>{state.question}</s.QuestionText>*/}
                             <s.QuestionText>{data.todayQuestion}</s.QuestionText>

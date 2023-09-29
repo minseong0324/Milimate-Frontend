@@ -219,6 +219,7 @@ const Text = styled.div`
   top: 80px;
   font-size: 18px;
   font-weight: bolder;
+  color: #4A544A;
   @media (min-width: 600px) {
     top: 100px;
     font-size: 20px;
