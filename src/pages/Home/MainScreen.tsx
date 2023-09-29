@@ -132,13 +132,7 @@ function MainScreen() {
                                 }
                             );
                             setReplies(replResponse.data.replies); // 데이터 저장
-                            //
-                            //setReplies(DUMMY_DATA.replies); // 더미 데이터 사용
 
-
-
-                            // alert(replies[0].senderName); // senderName을 출력
-                            // alert(replies[0].replyContent); // replyContent를 출력
                         } catch (error) {
                             alert("데이터를 불러오는데 실패했습니다:");
                        //     alert(error);
