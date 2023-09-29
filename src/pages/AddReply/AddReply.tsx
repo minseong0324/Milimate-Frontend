@@ -58,7 +58,7 @@ function AddReply() {
                 {
                     senderName: formData.sender,
                     replyContent: formData.reply,
-                    color: selectedColor
+                    color: selectedColorString
                 },
             );
             if (response.status === 200) {
