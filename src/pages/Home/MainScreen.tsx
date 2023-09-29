@@ -113,9 +113,6 @@ function MainScreen() {
                     userName: response.data.userName,
 
                 };
-                // alert(response.data.existNewRepl);
-                // alert(response.data.todayQuestion);
-
                 setBlur(response.data.blur);
                 setData(responseData); // 형변를환된 응답 데이터 상태에 할당
                 setDdayCount(responseData.endDate - responseData.nowDate);
@@ -139,7 +136,6 @@ function MainScreen() {
                        //     alert(error);
                         }
                     };
-
                     fetchReplData(); // 함수 실행
                 }
             } catch (e) {
@@ -151,16 +147,6 @@ function MainScreen() {
 
 
     }, [accessToken, userId]);
-
-    // if (data?.existNewRepl) {
-    //     alert(accessToken)
-    //     const fetchReplData = async () => {
-    //
-    //     };
-    //
-    //     fetchReplData(); // 함수 실행
-    // } ///
-
 
     const closeModal = () => {
         setSmallModalOpen(false);
@@ -224,8 +210,6 @@ function MainScreen() {
             <s.NameText></s.NameText>
         </s.SlideWrapper>
     );
-//
-
     return (
         <>
             <s.WrapperLayout>
@@ -263,9 +247,6 @@ function MainScreen() {
                         ) : <></>
                     }
 
-
-                    {/*<s.MainContentText></s`.MainContentText>*/}
-                    {/*<>*/}
                     {data && (
                         !data.existNewRepl
                             ? <s.SadCharImg/>

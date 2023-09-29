@@ -245,7 +245,7 @@ const ContentText = styled.p`
 const SenderText = styled.p `
   font-size: 15px;
   font-weight: bold;
-  color: #6d844c;
+  color: #4c544b;
   margin: 0;
   text-align: end;
   padding-left :32px;
