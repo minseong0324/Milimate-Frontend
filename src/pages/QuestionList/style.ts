@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import BackButtonImg from "../../assets/BackButton/BackButton.svg"
 
-const BackButton = styled.button`
+const BackButton = styled.img.attrs({
+  src: BackButtonImg
+})`
   position: absolute;
-  z-index: 4;
   width: 24px;
-  height: 24px;
-  border: transparent;
-  background-image: url(${BackButtonImg});
+  height: auto;
   left: 2%;  /* 화면의 좌측에서 약간 떨어진 정도 설정 */
   top: 10px;
   @media (min-width: 600px) {
