@@ -101,7 +101,7 @@ const NameContentDiv = styled.div`
 `;
 const MainContentText = styled.div`
   color: #4c544b;
-  line-height: 1.2; // 글자 간격
+  //line-height: 1.2; // 글자 간격
   font-size: 16px;
   font-weight: bolder;
   //margin-top: 30px;
@@ -223,7 +223,7 @@ const NoneEnvelope = styled.img.attrs({
 })`
   margin-top: 12px;
   margin-bottom: 24px;
-  width: 360px;
+  width: 350px;
   //height: 201px;
   position: relative; // 이 부분 추가
   margin: auto;
@@ -348,6 +348,30 @@ const CenteredText = styled.div<ExistEnvelopeProps>`
     
   }
 `;
+
+const NameText = styled.p<ExistEnvelopeProps>`
+  //position: absolute;
+
+  //text-align: end;
+  position: relative;
+  top: -30px;
+  left: 210px;
+  //top  : 180px;
+  font-size: 16px;
+  color: #4A544A; // 원하는 색상으로 변경하세요
+  margin-top: 30px;
+  z-index: 4;
+  margin-left: 8px;
+  font-weight: bolder;
+  filter: ${({ blur }) => (blur ? 'blur(5px)' : 'blur(0px)')};
+  @media (min-width: 600px) {
+    left : 280px;
+    font-size: 16px;
+    top : -40px;
+  }
+
+`;
+
 const ExistText = styled.div`
   position: absolute;
   //margin-bottom: 100px;
@@ -377,28 +401,7 @@ const ExistText = styled.div`
     
   }
 `;
-const NameText = styled.p<ExistEnvelopeProps>`
-  //position: absolute;
 
-  //text-align: end;
-  position: relative;
-  top: -30px;
-  left: 210px;
-  //top  : 180px;
-  font-size: 16px;
-  color: #4A544A; // 원하는 색상으로 변경하세요
-  margin-top: 30px;
-  z-index: 4;
-  margin-left: 8px;
-  font-weight: bolder;
-  filter: ${({ blur }) => (blur ? 'blur(5px)' : 'blur(0px)')};
-  @media (min-width: 600px) {
-    left : 280px;
-    font-size: 16px;
-    top : -40px;
-  }
-
-`;
 
 
 
