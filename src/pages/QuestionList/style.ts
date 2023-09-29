@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import BackButtonImg from "../../assets/BackButton/BackButton.svg"
 
-const BackButton = styled.img.attrs({
-  src: BackButtonImg
-})`
+const BackButton = styled.button`
   position: absolute;
+  z-index: 4;
   width: 24px;
-  height: auto;
+  height: 24px;
+  border: transparent;
+  background-color: transparent;
+  background: transparent;
+  background-image: url(${BackButtonImg});
   left: 2%;  /* 화면의 좌측에서 약간 떨어진 정도 설정 */
   top: 10px;
   @media (min-width: 600px) {
@@ -49,7 +52,6 @@ const Text = styled.div`
   
   font-size: 18px;
   font-weight: bolder;
-  color: #4A544A;
   @media (min-width: 600px) {
     top: 36px;
     font-size: 20px;

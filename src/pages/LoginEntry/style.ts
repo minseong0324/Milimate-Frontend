@@ -167,6 +167,35 @@ const SubTitle = styled.img.attrs({
 `;
 
 
+const PolicyTextsWrapper = styled.div`
+  position: relative;
+  margin-top: 30px;
+  font-weight: lighter;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0.2;
+  z-index: 2;
+
+  
+`;
+
+const PolicyTextsStyle = styled.p`
+  margin-top: 6px;
+  font-size: 9px;
+  padding-bottom: 10px;
+  color: #444;
+`;
+
+const PolicyStyledLink = styled.a`
+  color: #444;
+  text-decoration: underline;  // 밑줄 추가
+
+  &:hover {
+    color: darkblue;  // 마우스 오버 시 색상 변경
+  }
+`;
+
 
 
 
@@ -180,5 +209,8 @@ export const s = {
   MainLogo,
   TopBackground,
   BottomBackground,
-  BackgroundWrapper
+  BackgroundWrapper,
+  PolicyTextsWrapper,
+  PolicyTextsStyle,
+  PolicyStyledLink
 };
