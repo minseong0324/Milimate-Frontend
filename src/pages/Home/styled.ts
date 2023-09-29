@@ -225,7 +225,7 @@ const NoneEnvelope = styled.img.attrs({
   margin-bottom: 24px;
   //right: 5px;
   width: 340px;
-  //height: 201px;
+  //height: 201px;//
   position: relative; // 이 부분 추가
   margin: auto;
   display: block;
