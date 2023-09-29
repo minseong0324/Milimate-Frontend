@@ -13,6 +13,29 @@ import contentEnvelop from '../../assets/EnvelopeImage/contentEnvelope.svg';
 
 import MilimateImg from '../../assets/Logo/Milimate.svg'
 
+import ServiceButtonImg from '../../assets/charater/ServiceButton.svg'
+
+const ServiceButton = styled.button`
+  //position: absolute;
+  //z-index: 4;
+  width: 32px;
+  height: 24.12px;
+  //left: 2%;  /* 화면의 좌측에서 약간 떨어진 정도 설정 */
+  top: 0;
+  background: transparent;
+  border: transparent;
+  margin-right: 16px;
+  background-image: url(${ServiceButtonImg}) ;
+  @media (min-width: 600px) {
+    //left: calc(50% - 300px + 10px);
+    //: 36px;
+
+  }
+  /* 가로모드용 스타일 */
+  @media screen and (max-width: 767px) and (orientation: landscape) {
+    top: 10px;
+  }
+`;
 type ExistEnvelopeProps = {
     blur?: boolean; // blur는 optional이며, boolean 타입을 가집니다.
     //pixel: number;
@@ -283,7 +306,7 @@ const EnvelopeDiv = styled.div`
 
 const SlideWrapper = styled.div`
     width : 100%
-`;
+    `;
 
 
 
@@ -477,5 +500,6 @@ export const s = {
     SmallModalTextsWrapper2,
     ExistText,
     TransparentEnvelopeDiv,
-    SlideWrapper
+    SlideWrapper,
+    ServiceButton
   };

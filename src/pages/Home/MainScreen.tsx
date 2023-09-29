@@ -11,7 +11,7 @@ import {FiUpload} from "react-icons/fi";
 import Slider, {Settings} from "react-slick";
 import copy from 'copy-to-clipboard';
 import {AiOutlineUnorderedList} from "react-icons/ai";
-
+import ServiceModal from '../../components/ServiceModal/ServiceModal'
 
 interface ResponseData {
     userName: string;
@@ -60,7 +60,7 @@ function MainScreen() {
     const [isSmallModalOpen, setSmallModalOpen] = useState(false);
     const [modalSmallContent, setModalSmallContent] =
         useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장\
-
+    const [isServiceModalOpen, setServiceModalOpen] = useState(false);
 // ... [기타 코드 생략] ...
 
     const handleCopyClipBoard = async () => {
@@ -210,12 +210,19 @@ function MainScreen() {
             <s.NameText></s.NameText>
         </s.SlideWrapper>
     );
+
+    const ServiceModalOpen = () => {
+        setServiceModalOpen(true);
+    }
+
+
     return (
         <>
             <s.WrapperLayout>
                 <s.AppBarWrapperDiv>
                     <s.MilimateLogo/>
                     <div>
+                        <s.ServiceButton onClick={ServiceModalOpen}/>
                         <MdPersonOutline onClick={() => {
                             profileImgClick()
                         }} size={24} color={'#4c544b'} style={{marginRight: 16}}></MdPersonOutline>
@@ -327,6 +334,9 @@ function MainScreen() {
             <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)}>
                 {modalSmallContent}
             </SmallModal>
+
+            <ServiceModal isOpen={isServiceModalOpen} onClose={() => setServiceModalOpen(false)}/>
+
         </>
     )
 
