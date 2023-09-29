@@ -79,12 +79,7 @@ function MyPage() {
                     <s.ButtonStyle onClick={editUserNameModalBtn}>이름 변경하기</s.ButtonStyle>
                 </s.MenuDiv>
                 {/*<s.Splice></s.Splice>*/}
-                <s.MenuDiv>
-                    <s.EditIcon/>
-                    <s.ButtonStyle onClick={updateEnlistmentBtn}>
-                        입대일 수정하기
-                    </s.ButtonStyle>
-                </s.MenuDiv>
+
 
                 <s.MenuDiv>
                     <s.EditIcon/>
