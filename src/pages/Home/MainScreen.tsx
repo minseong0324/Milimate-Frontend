@@ -9,7 +9,7 @@ import {RootState} from "../../components/Redux/store";
 import {MdPersonOutline} from "react-icons/md";
 import {FiUpload} from "react-icons/fi";
 import Slider, {Settings} from "react-slick";
-
+import copy from 'copy-to-clipboard';
 import {AiOutlineUnorderedList} from "react-icons/ai";
 
 
@@ -65,9 +65,10 @@ function MainScreen() {
 
     const handleCopyClipBoard = async () => {
         const linkToShare = `https://mili-mate.com/guest/${userId}`;
-        console.log(linkToShare);
         try {
             await navigator.clipboard.writeText(linkToShare);
+            
+        copy(`https://mili-mate.com/guest/${userId}`); //안드로이드 카카오톡 인앱 브라우저 이슈 대응
             setSmallModalOpen(true)
             setModalSmallContent(
                 <s.SmallCenterModalWrapper>
