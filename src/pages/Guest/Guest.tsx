@@ -38,7 +38,7 @@ function Guest() {
             if (error instanceof AxiosError) {
                 const status = error?.response?.status;
                 alert("유저의 정보를 불러오지 못했어요.")
-               
+
                 if (status === 404) {
                     // 리소스를 찾을 수 없음
                 } else if (status === 500) {
@@ -90,7 +90,7 @@ function Guest() {
                     <s.TextsStyle2>{userName} 훈련병</s.TextsStyle2>
                     {
                         enlistmentState ? <s.TextsStyle2_1>{todayQuestion}</s.TextsStyle2_1> :
-                        <s.TextsStyle2_1>입대 이후 질문이 생성됩니다! 미리 링크를 공유해 준비해두세요.</s.TextsStyle2_1>
+                            <s.TextsStyle2_1>입대 이후 질문이 생성됩니다! 미리 링크를 공유해 준비해두세요.</s.TextsStyle2_1>
                     }
 
                 </s.TagContainer>
@@ -98,13 +98,13 @@ function Guest() {
                 {/*입대 이후 질문이 생성됩니다! 미리 링크를 공유해 준비해두세요.*/}
                 {
                     enlistmentState ?
-                    <s.ButtonWrapper>
-                        <s.Button onClick={handleGoSend}>답변 작성하러 가기</s.Button>
+                        <s.ButtonWrapper>
+                            <s.Button onClick={handleGoSend}>답변 작성하러 가기</s.Button>
 
-                    </s.ButtonWrapper> :
-                    <s.ButtonWrapper>
-                        <s.Button onClick={handleGoSend} disabled>입대까지 D-{day}</s.Button>
-                    </s.ButtonWrapper>
+                        </s.ButtonWrapper> :
+                        <s.ButtonWrapper>
+                            <s.Button onClick={handleGoSend} disabled>입대까지 D{parseInt(day)-1}</s.Button>
+                        </s.ButtonWrapper>
                 }
 
                 {/* <ErrorModal isOpen={isErrorModalOpen} onClose={() => setErrorModalOpen(false)} >

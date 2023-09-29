@@ -14,7 +14,7 @@ function DeleteModalBasic({ setModalOpen, contentText }: PropsType) {
   const userId = localStorage.getItem("userId");
   const { accessToken, refreshToken } = useToken();
   const navigate = useNavigate();
-  const modalRef = useRef<HTMLDivElement | null>(null);
+  // const modalRef = useRef<HTMLDivElement | null>(null);
   const [isSmallModalOpen, setSmallModalOpen] = useState(true);
   const [modalSmallContent, setModalSmallContent] =
     useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장\
@@ -56,9 +56,26 @@ function DeleteModalBasic({ setModalOpen, contentText }: PropsType) {
       return null;
     }
   };
+  const modalRef = useRef<HTMLDivElement | null>(null);
+
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {  // event 타입을 MouseEvent로 지정
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        setModalOpen(false);
+      }
+    }
+
+    // any 대신 구체적인 타입을 사용
+    document.addEventListener("mousedown", handleClickOutside as EventListener);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside as EventListener);
+    };
+  }, [modalRef, setModalOpen]);
+
   return (
     <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)} >
-      <s.SmallCenterModalWrapper>
+      <s.SmallCenterModalWrapper ref = {modalRef}>
         <s.SmallModalTextsWrapper1>회원탈퇴 하시겠습니까?</s.SmallModalTextsWrapper1>
         <s.BtnDiv>
           <s.OkBtnStyle onClick={deleteAccount}>확인</s.OkBtnStyle>

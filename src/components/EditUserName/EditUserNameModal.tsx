@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import { s } from "./style";
 import axios, { AxiosError } from "axios";
 import { useToken } from "../../contexts/TokenProvider/TokenProvider";
@@ -19,6 +19,7 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
 
   const closeModal = () => {
     setModalOpen(false);
+    console.log();
   };
 
   const UpdateUserNameBtn = async () => {
@@ -51,7 +52,7 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
         if (error instanceof AxiosError) {
           const status = error?.response?.status;
           console.error("Failed to fetch user info:", error);
-  
+
           if (status === 404) {
             // 리소스를 찾을 수 없음
             alert('404')
@@ -69,9 +70,27 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
     }
   };
 
+  const modalRef = useRef<HTMLDivElement | null>(null);
+
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {  // event 타입을 MouseEvent로 지정
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        setModalOpen(false);
+      }
+    }
+
+    // any 대신 구체적인 타입을 사용
+    document.addEventListener("mousedown", handleClickOutside as EventListener);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside as EventListener);
+    };
+  }, [modalRef, setModalOpen]);
+
+
   return (
     <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)}>
-      <s.SmallCenterModalWrapper>
+      <s.SmallCenterModalWrapper ref={modalRef}>
         <s.SmallModalTextsWrapper1>새 이름을 입력해주세요.</s.SmallModalTextsWrapper1>
         <s.InputContainer>
           <s.MoreInfoInputName

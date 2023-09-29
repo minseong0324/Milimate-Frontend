@@ -141,7 +141,7 @@ function MainScreen() {
                             // alert(replies[0].replyContent); // replyContent를 출력
                         } catch (error) {
                             alert("데이터를 불러오는데 실패했습니다:");
-                            alert(error);
+                       //     alert(error);
                         }
                     };
 
@@ -283,10 +283,10 @@ function MainScreen() {
                     {/*</>*/}
 
 
-                    <div style={{flexDirection: "row", display: 'flex', marginTop: 32, marginBottom: 32}}>
+                    <s.NameContentDiv>
                         <s.MainContentText>{userInfo.userName}</s.MainContentText>
                         <s.NormalText> 훈련병</s.NormalText>
-                    </div>
+                    </s.NameContentDiv>
                 </s.MainContent>
 
                 <s.ShareBtnDiv onClick={handleCopyClipBoard}>

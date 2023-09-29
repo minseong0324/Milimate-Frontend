@@ -8,14 +8,14 @@ import dayjs from "dayjs";
 interface Question {
     day: string;
     todayQuestion: string;
-    isRead: string;
+    read: boolean;
 }
 
 function QuestionListScreen() {
     const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추
     const {accessToken, refreshToken} = useToken();
-    const [questions, setQuestions] = useState<Question[]>([]); 
-    
+    const [questions, setQuestions] = useState<Question[]>([]);
+
     // 상태 변수와 상태 설정 함수 생성
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
@@ -43,7 +43,7 @@ function QuestionListScreen() {
             }
         };
         fetchData();
-    },[userId]);
+    }, [userId]);
 
     const questionClick = (day: string) => {
         console.log("이벤트");
@@ -66,50 +66,31 @@ function QuestionListScreen() {
                 </s.Container>
                 <s.MainWrapper>
 
-
-                    {/*{nowDate > 1 ? (*/}
-                    {/*    <s.CustomUl>*/}
-                    {/*        {isLoading ? (<div>Loading...</div>) : (*/}
-                    {/*            questions.map((question, index) => (*/}
-                    {/*                <li key={index}>*/}
-                    {/*                    <s.LiLayout>*/}
-                    {/*                        <s.BootImg></s.BootImg>*/}
-                    {/*                        <s.CustomLi onClick={() => questionClick(question.day, question.todayQuestion)}>*/}
-                    {/*                            {question.todayQuestion}*/}
-                    {/*                        </s.CustomLi>*/}
-                    {/*                        <s.CommaText>"</s.CommaText>*/}
-                    {/*                    </s.LiLayout>*/}
-                    {/*                </li>*/}
-                    {/*            ))*/}
-                    {/*        )}*/}
-                    {/*    </s.CustomUl>*/}
-                    {/*) : (<div> 아직은 확인할 수 없습니다. </div>)}*/}
-
-                    {questions ? (
+                    {questions.length > 0 ? (
 
                         <s.CustomUl>
                             {
                                 questions.map((question, index) => (
                                     <li key={index}>
                                         <s.LiLayout>
-                                            {question.isRead == "false" ? <s.DayText>{question.day}</s.DayText> :
+                                            {question.read == false ? <s.DayText>{question.day}</s.DayText> :
                                                 <s.GreyDayText>{question.day}</s.GreyDayText>}
 
-                                            {question.isRead == "false" ? 
-                                            <s.CustomLi
-                                                onClick={() =>
-                                                    questionClick(question.day)
-                                                }
-                                            >
-                                                {question.todayQuestion}
-                                            </s.CustomLi> :
-                                            <s.GreyCustomLi
-                                                onClick={() =>
-                                                    questionClick(question.day)
-                                                }
-                                            >
-                                                {question.todayQuestion}
-                                            </s.GreyCustomLi>
+                                            {question.read == false ?
+                                                <s.CustomLi
+                                                    onClick={() =>
+                                                        questionClick(question.day)
+                                                    }
+                                                >
+                                                    {question.todayQuestion}
+                                                </s.CustomLi> :
+                                                <s.GreyCustomLi
+                                                    onClick={() =>
+                                                        questionClick(question.day)
+                                                    }
+                                                >
+                                                    {question.todayQuestion}
+                                                </s.GreyCustomLi>
                                             }
                                         </s.LiLayout>
                                         <s.Splice></s.Splice>
@@ -118,9 +99,13 @@ function QuestionListScreen() {
                             }
                         </s.CustomUl>
                     ) : (
-                        <s.VoidQuestion onClick={() => {
-                            questionClick("12");
-                        }}>아직은 질문이 없습니다.</s.VoidQuestion>
+                        <>
+                            <s.VoidQuestion onClick={() => {
+
+
+                            }}>아직은 질문이 없습니다.
+                            </s.VoidQuestion>
+                        </>
                     )}
 
                 </s.MainWrapper>

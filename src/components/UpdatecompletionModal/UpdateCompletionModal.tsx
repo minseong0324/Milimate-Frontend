@@ -204,10 +204,27 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
     }
 
   }
+  const modalRef = useRef<HTMLDivElement | null>(null);
+
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {  // event 타입을 MouseEvent로 지정
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        setModalOpen(false);
+      }
+    }
+
+    // any 대신 구체적인 타입을 사용
+    document.addEventListener("mousedown", handleClickOutside as EventListener);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside as EventListener);
+    };
+  }, [modalRef, setModalOpen]);
+
   const userInfo = useSelector((state: RootState) => state.userInfo);
   return (
     <SmallModal isOpen={isSmallModalOpen} onClose={() => setSmallModalOpen(false)} >
-       <s.SmallCenterModalWrapper>
+       <s.SmallCenterModalWrapper ref = {modalRef}>
         <s.SmallModalTextsWrapper1>수료일 수정하기</s.SmallModalTextsWrapper1>
         <s.InputContainer>
           <s.MoreInfoInputYear

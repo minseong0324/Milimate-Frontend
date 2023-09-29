@@ -15,7 +15,7 @@ import MilimateImg from '../../assets/Logo/Milimate.svg'
 
 type ExistEnvelopeProps = {
     blur?: boolean; // blur는 optional이며, boolean 타입을 가집니다.
-    //pixel: number;  
+    //pixel: number;
 };
 const WrapperLayout = styled.div`
   //background-color: #f2f1ee;
@@ -92,17 +92,35 @@ const D_dayText = styled.p`
   background-color : white;
   
 `;
+
+const NameContentDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-top: 32px;
+  margin-bottom: 32px;
+`;
 const MainContentText = styled.div`
   color: #4c544b;
   line-height: 1.2; // 글자 간격
   font-size: 16px;
   font-weight: bolder;
-  margin-top: 30px;
+  //margin-top: 30px;
   margin: 0;
   word-wrap: break-word;  // 긴 단어를 다음 줄로 래핑
   white-space: pre-wrap;  // 공백을 존중하면서 텍스트를 래핑
   max-width: 220px;  // 또는 원하는 값으로 변경. 이 값은 단어가 래핑되는 포인트를 제어합니다.
   text-align: center;
+`;
+
+
+
+const NormalText = styled.p`
+  color: #4c544b;
+  font-size: 16px;
+
+  margin: 0;
+  margin-left: 8px;
+  
 `;
 
 const SadCharImg = styled.img.attrs({
@@ -384,15 +402,6 @@ const NameText = styled.p<ExistEnvelopeProps>`
 
 
 
-const NormalText = styled.p`
-  color: #4c544b;
-  font-size: 16px;
-
-  margin: 0;
-  margin-left: 8px;
-  
-`;
-
 
 const OkBtnStyle = styled.button`
   /* 버튼의 위치를 모달창의 가운데 하단으로 설정 */
@@ -438,7 +447,7 @@ const SmallModalTextsWrapper2 = styled.div`
 `;
 
 export const s = {
-
+    NameContentDiv,
     WrapperLayout,
     AppBarWrapperDiv,
     AppBarTitleText,

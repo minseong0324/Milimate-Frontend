@@ -269,7 +269,7 @@ const SenderReplyText = styled.input`
   border-bottom: 1px solid black;
   background: transparent; // 배경색 투명하게
   outline: none; // 클릭 시 테두리 제거
-  color: #A7C87E; // 텍스트 색상
+  color: #4A544A; // 텍스트 색상
   font-size: 16px; // 폰트 크기
   position:relative;
   resize: none; // 사용자가 크기를 조절하지 못하게 함
@@ -278,7 +278,7 @@ const SenderReplyText = styled.input`
   font-size: 15px;
 
   &::placeholder {
-    color: #A7C87E;
+    color: #4A544A;
     font-size: 14px;
   }
 

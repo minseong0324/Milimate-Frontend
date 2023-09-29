@@ -120,7 +120,7 @@ const LiLayout = styled.div`
   align-items: center;
 `;
 const VoidQuestion = styled.div`
-  margin-top: 200px;
+  margin-top: 300px;
   color : #4c544b;
   font-size: 20px;
   
