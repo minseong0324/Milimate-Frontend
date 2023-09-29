@@ -246,7 +246,7 @@ function MainScreen() {
 
                     {
                         data ? (
-                            data.nowDate < 0 ? (
+                            data.nowDate <= 0 ? (
                                 <>
 
                                     {/*<s.MainContentText>입대까지</s.MainContentText>*/}
