@@ -229,7 +229,7 @@ function MainScreen() {
             <s.NameText></s.NameText>
         </s.SlideWrapper>
     );
-
+//
 
     return (
         <>
