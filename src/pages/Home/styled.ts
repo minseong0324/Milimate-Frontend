@@ -13,7 +13,7 @@ import contentEnvelop from '../../assets/EnvelopeImage/contentEnvelope.svg';
 
 import MilimateImg from '../../assets/Logo/Milimate.svg'
 
-import ServiceButtonImg from '../../assets/charater/ServiceButton.svg'
+import ServiceButtonImg from '../../assets/Button/ServiceButton.svg'
 
 const ServiceButton = styled.button`
   //position: absolute;
