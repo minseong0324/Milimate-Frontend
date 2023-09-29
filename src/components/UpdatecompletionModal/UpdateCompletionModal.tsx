@@ -175,7 +175,6 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
               },
             }
         );
-        if (response.status == 200) {
           alert("수료일을 수정했습니다.");
           dispatch(
               updateCompletionDate({
@@ -185,14 +184,8 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
               })
           );
           closeModal();
-        }
-        else if (response.status === 400) {
-          if (response.data.code === "OVER 60") {
-            alert('유효한 값으로 입력해주세요!');
-          } else {
-            alert('유효한 값으로 입력해주세요!');
-          }
-        }
+  
+       
       } catch (error: unknown) {
         //에러 일 경우
 
@@ -200,19 +193,17 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
           const status = error?.response?.status;
           const errorCode = error?.response?.data?.code;
           if (status === 404) {
-            // 리소스를 찾을 수 없음
+            alert("추가정보를 입력하는 데에 실패했습니다.")
           } else if (status === 500) {
-            // 서버 내부 오류
+            alert("서버와의 연결이 원활하지 않습니다.")
           }
           else if (status === 400 && errorCode === "OVER 60") {
-            alert('유효한 값으로 입력해주세요!');
+            alert('입대일과 수료일의 차이가 60일 이하이어야 합니다.');
           }
           else {
-            // 기타 상태 코드 처리
+            alert("추가정보를 입력하는 데에 실패했습니다.")
           }
         }
-
-        return alert(`Failed to fetch user info ${error}`);
       }
     }
 

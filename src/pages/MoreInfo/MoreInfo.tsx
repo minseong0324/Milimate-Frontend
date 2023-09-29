@@ -166,14 +166,17 @@ function MoreInfo() {
       //에러 일 경우
       if (error instanceof AxiosError) {
         const status = error?.response?.status;
-        console.error("Failed to fetch user info:", error);
-        alert("사용자 정보를 불러오는데에 실패했습니다.")
+        const errorCode = error?.response?.data?.code;
         if (status === 404) {
-          // 리소스를 찾을 수 없음
+          alert("추가정보를 입력하는 데에 실패했습니다.")
         } else if (status === 500) {
-          // 서버 내부 오류
-        } else {
-          // 기타 상태 코드 처리
+          alert("서버와의 연결이 원활하지 않습니다.")
+        }
+        else if (status === 400 && errorCode === "OVER 60") {
+          alert('입대일과 수료일의 차이가 60일 이하이어야 합니다.');
+        }
+        else {
+          alert("추가정보를 입력하는 데에 실패했습니다.")
         }
       }
       return null;
