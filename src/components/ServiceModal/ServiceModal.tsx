@@ -40,10 +40,11 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose }) => {
                     <s.Text>2. 주변인에게 질문에 대한 답변을 받을 수 있습니다.</s.Text>
                 </s.HorizontalContainer3>
                 <s.HorizontalContainer3>
-                    <s.Text>3. 우측 상단 2번째 버튼은 마이페이지, 3번째는 지금까지 받은 질문리스트를 확인할 수 있는 버튼입니다.</s.Text>
+                    <s.Text>3. 현재 이 페이지에 있는 질문은 오늘의 질문이고, 하단 슬라이드의 답변은 어제의 질문에 대한 답변입니다.
+                    </s.Text>
                 </s.HorizontalContainer3>
                 <s.HorizontalContainer3>
-                    <s.Text>4. 현재 이 페이지에 있는 질문은 오늘의 질문이고, 하단 슬라이드의 답변은 어제의 질문에 대한 답변입니다.
+                    <s.Text>4. 개인정비시간 시작인 17:30 마다 새로운 질문이 업데이트 됩니다. 
                     </s.Text>
                 </s.HorizontalContainer3>
                 <s.HorizontalContainer3>
