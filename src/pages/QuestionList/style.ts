@@ -49,14 +49,13 @@ const Container = styled.div`
 const Text = styled.div`
   position: absolute;
   top: 13px;
-  
+  color: #4A544A;
   font-size: 18px;
   font-weight: bolder;
   @media (min-width: 600px) {
     top: 36px;
     font-size: 20px;
   }
-
 `;
 
 const MainWrapper = styled.div`

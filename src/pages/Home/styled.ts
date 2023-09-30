@@ -14,21 +14,23 @@ import contentEnvelop from '../../assets/EnvelopeImage/contentEnvelope.svg';
 import MilimateImg from '../../assets/Logo/Milimate.svg'
 
 import ServiceButtonImg from '../../assets/Button/ServiceButton.svg'
-
+import ServiceButtonImg2 from '../../assets/charater/CharacterFace.png'
 const ServiceButton = styled.button`
   //position: absolute;
   //z-index: 4;
-  width: 32px;
-  height: 24.12px;
+  width: 31.84px;
+  height: 24px;
   //left: 2%;  /* 화면의 좌측에서 약간 떨어진 정도 설정 */
   top: 0;
   background: transparent;
   border: transparent;
   margin-right: 16px;
-  background-image: url(${ServiceButtonImg}) ;
+  background-image: url(${ServiceButtonImg2}) ;
+  background-size: 31.84px 24px;
+
   @media (min-width: 600px) {
     //left: calc(50% - 300px + 10px);
-    //: 36px;
+    background-image: url(${ServiceButtonImg}) ;
 
   }
   /* 가로모드용 스타일 */
