@@ -103,7 +103,7 @@ function MoreInfo() {
                 parseInt(completionDay.trim()) >
                 getMaxDayOfMonth(parseInt(completionMonth.trim()), parseInt(completionYear.trim())))
         ) {
-            const newCompletionDate = addDaysToDate(enlistDate, 59);
+            const newCompletionDate = addDaysToDate(enlistDate, 60);
             finalCompletionYear = newCompletionDate.getFullYear().toString();
             finalCompletionMonth = (newCompletionDate.getMonth() + 1).toString();
             finalCompletionDay = newCompletionDate.getDate().toString();
