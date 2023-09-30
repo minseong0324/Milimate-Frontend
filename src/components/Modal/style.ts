@@ -43,7 +43,8 @@ const ModalContent = styled.div`
   height: 519.642857px;
   color: #4a534a; 
   font-size: 16px;
-  overflow: auto; 
+  overflow-y: auto; 
+  
 `;
 
 const ModalInnerContent = styled.div`
