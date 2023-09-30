@@ -70,8 +70,8 @@ function App() {
 
                                     <Route path="/guest/:userId" element={<Guest/>}/>
 
-                                    {/*<Route path="/home/:userId" element={<MainScreen/>}/>*/}
-                                    <Route path="/home/:userId" element={<Protected><MainScreen/></Protected>}/>
+                                    <Route path="/home/:userId" element={<MainScreen/>}/>
+                                   {/* <Route path="/home/:userId" element={<Protected><MainScreen/></Protected>}/>*/}
                                     
                                     {/*<Route path="/mypage" element={<MyPage/>}/>*/}
                                     <Route path="/mypage" element={<Protected><MyPage/></Protected>}/>
