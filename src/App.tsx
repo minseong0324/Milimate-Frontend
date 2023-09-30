@@ -34,12 +34,11 @@ const queryClient = new QueryClient();
 
 
 function App() {
-    const myUserId = localStorage.getItem("userId");
-    const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
+    const accessToken = localStorage.getItem("accessToken");
     
     // 로그인 여부를 판단하는 함수
     function isLoggedIn() {
-    return userId == myUserId;
+    return accessToken !== null;
     }
     
     // 로그인이 필요한 컴포넌트를 래핑하는 Protected 컴포넌트
