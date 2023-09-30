@@ -50,9 +50,12 @@ function AddReply() {
     const onSubmit = async () => {
         console.log(formData.sender);
         console.log(formData.reply);
-
+        
         try {
-
+            if(!formData.sender || !formData.reply) {
+                alert("답변 혹은 이름을 모두 입력해주세요!")
+                return;
+            }
             const response = await axios.post(
                 `https://api.mili-mate.com/api/guest/${userId}/reply`,
                 {
@@ -65,7 +68,6 @@ function AddReply() {
                 alert("답변을 다는 것에 성공했어요!");
                 navigate(`/guest/${userId}`);
             }
-            console.log(response.data);
         } catch (error: unknown) {
             if (error instanceof AxiosError) {
                 const status = error?.response?.status;
