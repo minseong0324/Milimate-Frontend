@@ -38,7 +38,11 @@ function App() {
     
     // 로그인 여부를 판단하는 함수
     function isLoggedIn() {
-    return accessToken !== null;
+        if(accessToken !== null) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
     // 로그인이 필요한 컴포넌트를 래핑하는 Protected 컴포넌트
