@@ -5,6 +5,7 @@ import {
     useNavigate,
     useLocation,
     Navigate,
+    useParams
 } from "react-router-dom";
 import React, { ReactElement } from "react";
 import Login from "./pages/login/Login";
@@ -30,20 +31,23 @@ import TokenProvider from './contexts/TokenProvider/TokenProvider';
 
 const queryClient = new QueryClient();
 
-const userId = localStorage.getItem("userId");
 
-// 로그인 여부를 판단하는 함수
-function isLoggedIn() {
-return userId !== null;
-}
-
-// 로그인이 필요한 컴포넌트를 래핑하는 Protected 컴포넌트
-function Protected({ children }: { children: ReactElement }) {
-const location = useLocation();
-return isLoggedIn() ? children : <Navigate to="/" replace state={{ from: location }} />;
-}
 
 function App() {
+    const myUserId = localStorage.getItem("userId");
+    const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
+    
+    // 로그인 여부를 판단하는 함수
+    function isLoggedIn() {
+    return userId == myUserId;
+    }
+    
+    // 로그인이 필요한 컴포넌트를 래핑하는 Protected 컴포넌트
+    function Protected({ children }: { children: ReactElement }) {
+    const location = useLocation();
+    return isLoggedIn() ? children : <Navigate to="/" replace state={{ from: location }} />;
+    }
+
     return (
         <>
             <Provider store={store}>
@@ -60,7 +64,6 @@ function App() {
                                     <Route path="/signup" element={<SignUp/>}/>
 
                                     <Route path="/moreinfo" element={<MoreInfo/>}/>
-                                    {/*<Route path="/moreinfo" element={<Protected><MoreInfo/></Protected>}/>*/}
 
                                     <Route path="/guest/:userId" element={<Guest/>}/>
 
