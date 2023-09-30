@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
-import React, { useState, useEffect } from 'react';
-import BackButtonImg from "../../assets/BackButton/BackButton.svg"
 import SolierTagImg from "../../assets/Logo/SoldierTagBig.svg"
+import SolierTagLineImg from "../../assets/Logo/SoldierTagLine.svg"
 
 import HeartCharacter1 from "../../assets/charater/HeartCharacter1.png";
 import HeartCharacter2 from "../../assets/charater/HeartCharacter2.png";
@@ -149,6 +148,24 @@ const TagContainer = styled.div`
   
 `;
 
+const SolierTagLine = styled.img.attrs({
+  src: SolierTagLineImg
+})`
+  width: 118.872px;
+  height: 79.885px;
+  position: absolute;
+  z-index: 3;
+  //margin-bottom: 45px;  // 위로 이동
+  left: -50px;
+  top: 40px;
+  @media (min-width: 600px) {
+    width: 137.16px;
+    height: 92.175px;
+    left: -65px;
+    top: 35px;
+  }
+`;
+
 const SolierTag = styled.img.attrs({
   src: SolierTagImg
 })`
@@ -250,5 +267,6 @@ export const s = {
     SolierTag,
     TagContainer,
     TextsStyle2,
-    TextsStyle2_1
+    TextsStyle2_1,
+    SolierTagLine
 };

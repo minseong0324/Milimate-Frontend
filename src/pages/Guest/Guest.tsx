@@ -85,6 +85,7 @@ function Guest() {
             </s.Container>
             <s.Wrapper>
                 <s.TagContainer>
+                    <s.SolierTagLine/>
                     <s.SolierTag/>
                     <s.TextsStyle>TO.</s.TextsStyle>
                     <s.TextsStyle2>{userName} 훈련병</s.TextsStyle2>

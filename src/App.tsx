@@ -59,24 +59,23 @@ function App() {
                                     <Route path="/login" element={<Login/>}/>
                                     <Route path="/signup" element={<SignUp/>}/>
 
-                                    <Route path="/moreinfo" element={<MoreInfo/>}/>
-                                    {/*<Route path="/moreinfo" element={<Protected><MoreInfo/></Protected>}/>*/}
+                                    {/*<Route path="/moreinfo" element={<MoreInfo/>}/>*/}
+                                    <Route path="/moreinfo" element={<Protected><MoreInfo/></Protected>}/>
 
                                     <Route path="/guest/:userId" element={<Guest/>}/>
 
-                                    <Route path="/home/:userId" element={<MainScreen/>}/>
-                                    {/*<Route path="/home/:userId" element={<Protected><MainScreen/></Protected>}/>*/}
+                                    {/*<Route path="/home/:userId" element={<MainScreen/>}/>*/}
+                                    <Route path="/home/:userId" element={<Protected><MainScreen/></Protected>}/>
                                     
-                                    <Route path="/mypage" element={<MyPage/>}/>
-                                    {/*<Route path="/mypage" element={<Protected><MyPage/></Protected>}/>*/}
+                                    {/*<Route path="/mypage" element={<MyPage/>}/>*/}
+                                    <Route path="/mypage" element={<Protected><MyPage/></Protected>}/>
 
                                     <Route
                                         path="/replyscreen/:userId"
                                         element={<ReplyScreen day={""}/>}
                                     />
 
-                                    <Route path="/showcharacter" element={<Protected><ShowCaracter/></Protected>}/>
-                                    {/*<Route path="/showcharacter" element={<Protected><ShowCaracter/></Protected>}/>*/}
+                                    <Route path="/showcharacter" element={<ShowCaracter/>}/>
 
                                     <Route path="/kakao/callback" element={<KakaoCallback/>}/>
 
@@ -85,16 +84,16 @@ function App() {
                                         path="/google/callback"
                                         element={<GoogleCallback/>}
                                     />
-                                    <Route
+                                    {/*<Route
                                         path="/questionlist/:userId"
                                         element={<QuestionListScreen />}
                                     />
-                                    {/*
+                                     */}
                                     <Route
                                         path="/questionlist/:userId"
-                                        element={<Protected><QuestionListScreen nowDate = {0}/></Protected>}
+                                        element={<Protected><QuestionListScreen /></Protected>}
                                     />
-                                    */}
+                                   
                                     <Route path="/send/:userId" element={<AddReply/>}/>
                                 </Routes>
                             </TokenProvider>

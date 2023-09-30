@@ -3,6 +3,9 @@ import MainLogoImg from "../../assets/Logo/MainLogo.svg"
 import SubTitleImg from "../../assets/SubTitle/SubTitle.svg";
 import BackgroundTopImg from "../../assets/background/BackgroundTop.svg"
 import BackgroundBottomImg from "../../assets/background/BackgroundBottom.svg"
+import SoldierTagLineImg2 from "../../assets/Logo/SoldierTagLine2.svg"
+
+
 
 const Button = styled.button`
   width: 343px;
@@ -53,6 +56,7 @@ const CenteredWrapper = styled.div`
   align-items: center;
   justify-content: center;
   height: 100%;
+  margin-top: 50px;
 `;
 
 const TopBackground = styled.div`
@@ -138,6 +142,24 @@ const LogoTitleWrapper = styled.div`
 
 `;
 
+const SoldierTagLine2 = styled.img.attrs({
+  src: SoldierTagLineImg2
+})`
+  width: 100.1px;
+  height: 66.3px;
+  position: absolute;
+  z-index: 3;
+  //margin-bottom: 45px;  // 위로 이동
+  left: -65px;
+  top: 40px;
+  @media (min-width: 600px) {
+    width: 115.5px;
+    height: 76.5px;
+    left: -78px;
+    top: 53px;
+  }
+`;
+
 const MainLogo = styled.img.attrs({
   src: MainLogoImg
 })`
@@ -212,5 +234,6 @@ export const s = {
   BackgroundWrapper,
   PolicyTextsWrapper,
   PolicyTextsStyle,
-  PolicyStyledLink
+  PolicyStyledLink,
+  SoldierTagLine2
 };

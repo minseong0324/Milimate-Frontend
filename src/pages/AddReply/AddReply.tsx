@@ -121,6 +121,7 @@ function AddReply() {
 
                         </>
                         }
+                        <s.SolierTagLine/>
                         <s.SoldierTagImage/>
                     </s.SoldierTagContainer>
                     <s.ReplyContainer backgroundColor={selectedColor}>

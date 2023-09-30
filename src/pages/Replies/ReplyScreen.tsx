@@ -159,6 +159,7 @@ function ReplyScreen({day}: ReplyScreenProps) {
                             <s.QuestionText>입대전 저는 어떤 사람이었나요.</s.QuestionText>
                         </>
                         }
+                        <s.SoldierTagLine/>
                         <s.SoldierTagImage/>
                     </s.SoldierTagContainer>
                     {questionData ?

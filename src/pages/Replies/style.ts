@@ -5,7 +5,9 @@ import SmallBubble from "../../assets/SpeachBubble/questionImg.svg";
 import SoliderTag  from "../../assets/Logo/SoldierTag.svg";
 import RegularBubble from "../../assets/SpeachBubble/ReqularImg.svg";
 import BackButtonImg from "../../assets/BackButton/BackButton.svg";
-//import SmallBubble from "../../assets/SpeachBubble/questionImg.svg";
+import SoldierTagLineImg  from "../../assets/Logo/SoldierTagLine.svg";
+
+
 const isMobile = isMobileDevice();
 interface ReplyContainerProps {
   backgroundColor?: string;  // ?를 사용해서 이 프롭스가 선택적임을 나타냅니다.
@@ -132,6 +134,24 @@ const SoldierTagContainer = styled.div`
 
   @media (min-width: 600px) {
     //margin-bottom: 30px;
+  }
+`;
+
+const SoldierTagLine = styled.img.attrs({
+  src: SoldierTagLineImg
+})`
+  width: 118.872px;
+  height: 79.885px;
+  position: absolute;
+  z-index: 3;
+  //margin-bottom: 45px;  // 위로 이동
+  left: -50px;
+  top: 40px;
+  @media (min-width: 600px) {
+    width: 137.16px;
+    height: 92.175px;
+    left: -65px;
+    top: 35px;
   }
 `;
 
@@ -289,5 +309,6 @@ export const s = {
   Container,
   Text,
   BackButton,
-  BackgroundContainer
+  BackgroundContainer,
+  SoldierTagLine
 };

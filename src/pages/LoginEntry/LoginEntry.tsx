@@ -17,6 +17,7 @@ function HomeBeforeLogin() {
         {/*<s.Title>My</s.Title>
         <s.Title>Cabinet</s.Title>*/}
         <s.LogoTitleWrapper>
+          <s.SoldierTagLine2 />
           <s.MainLogo />
           <s.SubTitle />
         </s.LogoTitleWrapper>

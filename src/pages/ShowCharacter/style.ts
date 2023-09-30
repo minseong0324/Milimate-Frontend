@@ -3,6 +3,9 @@ import BackButtonImg from "../../assets/BackButton/BackButton.svg"
 import TwinkleImg from "../../assets/Twinkle/Twinkle.svg"
 import CharSaluteImg from "../../assets/charater/CharacterSalute.png"
 import SolierTagImg from "../../assets/Logo/SoldierTagBig.svg"
+import SoldierTagLineImg from "../../assets/Logo/SoldierTagLine.svg"
+
+
 
 const Button = styled.button`
   width: 343px;
@@ -104,6 +107,24 @@ const Character = styled.img.attrs({
     height: 277.247333px;
     margin-bottom: 25px;  // 위로 이동
     margin-top: 0px;  // 위로 이동
+  }
+`;
+
+const SoldierTagLine = styled.img.attrs({
+  src: SoldierTagLineImg
+})`
+  width: 118.872px;
+  height: 79.885px;
+  position: absolute;
+  z-index: 3;
+  //margin-bottom: 45px;  // 위로 이동
+  left: -50px;
+  top: 40px;
+  @media (min-width: 600px) {
+    width: 137.16px;
+    height: 92.175px;
+    left: -58px;
+    top: 50px;
   }
 `;
 
@@ -261,5 +282,6 @@ export const s = {
     TextsStyle_2,
     TextsStyle2_1,
     TextsStyle2_2,
-    ButtonWrapper
+    ButtonWrapper,
+    SoldierTagLine
 };

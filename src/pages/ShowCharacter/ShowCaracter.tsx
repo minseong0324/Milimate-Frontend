@@ -38,6 +38,7 @@ function ShowCaracter() {
 
       <s.Character alt="Character Description" />
       <s.TagContainer>
+        <s.SoldierTagLine />
         <s.SolierTag />
         <s.TextsStyle>이름  </s.TextsStyle>
         <s.TextsStyle2>{userInfo.userName}</s.TextsStyle2>

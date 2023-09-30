@@ -45,7 +45,7 @@ function TokenProvider({ children }: TokenProviderProps) {
                   
                   
                     const status = error?.response?.status;
-                    alert("세션이 만료되었습니다. 자동으로 로그아웃 됩니다.")
+                    alert("세션이 만료되었습니다.")
                     if (status === 404) {
                         // 리소스를 찾을 수 없음
                       } else if (status === 500) {
@@ -55,7 +55,7 @@ function TokenProvider({ children }: TokenProviderProps) {
                       }
                     } 
                     localStorage.clear();
-                    navigate('/')
+                    //navigate('/')
             }
         
         }, 1000 * 60 * 30); // 30분 마다 실행
@@ -63,11 +63,6 @@ function TokenProvider({ children }: TokenProviderProps) {
         return () => clearInterval(interval);
         
   }, []);
-
-  const handleNavigateHome = () => {
-    setErrorModalOpen(false)
-    navigate('/')
-  };
 
   return (
     <TokenContext.Provider value={{ 

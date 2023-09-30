@@ -3,6 +3,8 @@ import SmallBubble from "../../assets/Logo/SoldierTag.svg";
 import BackButtonImg from "../../assets/BackButton/BackButton.svg"
 import SoliderTag from "../../assets/Logo/SoldierTag.svg";
 import {darken} from "polished";
+import SolierTagLineImg from "../../assets/Logo/SoldierTagLine.svg";
+
 
 interface ButtonProps {
     backgroundColor: string;
@@ -71,6 +73,24 @@ const SoldierTagContainer = styled.div`
 
   @media (min-width: 600px) {
     //margin-bottom: 30px;
+  }
+`;
+
+const SolierTagLine = styled.img.attrs({
+  src: SolierTagLineImg
+})`
+  width: 118.872px;
+  height: 79.885px;
+  position: absolute;
+  z-index: 3;
+  //margin-bottom: 45px;  // 위로 이동
+  left: -50px;
+  top: 40px;
+  @media (min-width: 600px) {
+    width: 137.16px;
+    height: 92.175px;
+    left: -65px;
+    top: 35px;
   }
 `;
 
@@ -386,5 +406,6 @@ export const s = {
     Container,
     Text,
     BackButton,
-    BackgroundContainer
+    BackgroundContainer,
+    SolierTagLine
 };
