@@ -59,8 +59,8 @@ function App() {
                                     <Route path="/login" element={<Login/>}/>
                                     <Route path="/signup" element={<SignUp/>}/>
 
-                                    {/*<Route path="/moreinfo" element={<MoreInfo/>}/>*/}
-                                    <Route path="/moreinfo" element={<Protected><MoreInfo/></Protected>}/>
+                                    <Route path="/moreinfo" element={<MoreInfo/>}/>
+                                    {/*<Route path="/moreinfo" element={<Protected><MoreInfo/></Protected>}/>*/}
 
                                     <Route path="/guest/:userId" element={<Guest/>}/>
 
