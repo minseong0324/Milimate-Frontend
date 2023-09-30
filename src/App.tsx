@@ -73,8 +73,7 @@ function App() {
                                     <Route path="/home/:userId" element={<MainScreen/>}/>
                                    {/* <Route path="/home/:userId" element={<Protected><MainScreen/></Protected>}/>*/}
                                     
-                                    {/*<Route path="/mypage" element={<MyPage/>}/>*/}
-                                    <Route path="/mypage" element={<Protected><MyPage/></Protected>}/>
+                                    <Route path="/mypage" element={<MyPage/>}/>
 
                                     <Route
                                         path="/replyscreen/:userId"

@@ -9,7 +9,7 @@ interface ServiceModalProps {
 }
 
 const handleNavigateInstagram = () => {
-    window.location.href = 'https://instagram.com/maplemailbox_official?igshid=NGVhN2U2NjQ0Yg==';
+    window.location.href = 'https://instagram.com/milimate_official?igshid=OGQ5ZDc2ODk2ZA==';
 }
 
 
@@ -53,7 +53,9 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ isOpen, onClose }) => {
                 
                     <s.HorizontalContainer2>
                         <s.SubSubTitle>🪖 밀리메이트</s.SubSubTitle>
-                        <s.InstagramButton onClick={handleNavigateInstagram}/>
+                        <s.InstagramButton onClick={handleNavigateInstagram}>
+                            @milimate_official
+                        </s.InstagramButton>
                     </s.HorizontalContainer2>
                     <s.HorizontalContainer3>
                         <s.Text>밀리메이트는 동국대 학생 3명, 디자이너 2명이 만든 훈련병을 위한 질답 교환 서비스입니다.</s.Text>

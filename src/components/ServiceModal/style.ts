@@ -104,19 +104,23 @@ const InstagramImg = styled.img.attrs({
 `;
 */}
 const InstagramButton = styled.button`
-  background: url(${MainLogo}) no-repeat center;
+  //background: url(${MainLogo}) no-repeat center;
   background-size: 104px 20px;
   z-index: 2;
-  width:104px;
+  width:130px;
   height:20px;
-  margin-left: 5px;
+  font-weight: 900;
+  margin-left: 7px;
   margin-top: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
   align-items:center;
   border: transparent;
   border-radius: 10px;
-  background-color: #FFE5CC;
+  color : #4A544A;
+  background-color: #ABBF90;
   &:active {
-    background-color: rgba(128, 128, 128, 0.5);  // 반투명한 회색
+    background-color: #819963;  // 반투명한 회색
     border-radius: 10px;
   }
 `;
