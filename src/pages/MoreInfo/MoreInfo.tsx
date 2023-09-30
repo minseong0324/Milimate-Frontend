@@ -20,175 +20,177 @@ function MoreInfo() {
   // 회원가입 처리 함수
   const dispatch = useDispatch();
 
-  const isLeapYear = (year: number) => {
-    return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
-  };
-  let finalCompletionYear = completionYear;
-  let finalCompletionMonth = completionMonth;
-  let finalCompletionDay = completionDay;
-  // 각 달의 최대 일 수를 반환하는 함수
-  const getMaxDayOfMonth = (month: number, year: number) => {
-    switch (month) {
-      case 2:
-        return isLeapYear(year) ? 29 : 28;
-      case 4:
-      case 6:
-      case 9:
-      case 11:
-        return 30;
-      default:
-        return 31;
-    }
-  };
-  const handleMoreInfo = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    // Case 3: 입대일과 이름은 필수값이다.
-    if (!userName || !enlistmentYear || !enlistmentMonth || !enlistmentDay) {
-      alert("필수 정보를 입력해주세요!");
-    }
+    const isLeapYear = (year: number) => {
+        return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+    };
 
-    // Case 2: 입대일과 수료일을 입력하는 모든 값들은 정수여야 한다.
-    if (
-      !isNumeric(enlistmentYear) ||
-      !isNumeric(enlistmentMonth) ||
-      !isNumeric(enlistmentDay) ||
-      (completionYear && !isNumeric(completionYear)) ||
-      (completionMonth && !isNumeric(completionMonth)) ||
-      (completionDay && !isNumeric(completionDay))
-    ) {
-      alert("날짜를 숫자로 입력해주세요!");
-    }
+    const addDaysToDate = (date: Date, days: number) => {
+        const result = new Date(date);
+        result.setDate(result.getDate() + days);
+        return result;
+    };
 
-    // Case 4: 입대일의 달과 수료일의 달은 1 ~ 12의 값들을 가지고 있어야 한다.
-    if (
-      parseInt(enlistmentMonth) < 1 ||
-      parseInt(enlistmentMonth) > 12 ||
-      (completionMonth &&
-        (parseInt(completionMonth) < 1 || parseInt(completionMonth) > 12))
-    ) {
-      alert("월은 1 ~ 12 사이의 값이어야 합니다!");
-    }
+    let finalCompletionYear = completionYear;
+    let finalCompletionMonth = completionMonth;
+    let finalCompletionDay = completionDay;
 
-    // Case 1: 입대일은 수료일보다 미래일 수 없다.
-    const enlistDate = new Date(
-      parseInt(enlistmentYear),
-      parseInt(enlistmentMonth) - 1,
-      parseInt(enlistmentDay)
-    );
-    const completeDate = new Date(
-      parseInt(completionYear),
-      parseInt(completionMonth) - 1,
-      parseInt(completionDay)
-    );
-
-    if (completeDate < enlistDate) {
-      alert("입대일은 수료일보다 미래일 수 없습니다!");
-    }
-
-    // Case 5: 수료일은 필수값이 아니기 때문에 입력하는 칸 3개 중에서 하나라도 잘못하면 서버한테 completionYear, completionMonth, completionDay를 전부 "0"으로 전송한다.
-    if (
-      !completionYear ||
-      !completionMonth ||
-      !completionDay ||
-      !isNumeric(completionYear) ||
-      !isNumeric(completionMonth) ||
-      (completionDay && !isNumeric(completionDay)) || // completionDay가 있을 때만 숫자인지 확인
-      parseInt(completionMonth) < 1 ||
-      parseInt(completionMonth) > 12 ||
-      (completionDay &&
-        parseInt(completionDay) >
-          getMaxDayOfMonth(parseInt(completionMonth), parseInt(completionYear))) // completionDay가 있을 때만 해당 월의 최대 일 수를 초과하는지 확인
-    ) {
-      setcompletionYear("0");
-      setcompletionMonth("0");
-      setcompletionDay("0");
-      finalCompletionYear = "0";
-      finalCompletionMonth = "0";
-      finalCompletionDay = "0";
-    }
-
-    const today = new Date();
-    console.log("수료일", completeDate);
-    console.log("오늘 날짜", today);
-    if (completeDate <= today) {
-      alert("수료일은 현재 날짜보다 미래여야 합니다!");
-    }
-
-    const enlistmentDayInt = parseInt(enlistmentDay);
-    const completionDayInt = parseInt(completionDay);
-
-    if (
-      enlistmentDayInt >
-        getMaxDayOfMonth(parseInt(enlistmentMonth), parseInt(enlistmentYear)) ||
-      completionDayInt >
-        getMaxDayOfMonth(parseInt(completionMonth), parseInt(completionYear))
-    ) {
-      alert("입력한 날짜가 해당 달의 최대 일 수를 초과하였습니다!");
-    }
-    // 회원가입 API 요청
-    try {
-
-      const response = await axios.post(
-        `https://api.mili-mate.com/api/user/${userId}/moreInfo`,
-        {
-          userName,
-          enlistmentYear,
-          enlistmentMonth,
-          enlistmentDay,
-          completionYear: finalCompletionYear,
-          completionMonth: finalCompletionMonth,
-          completionDay: finalCompletionDay,
-        },
-        {
-          headers: {
-            authorization: `${accessToken}`,
-          },
+    const getMaxDayOfMonth = (month: number, year: number) => {
+        switch (month) {
+            case 2:
+                return isLeapYear(year) ? 29 : 28;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                return 30;
+            default:
+                return 31;
         }
-      );
+    };
 
-      // 추가 정보 입력한 후 회원가입 성공, status 200일 때
+    const handleMoreInfo = async (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
 
-        ////alert("회원가입에 성공하였습니다!");
-        dispatch(
-          setUserInfo({
-            userName: userName,
-            enlistmentYear: enlistmentYear,
-            enlistmentMonth: enlistmentMonth,
-            enlistmentday: enlistmentDay,
-            completionYear: completionYear,
-            completionMonth: completionMonth,
-            completionday: completionDay,
-          })
+        if (!userName || !enlistmentYear.trim() || !enlistmentMonth.trim() || !enlistmentDay.trim()) {
+            return alert("필수 정보를 입력해주세요!");
+        }
+
+        if (
+            !isNumeric(enlistmentYear.trim()) ||
+            !isNumeric(enlistmentMonth.trim()) ||
+            !isNumeric(enlistmentDay.trim()) ||
+            (completionYear.trim() && !isNumeric(completionYear.trim())) ||
+            (completionMonth.trim() && !isNumeric(completionMonth.trim())) ||
+            (completionDay.trim() && !isNumeric(completionDay.trim()))
+        ) {
+            return alert("날짜를 숫자로 입력해주세요!");
+        }
+
+        if (
+            parseInt(enlistmentMonth.trim()) < 1 ||
+            parseInt(enlistmentMonth.trim()) > 12 ||
+            (completionMonth.trim() &&
+                (parseInt(completionMonth.trim()) < 1 || parseInt(completionMonth.trim()) > 12))
+        ) {
+            return alert("월은 1 ~ 12 사이의 값이어야 합니다!");
+        }
+
+        const enlistDate = new Date(
+            parseInt(enlistmentYear.trim()),
+            parseInt(enlistmentMonth.trim()) - 1,
+            parseInt(enlistmentDay.trim())
         );
-        navigate("/showcharacter");
-      //
-    } catch (error: unknown) {
-      //에러 일 경우
-      if (error instanceof AxiosError) {
-        const status = error?.response?.status;
-        const errorCode = error?.response?.data?.code;
-        if (status === 404) {
-          alert("추가정보를 입력하는 데에 실패했습니다.")
-        } else if (status === 500) {
-          alert("서버와의 연결이 원활하지 않습니다.")
-        }
-        else if (status === 400 && errorCode === "OVER 60") {
-          alert('입대일과 수료일의 차이가 60일 이하이어야 합니다.');
-        }
-        else {
-          alert("추가정보를 입력하는 데에 실패했습니다.")
-        }
-      }
-      return null;
-    }
-  };
-  const isNumeric = (value: string) => {
-    return /^\d+$/.test(value);
-  };
+        const completeDate = new Date(
+            parseInt(completionYear.trim()),
+            parseInt(completionMonth.trim()) - 1,
+            parseInt(completionDay.trim())
+        );
 
-  const handleNavigate = () => {
-    navigate('/signup');
-  }
+        if (completeDate < enlistDate) {
+            return alert("입대일은 수료일보다 미래일 수 없습니다!");
+        }
+
+        if (
+            !completionYear.trim() ||
+            !completionMonth.trim() ||
+            !completionDay.trim() ||
+            !isNumeric(completionYear.trim()) ||
+            !isNumeric(completionMonth.trim()) ||
+            (completionDay.trim() && !isNumeric(completionDay.trim())) ||
+            parseInt(completionMonth.trim()) < 1 ||
+            parseInt(completionMonth.trim()) > 12 ||
+            (completionDay.trim() &&
+                parseInt(completionDay.trim()) >
+                getMaxDayOfMonth(parseInt(completionMonth.trim()), parseInt(completionYear.trim())))
+        ) {
+            const newCompletionDate = addDaysToDate(enlistDate, 59);
+            finalCompletionYear = newCompletionDate.getFullYear().toString();
+            finalCompletionMonth = (newCompletionDate.getMonth() + 1).toString();
+            finalCompletionDay = newCompletionDate.getDate().toString();
+            setcompletionYear(finalCompletionYear);
+            setcompletionMonth(finalCompletionMonth);
+            setcompletionDay(finalCompletionDay);
+            return alert('유효하지 않은 수료일입니다.\n' +
+                '수료일에 대하여 자동으로 입대일의 59일 뒤로 설정하였습니다.' +
+                '\n마이페이지에서 수정 가능합니다!!')
+        }
+
+        const today = new Date();
+        console.log("수료일", completeDate);
+        console.log("오늘 날짜", today);
+        if (completeDate <= today) {
+            return alert("수료일은 현재 날짜보다 미래여야 합니다!");
+        }
+
+        const enlistmentDayInt = parseInt(enlistmentDay.trim());
+        const completionDayInt = parseInt(completionDay.trim());
+
+        if (
+            enlistmentDayInt >
+            getMaxDayOfMonth(parseInt(enlistmentMonth.trim()), parseInt(enlistmentYear.trim())) ||
+            completionDayInt >
+            getMaxDayOfMonth(parseInt(completionMonth.trim()), parseInt(completionYear.trim()))
+        ) {
+            return alert("입력한 날짜가 해당 달의 최대 일 수를 초과하였습니다!");
+        }
+
+        try {
+            const response = await axios.post(
+                `https://api.mili-mate.com/api/user/${userId}/moreInfo`,
+                {
+                    userName,
+                    enlistmentYear,
+                    enlistmentMonth,
+                    enlistmentDay,
+                    completionYear: finalCompletionYear,
+                    completionMonth: finalCompletionMonth,
+                    completionDay: finalCompletionDay,
+                },
+                {
+                    headers: {
+                        authorization: `${accessToken}`,
+                    },
+                }
+            );
+
+            dispatch(
+                setUserInfo({
+                    userName: userName,
+                    enlistmentYear: enlistmentYear,
+                    enlistmentMonth: enlistmentMonth,
+                    enlistmentday: enlistmentDay,
+                    completionYear: completionYear,
+                    completionMonth: completionMonth,
+                    completionday: completionDay,
+                })
+            );
+            navigate("/showcharacter");
+        } catch (error: unknown) {
+            if (error instanceof AxiosError) {
+                const status = error?.response?.status;
+                const errorCode = error?.response?.data?.code;
+                if (status === 404) {
+                    alert("추가정보를 입력하는 데에 실패했습니다.");
+                } else if (status === 500) {
+                    alert("서버와의 연결이 원활하지 않습니다.");
+                } else if (status === 400 && errorCode === "OVER 60") {
+                    alert('입대일과 수료일의 차이가 60일 이하이어야 합니다.');
+                } else {
+                    alert("추가정보를 입력하는 데에 실패했습니다.");
+                }
+            }
+            return null;
+        }
+    };
+
+    const isNumeric = (value: string) => {
+        return /^\d+$/.test(value);
+    };
+
+    const handleNavigate = () => {
+        navigate('/signup');
+    }
+
   return (
     <>
     <s.BackButton onClick = {handleNavigate}/>
