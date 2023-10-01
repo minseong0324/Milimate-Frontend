@@ -102,7 +102,7 @@ function Guest() {
                 {
                     enlistmentState ?
                         <s.ButtonWrapper> {
-                            questionId == 62 ? 
+                            questionId != 62 ? 
                             <s.Button onClick={handleGoSend}>답변 작성하러 가기</s.Button>
                             : <s.Button disabled>수료했습니다!</s.Button>
                             }
