@@ -65,19 +65,21 @@ function MainScreen() {
 
 function isTime1730(nowDate : number) {
     const now = new Date();
-    if( now.getHours() > 17 || (now.getHours() >= 17 && now.getMinutes() >= 30)) {
+    if(nowDate >= 61) {
+        if( now.getHours() > 17 || (now.getHours() >= 17 && now.getMinutes() >= 30)) {
 
-        if(nowDate > 61) {
-            return true;
-        }
-        else {
-            return false; 
-        }
-    
-    
+            if(nowDate > 61) {
+                return true;
+            }
+            else {
+                return false; 
+            }
+        
+        
 
-    } else {
-        return false;
+        } else {
+            return false;
+        }
     }
 }
 
