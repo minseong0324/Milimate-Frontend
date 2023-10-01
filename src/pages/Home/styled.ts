@@ -324,7 +324,11 @@ const EnvelopeDiv = styled.div`
 
 const SlideWrapper = styled.div`
     width : 100%;
-    height : 300px;
+    height: 240px;
+
+    @media (min-width: 600px) {
+        height: 300px;
+    }
     `;
 
 
