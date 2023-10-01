@@ -32,84 +32,55 @@ function ReplyScreen({day}: ReplyScreenProps) {
     const [questionData, setQuestionData] = useState<QuestionData | null>(null);
     const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
     const [isLoading, setIsLoading] = useState(true); // 초기값을 true로 설정
-    const testString =
-        "안녕 히주야!  잘지내고 있어??ㅠㅠㅠ\n" +
-        "입대하고 첫주라 많이 힘들었지... 너무 보고싶다\n" +
-        "밥은 잘먹고 있는거지 우리 히주 라면 좋아하는데\n" +
-        "맛있는거 나와서 먹고 힘냈으면 좋겠다.\n" + "안녕 히주야!  잘지내고 있어??ㅠㅠㅠ\n" +
-        "입대하고 첫주라 많이 힘들었지... 너무 보고싶다\n" +
-        "밥은 잘먹고 있는거지 우리 히주 라면 좋아하는데\n" +
-        "맛있는거 나와서 먹고 힘냈으면 좋겠다.\n" +
-        "빨리 휴가 나와서 만나자~~\"안녕 히주야!  잘지내고 있어??ㅠㅠㅠ\\n\" +\n" + "입대하고 첫주라 많이 힘들었지... 너무 보고싶다\n" +
-        "밥은 잘먹고 있는거지 우리 히주 라면 좋아하는데\n" +
-        "맛있는거 나와서 먹고 힘냈으면 좋겠다.\n" +
-
-        "빨리 휴가 나와서 만나자~~\"안녕 히주야!  잘지내고 있어??ㅠㅠㅠ\\n\" +\n" +
-        "        \"입대하고 첫주라 많이 힘들었지... 너무 보고싶다\\n\" +\n" +
-        "        \"밥은 잘먹고 있는거지 우리 히주 라면 좋아하는데\\n\" +\n" +
-        "        \"맛있는거 나와서 먹고 힘냈으면 좋겠다.\\n\" +\n" +
-        "        \"빨리 휴가 나와서 만나자~~\"안녕 히주야!  잘지내고 있어??ㅠㅠㅠ\\n\" +\n" +
-        "        \"입대하고 첫주라 많이 힘들었지... 너무 보고싶다\\n\" +\n" +
-        "        \"밥은 잘먹고 있는거지 우리 히주 라면 좋아하는데\\n\" +\n" +
-        "        \"맛있는거 나와서 먹고 힘냈으면 좋겠다.\\n\" +\n" +
-        "        \"빨리 휴가 나와서 만나자~~\"안녕 히주야!  잘지내고 있어??ㅠㅠㅠ\\n\" +\n" +
-        "        \"입대하고 첫주라 많이 힘들었지... 너무 보고싶다\\n\" +\n" +
-        "        \"밥은 잘먹고 있는거지 우리 히주 라면 좋아하는데\\n\" +\n" +
-        "        \"맛있는거 나와서 먹고 힘냈으면 좋겠다.\\n\" +\n" +
-        "        \"빨리 휴가 나와서 만나자~~";
-
     useEffect(() => {
-            const fetchData = async () => {
-                setIsLoading(true); // 데이터를 가져오기 시작할 때 로딩 상태로 설정
-                try {
-                    const response = await axios.get(
-                        `https://api.mili-mate.com/api/user/${userId}/questionList/reply?day=${state.day}`,
-                        {
-                            headers: {
-                                authorization: `${accessToken}`,
-                            },
+        const fetchData = async () => {
+            setIsLoading(true);
+            try {
+                const response = await axios.get(
+                    `https://api.mili-mate.com/api/user/${userId}/questionList/reply?day=${state.day}`,
+                    {
+                        headers: {
+                            authorization: `${accessToken}`,
+                        },
+                    }
+                );
+                const modifiedData = {
+                    ...response.data,
+                    replies: response.data.replies.map((reply: Reply) => {
+                        let modifiedColor = reply.color;
+                        if (reply.color === 'white') {
+                            modifiedColor = '#FEFCFC';
                         }
-                    );
-                    const modifiedData = {
-                        ...response.data,
-                        replies: response.data.replies.map((reply: Reply) => { // 여기에서 타입을 지정
-                            let modifiedColor = reply.color;
-                            if (reply.color === 'white') {
-                                modifiedColor = '#FEFCFC';
-                            }
-                            if (reply.color === 'pink') {
-                                modifiedColor = '#FFDED9';
-                            }
-                             if (reply.color === 'yellow') {
-                                modifiedColor = '#F6EC93';
-                            }
-                             if (reply.color === 'blue') {
-                                modifiedColor = '#C8D4FF';
-                            }
-                             if (reply.color === 'green') {
-                                modifiedColor = '#A7C87E';
-                            }
+                        if (reply.color === 'pink') {
+                            modifiedColor = '#FFDED9';
+                        }
+                        if (reply.color === 'yellow') {
+                            modifiedColor = '#F6EC93';
+                        }
+                        if (reply.color === 'blue') {
+                            modifiedColor = '#C8D4FF';
+                        }
+                        if (reply.color === 'green') {
+                            modifiedColor = '#A7C87E';
+                        }
+                        // 다른 색상 변환 조건들...
+                        return {
+                            ...reply,
+                            color: modifiedColor
+                        };
+                    })
+                };
 
+                // 여기를 수정합니다: modifiedData를 상태에 저장합니다.
+                setQuestionData(modifiedData);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+            setIsLoading(false);
+        };
+        fetchData();
+    }, []);
 
-                            // 다른 색상 변환 조건들...
-                            console.log(reply.color);
-                            return {
-                                ...reply,
-                                color: modifiedColor
-                            };
-                        })
-                    };
-                    setQuestionData(response.data);
-                    setSelectedColor(modifiedData.replies[0].color);
-                } catch (error) {
-                    console.error("Error fetching data:", error);
-                }
-                setIsLoading(false); // 데이터를 가져온 후 로딩 상태 해제
-            };
-            fetchData();
-        } //[day, accessToken]);
-
-        , []);
 
 
     const navigate = useNavigate();
