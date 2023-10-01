@@ -24,7 +24,7 @@ interface ResponseData {
     existNewRepl: boolean, //true, false //todayquestion이 존재한다. 그런다음 만약 이게 false면 질문은 있는데 그거에 대한 답변이 없는것, 만약 답변이 존재하면 밑으로 넘어감감
     blur: boolean, 
     insertedEndDate: boolean;
-    //isRead: string,
+    totalCount: number;
 }
 
 //read 1) unRead, read, none
@@ -61,6 +61,8 @@ function MainScreen() {
     const [modalSmallContent, setModalSmallContent] =
         useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장\
     const [isServiceModalOpen, setServiceModalOpen] = useState(false);
+    const [totalCount, setTotalCount] = useState<number>(0);
+
 // ... [기타 코드 생략] ...
 
     const handleCopyClipBoard = async () => {
@@ -87,7 +89,6 @@ function MainScreen() {
         // alert('토큰 테스트!')
         // alert(userId);
         // alert(accessToken)
-
         const fetchData = async () => {
 
             try {
@@ -143,8 +144,33 @@ function MainScreen() {
                 console.log(e);
             }
         };
-        fetchData();
 
+        if(data?.endDate == 0 && isTime1730() ) {
+            const getTotal = async () => {
+                try {
+                    const response = await axios.get(
+                        `https://api.mili-mate.com/user/${userId}/totalReplyCnt`,
+                        {
+                            headers: {
+                                authorization: `${accessToken}`,
+                            },
+                        }
+                    );
+                    setTotalCount(response.data.totalReplyCnt);
+                    
+                    
+                } catch (e) {
+                    //  alert(e);
+                    console.log(e);
+                }
+            }
+            getTotal();
+        }
+
+
+
+        fetchData();
+        
 
     }, [accessToken, userId]);
 
@@ -188,6 +214,11 @@ function MainScreen() {
             }
         }
     };
+
+    function isTime1730() {
+            const now = new Date();
+            return now.getHours() === 17 && now.getMinutes() >= 30;
+        }
 
     const slides = [];
     for (let i = 0; i < replies.length; i++) {
@@ -249,6 +280,11 @@ function MainScreen() {
                                 <>
                                     <s.D_dayText>D+{data.nowDate - 1}</s.D_dayText>
                                     <s.MainContentText>{data.todayQuestion}</s.MainContentText>
+                                </>
+                            ) : data.endDate == 0 && isTime1730() ? (
+                                <>
+                                    <s.D_dayText>수료를 축하드립니다!</s.D_dayText>
+                                    <s.MainContentText>지금까지 {totalCount}개의 답변을 받으셨습니다.</s.MainContentText>
                                 </>
                             ) : <></>
                         ) : <></>
