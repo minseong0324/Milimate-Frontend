@@ -15,6 +15,7 @@ function Guest() {
         useState<string>("질문을 불러오지 못했어요. 질문을 불러오지 못했어요.");
     const [day, setDay] = useState<string>("");
     const [enlistmentState, setEnlistmentState] = useState<boolean>(false);
+    const [questionId, setQuestionId] = useState<number>(0);
     const navigate = useNavigate();
     const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
     const getUserInfoFromServer = async (userId: string) => {
@@ -26,12 +27,13 @@ function Guest() {
 
             // 응답에서 사용자 정보를 추출합니다.
             const userInfo = response.data;
-
+                setQuestionId(response.data.questionId);
             return {
                 todayQuestion: userInfo.todayQuestion, // 오늘의 질문
                 userName: userInfo.userName, // 사용자 이름을 추가합니다.
                 day: userInfo.day,
-                enlistmentStatus: userInfo.enlistmentStatus
+                enlistmentStatus: userInfo.enlistmentStatus,
+                questionId: userInfo.questionId
             };
         } catch (error: unknown) {
             //에러 일 경우
@@ -99,9 +101,11 @@ function Guest() {
                 {/*입대 이후 질문이 생성됩니다! 미리 링크를 공유해 준비해두세요.*/}
                 {
                     enlistmentState ?
-                        <s.ButtonWrapper>
+                        <s.ButtonWrapper> {
+                            questionId == 62 ? 
                             <s.Button onClick={handleGoSend}>답변 작성하러 가기</s.Button>
-
+                            : <s.Button disabled>수료했습니다!</s.Button>
+                            }
                         </s.ButtonWrapper> :
                         <s.ButtonWrapper>
                             <s.Button onClick={handleGoSend} disabled>입대까지 D{parseInt(day)-1}</s.Button>
