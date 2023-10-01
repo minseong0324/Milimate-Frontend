@@ -240,7 +240,7 @@ const ReplyContainer = styled.div<ReplyContainerProps>`
   border-radius: 20px;
   background-color: ${props => props.backgroundColor || 'white'}; // 프롭스 값이 주어지면 그 값을 사용하고, 아니면 기본값인 'white'를 사용합니다.  
   margin-top: 20px;
-  margin-bottom: 48px;
+  margin-bottom: 0px;
   ;
   flex-direction: column;
   
