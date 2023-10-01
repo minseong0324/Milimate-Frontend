@@ -89,7 +89,7 @@ function ReplyScreen({day}: ReplyScreenProps) {
                              if (reply.color === 'green') {
                                 modifiedColor = '#A7C87E';
                             }
-                            
+
 
                             // 다른 색상 변환 조건들...
                             console.log(reply.color);
@@ -108,7 +108,7 @@ function ReplyScreen({day}: ReplyScreenProps) {
             };
             fetchData();
         } //[day, accessToken]);
-        
+
         , []);
 
 
@@ -168,6 +168,7 @@ function ReplyScreen({day}: ReplyScreenProps) {
                                 <s.ContentText>{reply.replyContent}</s.ContentText>
                                 <s.SenderText>From.{reply.senderName}</s.SenderText>
                             </s.ReplyContainer>
+
                         )) : <></>
                     }
                 </s.Wrapper>
