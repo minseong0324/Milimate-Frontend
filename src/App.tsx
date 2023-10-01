@@ -96,7 +96,7 @@ function App() {
                                      */}
                                     <Route
                                         path="/questionlist/:userId"
-                                        element={<Protected><QuestionListScreen /></Protected>}
+                                        element={<QuestionListScreen />}
                                     />
                                    
                                     <Route path="/send/:userId" element={<AddReply/>}/>
