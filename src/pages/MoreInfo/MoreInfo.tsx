@@ -116,11 +116,14 @@ function MoreInfo() {
         }
 
         const today = new Date();
+        const yesterday = new Date(today.getTime() - 86400000);  // today에서 1일을 뺍니다.
         console.log("수료일", completeDate);
         console.log("오늘 날짜", today);
-        if (completeDate < today) {
+        console.log("어제 날짜", yesterday);
+        if (new Date(completeDate) <= yesterday) {
             return alert("수료일은 현재 날짜보다 미래여야 합니다!");
         }
+
 
         const enlistmentDayInt = parseInt(enlistmentDay.trim());
         const completionDayInt = parseInt(completionDay.trim());
