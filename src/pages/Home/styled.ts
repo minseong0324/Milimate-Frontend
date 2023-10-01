@@ -298,11 +298,11 @@ const ExistEnvelope = styled.img.attrs({
 display: block;
 margin-bottom: -124px;
 width: 340px;
-height: 240px;
+//height: 240px;
 position: relative; // 이 부분 추가
 @media (min-width: 600px) {
   width: 430px;
-  height: 240.26px;
+  //height: 240.26px;
 }
 `;
 
@@ -311,19 +311,20 @@ const EnvelopeDiv = styled.div`
     margin-bottom: 120px;
     position: relative;
     width: 340px;
-    height: 240px;
+    //height: 240px;
     /* 다음 줄에서 조건부 스타일 설정 */
 
     background-size: contain; // 이미지가 div를 채우도록 조절
 
     @media (min-width: 600px) {
   width: 430px;
-  height: 240.26px;
+  //height: 240.26px;
 }
 `;
 
 const SlideWrapper = styled.div`
-    width : 100%
+    width : 100%;
+    height : 300px;
     `;
 
 
