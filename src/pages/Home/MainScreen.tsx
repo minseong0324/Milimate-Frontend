@@ -64,6 +64,14 @@ function MainScreen() {
     const [totalCount, setTotalCount] = useState<number>(0);
 
 // ... [기타 코드 생략] ...
+function isTime1730() {
+    const now = new Date();
+    if(now.getHours() >= 17 && now.getMinutes() >= 30) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
     const handleCopyClipBoard = async () => {
         const linkToShare = `https://mili-mate.com/guest/${userId}`;
@@ -117,6 +125,27 @@ function MainScreen() {
                 setBlur(response.data.blur);
                 setData(responseData); // 형변를환된 응답 데이터 상태에 할당
                 setDdayCount(responseData.endDate - responseData.nowDate);
+                if(response.data.endDate == 0 && isTime1730() ) {
+                    const getTotal = async () => {
+                        try {
+                            const response = await axios.get(
+                                `https://api.mili-mate.com/user/${userId}/totalReplyCnt`,
+                                {
+                                    headers: {
+                                        authorization: `${accessToken}`,
+                                    },
+                                }
+                            );
+                            setTotalCount(response.data.totalReplyCnt);
+                            
+                            
+                        } catch (e) {
+                            //  alert(e);
+                            console.log(e);
+                        }
+                    }
+                    getTotal();
+                }
                 //alert(data);
                 if (response.data.existNewRepl) {
                     //alert(accessToken)
@@ -145,28 +174,7 @@ function MainScreen() {
             }
         };
 
-        if(data?.endDate == 0 && isTime1730() ) {
-            const getTotal = async () => {
-                try {
-                    const response = await axios.get(
-                        `https://api.mili-mate.com/user/${userId}/totalReplyCnt`,
-                        {
-                            headers: {
-                                authorization: `${accessToken}`,
-                            },
-                        }
-                    );
-                    setTotalCount(response.data.totalReplyCnt);
-                    
-                    
-                } catch (e) {
-                    //  alert(e);
-                    console.log(e);
-                }
-            }
-            getTotal();
-        }
-
+       
         fetchData();
         
 
@@ -213,14 +221,7 @@ function MainScreen() {
         }
     };
 
-    function isTime1730() {
-            const now = new Date();
-            if(now.getHours() >= 17 && now.getMinutes() >= 30) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+
 
     const slides = [];
     for (let i = 0; i < replies.length; i++) {
