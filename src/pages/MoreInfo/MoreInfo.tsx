@@ -118,7 +118,7 @@ function MoreInfo() {
         const today = new Date();
         console.log("수료일", completeDate);
         console.log("오늘 날짜", today);
-        if (completeDate <= today) {
+        if (completeDate < today) {
             return alert("수료일은 현재 날짜보다 미래여야 합니다!");
         }
 
