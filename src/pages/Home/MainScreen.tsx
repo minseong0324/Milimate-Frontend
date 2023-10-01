@@ -134,7 +134,7 @@ function isTime1730(nowDate : number) {
                     const getTotal = async () => {
                         try {
                             const response = await axios.get(
-                                `https://api.mili-mate.com/user/${userId}/totalReplyCnt`,
+                                `https://api.mili-mate.com/api/user/${userId}/totalReplyCnt`,
                                 {
                                     headers: {
                                         authorization: `${accessToken}`,
@@ -228,27 +228,33 @@ function isTime1730(nowDate : number) {
 
 
 
-    const slides = [];
-    for (let i = 0; i < replies.length; i++) {
-        slides.push(
-            <s.SlideWrapper key={i}>
-                {/* Assuming s is your styled components object */}
-                <s.ContentEnvelope></s.ContentEnvelope>
-                <s.CenteredText blur={blur}>{replies[i].replyContent}</s.CenteredText>
-                <s.NameText blur={blur}>from. {replies[i].senderName}</s.NameText>
-            </s.SlideWrapper>
-        );
-    }
-
-    slides.push(
-        <s.SlideWrapper key={replies.length}>
-            <s.ContentEnvelope></s.ContentEnvelope>
-            <s.CenteredText onClick={() => questionClick()}>
-                모두 확인하기
-            </s.CenteredText>
-            <s.NameText></s.NameText>
-        </s.SlideWrapper>
-    );
+        const slides = [];
+        for (let i = 0; i < replies.length; i++) {
+            if(i >= 4) {
+                break;
+            }
+        
+            slides.push(
+                <s.SlideWrapper key={i}>
+                    {/* Assuming s is your styled components object */}
+                    <s.ContentEnvelope></s.ContentEnvelope>
+                        <s.CenteredText blur={blur}>{replies[i].replyContent}</s.CenteredText>
+                        <s.NameText blur={blur}>from. {replies[i].senderName}</s.NameText>
+                    </s.SlideWrapper>
+                );
+        
+        
+        }
+        
+            slides.push(
+                <s.SlideWrapper key={replies.length}>
+                    <s.ContentEnvelope></s.ContentEnvelope>
+                    <s.CenteredText onClick={() => questionClick()}>
+                        모두 확인하기
+                    </s.CenteredText>
+                    <s.NameText></s.NameText>
+                </s.SlideWrapper>
+            );
 
     const ServiceModalOpen = () => {
         setServiceModalOpen(true);
