@@ -217,7 +217,7 @@ function MainScreen() {
 
     function isTime1730() {
             const now = new Date();
-            return now.getHours() === 17 && now.getMinutes() >= 30;
+            return now.getHours() >= 17 && now.getMinutes() >= 30;
         }
 
     const slides = [];
