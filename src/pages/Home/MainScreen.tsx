@@ -230,8 +230,6 @@ function isTime1730(nowDate : number) {
         const slides = [];
         for (let i = 0; i < replies.length; i++) {
             
-
-
             if(i >= 4) {
                 break;
             }
@@ -248,12 +246,6 @@ function isTime1730(nowDate : number) {
         
         }
         
-        if(data?.endDate == 0) {
-            <s.EnvelopeDiv >
-                <s.NoneEnvelope/>
-            </s.EnvelopeDiv>
-            
-        } else {
             slides.push(
                 <s.SlideWrapper key={replies.length}>
                     <s.ContentEnvelope></s.ContentEnvelope>
@@ -263,7 +255,6 @@ function isTime1730(nowDate : number) {
                     <s.NameText></s.NameText>
                 </s.SlideWrapper>
             );
-        }
             
 
     const ServiceModalOpen = () => {
@@ -348,7 +339,7 @@ function isTime1730(nowDate : number) {
                              </s.EnvelopeDiv>
                          ) : (
                             <>
-        { blur ?
+        { blur && data.nowDate < 61 ?
             <s.TransparentEnvelopeDiv onClick={handleEnvelopeClick} blur={blur}>
                 <s.EnvelopeDiv>
                     <Slider {...settings}>
