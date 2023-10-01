@@ -167,7 +167,7 @@ function MainScreen() {
             getTotal();
         }
 
-
+        alert(data?.endDate);
 
         fetchData();
         
@@ -285,11 +285,12 @@ function MainScreen() {
                                     <s.D_dayText>D+{data.nowDate - 1}</s.D_dayText>
                                     <s.MainContentText>{data.todayQuestion}</s.MainContentText>
                                 </>
-                            ) : data.endDate == 0 && isTime1730() ? (
+                            ) : data.endDate == 0 && isTime1730() == true ? (
                                 <>
                                     <s.D_dayText>수료를 축하드립니다!</s.D_dayText>
                                     <s.MainContentText>지금까지 {totalCount}개의 답변을 받으셨습니다.</s.MainContentText>
                                 </>
+                                
                             ) : <></>
                         ) : <></>
                     }
