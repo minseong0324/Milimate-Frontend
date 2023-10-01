@@ -287,7 +287,7 @@ function isTime1730() {
                             ) : data.nowDate >= 61 && data.endDate == 0 && isTime1730() == true ? (
                                 <>
                                     <s.D_dayText>수료를 축하드립니다!</s.D_dayText>
-                                    <s.MainContentText>지금까지 {totalCount}개의 답변을 받으셨습니다.</s.MainContentText>
+                                    <s.EndContentText>지금까지 {totalCount}개의 답변을 받으셨습니다.</s.EndContentText>
                                 </>
                                 
                             ) : <></>

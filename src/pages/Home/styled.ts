@@ -139,6 +139,19 @@ const MainContentText = styled.div`
   text-align: center;
 `;
 
+const EndContentText = styled.div`
+  color: #4c544b;
+  //line-height: 1.2; // 글자 간격
+  font-size: 17px;
+  font-weight: 900;
+  //margin-top: 30px;
+  margin: 0;
+  word-wrap: break-word;  // 긴 단어를 다음 줄로 래핑
+  white-space: pre-wrap;  // 공백을 존중하면서 텍스트를 래핑
+  max-width: 300px;  // 또는 원하는 값으로 변경. 이 값은 단어가 래핑되는 포인트를 제어합니다.
+  text-align: center;
+`;
+
 
 
 const NormalText = styled.p`
@@ -505,5 +518,6 @@ export const s = {
     ExistText,
     TransparentEnvelopeDiv,
     SlideWrapper,
-    ServiceButton
+    ServiceButton,
+    EndContentText
   };
