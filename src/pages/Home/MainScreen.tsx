@@ -125,7 +125,7 @@ function isTime1730() {
                 setBlur(response.data.blur);
                 setData(responseData); // 형변를환된 응답 데이터 상태에 할당
                 setDdayCount(responseData.endDate - responseData.nowDate);
-                if(response.data.endDate == 0 && isTime1730() ) {
+                if(Number(response.data.endDate) == 0 && isTime1730() ) {
                     const getTotal = async () => {
                         try {
                             const response = await axios.get(
@@ -137,7 +137,7 @@ function isTime1730() {
                                 }
                             );
                             setTotalCount(response.data.totalReplyCnt);
-                            
+                            alert(response.data.totalReplyCnt);
                             
                         } catch (e) {
                             //  alert(e);
@@ -272,19 +272,19 @@ function isTime1730() {
 
                     {
                         data ? (
-                            data.nowDate < 0 ? (
+                            data.nowDate <= 0 ? (
                                 <>
 
                                     {/*<s.MainContentText>입대까지</s.MainContentText>*/}
                                     <s.D_dayText>입대까지 D{data.nowDate - 1}</s.D_dayText>
                                     <s.MainContentText>입대 이후 질문이 생성됩니다! 미리 링크를 공유해 준비해두세요.</s.MainContentText>
                                 </>
-                            ) : data.nowDate > 0 ? (
+                            ) : data.nowDate > 0 && data.nowDate < 61 ? (
                                 <>
                                     <s.D_dayText>D+{data.nowDate - 1}</s.D_dayText>
                                     <s.MainContentText>{data.todayQuestion}</s.MainContentText>
                                 </>
-                            ) : data.endDate == 0 && isTime1730() == true ? (
+                            ) : data.nowDate >= 61 && data.endDate == 0 && isTime1730() == true ? (
                                 <>
                                     <s.D_dayText>수료를 축하드립니다!</s.D_dayText>
                                     <s.MainContentText>지금까지 {totalCount}개의 답변을 받으셨습니다.</s.MainContentText>
