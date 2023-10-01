@@ -164,7 +164,7 @@ function ReplyScreen({day}: ReplyScreenProps) {
                     </s.SoldierTagContainer>
                     {questionData ?
                         questionData.replies.map((reply, index) => (
-                            <s.ReplyContainer key={index} backgroundColor={selectedColor}>
+                            <s.ReplyContainer key={index} backgroundColor={reply.color}>
                                 <s.ContentText>{reply.replyContent}</s.ContentText>
                                 <s.SenderText>From.{reply.senderName}</s.SenderText>
                             </s.ReplyContainer>
