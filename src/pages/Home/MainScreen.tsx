@@ -65,24 +65,19 @@ function MainScreen() {
 
 function isTime1730(nowDate : number) {
     const now = new Date();
-    if(nowDate >= 61) {
+    if(nowDate > 61) {
+        return true;
+
+    } else if (nowDate == 61) {
         if( now.getHours() > 17 || (now.getHours() >= 17 && now.getMinutes() >= 30)) {
-
-            if(nowDate > 61) {
                 return true;
-            }
-            else {
-                return false; 
-            }
-        
-        
-
         } else {
             return false;
         }
+    } else {
+        return false;
     }
 }
-
     const handleCopyClipBoard = async () => {
         const linkToShare = `https://mili-mate.com/guest/${userId}`;
         try {
