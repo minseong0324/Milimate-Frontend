@@ -63,11 +63,19 @@ function MainScreen() {
     const [isServiceModalOpen, setServiceModalOpen] = useState(false);
     const [totalCount, setTotalCount] = useState<number>(0);
 
-// ... [기타 코드 생략] ...
-function isTime1730() {
+function isTime1730(nowDate : number) {
     const now = new Date();
-    if(now.getHours() >= 17 && now.getMinutes() >= 30) {
-        return true;
+    if( now.getHours() > 17 || (now.getHours() >= 17 && now.getMinutes() >= 30)) {
+
+        if(nowDate > 61) {
+            return true;
+        }
+        else {
+            return false; 
+        }
+    
+    
+
     } else {
         return false;
     }
@@ -125,7 +133,7 @@ function isTime1730() {
                 setBlur(response.data.blur);
                 setData(responseData); // 형변를환된 응답 데이터 상태에 할당
                 setDdayCount(responseData.endDate - responseData.nowDate);
-                if(Number(response.data.endDate) == 0 && isTime1730() ) {
+                if(Number(response.data.endDate) == 0 && isTime1730(Number(response.data.nowDate)) ) {
                     const getTotal = async () => {
                         try {
                             const response = await axios.get(
@@ -284,7 +292,7 @@ function isTime1730() {
                                     <s.D_dayText>D+{data.nowDate - 1}</s.D_dayText>
                                     <s.MainContentText>{data.todayQuestion}</s.MainContentText>
                                 </>
-                            ) : data.nowDate >= 61 && data.endDate == 0 && isTime1730() == true ? (
+                            ) : data.nowDate >= 61 && data.endDate == 0 && isTime1730(data.nowDate) == true ? (
                                 <>
                                     <s.D_dayText>수료를 축하드립니다!</s.D_dayText>
                                     <s.EndContentText>지금까지 {totalCount}개의 답변을 받으셨습니다.</s.EndContentText>
