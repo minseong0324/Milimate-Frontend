@@ -21,7 +21,7 @@ interface ResponseData {
     nowDate: number;
     endDate: number;
     todayQuestion: string;
-    existNewRepl: boolean, //true, false //todayquestion이 존재한다. 그런다음 만약 이게 false면 질문은 있는데 그거에 대한 답변이 없는것, 만약 답변이 존재하면 밑으로 넘어감감
+    existNewRepl: boolean, //true, false //todayquestion이 존재한다. 그런다음 만약 이게 false면 질문은 있는데 그거에 대한 답변이 없는것, 만약 답변이 존재하면 밑으로 넘어감
     blur: boolean, 
     insertedEndDate: boolean;
     totalCount: number;
