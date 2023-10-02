@@ -37,7 +37,7 @@ function ReplyScreen({day}: ReplyScreenProps) {
             setIsLoading(true);
             try {
                 const response = await axios.get(
-                    `https://api.mili-mate.com/api/user/${userId}/questionList/reply?day=${state.day}`,
+                    `https://api.mili-mate.com/api/user/${userId}/questionList/${state.day}`,
                     {
                         headers: {
                             authorization: `${accessToken}`,
