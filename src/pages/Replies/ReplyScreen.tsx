@@ -71,7 +71,7 @@ function ReplyScreen({day}: ReplyScreenProps) {
                     })
                 };
 
-                // 여기를 수정합니다: modifiedData를 상태에 저장합니다.
+                // 여기를 수정합니다: modifiedData를 상태에 저장합니다./
                 setQuestionData(modifiedData);
             } catch (error) {
                 console.error("Error fetching data:", error);
