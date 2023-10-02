@@ -14,7 +14,7 @@ interface Data {
 function AddReply() {
     const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
     //const [sender, setSender] = useState("");
-    //const [reply, setReply] = useState("");
+    //const [reply, setReply] = useState("");//
     const [formData, setFormData] = useState({
         sender: "",
         reply: "",
