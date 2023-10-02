@@ -27,8 +27,8 @@ function ReplyScreen({day}: ReplyScreenProps) {
     const {state} = useLocation();
     const {accessToken, refreshToken} = useToken();
     const [selectedColor, setSelectedColor] = useState<string>('white');
-    console.log(state.day);
-    console.log(state.question);
+    //console.log(state.day);
+    //console.log(state.question);
     const [questionData, setQuestionData] = useState<QuestionData | null>(null);
     const {userId} = useParams<{ userId: string }>(); // URL에서 userId 값을 추출
     const [isLoading, setIsLoading] = useState(true); // 초기값을 true로 설정
@@ -37,7 +37,7 @@ function ReplyScreen({day}: ReplyScreenProps) {
             setIsLoading(true);
             try {
                 const response = await axios.get(
-                    `https://api.mili-mate.com/api/user/${userId}/questionList/${state.day}`,
+                    `https://api.mili-mate.com/api/user/${userId}/questionList?day=${state.day}`,
                     {
                         headers: {
                             authorization: `${accessToken}`,
