@@ -142,7 +142,8 @@ function isTime1730(nowDate : number) {
                                 }
                             );
                             setTotalCount(response.data.totalReplyCnt);
-                            
+                            alert(response.data.totalReplyCnt);
+                            alert(totalCount);
                         } catch (e) {
                             //  alert(e);
                             console.log(e);
