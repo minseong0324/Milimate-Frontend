@@ -234,25 +234,19 @@ function UpdateCompletionModalBasic({ setModalOpen }: PropsType) {
           <s.MoreInfoInputYear
             type="text"
             value={completionYear}
-            onChange={(e: {
-              target: { value: React.SetStateAction<string> };
-            }) => setcompletionYear(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setcompletionYear(e.target.value.replace(/\s/g, ''))}
           />
           <s.TextsStyle2>년</s.TextsStyle2>
           <s.MoreInfoInputYMonthDay
             type="text"
             value={completionMonth}
-            onChange={(e: {
-              target: { value: React.SetStateAction<string> };
-            }) => setcompletionMonth(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setcompletionMonth(e.target.value.replace(/\s/g, ''))}
           />
           <s.TextsStyle2>월</s.TextsStyle2>
           <s.MoreInfoInputYMonthDay
             type="text"
             value={completionDay}
-            onChange={(e: {
-              target: { value: React.SetStateAction<string> };
-            }) => setcompletionDay(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setcompletionDay(e.target.value.replace(/\s/g, ''))}
           />
           <s.TextsStyle2>일</s.TextsStyle2>
         </s.InputContainer>

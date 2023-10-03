@@ -142,8 +142,6 @@ function isTime1730(nowDate : number) {
                                 }
                             );
                             setTotalCount(response.data.totalReplyCnt);
-                            alert(response.data.totalReplyCnt);
-                            alert(totalCount);
                         } catch (e) {
                             //  alert(e);
                             console.log(e);
@@ -341,23 +339,21 @@ function isTime1730(nowDate : number) {
                              </s.EnvelopeDiv>
                          ) : (
                             <>
-        { blur && data.nowDate < 61 ?
-            <s.TransparentEnvelopeDiv onClick={handleEnvelopeClick} blur={blur}>
-                <s.EnvelopeDiv>
-                    <Slider {...settings}>
-                    {slides}
-                    </Slider>
-                </s.EnvelopeDiv>
-            </s.TransparentEnvelopeDiv>
-            :
+                                {data.nowDate <= 61 ?
+                                    <s.TransparentEnvelopeDiv onClick={handleEnvelopeClick} blur={blur}>
+                                        <s.EnvelopeDiv>
+                                            <Slider {...settings}>
+                                            {slides}
+                                            </Slider>
+                                        </s.EnvelopeDiv>
+                                    </s.TransparentEnvelopeDiv>
+                                    :
 
-            <s.EnvelopeDiv>
-                <Slider {...settings}>
-                {slides}
-                </Slider>
-            </s.EnvelopeDiv>
-        }
-    </>
+                                    <s.EnvelopeDiv>
+                                        <s.NoneEnvelope/>
+                                    </s.EnvelopeDiv>
+                                }
+                            </>
                     )
 
                     ) : <s.EnvelopeDiv>

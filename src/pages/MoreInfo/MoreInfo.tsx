@@ -219,27 +219,22 @@ function MoreInfo() {
               type="text"
               placeholder="YYYY"
               value={enlistmentYear}
-              onChange={(e: {
-                target: { value: React.SetStateAction<string> };
-              }) => setEnlistmentYear(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEnlistmentYear(e.target.value.replace(/\s/g, ''))}
+
             />
             <s.TextsStyle2>년</s.TextsStyle2>
             <s.MoreInfoInputYMonthDay
               type="text"
               placeholder="MM"
               value={enlistmentMonth}
-              onChange={(e: {
-                target: { value: React.SetStateAction<string> };
-              }) => setEnlistmentMonth(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEnlistmentMonth(e.target.value.replace(/\s/g, ''))}
             />
             <s.TextsStyle2>월</s.TextsStyle2>
             <s.MoreInfoInputYMonthDay
               type="text"
               placeholder="DD"
               value={enlistmentDay}
-              onChange={(e: {
-                target: { value: React.SetStateAction<string> };
-              }) => setEnlistmentDay(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEnlistmentDay(e.target.value.replace(/\s/g, ''))}
             />
             <s.TextsStyle2>일</s.TextsStyle2>
           </s.InputContainer>
@@ -249,27 +244,21 @@ function MoreInfo() {
               type="text"
               placeholder="YYYY"
               value={completionYear}
-              onChange={(e: {
-                target: { value: React.SetStateAction<string> };
-              }) => setcompletionYear(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setcompletionYear(e.target.value.replace(/\s/g, ''))}
             />
             <s.TextsStyle2>년</s.TextsStyle2>
             <s.MoreInfoInputYMonthDay
               type="text"
               placeholder="MM"
               value={completionMonth}
-              onChange={(e: {
-                target: { value: React.SetStateAction<string> };
-              }) => setcompletionMonth(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setcompletionMonth(e.target.value.replace(/\s/g, ''))}
             />
             <s.TextsStyle2>월</s.TextsStyle2>
             <s.MoreInfoInputYMonthDay
               type="text"
               placeholder="DD"
               value={completionDay}
-              onChange={(e: {
-                target: { value: React.SetStateAction<string> };
-              }) => setcompletionDay(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setcompletionDay(e.target.value.replace(/\s/g, ''))}
             />
             <s.TextsStyle2>일</s.TextsStyle2>
           </s.InputContainer>
