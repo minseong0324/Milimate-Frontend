@@ -223,7 +223,7 @@ function isTime1730(nowDate : number) {
             }
         }
     };
-
+            
 
 
         const slides = [];
@@ -248,8 +248,8 @@ function isTime1730(nowDate : number) {
         
             slides.push(
                 <s.SlideWrapper key={replies.length}>
-                    <s.ContentEnvelope></s.ContentEnvelope>
-                    <s.CenteredText onClick={() => questionClick()}>
+                    <s.ContentEnvelope onClick={() => questionClick()}/>
+                    <s.CenteredText >
                         모두 확인하기
                     </s.CenteredText>
                     <s.NameText></s.NameText>
