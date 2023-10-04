@@ -46,7 +46,7 @@ function MainScreen() {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        //arrows: true, // 이 부분을 추가하세요.
+        arrows: false,
     };
     //    const { accessToken, refreshToken } = useToken();
     const accessToken = localStorage.getItem("accessToken");
