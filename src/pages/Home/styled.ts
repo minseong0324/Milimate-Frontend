@@ -283,6 +283,7 @@ display: block;
 margin-bottom: -124px;
 width: 350px;
 right: 4px;
+pointer-events: auto;
 //height: 301px;
 position: relative; // 이 부분 추가
 @media (min-width: 600px) {
@@ -325,6 +326,7 @@ const EnvelopeDiv = styled.div`
 const SlideWrapper = styled.div`
     width : 100%;
     height: 240px;
+    pointer-events: none;
 
     @media (min-width: 600px) {
         height: 300px;
@@ -339,6 +341,7 @@ const TransparentEnvelopeDiv = styled.div<{ blur?: boolean }>`
     position: relative;
     width: 340px;
     height: 240px;
+    pointer-events: none;
     /* 이미지의 z-index를 1로 설정하여 자식 요소들 위에 오도록 합니다. */
     &::before {
         content: "";
@@ -352,6 +355,8 @@ const TransparentEnvelopeDiv = styled.div<{ blur?: boolean }>`
         background-position: center;
         background-size: contain;
         z-index: 1;
+      
+      
     }
 
     /* 자식 요소들의 z-index를 0으로 설정하여 이미지 아래에 오도록 합니다. */
