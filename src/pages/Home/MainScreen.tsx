@@ -248,14 +248,14 @@ function MainScreen() {
 
         slides.push(
             // <s.SlideWrapper key={replies.length}>
-            <>
-                <s.ContentEnvelope onClick={() => questionClick()}/>
+            <s.SlideWrapper onClick={() => questionClick()}>
+                <s.ContentEnvelope />
                 <s.CenteredText>
                     모두 확인하기
                 </s.CenteredText>
                 <s.NameText></s.NameText>
                 {/*</s.SlideWrapper>*/}
-            </>
+            </s.SlideWrapper>
         );
     }
 
