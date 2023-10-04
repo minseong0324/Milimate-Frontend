@@ -273,7 +273,7 @@ const NoneEnvelope = styled.img.attrs({
     width: 430px;
    // height: 240.26px;
   }
-
+//
 `;
 const ContentEnvelope = styled.img.attrs({
   src: contentEnvelop,
