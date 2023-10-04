@@ -22,7 +22,7 @@ interface ResponseData {
     endDate: number;
     todayQuestion: string;
     existNewRepl: boolean, //true, false //todayquestion이 존재한다. 그런다음 만약 이게 false면 질문은 있는데 그거에 대한 답변이 없는것, 만약 답변이 존재하면 밑으로 넘어감
-    blur: boolean, 
+    blur: boolean,
     insertedEndDate: boolean;
     totalCount: number;
 }
@@ -63,27 +63,28 @@ function MainScreen() {
     const [isServiceModalOpen, setServiceModalOpen] = useState(false);
     const [totalCount, setTotalCount] = useState<number>(0);
 
-function isTime1730(nowDate : number) {
-    const now = new Date();
-    if(nowDate > 61) {
-        return true;
+    function isTime1730(nowDate: number) {
+        const now = new Date();
+        if (nowDate > 61) {
+            return true;
 
-    } else if (nowDate == 61) {
-        if( now.getHours() > 17 || (now.getHours() >= 17 && now.getMinutes() >= 30)) {
+        } else if (nowDate == 61) {
+            if (now.getHours() > 17 || (now.getHours() >= 17 && now.getMinutes() >= 30)) {
                 return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
-    } else {
-        return false;
     }
-}
+
     const handleCopyClipBoard = async () => {
         const linkToShare = `https://mili-mate.com/guest/${userId}`;
         try {
             await navigator.clipboard.writeText(linkToShare);
-            
-        copy(`https://mili-mate.com/guest/${userId}`); //안드로이드 카카오톡 인앱 브라우저 이슈 대응
+
+            copy(`https://mili-mate.com/guest/${userId}`); //안드로이드 카카오톡 인앱 브라우저 이슈 대응
             setSmallModalOpen(true)
             setModalSmallContent(
                 <s.SmallCenterModalWrapper>
@@ -130,7 +131,7 @@ function isTime1730(nowDate : number) {
                 setBlur(response.data.blur);
                 setData(responseData); // 형변를환된 응답 데이터 상태에 할당
                 setDdayCount(responseData.endDate - responseData.nowDate);
-                if(Number(response.data.endDate) <= 0 && isTime1730(Number(response.data.nowDate)) ) {
+                if (Number(response.data.endDate) <= 0 && isTime1730(Number(response.data.nowDate))) {
                     const getTotal = async () => {
                         try {
                             const response = await axios.get(
@@ -166,7 +167,7 @@ function isTime1730(nowDate : number) {
 
                         } catch (error) {
                             alert("데이터를 불러오는데 실패했습니다:");
-                       //     alert(error);
+                            //     alert(error);
                         }
                     };
                     fetchReplData(); // 함수 실행
@@ -177,9 +178,9 @@ function isTime1730(nowDate : number) {
             }
         };
 
-       
+
         fetchData();
-        
+
 
     }, [accessToken, userId]);
 
@@ -223,39 +224,40 @@ function isTime1730(nowDate : number) {
             }
         }
     };
-            
 
 
-        const slides = [];
-        if(replies ) {
+    const slides = [];
+    if (replies) {
         for (let i = 0; i < replies.length; i++) {
-            
-            if(i >= 4) {
+
+            if (i >= 4) {
                 break;
             }
-        
+
             slides.push(
                 <s.SlideWrapper key={i}>
                     {/* Assuming s is your styled components object */}
                     <s.ContentEnvelope></s.ContentEnvelope>
-                        <s.CenteredText blur={blur}>{replies[i].replyContent}</s.CenteredText>
-                        <s.NameText blur={blur}>from. {replies[i].senderName}</s.NameText>
-                    </s.SlideWrapper>
-                );
-        
-        
-        }
-        
-            slides.push(
-                <s.SlideWrapper key={replies.length}>
-                    <s.ContentEnvelope onClick={() => questionClick()}/>
-                    <s.CenteredText >
-                        모두 확인하기
-                    </s.CenteredText>
-                    <s.NameText></s.NameText>
+                    <s.CenteredText blur={blur}>{replies[i].replyContent}</s.CenteredText>
+                    <s.NameText blur={blur}>from. {replies[i].senderName}</s.NameText>
                 </s.SlideWrapper>
             );
+
+
         }
+
+        slides.push(
+            // <s.SlideWrapper key={replies.length}>
+            <>
+                <s.ContentEnvelope onClick={() => questionClick()}/>
+                <s.CenteredText>
+                    모두 확인하기
+                </s.CenteredText>
+                <s.NameText></s.NameText>
+                {/*</s.SlideWrapper>*/}
+            </>
+        );
+    }
 
     const ServiceModalOpen = () => {
         setServiceModalOpen(true);
@@ -286,8 +288,6 @@ function isTime1730(nowDate : number) {
                         data ? (
                             data.nowDate <= 0 ? (
                                 <>
-
-                                    {/*<s.MainContentText>입대까지</s.MainContentText>*/}
                                     <s.D_dayText>입대까지 D{data.nowDate - 1}</s.D_dayText>
                                     <s.MainContentText>입대 이후 질문이 생성됩니다! 미리 링크를 공유해 준비해두세요.</s.MainContentText>
                                 </>
@@ -301,7 +301,7 @@ function isTime1730(nowDate : number) {
                                     <s.D_dayText>수료를 축하드립니다!</s.D_dayText>
                                     <s.EndContentText>지금까지 {totalCount}개의 답변을 받으셨습니다.</s.EndContentText>
                                 </>
-                                
+
                             ) : <></>
                         ) : <></>
                     }
@@ -333,17 +333,17 @@ function isTime1730(nowDate : number) {
                 {/*<s.ExistEnvelope></s.ExistEnvelope>*/}
                 {
                     data ? (
-                         !data.existNewRepl ? (
-                             <s.EnvelopeDiv >
-                                 <s.NoneEnvelope/>
-                             </s.EnvelopeDiv>
-                         ) : (
+                        !data.existNewRepl ? (
+                            <s.EnvelopeDiv>
+                                <s.NoneEnvelope/>
+                            </s.EnvelopeDiv>
+                        ) : (
                             <>
                                 {data.nowDate <= 61 ?
                                     <s.TransparentEnvelopeDiv onClick={handleEnvelopeClick} blur={blur}>
                                         <s.EnvelopeDiv>
                                             <Slider {...settings}>
-                                            {slides}
+                                                {slides}
                                             </Slider>
                                         </s.EnvelopeDiv>
                                     </s.TransparentEnvelopeDiv>
@@ -354,29 +354,12 @@ function isTime1730(nowDate : number) {
                                     </s.EnvelopeDiv>
                                 }
                             </>
-                    )
+                        )
 
                     ) : <s.EnvelopeDiv>
                         <s.NoneEnvelope/>
                     </s.EnvelopeDiv>
                 }
-
-
-                {/*<s.EnvelopeDiv onClick={handleEnvelopeClick}>*/}
-                {/*    <Slider {...settings}>*/}
-
-                {/*        <div style={{width: '100%',height:"100%", backgroundColor:"black"}}>*/}
-
-                {/*                    <>*/}
-                {/*                        <s.ContentEnvelope/>*/}
-                {/*                        <s.CenteredText>sdgfhjsdgfhjdsgfhjdsgfhjsdgfhjdsgfhjgdjhfgsdjhfgjhsdgfjhsdgfhjgsdfjhgdsjhfgdsjhfgjhsdgfjhdsgfhjsdgfjhdsgfjhsdgfjsdgfjhsdgfjhdsgfjhsdgfjsdhgfjhdsgf</s.CenteredText>*/}
-                {/*                        <s.NameText>from. 김건휘</s.NameText>*/}
-                {/*                    </>*/}
-
-
-                {/*        </div>*/}
-                {/*    </Slider>*/}
-                {/*</s.EnvelopeDiv>*/}
 
                 <div style={{margin: 36}}></div>
             </s.WrapperLayout>
