@@ -74,6 +74,12 @@ function MainScreen() {
             } else {
                 return false;
             }
+        } else if (nowDate == 1) {
+            if (now.getHours() < 17 || (now.getHours() <= 17 && now.getMinutes() <= 30)) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
@@ -291,7 +297,12 @@ function MainScreen() {
                                     <s.D_dayText>입대까지 D{data.nowDate - 1}</s.D_dayText>
                                     <s.MainContentText>입대 이후 질문이 생성됩니다! 미리 링크를 공유해 준비해두세요.</s.MainContentText>
                                 </>
-                            ) : data.nowDate > 0 && data.nowDate < 61 ? (
+                            ) : data.nowDate === 1 && isTime1730(data.nowDate) ? (
+                                <>
+                                    <s.D_dayText>D+{data.nowDate - 1}</s.D_dayText>
+                                    <s.MainContentText>오늘이 입대일입니다! 질문은 17:30 이후에 생성됩니다!</s.MainContentText>
+                                </>
+                            ) : data.nowDate >= 1 && data.nowDate < 61 ? (
                                 <>
                                     <s.D_dayText>D+{data.nowDate - 1}</s.D_dayText>
                                     <s.MainContentText>{data.todayQuestion}</s.MainContentText>
