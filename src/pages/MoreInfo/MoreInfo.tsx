@@ -135,6 +135,7 @@ function MoreInfo() {
         }
 
         try {
+
             const response = await axios.post(
                 `https://api.mili-mate.com/api/user/${userId}/moreInfo`,
                 {
@@ -212,6 +213,7 @@ function MoreInfo() {
               onChange={(e: {
                 target: { value: React.SetStateAction<string> };
               }) => setUserName(e.target.value)}
+              maxLength={5}
             />
             <s.TextsStyle>입대일</s.TextsStyle>
             <s.InputContainer>
@@ -220,7 +222,7 @@ function MoreInfo() {
               placeholder="YYYY"
               value={enlistmentYear}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEnlistmentYear(e.target.value.replace(/\s/g, ''))}
-
+              maxLength={4}
             />
             <s.TextsStyle2>년</s.TextsStyle2>
             <s.MoreInfoInputYMonthDay
@@ -228,6 +230,7 @@ function MoreInfo() {
               placeholder="MM"
               value={enlistmentMonth}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEnlistmentMonth(e.target.value.replace(/\s/g, ''))}
+              maxLength={2}
             />
             <s.TextsStyle2>월</s.TextsStyle2>
             <s.MoreInfoInputYMonthDay
@@ -235,6 +238,7 @@ function MoreInfo() {
               placeholder="DD"
               value={enlistmentDay}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEnlistmentDay(e.target.value.replace(/\s/g, ''))}
+              maxLength={2}
             />
             <s.TextsStyle2>일</s.TextsStyle2>
           </s.InputContainer>
@@ -245,6 +249,7 @@ function MoreInfo() {
               placeholder="YYYY"
               value={completionYear}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setcompletionYear(e.target.value.replace(/\s/g, ''))}
+              maxLength={4}
             />
             <s.TextsStyle2>년</s.TextsStyle2>
             <s.MoreInfoInputYMonthDay
@@ -252,6 +257,7 @@ function MoreInfo() {
               placeholder="MM"
               value={completionMonth}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setcompletionMonth(e.target.value.replace(/\s/g, ''))}
+              maxLength={2}
             />
             <s.TextsStyle2>월</s.TextsStyle2>
             <s.MoreInfoInputYMonthDay
@@ -259,6 +265,7 @@ function MoreInfo() {
               placeholder="DD"
               value={completionDay}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setcompletionDay(e.target.value.replace(/\s/g, ''))}
+              maxLength={2}
             />
             <s.TextsStyle2>일</s.TextsStyle2>
           </s.InputContainer>
