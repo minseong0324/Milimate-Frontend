@@ -11,8 +11,7 @@ const NaverLogin: React.FC<NaverProps> = ({ imageUrl }) => {
 
   // 이미지 클릭 시 네이버 로그인 페이지로 이동
   const handleButtonClick = () => {
-    //window.location.href = "https://api.mili-mate.com/api/oauth/naver";
-    alert("네이버 로그인은 10/5 오픈예정입니다. 카카오 로그인을 이용해주세요.")
+    window.location.href = "https://api.mili-mate.com/api/oauth/naver";
   };
 
   return (
