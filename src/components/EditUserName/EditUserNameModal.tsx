@@ -48,7 +48,7 @@ function EditUserNameModalBasic({ setModalOpen }: PropsType) {
           setModalOpen(false);
         }
       } catch (error: unknown) {
-        //에러 일 경우
+        //에러 일 경우.
         if (error instanceof AxiosError) {
           const status = error?.response?.status;
           console.error("Failed to fetch user info:", error);
