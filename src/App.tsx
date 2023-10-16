@@ -58,27 +58,28 @@ const handleModalClose = () => {
 
   //점검할 때  전역적으로 띄울 공지모달을 위한 코드
   useEffect(() => {
-    if (word === 'als') {
+    if (word === 'qkdgogkwlaktpa') {
       // word가 '강승준'이라면 이 useEffect는 실행하지 않음
       return;
     }
 
       setModalErrorContent(
           <s.SmallCenterModalWrapper>
-              <s.SmallModalTextsWrapper2>이용 중 불편을 드려 죄송합니다. 인스타그램 스토리로</s.SmallModalTextsWrapper2>
-              <s.SmallModalTextsWrapper2>점검완료 시에 공지를 올릴 예정입니다.</s.SmallModalTextsWrapper2>
+              <s.SmallModalTextsWrapper2>이용 중 불편을 드려 죄송합니다.</s.SmallModalTextsWrapper2>
+              <s.SmallModalTextsWrapper2>점검 완료 시, 인스타그램 스토리를 </s.SmallModalTextsWrapper2>
+              <s.SmallModalTextsWrapper2>통해 공지를 올릴 예정입니다.</s.SmallModalTextsWrapper2>
               <s.BtnDiv>
                 <s.OkBtnStyle onClick={handleNavigateInstagram}>인스타그램</s.OkBtnStyle>
-                <s.CancelBtnStyle onClick={handleModalClose}>닫기</s.CancelBtnStyle>
+                <s.CancelBtnStyle onClick={handleNavigateInstagram}>인스타그램</s.CancelBtnStyle>
               </s.BtnDiv>
-              
+              <br/>
               <s.MoreInfoInputName
                         type="text"
                         placeholder="관리자 비밀번호"
                         value={word}
                         onChange={writeWord}
               />
-              <s.OkBtnStyle onClick={handleModalClose}>관리자용</s.OkBtnStyle>
+              <button onClick={handleModalClose}>관리자용</button>
           </s.SmallCenterModalWrapper>
       );
       
