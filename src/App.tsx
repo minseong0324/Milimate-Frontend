@@ -34,7 +34,7 @@ import ErrorModal from "./components/ErrorModal/ErrorModal";
 
 function App() {
     const accessToken = localStorage.getItem("accessToken");
-    
+   /* 
   //점검할 때  전역적으로 띄울 공지모달을 위한 코드
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
   const [modalErrorContent, setModalErrorContent] = useState<React.ReactNode>(null); // 모달에 표시될 내용을 저장합니다.
@@ -86,7 +86,7 @@ const handleModalClose = () => {
       setErrorModalOpen(true) 
 
   }, [isErrorModalOpen, word]);
-
+*/ 
     // 로그인 여부를 판단하는 함수
     function isLoggedIn() {
         if(accessToken !== null) {
@@ -159,11 +159,11 @@ const handleModalClose = () => {
                     </QueryClientProvider>
                 </PersistGate>
             </Provider>
-             {/*점검할 때  전역적으로 띄울 공지모달을 위한 코드 */}
+             {/*점검할 때  전역적으로 띄울 공지모달을 위한 코드
     <ErrorModal isOpen={isErrorModalOpen} onClose={() => setErrorModalOpen(false)} >
       {modalErrorContent}
     </ErrorModal>
-     
+*/}
         </>
     );
 }
