@@ -67,7 +67,7 @@ As the Internet letter printing service in the training center has been suspende
 | 메인 페이지   |  답변 열람 페이지   |  
 | <img width="329" src="https://github.com/minseong0324/Project_TR_Client_deploy/assets/106135117/ba2dc5cb-f968-47bb-9053-b86d31325866"/>   |  <img width="329" src="https://github.com/minseong0324/Project_TR_Client_deploy/assets/106135117/ecb2349a-2b05-4057-9d67-f20ef803fffa"/>     |
 | 답변 작성 페이지   |  마이 페이지   |  
-| <img width="329" src="https://github.com/minseong0324/Project_TR_Client_deploy/assets/106135117/f9f72ef5-916b-441c-924d-c6b809a3e297"/>   |  <img width="329" src="https://github.com/minseong0324/minseong0324/assets/65233075/c5630405-d739-4492-9a04-53caa4aba4bc"/>     |
+| <img width="329" src="https://github.com/minseong0324/Project_TR_Client_deploy/assets/106135117/f9f72ef5-916b-441c-924d-c6b809a3e297"/>   |  <img width="329" src="https://github.com/minseong0324/Project_TR_Client_deploy/assets/106135117/b0d2c792-a316-4c1e-a067-a5b063f15e8f"/>     |
 
 ---
 ## 주요 기능 📦
@@ -76,23 +76,23 @@ As the Internet letter printing service in the training center has been suspende
 - 공유 받은 링크로 접속한 후, 비로그인 상태일 때도 작성 가능.
 - 답변 작성을 위한 컨테이너의 색상 5종 선택 가능.
 - 랜덤으로 훈련병 캐릭터의 표정이 변화.
-<img width="329" src="https://github.com/minseong0324/minseong0324/assets/65233075/d3aa98a4-86ed-4d04-94dc-fba3725c2451"/>
+<img width="329" src="https://github.com/minseong0324/Project_TR_Client_deploy/assets/106135117/f9f72ef5-916b-441c-924d-c6b809a3e297"/>
 
 ### ⭐️ 답변 열람 기능
 - 일별 질문 리스트 및 해당 질문에 대한 답변 리스트 열람 기능.
-<img width="329" src="https://github.com/minseong0324/minseong0324/assets/65233075/4de67cc1-3567-4ae7-91f9-6911e254b514"/>
+<img width="329" src="https://github.com/minseong0324/Project_TR_Client_deploy/assets/106135117/ecb2349a-2b05-4057-9d67-f20ef803fffa"/>
 
 ### ⭐️ 메인 페이지 내 기능
 - 훈련소 수료일 까지 D-day 확인 가능
 - 오늘의 질문이 무엇인지 훈련병도 확인 가능.
 - 전날 받은 답변 중 최신 5개까지 Slide로 확인 가능. 클릭 시 답변 리스트 페이지로 이동.
 - 랜덤으로 훈련병 캐릭터의 표정이 변화.
-<img width="329" src="https://github.com/minseong0324/minseong0324/assets/65233075/a9f938ec-cf4a-40c6-9952-7eb1ace02791"/>
+<img width="329" src="https://github.com/minseong0324/Project_TR_Client_deploy/assets/106135117/0a9f51d4-6b4f-4be7-819f-5f6ff9ccfd1e"/>
 
 ### ⭐️ 마이페이지 내 기능
 - 이름 변경, 수료일 수정, 로그아웃, 탈퇴 기능 포함.
-<img width="329" src="https://github.com/minseong0324/minseong0324/assets/65233075/c5630405-d739-4492-9a04-53caa4aba4bc"/>
+<img width="329" src="https://github.com/minseong0324/Project_TR_Client_deploy/assets/106135117/0a9f51d4-6b4f-4be7-819f-5f6ff9ccfd1e"/>
 
 ### ⭐️ 질문 링크 공유 기능
 - 오늘의 질문 공유하기 버튼을 클릭하면 클립보드에 답변을 남길 수 있는 링크가 복사됨.
-<img width="329" src="https://github.com/minseong0324/minseong0324/assets/65233075/56e097f1-fd64-4599-83ff-09add221f5d2"/>
+<img width="329" src="https://github.com/minseong0324/Project_TR_Client_deploy/assets/106135117/5e8afafd-15a6-49c1-b087-1b3ee638b2bd"/>
