@@ -87,7 +87,7 @@ As the Internet letter printing service in the training center has been suspende
 - 오늘의 질문이 무엇인지 훈련병도 확인 가능.
 - 전날 받은 답변 중 최신 5개까지 Slide로 확인 가능. 클릭 시 답변 리스트 페이지로 이동.
 - 랜덤으로 훈련병 캐릭터의 표정이 변화.
-<img width="329" src="https://github.com/minseong0324/Project_TR_Client_deploy/assets/106135117/0a9f51d4-6b4f-4be7-819f-5f6ff9ccfd1e"/>
+<img width="329" src="https://github.com/minseong0324/Project_TR_Client_deploy/assets/106135117/ba2dc5cb-f968-47bb-9053-b86d31325866"/>
 
 ### ⭐️ 마이페이지 내 기능
 - 이름 변경, 수료일 수정, 로그아웃, 탈퇴 기능 포함.
