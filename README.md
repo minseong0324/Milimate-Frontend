@@ -63,7 +63,7 @@ As the Internet letter printing service in the training center has been suspende
 ## 주요 화면 구성 📺
 | 온보딩 페이지  |  로그인 페이지   |
 | :-------------------------------------------: | :------------: |
-|  <img width="329" src="[https://github.com/minseong0324/minseong0324/assets/65233075/a810ff87-4aa7-4352-b788-ffd4931fe6cf](https://github.com/minseong0324/Project_TR_Client_deploy/assets/106135117/203101fe-9889-4e92-a085-9918b511fd3e)"/> |  <img width="329" src="https://github.com/minseong0324/minseong0324/assets/65233075/f71da5ee-b5a9-4c1e-bfaa-ce246f31f83c"/>|  
+|  <img width="329" src="https://github.com/minseong0324/Project_TR_Client_deploy/assets/106135117/203101fe-9889-4e92-a085-9918b511fd3e"/> |  <img width="329" src="https://github.com/minseong0324/minseong0324/assets/65233075/f71da5ee-b5a9-4c1e-bfaa-ce246f31f83c"/>|  
 | 메인 페이지   |  답변 열람 페이지   |  
 | <img width="329" src="https://github.com/minseong0324/minseong0324/assets/65233075/c794deb5-3633-428b-9b9e-ea1a680a5a6c"/>   |  <img width="329" src="https://github.com/minseong0324/minseong0324/assets/65233075/c5630405-d739-4492-9a04-53caa4aba4bc"/>     |
 | 답변 작성 페이지   |  마이 페이지   |  
