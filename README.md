@@ -65,7 +65,7 @@ As the Internet letter printing service in the training center has been suspende
 | :-------------------------------------------: | :------------: |
 |  <img width="329" src="https://github.com/minseong0324/Project_TR_Client_deploy/assets/106135117/203101fe-9889-4e92-a085-9918b511fd3e"/> |  <img width="329" src="https://github.com/minseong0324/Project_TR_Client_deploy/assets/106135117/203101fe-9889-4e92-a085-9918b511fd3e"/>|  
 | 메인 페이지   |  답변 열람 페이지   |  
-| <img width="329" src="https://github.com/minseong0324/Project_TR_Client_deploy/assets/106135117/ba2dc5cb-f968-47bb-9053-b86d31325866"/>   |  <img width="329" src="https://github.com/minseong0324/Project_TR_Client_deploy/assets/106135117/b0d2c792-a316-4c1e-a067-a5b063f15e8f"/>     |
+| <img width="329" src="https://github.com/minseong0324/Project_TR_Client_deploy/assets/106135117/ba2dc5cb-f968-47bb-9053-b86d31325866"/>   |  <img width="329" src="https://github.com/minseong0324/Project_TR_Client_deploy/assets/106135117/64a09d57-aafc-4827-b63c-7fc5fe57238a"/>     |
 | 답변 작성 페이지   |  마이 페이지   |  
 | <img width="329" src="https://github.com/minseong0324/Project_TR_Client_deploy/assets/106135117/f9f72ef5-916b-441c-924d-c6b809a3e297"/>   |  <img width="329" src="https://github.com/minseong0324/minseong0324/assets/65233075/c5630405-d739-4492-9a04-53caa4aba4bc"/>     |
 
